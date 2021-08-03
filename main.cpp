@@ -135,5 +135,47 @@ int main()
 
     cout << "Valor = " << testar1.getValor() << endl;             // Apresentar valor atual de atributo.
 
+//--------------
+
+    Matricula testar2("01234");                                    // Criar objeto com valor válido.
+
+    cout << "Valor = " << testar2.getValor() << endl;             // Apresentar valor atual de atributo.
+
+    try{
+        testar2.setValor("12345");                                     // Armazenar valor válido não resulta em lançamento de exceção.
+    }
+    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    cout << "Valor = " << testar2.getValor() << endl;             // Apresentar valor atual de atributo.
+
+    try{
+        testar2.setValor("1a345");                                     // Armazenar valor inválido que resulta em lançamento de exceção.
+    }
+    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    cout << "Valor = " << testar2.getValor() << endl;             // Apresentar valor atual de atributo.
+
+    try{
+        testar2.setValor("11345");                                     // Armazenar valor inválido que resulta em lançamento de exceção.
+    }
+    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    cout << "Valor = " << testar2.getValor() << endl;             // Apresentar valor atual de atributo.
+
+    try{
+        testar2.setValor("12355");                                     // Armazenar valor inválido que resulta em lançamento de exceção.
+    }
+    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    cout << "Valor = " << testar2.getValor() << endl;             // Apresentar valor atual de atributo.
+
     return 0;
 }

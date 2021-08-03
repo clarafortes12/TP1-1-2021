@@ -63,4 +63,22 @@ inline string Cargo::getValor() const{         // Metodo inline e const.
     return valor;
 }
 
+class Matricula {
+    private:
+            string valor;
+            void validar(string);
+    public:
+            Matricula(string);
+            void setValor(string);
+            string getValor() const;
+
+};
+
+inline string Matricula::getValor() const{         // Metodo inline e const.
+    return valor;
+}
+
+bool eh_digito(string teste);
+bool ha_repeticao(string teste);
+
 #endif // DOMINIOS_H_INCLUDED
