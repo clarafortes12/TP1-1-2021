@@ -111,71 +111,71 @@ int main()
         cout << "Excecao : " << exp.what() << endl;
     }
 
-//--------------
+//--------------------------------------------------------------------------------------
 
-    Cargo testar1("ator");                                    // Criar objeto com valor v�lido.
+    Cargo testarCargo("ator");                                    // Criar objeto com valor v�lido.
 
-    cout << "Valor = " << testar1.getValor() << endl;             // Apresentar valor atual de atributo.
+    cout << "Valor = " << testarCargo.getValor() << endl;             // Apresentar valor atual de atributo.
 
     try{
-        testar1.setValor("figurinista");                                     // Armazenar valor v�lido n�o resulta em lan�amento de exce��o.
+        testarCargo.setValor("figurinista");                                     // Armazenar valor v�lido n�o resulta em lan�amento de exce��o.
     }
     catch(invalid_argument &exp){                           // Capturar exce��o da classe invalid_argument, refer�ncia para objeto para evitar c�pia.
         cout << "Excecao : " << exp.what() << endl;
     }
 
-    cout << "Valor = " << testar1.getValor() << endl;             // Apresentar valor atual de atributo.
+    cout << "Valor = " << testarCargo.getValor() << endl;             // Apresentar valor atual de atributo.
 
     try{
-        testar1.setValor("opa");                                     // Armazenar valor inv�lido que resulta em lan�amento de exce��o.
+        testarCargo.setValor("opa");                                     // Armazenar valor inv�lido que resulta em lan�amento de exce��o.
     }
     catch(invalid_argument &exp){                           // Capturar exce��o da classe invalid_argument, refer�ncia para objeto para evitar c�pia.
         cout << "Excecao : " << exp.what() << endl;
     }
 
-    cout << "Valor = " << testar1.getValor() << endl;             // Apresentar valor atual de atributo.
+    cout << "Valor = " << testarCargo.getValor() << endl;             // Apresentar valor atual de atributo.
 
-//--------------
+//--------------------------------------------------------------------------------------
 
-    Matricula testar2("01234");                                    // Criar objeto com valor v�lido.
+    Matricula testarMatricula("01234");                                    // Criar objeto com valor v�lido.
 
-    cout << "Valor = " << testar2.getValor() << endl;             // Apresentar valor atual de atributo.
+    cout << "Valor = " << testarMatricula.getValor() << endl;             // Apresentar valor atual de atributo.
 
     try{
-        testar2.setValor("12345");                                     // Armazenar valor v�lido n�o resulta em lan�amento de exce��o.
+        testarMatricula.setValor("12345");                                     // Armazenar valor v�lido n�o resulta em lan�amento de exce��o.
     }
     catch(invalid_argument &exp){                           // Capturar exce��o da classe invalid_argument, refer�ncia para objeto para evitar c�pia.
         cout << "Excecao : " << exp.what() << endl;
     }
 
-    cout << "Valor = " << testar2.getValor() << endl;             // Apresentar valor atual de atributo.
+    cout << "Valor = " << testarMatricula.getValor() << endl;             // Apresentar valor atual de atributo.
 
     try{
-        testar2.setValor("1a345");                                     // Armazenar valor inv�lido que resulta em lan�amento de exce��o.
+        testarMatricula.setValor("1a345");                                     // Armazenar valor inv�lido que resulta em lan�amento de exce��o.
     }
     catch(invalid_argument &exp){                           // Capturar exce��o da classe invalid_argument, refer�ncia para objeto para evitar c�pia.
         cout << "Excecao : " << exp.what() << endl;
     }
 
-    cout << "Valor = " << testar2.getValor() << endl;             // Apresentar valor atual de atributo.
+    cout << "Valor = " << testarMatricula.getValor() << endl;             // Apresentar valor atual de atributo.
 
     try{
-        testar2.setValor("11345");                                     // Armazenar valor inv�lido que resulta em lan�amento de exce��o.
+        testarMatricula.setValor("11345");                                     // Armazenar valor inv�lido que resulta em lan�amento de exce��o.
     }
     catch(invalid_argument &exp){                           // Capturar exce��o da classe invalid_argument, refer�ncia para objeto para evitar c�pia.
         cout << "Excecao : " << exp.what() << endl;
     }
 
-    cout << "Valor = " << testar2.getValor() << endl;             // Apresentar valor atual de atributo.
+    cout << "Valor = " << testarMatricula.getValor() << endl;             // Apresentar valor atual de atributo.
 
     try{
-        testar2.setValor("12355");                                     // Armazenar valor inv�lido que resulta em lan�amento de exce��o.
+        testarMatricula.setValor("12355");                                     // Armazenar valor inv�lido que resulta em lan�amento de exce��o.
     }
     catch(invalid_argument &exp){                           // Capturar exce��o da classe invalid_argument, refer�ncia para objeto para evitar c�pia.
         cout << "Excecao : " << exp.what() << endl;
     }
 
-    cout << "Valor = " << testar2.getValor() << endl;             // Apresentar valor atual de atributo.
+    cout << "Valor = " << testarMatricula.getValor() << endl;             // Apresentar valor atual de atributo.
 
 
 //--------------------------------------------------------------------------------------
@@ -210,56 +210,56 @@ int main()
 
     cout << "Senha = " << testesenha.getValor() << endl;             // Apresentar valor atual de atributo.
 
-//--------------
+//--------------------------------------------------------------------------------------
 
-    Nome testar3("Minim");                                    // Criar objeto com valor válido.
+    Nome testarNome("Minim");                                    // Criar objeto com valor válido.
 
-    cout << "Valor = " << testar3.getValor() << endl;             // Apresentar valor atual de atributo.
+    cout << "Valor = " << testarNome.getValor() << endl;             // Apresentar valor atual de atributo.
 
     try{
-        testar3.setValor("Liz Carolina");                                     // Armazenar valor válido não resulta em lançamento de exceção.
+        testarNome.setValor("Liz Carolina");                                     // Armazenar valor válido não resulta em lançamento de exceção.
     }
     catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
         cout << "Excecao : " << exp.what() << endl;
     }
 
-    cout << "Valor = " << testar3.getValor() << endl;             // Apresentar valor atual de atributo.
+    cout << "Valor = " << testarNome.getValor() << endl;             // Apresentar valor atual de atributo.
 
     try{
-        testar3.setValor("a Liz");                                     // Armazenar valor inválido que resulta em lançamento de exceção.
+        testarNome.setValor("a Liz");                                     // Armazenar valor inválido que resulta em lançamento de exceção.
     }
     catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
         cout << "Excecao : " << exp.what() << endl;
     }
 
-    cout << "Valor = " << testar3.getValor() << endl;             // Apresentar valor atual de atributo.
+    cout << "Valor = " << testarNome.getValor() << endl;             // Apresentar valor atual de atributo.
 
     try{
-        testar3.setValor("A  Liz");                                     // Armazenar valor inválido que resulta em lançamento de exceção.
+        testarNome.setValor("A  Liz");                                     // Armazenar valor inválido que resulta em lançamento de exceção.
     }
     catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
         cout << "Excecao : " << exp.what() << endl;
     }
 
-    cout << "Valor = " << testar3.getValor() << endl;             // Apresentar valor atual de atributo.
+    cout << "Valor = " << testarNome.getValor() << endl;             // Apresentar valor atual de atributo.
 
     try{
-        testar3.setValor("A Liz..");                                     // Armazenar valor inválido que resulta em lançamento de exceção.
+        testarNome.setValor("A Liz..");                                     // Armazenar valor inválido que resulta em lançamento de exceção.
     }
     catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
         cout << "Excecao : " << exp.what() << endl;
     }
 
-    cout << "Valor = " << testar3.getValor() << endl;             // Apresentar valor atual de atributo.
+    cout << "Valor = " << testarNome.getValor() << endl;             // Apresentar valor atual de atributo.
 
     try{
-        testar3.setValor("Estou testando maximo");                                     // Armazenar valor inválido que resulta em lançamento de exceção.
+        testarNome.setValor("Estou testando maximo");                                     // Armazenar valor inválido que resulta em lançamento de exceção.
     }
     catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
         cout << "Excecao : " << exp.what() << endl;
     }
 
-    cout << "Valor = " << testar3.getValor() << endl;             // Apresentar valor atual de atributo.
+    cout << "Valor = " << testarNome.getValor() << endl;             // Apresentar valor atual de atributo.
 
     return 0;
 }
