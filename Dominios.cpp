@@ -61,3 +61,22 @@ void Horario::setValor(int hora, int minuto) {
         else
            this->valor = to_string(hora)+":"+"0"+to_string(minuto);
 }
+
+Cargo::Cargo(string valor){
+    validar(valor);
+    this->valor = valor;
+}
+
+// Método para validação com lançamento de exceção.
+
+void Cargo::validar(string valor){
+    if ((valor!="ator") && (valor!="cenógrafo") && (valor!="figurinista") && (valor!="maquiador") && (valor!="sonoplasta") && (valor!="iluminador"))
+        throw invalid_argument("Argumento invalido.");
+}
+
+// Método para acesso a atributo.
+
+void Cargo::setValor(string valor) {
+    validar(valor);
+    this->valor = valor;
+}

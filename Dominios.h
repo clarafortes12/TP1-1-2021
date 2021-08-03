@@ -48,4 +48,19 @@ inline string Horario::getValor() const{         // Metodo inline e const.
     return valor;
 }
 
+class Cargo {
+    private:
+            string valor;
+            void validar(string);
+    public:
+            Cargo(string);
+            void setValor(string);
+            string getValor() const;
+
+};
+
+inline string Cargo::getValor() const{         // Metodo inline e const.
+    return valor;
+}
+
 #endif // DOMINIOS_H_INCLUDED

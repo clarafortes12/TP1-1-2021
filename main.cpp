@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "Dominios.h"
+#include "Dominios.cpp"
 
 using namespace std;
 
@@ -110,6 +111,29 @@ int main()
         cout << "Excecao : " << exp.what() << endl;
     }
 
+//--------------
+
+    Cargo testar1("ator");                                    // Criar objeto com valor válido.
+
+    cout << "Valor = " << testar1.getValor() << endl;             // Apresentar valor atual de atributo.
+
+    try{
+        testar1.setValor("figurinista");                                     // Armazenar valor válido não resulta em lançamento de exceção.
+    }
+    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    cout << "Valor = " << testar1.getValor() << endl;             // Apresentar valor atual de atributo.
+
+    try{
+        testar1.setValor("opa");                                     // Armazenar valor inválido que resulta em lançamento de exceção.
+    }
+    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    cout << "Valor = " << testar1.getValor() << endl;             // Apresentar valor atual de atributo.
 
     return 0;
 }
