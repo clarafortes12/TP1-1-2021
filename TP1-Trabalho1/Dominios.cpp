@@ -80,27 +80,30 @@ void Senha::validar(string valor){
     cond3 = false;
     if (valor.size() != 8)
         throw invalid_argument("Argumento invalido.");
-    else
-        for (int i = 0; i < valor.length(); ++i){
-            for (int j = i+1; j < valor.length(); ++j){
+    else{
+        for (int i = 0; i < int(valor.length()); ++i){
+            for (int j = i+1; j < int(valor.length()); ++j){
                 if (valor[i] == valor[j])
                     throw invalid_argument("Argumento invalido.");
 
             }
         }
-        for (int i = 0; i < valor.size(); i++){
+        for (int i = 0; i < int(valor.size()); i++){
             if(not((valor[i] >= 97 && valor[i] <= 122) || (valor[i] >= 48 && valor[i] <= 57) || (valor[i] >= 63 && valor[i] <= 90) || (valor[i] = 33) || (valor[i] >= 35 && valor[i] <= 38)))
                 throw invalid_argument("Argumento invalido.");
-            else
+            else{
                 if(valor[i] >= 65 && valor[i] <= 90)
                     cond1 = true;
                 if(valor[i] >= 48 && valor[i] <= 57)
                     cond2 = true;
                 if((valor[i] >= 35 && valor[i] <= 38) || (valor[i] = 33) || (valor[i] = 63) || (valor[i] = 64))
                     cond3 = true;
+            }
+
         }
         if(not(cond1) || not(cond2) || not(cond3))
             throw invalid_argument("Argumento invalido.");
+    }
 }
 
 // Método para acesso a atributo.
