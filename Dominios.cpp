@@ -266,3 +266,193 @@ void Nome::setValor(string valor) {
     this->valor = valor;
 }
 
+// Métodos da Clara
+
+// ---------- Classificação
+void Classificacao::validar(string idade){
+    if ((idade!="livre") && (idade!="10") && (idade!="12") && (idade!="14") && (idade!="16") && (idade!="18"))
+        throw invalid_argument("Argumento invalido.");
+}
+
+Classificacao::Classificacao(){
+    this->idade = "";
+}
+
+Classificacao::Classificacao(string idade){
+    validar(idade);
+    this->idade = idade;
+}
+
+void Classificacao::setValor(string idade){
+    validar(idade);
+    this->idade = idade;
+}
+
+// ---------- Tipo
+void Tipo::validar(string genero){
+    if ((genero!="auto") && (genero!="comedia") && (genero!="drama") && (genero!="farsa") && (genero!="melodrama")
+        && (genero!="monologo") && (genero!="musical")&& (genero!="opera")&& (genero!="revista"))
+        throw invalid_argument("Argumento invalido.");
+}
+
+Tipo::Tipo(){
+    this->genero = "";
+}
+
+Tipo::Tipo(string genero){
+    validar(genero);
+    this->genero = genero;
+}
+
+void Tipo::setValor(string genero){
+    validar(genero);
+    this->genero = genero;
+}
+
+
+// ---------- Código
+bool Codigo::eh_maiusculo(char teste){
+    if (teste == 'A' || teste == 'B' || teste == 'C' || teste == 'D' || teste == 'E' ||
+        teste == 'F' || teste == 'G' || teste == 'H' || teste == 'I' || teste == 'J' ||
+        teste == 'K' || teste == 'L' || teste == 'M' || teste == 'N' || teste == 'O' ||
+        teste == 'P' || teste == 'Q' || teste == 'R' || teste == 'S' || teste == 'T' ||
+        teste == 'U' || teste == 'V' || teste == 'W' || teste == 'X' || teste == 'Y' ||
+        teste == 'Z')
+        return true;
+    else
+        return false;
+}
+
+bool Codigo::eh_numero(char teste){
+    if (teste == '0' || teste == '1' || teste == '2' || teste == '3' || teste == '4' ||
+        teste == '5' || teste == '6' || teste == '7' || teste == '8' || teste == '9' )
+        return true;
+    else
+        return false;
+}
+
+void Codigo::validar(string codigo){
+    if (codigo.size()!= 6)
+        throw invalid_argument("Tamanho incorreto, deve ser 6 digitos");
+    if (!eh_maiusculo(codigo[0]))
+        throw invalid_argument("Os dois primeiros deve ser letras maiusculos e os quatro ultimos digitos");
+    if (!eh_maiusculo(codigo[1]))
+        throw invalid_argument("Os dois primeiros deve ser letras maiusculos e os quatro ultimos digitos");
+    if (!eh_numero(codigo[2]))
+        throw invalid_argument("Os dois primeiros deve ser letras maiusculos e os quatro ultimos digitos");
+    if (!eh_numero(codigo[3]))
+        throw invalid_argument("Os dois primeiros deve ser letras maiusculos e os quatro ultimos digitos");
+    if (!eh_numero(codigo[4]))
+        throw invalid_argument("Os dois primeiros deve ser letras maiusculos e os quatro ultimos digitos");
+    if (!eh_numero(codigo[5]))
+        throw invalid_argument("Os dois primeiros deve ser letras maiusculos e os quatro ultimos digitos");
+}
+
+Codigo::Codigo(){
+    this->codigo = "";
+}
+
+Codigo::Codigo(string codigo){
+    validar(codigo);
+    this->codigo = codigo;
+}
+
+void Codigo::setValor(string codigo){
+    validar(codigo);
+    this->codigo = codigo;
+}
+
+
+// ---------- Email
+int Email::busca_arroba(string email){
+    int arrobas = 0;
+    int busca = 0;
+    int i = 0;
+
+    do{
+        if(email[i] == '@'){
+            arrobas++;
+            busca = i;
+        }
+        i++;
+    }while(email[i] != '\0');
+
+    if(arrobas < 1)
+        throw invalid_argument("Faltou o dominio");
+    else if(arrobas > 1)
+        throw invalid_argument("Nao pode ter dois @ no email");
+    else
+        return busca;
+}
+
+string Email::busca_parte_local(string email,int arroba){
+    int i = 0;
+    string parte_local = "";
+
+    do{
+        parte_local += email[i];
+        i++;
+    }while(i < arroba);
+
+    return parte_local;
+}
+
+string Email::busca_dominio(string email,int arroba){
+    int i = arroba+1;
+    string dominio = "";
+
+    do{
+        dominio += email[i];
+        i++;
+    }while(email[i] != '\0');
+
+    return dominio;
+}
+bool Email::pontos_seguidos(string teste){
+    int i = 1;
+    do{
+        if (teste[i] == '.' && teste[i] == teste[i-1])
+            return true;
+        i++;
+    }while(teste[i] != '\0');
+    return false;
+}
+
+void Email::validar(string parte_local, string dominio){
+    if (parte_local.size() > 64)
+        throw invalid_argument("Tamanho incorreto, deve ser no maximo 64 caracteres antes do @ e ate 255 depois");
+    if (dominio.size() > 255)
+        throw invalid_argument("Tamanho incorreto, deve ser no maximo 64 caracteres antes do @ e ate 255 depois");
+    if ((parte_local[0] == '.') || (parte_local[(parte_local.size()-1)] == '.'))
+        throw invalid_argument("Nao pode ter ponto no primeiro e nem no ultimo caracteres");
+    if ((dominio[0] == '.') || (dominio[(dominio.size()-1)] == '.'))
+        throw invalid_argument("Nao pode ter ponto no primeiro e nem no ultimo caracteres");
+    if (pontos_seguidos(parte_local))
+        throw invalid_argument("Nao pode ter pontos seguidos");
+    if (pontos_seguidos(dominio))
+        throw invalid_argument("Nao pode ter pontos seguidos");
+}
+
+Email::Email(){
+    this->parte_local = "";
+    this->dominio = "";
+}
+
+Email::Email(string email){
+    int arroba = busca_arroba(email);
+    string parte_local = busca_parte_local(email,arroba);
+    string dominio = busca_dominio(email,arroba);
+    validar(parte_local,dominio);
+    this->parte_local = parte_local;
+    this->dominio = dominio;
+}
+
+void Email::setValor(string email){
+    int arroba = busca_arroba(email);
+    string parte_local = busca_parte_local(email,arroba);
+    string dominio = busca_dominio(email,arroba);
+    validar(parte_local,dominio);
+    this->parte_local = parte_local;
+    this->dominio = dominio;
+}
+
