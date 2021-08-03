@@ -1,4 +1,4 @@
-// Exemplo de documentação de classe usando ferramenta Doxygen.
+// Exemplo de documentaï¿½ï¿½o de classe usando ferramenta Doxygen.
 
 #ifndef DOMINIOS_H_INCLUDED
 #define DOMINIOS_H_INCLUDED
@@ -45,6 +45,19 @@ class Horario {
 };
 
 inline string Horario::getValor() const{         // Metodo inline e const.
+    return valor;
+}
+
+class Senha {
+    private:
+            string valor;
+            void validar(string);
+    public:
+            Senha(string valor);
+            void setValor(string valor);
+            string getValor() const;
+};
+inline string Senha::getValor() const{         // Metodo inline e const.
     return valor;
 }
 

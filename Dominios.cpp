@@ -10,14 +10,14 @@ Capacidade::Capacidade(int valor){
     this->valor = valor;
 }
 
-// Método para validação com lançamento de exceção.
+// Mï¿½todo para validaï¿½ï¿½o com lanï¿½amento de exceï¿½ï¿½o.
 
 void Capacidade::validar(int valor){
     if ((valor!=100) && (valor!=200) && (valor!=300) && (valor!=400) && (valor!=500))
         throw invalid_argument("Argumento invalido.");
 }
 
-// Método para acesso a atributo.
+// Mï¿½todo para acesso a atributo.
 
 void Capacidade::setValor(int valor) {
     validar(valor);
@@ -48,7 +48,7 @@ void Horario::validar(int hora, int minuto){
             throw invalid_argument("Argumento invalido.");
 }
 
-// Método para acesso a atributo.
+// Mï¿½todo para acesso a atributo.
 
 void Horario::setValor(int hora, int minuto) {
     validar(hora, minuto);
@@ -66,19 +66,66 @@ void Horario::setValor(int hora, int minuto) {
 
 //------------------------------------
 
+
+Senha::Senha(string valor){
+    validar(valor);
+    this->valor = valor;
+}
+
+// MÃ©todo para validaÃ§Ã£o com lanÃ§amento de exceÃ§Ã£o.
+
+void Senha::validar(string valor){
+    bool cond1, cond2, cond3;
+    cond1 = false;
+    cond2 = false;
+    cond3 = false;
+    if (valor.size() != 8)
+        throw invalid_argument("Argumento invalido.");
+    else
+        for (int i = 0; i < valor.length(); ++i){
+            for (int j = i+1; j < valor.length(); ++j){
+                if (valor[i] == valor[j])
+                    throw invalid_argument("Argumento invalido.");
+
+            }
+        }
+        for (int i = 0; i < valor.size(); i++){
+            if(not((valor[i] >= 97 && valor[i] <= 122) || (valor[i] >= 48 && valor[i] <= 57) || (valor[i] >= 63 && valor[i] <= 90) || (valor[i] = 33) || (valor[i] >= 35 && valor[i] <= 38)))
+                throw invalid_argument("Argumento invalido.");
+            else
+                if(valor[i] >= 65 && valor[i] <= 90)
+                    cond1 = true;
+                if(valor[i] >= 48 && valor[i] <= 57)
+                    cond2 = true;
+                if((valor[i] >= 35 && valor[i] <= 38) || (valor[i] = 33) || (valor[i] = 63) || (valor[i] = 64))
+                    cond3 = true;
+        }
+        if(not(cond1) || not(cond2) || not(cond3))
+            throw invalid_argument("Argumento invalido.");
+}
+
+// MÃ©todo para acesso a atributo.
+
+void Senha::setValor(string valor) {
+    validar(valor);
+    this->valor = valor;
+}
+
+//------------------------------------
+
 Cargo::Cargo(string valor){
     validar(valor);
     this->valor = valor;
 }
 
-// Método para validação com lançamento de exceção.
+// Mï¿½todo para validaï¿½ï¿½o com lanï¿½amento de exceï¿½ï¿½o.
 
 void Cargo::validar(string valor){
-    if ((valor!="ator") && (valor!="cenógrafo") && (valor!="figurinista") && (valor!="maquiador") && (valor!="sonoplasta") && (valor!="iluminador"))
+    if ((valor!="ator") && (valor!="cenï¿½grafo") && (valor!="figurinista") && (valor!="maquiador") && (valor!="sonoplasta") && (valor!="iluminador"))
         throw invalid_argument("Argumento invalido.");
 }
 
-// Método para acesso a atributo.
+// Mï¿½todo para acesso a atributo.
 
 void Cargo::setValor(string valor) {
     validar(valor);
@@ -122,7 +169,7 @@ Matricula::Matricula(string valor){
     this->valor = valor;
 }
 
-// Método para validação com lançamento de exceção.
+// Mï¿½todo para validaï¿½ï¿½o com lanï¿½amento de exceï¿½ï¿½o.
 
 void Matricula::validar(string valor){
     if (valor[5]!='\0')
@@ -133,7 +180,7 @@ void Matricula::validar(string valor){
         throw invalid_argument("Os digitos da matricula nao podem ser repetidos");
 }
 
-// Método para acesso a atributo.
+// Mï¿½todo para acesso a atributo.
 
 void Matricula::setValor(string valor) {
     validar(valor);
