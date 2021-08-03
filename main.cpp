@@ -179,7 +179,7 @@ int main()
 
 
 //--------------------------------------------------------------------------------------
-Senha testesenha("Abc#def2");                                    // Criar objeto com valor válido.
+	Senha testesenha("Abc#def2");                                    // Criar objeto com valor válido.
 
     cout << "Senha = " << testesenha.getValor() << endl;             // Apresentar valor atual de atributo.
 
@@ -210,6 +210,57 @@ Senha testesenha("Abc#def2");                                    // Criar objeto
 
     cout << "Senha = " << testesenha.getValor() << endl;             // Apresentar valor atual de atributo.
 
+//--------------
+
+    Nome testar3("Minim");                                    // Criar objeto com valor válido.
+
+    cout << "Valor = " << testar3.getValor() << endl;             // Apresentar valor atual de atributo.
+
+    try{
+        testar3.setValor("Liz Carolina");                                     // Armazenar valor válido não resulta em lançamento de exceção.
+    }
+    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    cout << "Valor = " << testar3.getValor() << endl;             // Apresentar valor atual de atributo.
+
+    try{
+        testar3.setValor("a Liz");                                     // Armazenar valor inválido que resulta em lançamento de exceção.
+    }
+    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    cout << "Valor = " << testar3.getValor() << endl;             // Apresentar valor atual de atributo.
+
+    try{
+        testar3.setValor("A  Liz");                                     // Armazenar valor inválido que resulta em lançamento de exceção.
+    }
+    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    cout << "Valor = " << testar3.getValor() << endl;             // Apresentar valor atual de atributo.
+
+    try{
+        testar3.setValor("A Liz..");                                     // Armazenar valor inválido que resulta em lançamento de exceção.
+    }
+    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    cout << "Valor = " << testar3.getValor() << endl;             // Apresentar valor atual de atributo.
+
+    try{
+        testar3.setValor("Estou testando maximo");                                     // Armazenar valor inválido que resulta em lançamento de exceção.
+    }
+    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    cout << "Valor = " << testar3.getValor() << endl;             // Apresentar valor atual de atributo.
 
     return 0;
 }
+

@@ -91,6 +91,23 @@ inline string Matricula::getValor() const{         // Metodo inline e const.
     return valor;
 }
 
+class Nome {
+    private:
+            string valor;
+            void validar(string);
+    public:
+            Nome(string);
+            void setValor(string);
+            string getValor() const;
+
+};
+
+inline string Nome::getValor() const{         // Metodo inline e const.
+    return valor;
+}
+
+///////////// FUNÇÕES AUXILIARES /////////////
+
 bool eh_digito(string teste);
 bool ha_repeticao(string teste);
 

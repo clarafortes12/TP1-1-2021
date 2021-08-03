@@ -186,3 +186,83 @@ void Matricula::setValor(string valor) {
     validar(valor);
     this->valor = valor;
 }
+
+//--------------------
+
+int caracteres_nome(string nome){
+    int resposta = 0;
+    int i = 0;
+
+    do{
+        if(i == 0){
+            if (nome[i] == '.'){
+                //cout << "parou no 1 " << endl;
+                return resposta = 2;
+            }
+            if ((nome[i] >= 'a' && nome[i] <= 'z') || nome[i] == ' '){
+                //cout << "Parou no 2 " << endl;
+                return resposta = 4;
+            }
+        }
+        if (nome[i] == '0' || nome[i] == '1' || nome[i] == '2' || nome[i] == '3' || nome[i] == '4' ||
+            nome[i] == '5' || nome[i] == '6' || nome[i] == '7' || nome[i] == '8' || nome[i] == '9' ||
+            (nome[i] >= 'a' && nome[i] <= 'z') || (nome[i] >= 'A' && nome[i] <= 'Z') || nome[i] == '.' ||
+            nome[i] == ' '){
+            //cout << "Parou no 3 " << endl;
+            resposta = 0;
+        }
+        else
+            return resposta = 1;
+
+        if(nome[i] == '.' && i >0){
+            if(nome[i-1] < 'A' || nome[i-1] > 'z' || (nome[i-1] > 'Z' && nome[i-1] < 'a')){
+                //cout << "Parou no 4 " << endl;
+                return resposta = 2;
+            }
+        }
+
+        if(nome[i] == ' ' && i >0){
+            if(nome[i-1] == ' '){
+                //cout << "Parou no 5 " << endl;
+                return resposta = 3;
+            }
+        }
+        i++;
+    }while(nome[i] != '\0');
+
+    //cout << "Era pra ter dado bom"<< endl;
+
+    return resposta;
+}
+
+Nome::Nome(string valor){
+    validar(valor);
+    this->valor = valor;
+}
+
+// Método para validação com lançamento de exceção.
+
+void Nome::validar(string valor){
+    if (valor.length()<5 || valor.length()>20)
+        throw invalid_argument("Tamanho incorreto. O nome deve ter de 5 a 20 caracteres");
+    switch(caracteres_nome(valor)){
+        case 1:
+            throw invalid_argument("O nome so pode ter letras, ponto (.) ou espaco em branco");
+        case 2:
+            throw invalid_argument("O ponto (.) deve ser prcedido por letra");
+        case 3:
+            throw invalid_argument("Nao deve haver espacos em branco em sequencia");
+        case 4:
+            throw invalid_argument("Cada termo deve ser iniciado com letra maiuscula (A-Z)");
+        default:
+            cout << "Tudo Certo!" << endl;
+    }
+}
+
+// Método para acesso a atributo.
+
+void Nome::setValor(string valor) {
+    validar(valor);
+    this->valor = valor;
+}
+
