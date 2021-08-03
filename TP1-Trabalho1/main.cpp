@@ -1,11 +1,9 @@
-// Exemplo de elementos da sintaxe da linguagem e de documentaï¿½ï¿½o usando Doxygen.
+/// Exemplo de elementos da sintaxe da linguagem e de documentaï¿½ï¿½o usando Doxygen.
 
 // Incluir cabeï¿½alhos.
 
 #include <iostream>
-
 #include "Dominios.h"
-#include "Dominios.cpp"
 
 using namespace std;
 
@@ -262,8 +260,8 @@ int main()
     cout << "Valor = " << testarNome.getValor() << endl;             // Apresentar valor atual de atributo.
 
 //------------ Classificação
-    //Classificacao classificar1();
-    //cout << "Classificação = " << classificar1.getValor() << endl;
+    Classificacao classificar1;
+    cout << "Classificação1 = " << classificar1.getValor() << endl;
 
     Classificacao classificar2("livre");
     cout << "Classificacao = " << classificar2.getValor() << endl;
@@ -318,8 +316,8 @@ int main()
     cout << "Classificacao = " << classificar2.getValor() << endl;
 
 //------------ Tipo
-    //Tipo genero1();
-    //cout << "Genero = " << genero1.getValor() << endl;
+    Tipo genero1;
+    cout << "Genero1 = " << genero1.getValor() << endl;
 
     Tipo genero2("auto");
     cout << "Genero = " << genero2.getValor() << endl;
@@ -397,8 +395,8 @@ int main()
     cout << "Genero = " << genero2.getValor() << endl;
 
 //------------ Código
-    //Codigo codigo1();
-    //cout << "Codigo = " << codigo1.getValor() << endl;
+    Codigo codigo1;
+    cout << "Codigo1 = " << codigo1.getValor() << endl;
 
     Codigo codigo2("LM9999");
     cout << "Codigo = " << codigo2.getValor() << endl;
@@ -444,8 +442,8 @@ int main()
     cout << "Codigo = " << codigo2.getValor() << endl;
 
 //------------ Email
-    //Email email1();
-    //cout << "Email = " << email1.getValor() << endl;
+    Email email1;
+    cout << "Email1 = " << email1.getValor() << endl;
 
     Email email2("pessoa@hotmail.com");
     cout << "Email = " << email2.getValor() << endl;
@@ -524,4 +522,3 @@ int main()
 
     return 0;
 }
-

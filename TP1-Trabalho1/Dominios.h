@@ -121,10 +121,7 @@ class Classificacao{
 };
 
 inline string Classificacao::getValor() const{
-    if(idade == "")
-        return "Espaco Branco";
-    else
-        return idade;
+    return idade;
 }
 
 // ---------- Tipo
@@ -178,10 +175,14 @@ class Email{
 };
 
 inline string Email::getValor() const{
-    string email = parte_local;
-    email += "@";
-    email += dominio;
-    return email;
+    if (parte_local == "")
+        return parte_local;
+    else{
+        string email = parte_local;
+        email += "@";
+        email += dominio;
+        return email;
+    }
 }
 
 ///////////// FUNÇÕES AUXILIARES /////////////

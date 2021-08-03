@@ -4,7 +4,6 @@
 //---------------------------------------------------------------------
 // Inicializacao de atributo estatico.
 
-
 Capacidade::Capacidade(int valor){
     validar(valor);
     this->valor = valor;
@@ -455,4 +454,3 @@ void Email::setValor(string email){
     this->parte_local = parte_local;
     this->dominio = dominio;
 }
-
