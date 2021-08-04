@@ -4,6 +4,10 @@
 
 #include <iostream>
 #include "Dominios.h"
+#include "Entidades.h"
+#include "Teste_Dominios.h"
+#include "Teste_Entidades.h"
+
 
 using namespace std;
 
