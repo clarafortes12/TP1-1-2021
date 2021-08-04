@@ -15,6 +15,8 @@ using namespace std;
 /// - C&oacute;digo &eacute; v&aacute;lido caso <u>menor</u> ou igual a 5.
 ///
 
+// -------------------------------------------------------------------------
+// Classes do Leandro - 180145169
 
 class Capacidade {
     private:
@@ -73,6 +75,9 @@ class Telefone {
 inline string Telefone::getValor() const{         // Metodo inline e const.
     return valor;
 }
+
+// -------------------------------------------------------------------------
+// Classes da Liz - 180022261
 
 class Cargo {
     private:
@@ -137,9 +142,10 @@ inline string Data::getValor() const{         // Metodo inline e const.
     return valor;
 }
 
-// Classes da Clara
+// -------------------------------------------------------------------------
+// Classes da Clara - 190017503
 
-// ---------- Classificação
+// ---------- Classificaï¿½ï¿½o
 class Classificacao{
     private:
         string idade;
@@ -170,7 +176,7 @@ inline string Tipo::getValor() const{
     return genero;
 }
 
-// ---------- Código
+// ---------- Cï¿½digo
 class Codigo{
     private:
         string codigo;

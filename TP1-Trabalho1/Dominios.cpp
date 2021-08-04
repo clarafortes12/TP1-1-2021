@@ -4,6 +4,9 @@
 //---------------------------------------------------------------------
 // Inicializacao de atributo estatico.
 
+// -------------------------------------------------------------------------
+//Metodos do Leandro - 180145169
+
 Capacidade::Capacidade(int valor){
     validar(valor);
     this->valor = valor;
@@ -165,7 +168,8 @@ void Telefone::setValor(string valor) {
     this->valor = valor;
 }
 
-//------------------------------------
+// -------------------------------------------------------------------------
+//Metodos da Liz - 180022261
 
 Cargo::Cargo(string valor){
     validar(valor);
@@ -347,7 +351,7 @@ void Data::validar(int dia, int mes, int ano){
             throw invalid_argument("Argumento invalido. Fevereiro tem apenas 29 dias.");
         }else if (dia == 31){
             if (mes != 1 && mes != 3 && mes != 5 && mes != 7 && mes != 8 && mes != 10 && mes != 12){
-                throw invalid_argument("Argumento invalido. Esse mês tem apenas 30 dias.");
+                throw invalid_argument("Argumento invalido. Esse mï¿½s tem apenas 30 dias.");
             }
         }else if (dia > 31 || dia < 1){
             throw invalid_argument("Argumento invalido."); /*Ao menos mes errado*/
@@ -378,9 +382,11 @@ void Data::setValor(int dia, int mes, int ano) {
     this->ano = ano;
 }
 
-// Métodos da Clara
+// -------------------------------------------------------------------------
+//Metodos da Clara - 190017503
+// Mï¿½todos da Clara
 
-// ---------- Classificação
+// ---------- Classificaï¿½ï¿½o
 void Classificacao::validar(string idade){
     if ((idade!="livre") && (idade!="10") && (idade!="12") && (idade!="14") && (idade!="16") && (idade!="18"))
         throw invalid_argument("Argumento invalido.");
@@ -422,7 +428,7 @@ void Tipo::setValor(string genero){
 }
 
 
-// ---------- Código
+// ---------- Cï¿½digo
 bool Codigo::eh_maiusculo(char teste){
     if (teste == 'A' || teste == 'B' || teste == 'C' || teste == 'D' || teste == 'E' ||
         teste == 'F' || teste == 'G' || teste == 'H' || teste == 'I' || teste == 'J' ||
