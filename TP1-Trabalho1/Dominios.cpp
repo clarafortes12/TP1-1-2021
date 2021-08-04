@@ -37,6 +37,8 @@ Horario::Horario(int hora, int minuto){
             this->valor = to_string(hora)+":"+to_string(minuto);
         else
            this->valor = to_string(hora)+":"+"0"+to_string(minuto);
+    this->hora = hora;
+    this->minuto = minuto;
 }
 
 void Horario::validar(int hora, int minuto){
@@ -61,6 +63,8 @@ void Horario::setValor(int hora, int minuto) {
             this->valor = to_string(hora)+":"+to_string(minuto);
         else
            this->valor = to_string(hora)+":"+"0"+to_string(minuto);
+    this->hora = hora;
+    this->minuto = minuto;
 }
 
 //------------------------------------
@@ -304,8 +308,7 @@ void Nome::validar(string valor){
             throw invalid_argument("Nao deve haver espacos em branco em sequencia");
         case 4:
             throw invalid_argument("Cada termo deve ser iniciado com letra maiuscula (A-Z)");
-        default:
-            cout << "Tudo Certo!" << endl;
+        //default:
     }
 }
 
@@ -330,6 +333,9 @@ Data::Data(int dia , int mes, int ano){
             this->valor = to_string(dia)+"/0"+to_string(mes)+"/"+to_string(ano);
         else
            this->valor = to_string(dia)+"/"+to_string(mes)+"/"+to_string(ano);
+    this->dia = dia;
+    this->mes = mes;
+    this->ano = ano;
 }
 
 void Data::validar(int dia, int mes, int ano){
@@ -367,6 +373,9 @@ void Data::setValor(int dia, int mes, int ano) {
             this->valor = to_string(dia)+"/0"+to_string(mes)+"/"+to_string(ano);
         else
            this->valor = to_string(dia)+"/"+to_string(mes)+"/"+to_string(ano);
+    this->dia = dia;
+    this->mes = mes;
+    this->ano = ano;
 }
 
 // Métodos da Clara

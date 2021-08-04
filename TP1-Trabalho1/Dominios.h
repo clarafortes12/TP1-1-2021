@@ -34,12 +34,12 @@ inline int Capacidade::getValor() const{         // Metodo inline e const.
 class Horario {
     private:
             int hora;
-            int minunto;
+            int minuto;
             string valor;
             void validar(int hora, int minuto);
     public:
-            Horario(int hora,int minunto);
-            void setValor(int hora,int minunto);
+            Horario(int hora,int minuto);
+            void setValor(int hora,int minuto);
             string getValor() const;
 
 };
