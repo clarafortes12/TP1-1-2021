@@ -61,6 +61,19 @@ inline string Senha::getValor() const{         // Metodo inline e const.
     return valor;
 }
 
+class Telefone {
+    private:
+            string valor;
+            void validar(string);
+    public:
+            Telefone(string valor);
+            void setValor(string valor);
+            string getValor() const;
+};
+inline string Telefone::getValor() const{         // Metodo inline e const.
+    return valor;
+}
+
 class Cargo {
     private:
             string valor;

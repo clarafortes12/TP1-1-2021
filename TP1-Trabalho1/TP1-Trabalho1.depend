@@ -17,15 +17,15 @@
 	<iostream>
 	<string>
 
-1628015937 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\dominios.cpp
+1628045067 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\dominios.cpp
 	"Dominios.h"
 	<iostream>
 	<string>
 
-1628015498 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\dominios.h
+1628043201 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\dominios.h
 	<stdexcept>
 
-1628015498 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\main.cpp
+1628044456 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\main.cpp
 	<iostream>
 	"Dominios.h"
 

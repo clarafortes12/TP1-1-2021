@@ -112,6 +112,54 @@ void Senha::setValor(string valor) {
     validar(valor);
     this->valor = valor;
 }
+//-----------------------------------
+
+Telefone::Telefone(string valor){
+    validar(valor);
+    this->valor = valor;
+}
+
+// Método para validação com lançamento de exceção.
+
+void Telefone::validar(string valor){
+    string ddd, numinvalido;
+    int numddd, numtel;
+    numtel = 0;
+    if (valor.size() != 14)
+        throw invalid_argument("Argumento invalido.");
+    else{
+        for (int i = 0; i < int(valor.length()); ++i){
+            if((valor[i] == 40 && i != 0) || (valor[i] == 41 && i != 3) || (valor[i] == 45 && i != 4))
+                throw invalid_argument("Argumento invalido.");
+            else
+                if((i <= 2 && i >= 1) || (i <= 14 && i >= 5)){
+                    if(i <= 2 && i >= 1){
+                        ddd += valor[i];
+                    }
+                    if(i <= 14 && i >= 5){
+                        numtel += valor[i] - '0';
+                    }
+                    if (valor[i] < 48 || valor[i] > 57){
+                        throw invalid_argument("Argumento invalido.");
+                    }
+
+                }
+
+        }
+        numddd = (ddd[0] - '0') * 10 + (ddd[1] - '0');
+        if(numtel == 0)
+            throw invalid_argument("Argumento invalido.");
+        if(not((numddd >= 11 && numddd <= 19) || (numddd == 21) || (numddd == 22) || (numddd == 24) || (numddd >= 27 && numddd <= 28) || (numddd >= 32 && numddd <= 35) || (numddd >= 37 && numddd <= 38) || (numddd >= 41 && numddd <= 49) ||  (numddd == 51) || (numddd >= 53 && numddd <= 55) || (numddd >= 61 && numddd <= 69) || (numddd == 71) || (numddd >= 73 && numddd <= 75) || (numddd == 77) || (numddd == 79) || (numddd >= 81 && numddd <= 89) || (numddd >= 91 && numddd <= 99)))
+            throw invalid_argument("Argumento invalido.");
+    }
+}
+
+// Método para acesso a atributo.
+
+void Telefone::setValor(string valor) {
+    validar(valor);
+    this->valor = valor;
+}
 
 //------------------------------------
 
