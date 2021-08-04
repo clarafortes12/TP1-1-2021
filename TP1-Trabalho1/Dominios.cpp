@@ -316,6 +316,59 @@ void Nome::setValor(string valor) {
     this->valor = valor;
 }
 
+//------------------------------------
+
+Data::Data(int dia , int mes, int ano){
+    validar(dia, mes, ano);
+    if (dia < 10)
+        if (mes < 10)
+            this->valor = "0"+to_string(dia)+"/0"+to_string(mes)+"/"+to_string(ano);
+        else
+           this->valor = "0"+to_string(dia)+to_string(mes)+"/"+to_string(ano);
+    else
+        if (mes < 10)
+            this->valor = to_string(dia)+"/0"+to_string(mes)+"/"+to_string(ano);
+        else
+           this->valor = to_string(dia)+"/"+to_string(mes)+"/"+to_string(ano);
+}
+
+void Data::validar(int dia, int mes, int ano){
+
+    if (dia < 1 || dia > 28){
+        if(mes == 2 && ano%4 != 0 && dia > 28){
+            throw invalid_argument("Argumento invalido. Fevereiro tem apenas 28 dias.");
+        }else if(mes == 2 && ano%4 == 0 && dia > 29){
+            throw invalid_argument("Argumento invalido. Fevereiro tem apenas 29 dias.");
+        }else if (dia == 31){
+            if (mes != 1 && mes != 3 && mes != 5 && mes != 7 && mes != 8 && mes != 10 && mes != 12){
+                throw invalid_argument("Argumento invalido. Esse mês tem apenas 30 dias.");
+            }
+        }else if (dia > 31 || dia < 1){
+            throw invalid_argument("Argumento invalido."); /*Ao menos mes errado*/
+        }
+    }
+    if (mes < 1 || mes > 12)
+        throw invalid_argument("Argumento invalido."); /*Ao menos mes errado*/
+    if (ano < 2000 || ano > 9999)
+        throw invalid_argument("Argumento invalido."); /*Ao menos ano errado*/
+}
+
+// Mï¿½todo para acesso a atributo.
+
+void Data::setValor(int dia, int mes, int ano) {
+    validar(dia, mes, ano);
+    if (dia < 10)
+        if (mes < 10)
+            this->valor = "0"+to_string(dia)+"/0"+to_string(mes)+"/"+to_string(ano);
+        else
+           this->valor = "0"+to_string(dia)+to_string(mes)+"/"+to_string(ano);
+    else
+        if (mes < 10)
+            this->valor = to_string(dia)+"/0"+to_string(mes)+"/"+to_string(ano);
+        else
+           this->valor = to_string(dia)+"/"+to_string(mes)+"/"+to_string(ano);
+}
+
 // Métodos da Clara
 
 // ---------- Classificação

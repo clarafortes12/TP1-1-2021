@@ -119,6 +119,24 @@ inline string Nome::getValor() const{         // Metodo inline e const.
     return valor;
 }
 
+class Data {
+    private:
+            int dia;
+            int mes;
+            int ano;
+            string valor;
+            void validar(int dia, int mes, int ano);
+    public:
+            Data(int dia, int mes, int ano);
+            void setValor(int dia, int mes, int ano);
+            string getValor() const;
+
+};
+
+inline string Data::getValor() const{         // Metodo inline e const.
+    return valor;
+}
+
 // Classes da Clara
 
 // ---------- Classificação

@@ -29,3 +29,15 @@
 	<iostream>
 	"Dominios.h"
 
+1628096412 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalho1\git\tp1-1-2021\tp1-trabalho1\dominios.cpp
+	"Dominios.h"
+	<iostream>
+	<string>
+
+1628096253 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalho1\git\tp1-1-2021\tp1-trabalho1\dominios.h
+	<stdexcept>
+
+1628096335 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalho1\git\tp1-1-2021\tp1-trabalho1\main.cpp
+	<iostream>
+	"Dominios.h"
+

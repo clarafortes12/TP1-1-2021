@@ -291,6 +291,65 @@ Telefone teldapessoa("(61)-983669929");                                    // Cr
 
     cout << "Valor = " << testarNome.getValor() << endl;             // Apresentar valor atual de atributo.
 
+//--------------------------------------------------------------------------------------
+    Data testarData(10,10,2000);                                    // Criar objeto com valor válido.
+
+    cout << "Valor = " << testarData.getValor() << endl;             // Apresentar valor atual de atributo.
+
+    try{
+        testarData.setValor(2,1,9000);                                     // Armazenar valor válido não resulta em lançamento de exceção.
+    }
+    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    cout << "Valor = " << testarData.getValor() << endl;             // Apresentar valor atual de atributo.
+
+     try{
+        testarData.setValor(29,2,2000);                                     // Armazenar valor válido não resulta em lançamento de exceção.
+    }
+    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    cout << "Valor = " << testarData.getValor() << endl;             // Apresentar valor atual de atributo.
+
+    try{
+        testarData.setValor(0,2,2000);                                     // Armazenar valor inválido que resulta em lançamento de exceção.
+    }
+    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    cout << "Valor = " << testarData.getValor() << endl;             // Apresentar valor atual de atributo.
+
+    try{
+        testarData.setValor(1,13,2000);                                     // Armazenar valor inválido que resulta em lançamento de exceção.
+    }
+    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    cout << "Valor = " << testarData.getValor() << endl;             // Apresentar valor atual de atributo.
+
+    try{
+        testarData.setValor(1,2,10000);                                     // Armazenar valor inválido que resulta em lançamento de exceção.
+    }
+    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    cout << "Valor = " << testarData.getValor() << endl;             // Apresentar valor atual de atributo.
+
+    try{
+        testarData.setValor(29,2,2001);                                     // Armazenar valor inválido que resulta em lançamento de exceção.
+    }
+    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    cout << "Valor = " << testarData.getValor() << endl;             // Apresentar valor atual de atributo.
+
 //------------ Classifica��o
     Classificacao classificar1;
     cout << "Classifica��o1 = " << classificar1.getValor() << endl;
