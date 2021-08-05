@@ -4,37 +4,84 @@
 #include "Dominios.h"
 #include <string>
 
-//-------------Pe�a
-class Projeto {
+//-------------Pe�a
+// Estrutura de código sugerida para declaração de classe entidade.
+// Substituir Entidade por nome da classe.
+// Substituir Dominio.
+// Substituir nomeAtributo.
+/*
+class Entidade {
     private:
-        Codigo identificador;
+            Dominio nomeAtributo;                   // Declarar cada atributo da classe.
+    public:
+            void setnomeAtributo(const Dominio&);   // Declarar método set para cada atributo.
+            Dominio getnomeAtributo() const;        // Declarar método get para cada atributo.
+};
+
+inline void Entidade::setnomeAtributo(const Dominio &nomeAtributo){
+    this->nomeAtributo = nomeAtributo;
+}
+
+inline Dominio Entidade::getnomeAtributo() const{
+    return nomeAtributo;
+}
+*/
+// -------------------------------------------------------
+// Entidades do Leandro - 180145169
+class Peca {
+    private:
+        Codigo codigo;
         Nome nome;
         Tipo tipo;
         Classificacao classificacao;
     public:
         //Projeto();
         //Projeto(Codigo,Nome,Tipo,Classificacao);
-        void setCodigo(Codigo);
+        void setCodigo(const Codigo&);
         Codigo getCodigo() const;
-        void setNome(Nome);
+        void setNome(const Nome&);
         Nome getNome() const;
-        void setTipo(Tipo);
+        void setTipo(const Tipo&);
         Tipo getTipo() const;
-        void setClassificacao(Classificacao);
+        void setClassificacao(const Classificacao&);
         Classificacao getClassificacao() const;
 };
 
-inline Codigo Projeto::getCodigo() const{
-    return identificador;
+inline void Peca::setCodigo(const Codigo& codigo){
+    this->codigo = codigo;
 }
-inline Nome Projeto::getNome() const{
+
+inline void Peca::setNome(const Nome& nome){
+    this->nome = nome;
+}
+
+inline void Peca::setTipo(const Tipo& tipo){
+    this->tipo = tipo;
+}
+
+inline void Peca::setClassificacao(const Classificacao& classificacao){
+    this->classificacao = classificacao;
+}
+
+inline Codigo Peca::getCodigo() const{
+    return codigo;
+}
+inline Nome Peca::getNome() const{
     return nome;
 }
-inline Tipo Projeto::getTipo() const{
+inline Tipo Peca::getTipo() const{
     return tipo;
 }
-inline Classificacao Projeto::getClassificacao() const{
+inline Classificacao Peca::getClassificacao() const{
     return classificacao;
 }
+
+// -------------------------------------------------------
+// Entidades da Liz - 180022261
+
+// -------------------------------------------------------
+// Entidades da Clara - 190017503
+
+
 
 #endif // ENTIDADES_H_INCLUDED

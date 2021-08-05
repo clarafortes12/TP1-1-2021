@@ -17,17 +17,20 @@
 	<iostream>
 	<string>
 
-1628045067 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\dominios.cpp
+1628178029 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\dominios.cpp
 	"Dominios.h"
 	<iostream>
 	<string>
 
-1628043201 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\dominios.h
+1628177244 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\dominios.h
 	<stdexcept>
 
-1628044456 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\main.cpp
+1628177909 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\main.cpp
 	<iostream>
 	"Dominios.h"
+	"Entidades.h"
+	"Teste_Dominios.h"
+	"Teste_Entidades.h"
 
 1628096412 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalho1\git\tp1-1-2021\tp1-trabalho1\dominios.cpp
 	"Dominios.h"
@@ -40,4 +43,29 @@
 1628096535 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalho1\git\tp1-1-2021\tp1-trabalho1\main.cpp
 	<iostream>
 	"Dominios.h"
+
+1628171933 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\entidades.cpp
+	"Entidades.h"
+
+1628174997 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\entidades.h
+	"Dominios.h"
+	<string>
+
+1628177679 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\teste_dominios.h
+	<string>
+	"Dominios.h"
+
+1628172892 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\teste_entidades.h
+	<string>
+	"Dominios.h"
+	"Entidades.h"
+
+1628177729 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\teste_dominios.cpp
+	"Dominios.h"
+	"Teste_Dominios.h"
+	<iostream>
+	<string>
+
+1628173594 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\teste_entidades.cpp
+	"Teste_Entidades.h"
 

@@ -12,6 +12,9 @@ Capacidade::Capacidade(int valor){
     this->valor = valor;
 }
 
+Capacidade::Capacidade(){
+    this->valor = 100;
+}
 // M�todo para valida��o com lan�amento de exce��o.
 
 void Capacidade::validar(int valor){
@@ -28,50 +31,40 @@ void Capacidade::setValor(int valor) {
 
 //------------------------------------
 
-Horario::Horario(int hora, int minuto){
-    validar(hora, minuto);
-    if (hora<10)
-        if (minuto)
-            this->valor = "0"+to_string(hora)+":"+to_string(minuto);
-        else
-           this->valor = "0"+to_string(hora)+":"+"0"+to_string(minuto);
-    else
-        if (minuto)
-            this->valor = to_string(hora)+":"+to_string(minuto);
-        else
-           this->valor = to_string(hora)+":"+"0"+to_string(minuto);
-    this->hora = hora;
-    this->minuto = minuto;
+Horario::Horario(){
+    this->valor = "00:00";
 }
 
-void Horario::validar(int hora, int minuto){
-    if (hora > 23 || hora < 0)
+Horario::Horario(string valor){
+    validar(valor);
+    this-> valor = valor;
+}
+
+void Horario::validar(string valor){
+    int hora, minuto;
+    if (valor.size() != 5)
         throw invalid_argument("Argumento invalido.");
-    else
-        if (minuto != 00 && minuto != 15 && minuto != 30 && minuto != 45)
+    else{
+        hora = stoi(valor.substr(0,2));
+        minuto = stoi(valor.substr(3,2));
+        if ((hora > 23 || hora < 00) || (minuto != 00 && minuto != 15 && minuto != 30 && minuto != 45) || (valor.substr(2,1) != ":"))
             throw invalid_argument("Argumento invalido.");
+    }
+
 }
 
 // M�todo para acesso a atributo.
 
-void Horario::setValor(int hora, int minuto) {
-    validar(hora, minuto);
-    if (hora<10)
-        if (minuto)
-            this->valor = "0"+to_string(hora)+":"+to_string(minuto);
-        else
-           this->valor = "0"+to_string(hora)+":"+"0"+to_string(minuto);
-    else
-        if (minuto)
-            this->valor = to_string(hora)+":"+to_string(minuto);
-        else
-           this->valor = to_string(hora)+":"+"0"+to_string(minuto);
-    this->hora = hora;
-    this->minuto = minuto;
+void Horario::setValor(string valor) {
+    validar(valor);
+    this->valor = valor;
 }
 
 //------------------------------------
 
+Senha::Senha(){
+    this->valor = "Abc1Def@";
+}
 
 Senha::Senha(string valor){
     validar(valor);
@@ -120,6 +113,9 @@ void Senha::setValor(string valor) {
     this->valor = valor;
 }
 //-----------------------------------
+Telefone::Telefone(){
+    this->valor = "(11)-123456789";
+}
 
 Telefone::Telefone(string valor){
     validar(valor);

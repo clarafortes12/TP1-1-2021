@@ -23,6 +23,7 @@ class Capacidade {
             int valor;
             void validar(int);
     public:
+            Capacidade();
             Capacidade(int valor);
             void setValor(int valor);
             int getValor() const;
@@ -35,13 +36,12 @@ inline int Capacidade::getValor() const{         // Metodo inline e const.
 
 class Horario {
     private:
-            int hora;
-            int minuto;
             string valor;
-            void validar(int hora, int minuto);
+            void validar(string valor);
     public:
-            Horario(int hora,int minuto);
-            void setValor(int hora,int minuto);
+            Horario();
+            Horario(string valor);
+            void setValor(string valor);
             string getValor() const;
 
 };
@@ -55,6 +55,7 @@ class Senha {
             string valor;
             void validar(string);
     public:
+            Senha();
             Senha(string valor);
             void setValor(string valor);
             string getValor() const;
@@ -68,6 +69,7 @@ class Telefone {
             string valor;
             void validar(string);
     public:
+            Telefone();
             Telefone(string valor);
             void setValor(string valor);
             string getValor() const;

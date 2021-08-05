@@ -16,6 +16,49 @@ int main()
     // ------------------------------------------------------------------------
     // Criar objetos e interagir com objetos.
 
+    TUCapacidade testeA;
+
+    // Invocar mï¿½todo e apresentar mensagem acerca do resultado do teste.
+
+    switch(testeA.run()){
+        case TUCapacidade::SUCESSO: cout << "SUCESSO - Capacidade" << endl;
+                                break;
+        case TUCapacidade::FALHA  : cout << "FALHA   - Capacidade" << endl;
+                                break;
+    }
+
+    TUHorario testeB;
+
+    // Invocar mï¿½todo e apresentar mensagem acerca do resultado do teste.
+
+    switch(testeB.run()){
+        case TUHorario::SUCESSO: cout << "SUCESSO - Horario" << endl;
+                                break;
+        case TUHorario::FALHA  : cout << "FALHA   - Horario" << endl;
+                                break;
+    }
+
+    TUSenha testeC;
+
+    // Invocar mï¿½todo e apresentar mensagem acerca do resultado do teste.
+
+    switch(testeC.run()){
+        case TUSenha::SUCESSO: cout << "SUCESSO - Senha" << endl;
+                                break;
+        case TUSenha::FALHA  : cout << "FALHA   - Senha" << endl;
+                                break;
+    }
+    TUTelefone testeD;
+
+    // Invocar mï¿½todo e apresentar mensagem acerca do resultado do teste.
+
+    switch(testeD.run()){
+        case TUTelefone::SUCESSO: cout << "SUCESSO - Telefone" << endl;
+                                break;
+        case TUTelefone::FALHA  : cout << "FALHA   - Telefone" << endl;
+                                break;
+    }
+
     Capacidade testar(100);                                    // Criar objeto com valor vï¿½lido.
 
     cout << "Valor = " << testar.getValor() << endl;             // Apresentar valor atual de atributo.
@@ -65,12 +108,12 @@ int main()
     }
 // ------------------------------------------------------------------------
 
-    Horario testarhorai(10,15);                                    // Criar objeto com valor vï¿½lido.
+    Horario testarhorai("10:15");                                    // Criar objeto com valor vï¿½lido.
 
     cout << "hora = " << testarhorai.getValor() << endl;             // Apresentar valor atual de atributo.
 
     try{
-        testarhorai.setValor(00,00);                                     // Armazenar valor vï¿½lido nï¿½o resulta em lanï¿½amento de exceï¿½ï¿½o.
+        testarhorai.setValor("00:00");                                     // Armazenar valor vï¿½lido nï¿½o resulta em lanï¿½amento de exceï¿½ï¿½o.
     }
     catch(invalid_argument &exp){                           // Capturar exceï¿½ï¿½o da classe invalid_argument, referï¿½ncia para objeto para evitar cï¿½pia.
         cout << "Excecao : " << exp.what() << endl;
@@ -79,7 +122,7 @@ int main()
     cout << "hora = " << testarhorai.getValor() << endl;             // Apresentar valor atual de atributo.
 
     try{
-        testarhorai.setValor(07,25);                                    // Tentativa de armazenar valor invï¿½lido resulta em lanï¿½amento de exceï¿½ï¿½o.
+        testarhorai.setValor("07:25");                                    // Tentativa de armazenar valor invï¿½lido resulta em lanï¿½amento de exceï¿½ï¿½o.
     }
     catch(invalid_argument &exp){                           // Capturar exceï¿½ï¿½o da classe invalid_argument, referï¿½ncia para objeto para evitar cï¿½pia.
         cout << "Excecao : " << exp.what() << endl;
@@ -88,7 +131,7 @@ int main()
     cout << "hora = " << testarhorai.getValor() << endl;             // Apresentar valor atual de atributo.
 
     try{
-        testarhorai.setValor(400,15);                                    // Tentativa de armazenar valor invï¿½lido resulta em lanï¿½amento de exceï¿½ï¿½o.
+        testarhorai.setValor("400:15");                                    // Tentativa de armazenar valor invï¿½lido resulta em lanï¿½amento de exceï¿½ï¿½o.
     }
     catch(...){                                             // Capturar exceï¿½ï¿½o de qualquer classe.
         cout << "Excecao : " << endl;
@@ -102,7 +145,7 @@ int main()
     try{
 
         try {
-            testarhorai.setValor(20,15);                                // Tentativa de armazenar valor invï¿½lido resulta em lanï¿½amento de exceï¿½ï¿½o.
+            testarhorai.setValor("20:15");                                // Tentativa de armazenar valor invï¿½lido resulta em lanï¿½amento de exceï¿½ï¿½o.
         }
         catch(...){                                         // Capturar exceï¿½ï¿½o de qualquer classe.
             cout << "Tratamento parcial." << endl;
@@ -354,9 +397,9 @@ Telefone teldapessoa("(61)-983669929");                                    // Cr
 
     cout << "Valor = " << testarData.getValor() << endl;             // Apresentar valor atual de atributo.
 
-//------------ Classificação
+//------------ Classificaï¿½ï¿½o
     Classificacao classificar1;
-    cout << "Classificação1 = " << classificar1.getValor() << endl;
+    cout << "Classificaï¿½ï¿½o1 = " << classificar1.getValor() << endl;
 
     Classificacao classificar2("livre");
     cout << "Classificacao = " << classificar2.getValor() << endl;
@@ -489,7 +532,7 @@ Telefone teldapessoa("(61)-983669929");                                    // Cr
     }
     cout << "Genero = " << genero2.getValor() << endl;
 
-//------------ Código
+//------------ Cï¿½digo
     Codigo codigo1;
     cout << "Codigo1 = " << codigo1.getValor() << endl;
 
