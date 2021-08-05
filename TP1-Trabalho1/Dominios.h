@@ -24,7 +24,7 @@ class Capacidade {
             void validar(int);
     public:
             Capacidade();
-            Capacidade(int valor);
+            Capacidade(int);
             void setValor(int valor);
             int getValor() const;
 
@@ -40,7 +40,7 @@ class Horario {
             void validar(string valor);
     public:
             Horario();
-            Horario(string valor);
+            Horario(string);
             void setValor(string valor);
             string getValor() const;
 
@@ -56,7 +56,7 @@ class Senha {
             void validar(string);
     public:
             Senha();
-            Senha(string valor);
+            Senha(string);
             void setValor(string valor);
             string getValor() const;
 };
@@ -70,7 +70,7 @@ class Telefone {
             void validar(string);
     public:
             Telefone();
-            Telefone(string valor);
+            Telefone(string);
             void setValor(string valor);
             string getValor() const;
 };
@@ -116,6 +116,7 @@ class Nome {
             string valor;
             void validar(string);
     public:
+            Nome();
             Nome(string);
             void setValor(string);
             string getValor() const;

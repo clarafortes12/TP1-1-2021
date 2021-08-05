@@ -35,8 +35,7 @@ class Peca {
         Tipo tipo;
         Classificacao classificacao;
     public:
-        //Projeto();
-        //Projeto(Codigo,Nome,Tipo,Classificacao);
+        //Peca();
         void setCodigo(const Codigo&);
         Codigo getCodigo() const;
         void setNome(const Nome&);

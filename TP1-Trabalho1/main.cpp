@@ -59,6 +59,17 @@ int main()
                                 break;
     }
 
+    TUPeca testeEA;
+
+    // Invocar método e apresentar mensagem acerca do resultado do teste.
+
+    switch(testeEA.run()){
+        case TUPeca::SUCESSO: cout << "SUCESSO - PECA" << endl;
+                                break;
+        case TUPeca::FALHA  : cout << "FALHA   - PECA" << endl;
+                                break;
+    }
+
     Capacidade testar(100);                                    // Criar objeto com valor v�lido.
 
     cout << "Valor = " << testar.getValor() << endl;             // Apresentar valor atual de atributo.

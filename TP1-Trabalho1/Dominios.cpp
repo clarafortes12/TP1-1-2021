@@ -294,6 +294,10 @@ Nome::Nome(string valor){
     this->valor = valor;
 }
 
+Nome::Nome(){
+    this->valor = "Sem Nome";
+}
+
 // Método para validação com lançamento de exceção.
 
 void Nome::validar(string valor){
