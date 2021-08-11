@@ -7,6 +7,7 @@
 
 // -------------------------------------------------------
 // Testes do Leandro - 180145169
+//teste Peca
 class TUPeca {
 private:
     const string VALOR_VALIDO1   = "AB1234";   // Definição de constante para evitar número mágico.
@@ -15,6 +16,27 @@ private:
     const string VALOR_VALIDO4   = "12";   // Definição de constante para evitar número mágico.
 
     Peca *peca;                       // Referência para unidade em teste.
+    int estado;                             // Estado do teste.
+    void setUp();                           // Método para criar unidade em teste.
+    void tearDown();                        // Método para destruir unidade em teste.
+    void testarCenarioSucesso();            // Cenário de teste.
+public:
+    const static int SUCESSO =  0;          // Definição de constante para reportar resultado de teste.
+    const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
+    int run();                              // Método para executar teste.
+};
+
+//sessao
+class TUSessao {
+private:
+    const string VALOR_VALIDO1   = "AB1234";   // Definição de constante para evitar número mágico.
+    const string VALOR_VALIDO2   = "03:45";   // Definição de constante para evitar número mágico.
+    const int VALOR_VALIDO3   = 11;   // Definição de constante para evitar número mágico.
+    const int VALOR_VALIDO4   = 8;   // Definição de constante para evitar número mágico.
+    const int VALOR_VALIDO5   = 2021;   // Definição de constante para evitar número mágico.
+    const string VALOR_VALIDO6   = "11/08/2021";   // Definição de constante para evitar número mágico.
+
+    Sessao *sessao;                       // Referência para unidade em teste.
     int estado;                             // Estado do teste.
     void setUp();                           // Método para criar unidade em teste.
     void tearDown();                        // Método para destruir unidade em teste.

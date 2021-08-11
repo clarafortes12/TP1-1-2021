@@ -28,6 +28,7 @@ inline Dominio Entidade::getnomeAtributo() const{
 */
 // -------------------------------------------------------
 // Entidades do Leandro - 180145169
+// Peca
 class Peca {
     private:
         Codigo codigo;
@@ -73,6 +74,43 @@ inline Tipo Peca::getTipo() const{
 }
 inline Classificacao Peca::getClassificacao() const{
     return classificacao;
+}
+
+//sessao
+class Sessao {
+    private:
+        Codigo codigo;
+        Data data;
+        Horario horario;
+    public:
+        void setCodigo(const Codigo&);
+        Codigo getCodigo() const;
+        void setData(const Data&);
+        Data getData() const;
+        void setHorario(const Horario&);
+        Horario getHorario() const;
+};
+
+inline void Sessao::setCodigo(const Codigo& codigo){
+    this->codigo = codigo;
+}
+
+inline void Sessao::setData(const Data& data){
+    this->data = data;
+}
+
+inline void Sessao::setHorario(const Horario& horario){
+    this->horario = horario;
+}
+
+inline Codigo Sessao::getCodigo() const{
+    return codigo;
+}
+inline Data Sessao::getData() const{
+    return data;
+}
+inline Horario Sessao::getHorario() const{
+    return horario;
 }
 
 // -------------------------------------------------------

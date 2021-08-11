@@ -342,6 +342,10 @@ Data::Data(int dia , int mes, int ano){
     this->ano = ano;
 }
 
+Data::Data(){
+    this->valor = "01/01/2000";
+}
+
 void Data::validar(int dia, int mes, int ano){
 
     if (dia < 1 || dia > 28){

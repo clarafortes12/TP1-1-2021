@@ -70,6 +70,17 @@ int main()
                                 break;
     }
 
+    TUSessao testeEB;
+
+    // Invocar método e apresentar mensagem acerca do resultado do teste.
+
+    switch(testeEB.run()){
+        case TUSessao::SUCESSO: cout << "SUCESSO - Sessao" << endl;
+                                break;
+        case TUSessao::FALHA  : cout << "FALHA   - Sessao" << endl;
+                                break;
+    }
+
     Capacidade testar(100);                                    // Criar objeto com valor v�lido.
 
     cout << "Valor = " << testar.getValor() << endl;             // Apresentar valor atual de atributo.

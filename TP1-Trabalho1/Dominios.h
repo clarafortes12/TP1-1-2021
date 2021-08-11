@@ -135,6 +135,7 @@ class Data {
             string valor;
             void validar(int dia, int mes, int ano);
     public:
+            Data();
             Data(int dia, int mes, int ano);
             void setValor(int dia, int mes, int ano);
             string getValor() const;
