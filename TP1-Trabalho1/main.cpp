@@ -81,6 +81,17 @@ int main()
                                 break;
     }
 
+    TUSala testeEntidadeSala;
+
+    // Invocar método e apresentar mensagem acerca do resultado do teste.
+
+    switch(testeEntidadeSala.run()){
+        case TUSala::SUCESSO: cout << "SUCESSO - Sala" << endl;
+                                break;
+        case TUSala::FALHA  : cout << "FALHA   - Sala" << endl;
+                                break;
+    }
+
     Capacidade testar(100);                                    // Criar objeto com valor v�lido.
 
     cout << "Valor = " << testar.getValor() << endl;             // Apresentar valor atual de atributo.

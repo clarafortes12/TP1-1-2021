@@ -10,45 +10,66 @@
 //teste Peca
 class TUPeca {
 private:
-    const string VALOR_VALIDO1   = "AB1234";   // DefiniÃ§Ã£o de constante para evitar nÃºmero mÃ¡gico.
-    const string VALOR_VALIDO2   = "O Fantasma Da Opera";   // DefiniÃ§Ã£o de constante para evitar nÃºmero mÃ¡gico.
-    const string VALOR_VALIDO3   = "musical";   // DefiniÃ§Ã£o de constante para evitar nÃºmero mÃ¡gico.
-    const string VALOR_VALIDO4   = "12";   // DefiniÃ§Ã£o de constante para evitar nÃºmero mÃ¡gico.
+    const string VALOR_VALIDO1   = "AB1234";   // Definição de constante para evitar número mágico.
+    const string VALOR_VALIDO2   = "O Fantasma Da Opera";   // Definição de constante para evitar número mágico.
+    const string VALOR_VALIDO3   = "musical";   // Definição de constante para evitar número mágico.
+    const string VALOR_VALIDO4   = "12";   // Definição de constante para evitar número mágico.
 
-    Peca *peca;                       // ReferÃªncia para unidade em teste.
+    Peca *peca;                       // Referência para unidade em teste.
     int estado;                             // Estado do teste.
-    void setUp();                           // MÃ©todo para criar unidade em teste.
-    void tearDown();                        // MÃ©todo para destruir unidade em teste.
-    void testarCenarioSucesso();            // CenÃ¡rio de teste.
+    void setUp();                           // Método para criar unidade em teste.
+    void tearDown();                        // Método para destruir unidade em teste.
+    void testarCenarioSucesso();            // Cenário de teste.
 public:
-    const static int SUCESSO =  0;          // DefiniÃ§Ã£o de constante para reportar resultado de teste.
-    const static int FALHA   = -1;          // DefiniÃ§Ã£o de constante para reportar resultado de teste.
-    int run();                              // MÃ©todo para executar teste.
+    const static int SUCESSO =  0;          // Definição de constante para reportar resultado de teste.
+    const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
+    int run();                              // Método para executar teste.
 };
 
 //sessao
 class TUSessao {
 private:
-    const string VALOR_VALIDO1   = "AB1234";   // DefiniÃ§Ã£o de constante para evitar nÃºmero mÃ¡gico.
-    const string VALOR_VALIDO2   = "03:45";   // DefiniÃ§Ã£o de constante para evitar nÃºmero mÃ¡gico.
-    const int VALOR_VALIDO3   = 11;   // DefiniÃ§Ã£o de constante para evitar nÃºmero mÃ¡gico.
-    const int VALOR_VALIDO4   = 8;   // DefiniÃ§Ã£o de constante para evitar nÃºmero mÃ¡gico.
-    const int VALOR_VALIDO5   = 2021;   // DefiniÃ§Ã£o de constante para evitar nÃºmero mÃ¡gico.
-    const string VALOR_VALIDO6   = "11/08/2021";   // DefiniÃ§Ã£o de constante para evitar nÃºmero mÃ¡gico.
+    const string VALOR_VALIDO1   = "AB1234";   // Definição de constante para evitar número mágico.
+    const string VALOR_VALIDO2   = "03:45";   // Definição de constante para evitar número mágico.
+    const int VALOR_VALIDO3   = 11;   // Definição de constante para evitar número mágico.
+    const int VALOR_VALIDO4   = 8;   // Definição de constante para evitar número mágico.
+    const int VALOR_VALIDO5   = 2021;   // Definição de constante para evitar número mágico.
+    const string VALOR_VALIDO6   = "11/08/2021";   // Definição de constante para evitar número mágico.
 
-    Sessao *sessao;                       // ReferÃªncia para unidade em teste.
+    Sessao *sessao;                       // Referência para unidade em teste.
     int estado;                             // Estado do teste.
-    void setUp();                           // MÃ©todo para criar unidade em teste.
-    void tearDown();                        // MÃ©todo para destruir unidade em teste.
-    void testarCenarioSucesso();            // CenÃ¡rio de teste.
+    void setUp();                           // Método para criar unidade em teste.
+    void tearDown();                        // Método para destruir unidade em teste.
+    void testarCenarioSucesso();            // Cenário de teste.
 public:
-    const static int SUCESSO =  0;          // DefiniÃ§Ã£o de constante para reportar resultado de teste.
-    const static int FALHA   = -1;          // DefiniÃ§Ã£o de constante para reportar resultado de teste.
-    int run();                              // MÃ©todo para executar teste.
+    const static int SUCESSO =  0;          // Definição de constante para reportar resultado de teste.
+    const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
+    int run();                              // Método para executar teste.
 };
 
 // -------------------------------------------------------
-// Testes da Liz - 180022261
+// Teste da Liz - 180022261
+
+//sala
+class TUSala {
+private:
+    const string VALOR_VALIDO_CODIGO   = "AC4321";   // Definição de constante para evitar número mágico.
+    const string VALOR_VALIDO_NOME   = "Liz.Costato";   // Definição de constante para evitar número mágico.
+    const int VALOR_VALIDO_CAPACIDADE   = 100;   // Definição de constante para evitar número mágico.
+    const string VALOR_INVALIDO_CODIGO   = "1C4321";   // Definição de constante para evitar número mágico.
+    const string VALOR_INVALIDO_NOME   = "Liz  Costato";   // Definição de constante para evitar número mágico.
+    const int VALOR_INVALIDO_CAPACIDADE   = 150;   // Definição de constante para evitar número mágico.
+
+    Sala *sala;                             // Referência para unidade em teste.
+    int estado;                             // Estado do teste.
+    void setUp();                           // Método para criar unidade em teste.
+    void tearDown();                        // Método para destruir unidade em teste.
+    void testarCenarioSucesso();            // Cenário de teste.
+public:
+    const static int SUCESSO =  0;          // Definição de constante para reportar resultado de teste.
+    const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
+    int run();                              // Método para executar teste.
+};
 
 // -------------------------------------------------------
 // Testes da Clara - 190017503

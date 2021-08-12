@@ -116,6 +116,43 @@ inline Horario Sessao::getHorario() const{
 // -------------------------------------------------------
 // Entidades da Liz - 180022261
 
+//sala
+class Sala {
+    private:
+        Codigo codigo;
+        Nome nome;
+        Capacidade capacidade;
+    public:
+        void setCodigo(const Codigo&);
+        Codigo getCodigo() const;
+        void setNome(const Nome&);
+        Nome getNome() const;
+        void setCapacidade(const Capacidade&);
+        Capacidade getCapacidade() const;
+};
+
+inline void Sala::setCodigo(const Codigo& codigo){
+    this->codigo = codigo;
+}
+
+inline void Sala::setNome(const Nome& nome){
+    this->nome = nome;
+}
+
+inline void Sala::setCapacidade(const Capacidade& capacidade){
+    this->capacidade = capacidade;
+}
+
+inline Codigo Sala::getCodigo() const{
+    return codigo;
+}
+inline Nome Sala::getNome() const{
+    return nome;
+}
+inline Capacidade Sala::getCapacidade() const{
+    return capacidade;
+}
+
 // -------------------------------------------------------
 // Entidades da Clara - 190017503
 

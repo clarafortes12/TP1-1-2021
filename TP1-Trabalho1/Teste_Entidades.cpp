@@ -89,5 +89,43 @@ int TUSessao::run(){
 // -------------------------------------------------------
 // Testes da Liz - 180022261
 
+//Sala
+void TUSala::setUp(){
+    sala = new Sala();
+    estado = SUCESSO;
+}
+
+void TUSala::tearDown(){
+    delete sala;
+}
+
+void TUSala::testarCenarioSucesso(){
+
+    Codigo codigo;
+    codigo.setValor(VALOR_VALIDO_CODIGO);
+    sala->setCodigo(codigo);
+    if(sala->getCodigo().getValor() != VALOR_VALIDO_CODIGO)
+        estado = FALHA;
+
+    Nome nome;
+    nome.setValor(VALOR_VALIDO_NOME);
+    sala->setNome(nome);
+    if(sala->getNome().getValor() != VALOR_VALIDO_NOME)
+        estado = FALHA;
+
+    Capacidade capacidade;
+    capacidade.setValor(VALOR_VALIDO_CAPACIDADE);
+    sala->setCapacidade(capacidade);
+    if(sala->getCapacidade().getValor() != VALOR_VALIDO_CAPACIDADE)
+        estado = FALHA;
+}
+
+int TUSala::run(){
+    setUp();
+    testarCenarioSucesso();
+    tearDown();
+    return estado;
+}
+
 // -------------------------------------------------------
 // Testes da Clara - 190017503
