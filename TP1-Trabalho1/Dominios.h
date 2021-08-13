@@ -86,6 +86,7 @@ class Cargo {
             string valor;
             void validar(string);
     public:
+            Cargo();
             Cargo(string);
             void setValor(string);
             string getValor() const;
@@ -101,6 +102,7 @@ class Matricula {
             string valor;
             void validar(string);
     public:
+            Matricula();
             Matricula(string);
             void setValor(string);
             string getValor() const;
@@ -129,15 +131,12 @@ inline string Nome::getValor() const{         // Metodo inline e const.
 
 class Data {
     private:
-            int dia;
-            int mes;
-            int ano;
             string valor;
-            void validar(int dia, int mes, int ano);
+            void validar(string);
     public:
             Data();
-            Data(int dia, int mes, int ano);
-            void setValor(int dia, int mes, int ano);
+            Data(string);
+            void setValor(string);
             string getValor() const;
 
 };

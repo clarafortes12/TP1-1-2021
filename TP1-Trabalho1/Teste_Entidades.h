@@ -31,10 +31,7 @@ class TUSessao {
 private:
     const string VALOR_VALIDO1   = "AB1234";   // Definição de constante para evitar número mágico.
     const string VALOR_VALIDO2   = "03:45";   // Definição de constante para evitar número mágico.
-    const int VALOR_VALIDO3   = 11;   // Definição de constante para evitar número mágico.
-    const int VALOR_VALIDO4   = 8;   // Definição de constante para evitar número mágico.
-    const int VALOR_VALIDO5   = 2021;   // Definição de constante para evitar número mágico.
-    const string VALOR_VALIDO6   = "11/08/2021";   // Definição de constante para evitar número mágico.
+    const string VALOR_VALIDO3   = "11/08/2021";   // Definição de constante para evitar número mágico.
 
     Sessao *sessao;                       // Referência para unidade em teste.
     int estado;                             // Estado do teste.

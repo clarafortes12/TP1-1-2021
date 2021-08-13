@@ -167,6 +167,10 @@ void Telefone::setValor(string valor) {
 // -------------------------------------------------------------------------
 //Metodos da Liz - 180022261
 
+Cargo::Cargo(){
+    this->valor = "Sem Cargo";
+}
+
 Cargo::Cargo(string valor){
     validar(valor);
     this->valor = valor;
@@ -188,6 +192,7 @@ void Cargo::setValor(string valor) {
 
 //------------------------------------
 
+// funcao auxiliar
 bool eh_digito(string teste){
     bool resposta = false;
     int i = 0;
@@ -204,6 +209,7 @@ bool eh_digito(string teste){
     return resposta;
 }
 
+// funcao auxiliar
 bool ha_repeticao(string teste){
     bool resposta = false;
     int i, j;
@@ -216,6 +222,10 @@ bool ha_repeticao(string teste){
     }
 
     return resposta;
+}
+
+Matricula::Matricula(){
+    this->valor = "Sem Matricula";
 }
 
 Matricula::Matricula(string valor){
@@ -250,11 +260,9 @@ int caracteres_nome(string nome){
     do{
         if(i == 0){
             if (nome[i] == '.'){
-                //cout << "parou no 1 " << endl;
                 return resposta = 2;
             }
             if ((nome[i] >= 'a' && nome[i] <= 'z') || nome[i] == ' '){
-                //cout << "Parou no 2 " << endl;
                 return resposta = 4;
             }
         }
@@ -262,7 +270,6 @@ int caracteres_nome(string nome){
             nome[i] == '5' || nome[i] == '6' || nome[i] == '7' || nome[i] == '8' || nome[i] == '9' ||
             (nome[i] >= 'a' && nome[i] <= 'z') || (nome[i] >= 'A' && nome[i] <= 'Z') || nome[i] == '.' ||
             nome[i] == ' '){
-            //cout << "Parou no 3 " << endl;
             resposta = 0;
         }
         else
@@ -270,21 +277,17 @@ int caracteres_nome(string nome){
 
         if(nome[i] == '.' && i >0){
             if(nome[i-1] < 'A' || nome[i-1] > 'z' || (nome[i-1] > 'Z' && nome[i-1] < 'a')){
-                //cout << "Parou no 4 " << endl;
                 return resposta = 2;
             }
         }
 
         if(nome[i] == ' ' && i >0){
             if(nome[i-1] == ' '){
-                //cout << "Parou no 5 " << endl;
                 return resposta = 3;
             }
         }
         i++;
     }while(nome[i] != '\0');
-
-    //cout << "Era pra ter dado bom"<< endl;
 
     return resposta;
 }
@@ -312,7 +315,8 @@ void Nome::validar(string valor){
             throw invalid_argument("Nao deve haver espacos em branco em sequencia");
         case 4:
             throw invalid_argument("Cada termo deve ser iniciado com letra maiuscula (A-Z)");
-        //default:
+        default:
+            return;
     }
 }
 
@@ -325,65 +329,49 @@ void Nome::setValor(string valor) {
 
 //------------------------------------
 
-Data::Data(int dia , int mes, int ano){
-    validar(dia, mes, ano);
-    if (dia < 10)
-        if (mes < 10)
-            this->valor = "0"+to_string(dia)+"/0"+to_string(mes)+"/"+to_string(ano);
-        else
-           this->valor = "0"+to_string(dia)+to_string(mes)+"/"+to_string(ano);
-    else
-        if (mes < 10)
-            this->valor = to_string(dia)+"/0"+to_string(mes)+"/"+to_string(ano);
-        else
-           this->valor = to_string(dia)+"/"+to_string(mes)+"/"+to_string(ano);
-    this->dia = dia;
-    this->mes = mes;
-    this->ano = ano;
-}
-
 Data::Data(){
     this->valor = "01/01/2000";
 }
 
-void Data::validar(int dia, int mes, int ano){
+Data::Data(string valor){
+    validar(valor);
+    this-> valor = valor;
+}
 
-    if (dia < 1 || dia > 28){
-        if(mes == 2 && ano%4 != 0 && dia > 28){
-            throw invalid_argument("Argumento invalido. Fevereiro tem apenas 28 dias.");
-        }else if(mes == 2 && ano%4 == 0 && dia > 29){
-            throw invalid_argument("Argumento invalido. Fevereiro tem apenas 29 dias.");
-        }else if (dia == 31){
-            if (mes != 1 && mes != 3 && mes != 5 && mes != 7 && mes != 8 && mes != 10 && mes != 12){
-                throw invalid_argument("Argumento invalido. Esse m�s tem apenas 30 dias.");
+void Data::validar(string valor){
+    int dia, mes, ano;
+    if (valor.size() != 10)
+        throw invalid_argument("Argumento invalido. A data deve ser do formato DD/MM/AAAA, sendo 01 a 31 em DD, 01 a 12 em MM e 2000 a 9999 em AAAA.");
+    else{
+        dia = stoi(valor.substr(0,2));
+        mes = stoi(valor.substr(3,2));
+        ano = stoi(valor.substr(6,4));
+        if (dia < 1 || dia > 28){
+            if(mes == 2 && ano%4 != 0 && dia > 28){
+                throw invalid_argument("Argumento invalido. Fevereiro tem apenas 28 dias.");
+            }else if(mes == 2 && ano%4 == 0 && dia > 29){
+                throw invalid_argument("Argumento invalido. Fevereiro tem apenas 29 dias.");
+            }else if (dia == 31){
+                if (mes != 1 && mes != 3 && mes != 5 && mes != 7 && mes != 8 && mes != 10 && mes != 12){
+                    throw invalid_argument("Argumento invalido. Esse m�s tem apenas 30 dias.");
+                }
+            }else if (dia > 31 || dia < 1){
+                throw invalid_argument("Argumento invalido."); /*Ao menos mes errado*/
             }
-        }else if (dia > 31 || dia < 1){
-            throw invalid_argument("Argumento invalido."); /*Ao menos mes errado*/
         }
-    }
-    if (mes < 1 || mes > 12)
-        throw invalid_argument("Argumento invalido."); /*Ao menos mes errado*/
-    if (ano < 2000 || ano > 9999)
-        throw invalid_argument("Argumento invalido."); /*Ao menos ano errado*/
+        if (mes < 1 || mes > 12)
+            throw invalid_argument("Argumento invalido."); /*Ao menos mes errado*/
+        if (ano < 2000 || ano > 9999)
+            throw invalid_argument("Argumento invalido."); /*Ao menos ano errado*/
+        }
+
 }
 
 // M�todo para acesso a atributo.
 
-void Data::setValor(int dia, int mes, int ano) {
-    validar(dia, mes, ano);
-    if (dia < 10)
-        if (mes < 10)
-            this->valor = "0"+to_string(dia)+"/0"+to_string(mes)+"/"+to_string(ano);
-        else
-           this->valor = "0"+to_string(dia)+to_string(mes)+"/"+to_string(ano);
-    else
-        if (mes < 10)
-            this->valor = to_string(dia)+"/0"+to_string(mes)+"/"+to_string(ano);
-        else
-           this->valor = to_string(dia)+"/"+to_string(mes)+"/"+to_string(ano);
-    this->dia = dia;
-    this->mes = mes;
-    this->ano = ano;
+void Data::setValor(string valor) {
+    validar(valor);
+    this->valor = valor;
 }
 
 // -------------------------------------------------------------------------

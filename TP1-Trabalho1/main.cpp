@@ -81,16 +81,62 @@ int main()
                                 break;
     }
 
-    TUSala testeEntidadeSala;
+    TUSala testeSala;
 
     // Invocar método e apresentar mensagem acerca do resultado do teste.
 
-    switch(testeEntidadeSala.run()){
+    switch(testeSala.run()){
         case TUSala::SUCESSO: cout << "SUCESSO - Sala" << endl;
                                 break;
         case TUSala::FALHA  : cout << "FALHA   - Sala" << endl;
                                 break;
     }
+
+    TUCargo testeCargo;
+
+    // Invocar m�todo e apresentar mensagem acerca do resultado do teste.
+
+    switch(testeCargo.run()){
+        case TUCargo::SUCESSO: cout << "SUCESSO - Cargo" << endl;
+                                break;
+        case TUCargo::FALHA  : cout << "FALHA   - Cargo" << endl;
+                                break;
+    }
+
+    TUMatricula testeMatricula;
+
+    // Invocar m�todo e apresentar mensagem acerca do resultado do teste.
+
+    switch(testeMatricula.run()){
+        case TUMatricula::SUCESSO: cout << "SUCESSO - Matricula" << endl;
+                                break;
+        case TUMatricula::FALHA  : cout << "FALHA   - Matricula" << endl;
+                                break;
+    }
+
+    TUNome testeNome;
+
+    // Invocar m�todo e apresentar mensagem acerca do resultado do teste.
+
+    switch(testeNome.run()){
+        case TUNome::SUCESSO: cout << "SUCESSO - Nome" << endl;
+                                break;
+        case TUNome::FALHA  : cout << "FALHA   - Nome" << endl;
+                                break;
+    }
+
+    TUData testeData;
+
+    // Invocar m�todo e apresentar mensagem acerca do resultado do teste.
+
+    switch(testeData.run()){
+        case TUData::SUCESSO: cout << "SUCESSO - Data" << endl;
+                                break;
+        case TUData::FALHA  : cout << "FALHA   - Data" << endl;
+                                break;
+    }
+
+    /////////////////////TESTES ANTIGOS//////////////////////
 
     Capacidade testar(100);                                    // Criar objeto com valor v�lido.
 
@@ -372,64 +418,7 @@ Telefone teldapessoa("(61)-983669929");                                    // Cr
     cout << "Valor = " << testarNome.getValor() << endl;             // Apresentar valor atual de atributo.
 
 //--------------------------------------------------------------------------------------
-    Data testarData(10,10,2000);                                    // Criar objeto com valor válido.
-
-    cout << "Valor = " << testarData.getValor() << endl;             // Apresentar valor atual de atributo.
-
-    try{
-        testarData.setValor(2,1,9000);                                     // Armazenar valor válido não resulta em lançamento de exceção.
-    }
-    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
-        cout << "Excecao : " << exp.what() << endl;
-    }
-
-    cout << "Valor = " << testarData.getValor() << endl;             // Apresentar valor atual de atributo.
-
-     try{
-        testarData.setValor(29,2,2000);                                     // Armazenar valor válido não resulta em lançamento de exceção.
-    }
-    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
-        cout << "Excecao : " << exp.what() << endl;
-    }
-
-    cout << "Valor = " << testarData.getValor() << endl;             // Apresentar valor atual de atributo.
-
-    try{
-        testarData.setValor(0,2,2000);                                     // Armazenar valor inválido que resulta em lançamento de exceção.
-    }
-    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
-        cout << "Excecao : " << exp.what() << endl;
-    }
-
-    cout << "Valor = " << testarData.getValor() << endl;             // Apresentar valor atual de atributo.
-
-    try{
-        testarData.setValor(1,13,2000);                                     // Armazenar valor inválido que resulta em lançamento de exceção.
-    }
-    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
-        cout << "Excecao : " << exp.what() << endl;
-    }
-
-    cout << "Valor = " << testarData.getValor() << endl;             // Apresentar valor atual de atributo.
-
-    try{
-        testarData.setValor(1,2,10000);                                     // Armazenar valor inválido que resulta em lançamento de exceção.
-    }
-    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
-        cout << "Excecao : " << exp.what() << endl;
-    }
-
-    cout << "Valor = " << testarData.getValor() << endl;             // Apresentar valor atual de atributo.
-
-    try{
-        testarData.setValor(29,2,2001);                                     // Armazenar valor inválido que resulta em lançamento de exceção.
-    }
-    catch(invalid_argument &exp){                           // Capturar exceção da classe invalid_argument, referência para objeto para evitar cópia.
-        cout << "Excecao : " << exp.what() << endl;
-    }
-
-    cout << "Valor = " << testarData.getValor() << endl;             // Apresentar valor atual de atributo.
-
+    //tirei testes de data
 //------------ Classifica��o
     Classificacao classificar1;
     cout << "Classifica��o1 = " << classificar1.getValor() << endl;

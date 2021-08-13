@@ -72,9 +72,9 @@ void TUSessao::testarCenarioSucesso(){
         estado = FALHA;
 
     Data data;
-    data.setValor(VALOR_VALIDO3, VALOR_VALIDO4, VALOR_VALIDO5);
+    data.setValor(VALOR_VALIDO3);
     sessao->setData(data);
-    if(sessao->getData().getValor() != VALOR_VALIDO6)
+    if(sessao->getData().getValor() != VALOR_VALIDO3)
         estado = FALHA;
 
 }
