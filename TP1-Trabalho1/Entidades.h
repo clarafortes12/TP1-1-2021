@@ -29,6 +29,9 @@ inline Dominio Entidade::getnomeAtributo() const{
 // -------------------------------------------------------
 // Entidades do Leandro - 180145169
 // Peca
+///
+/// Padr&atilde;o para representa&ccedil;&atilde;o da Pe&ctilde;a.
+///
 class Peca {
     private:
         Codigo codigo;
@@ -47,36 +50,86 @@ class Peca {
         Classificacao getClassificacao() const;
 };
 
+/// Armazena codigo.
+///
+/// @param valor Codigo codigo.
+///
+/// @return void
+///
 inline void Peca::setCodigo(const Codigo& codigo){
     this->codigo = codigo;
 }
 
+/// Armazena nome.
+///
+/// @param valor Nome nome.
+///
+/// @return void
+///
 inline void Peca::setNome(const Nome& nome){
     this->nome = nome;
 }
 
+/// Armazena tipo.
+///
+/// @param valor Tipo tipo.
+///
+/// @return void
+///
 inline void Peca::setTipo(const Tipo& tipo){
     this->tipo = tipo;
 }
 
+/// Armazena classificacao.
+///
+/// @param valor Classificacao classificacao.
+///
+/// @return void
+///
 inline void Peca::setClassificacao(const Classificacao& classificacao){
     this->classificacao = classificacao;
 }
 
+///
+/// Retorna codigo.
+///
+/// @return Codigo codigo.
+///
 inline Codigo Peca::getCodigo() const{
     return codigo;
 }
+
+///
+/// Retorna nome.
+///
+/// @return Nome nome.
+///
 inline Nome Peca::getNome() const{
     return nome;
 }
+
+///
+/// Retorna tipo.
+///
+/// @return Tipo tipo.
+///
 inline Tipo Peca::getTipo() const{
     return tipo;
 }
+
+///
+/// Retorna classificacao.
+///
+/// @return Classificacao classificacao.
+///
 inline Classificacao Peca::getClassificacao() const{
     return classificacao;
 }
 
 //sessao
+///
+/// Padr&atilde;o para representa&ccedil;&atilde;o da Sess&atilde;o.
+///
 class Sessao {
     private:
         Codigo codigo;
@@ -91,24 +144,59 @@ class Sessao {
         Horario getHorario() const;
 };
 
+/// Armazena codigo.
+///
+/// @param valor Codigo codigo.
+///
+/// @return void
+///
 inline void Sessao::setCodigo(const Codigo& codigo){
     this->codigo = codigo;
 }
 
+/// Armazena data.
+///
+/// @param valor Data data.
+///
+/// @return void
+///
 inline void Sessao::setData(const Data& data){
     this->data = data;
 }
 
+/// Armazena horario.
+///
+/// @param valor Horario horario.
+///
+/// @return void
+///
 inline void Sessao::setHorario(const Horario& horario){
     this->horario = horario;
 }
 
+///
+/// Retorna codigo.
+///
+/// @return Codigo codigo.
+///
 inline Codigo Sessao::getCodigo() const{
     return codigo;
 }
+
+///
+/// Retorna data.
+///
+/// @return Data data.
+///
 inline Data Sessao::getData() const{
     return data;
 }
+
+///
+/// Retorna horario.
+///
+/// @return Horario horario.
+///
 inline Horario Sessao::getHorario() const{
     return horario;
 }

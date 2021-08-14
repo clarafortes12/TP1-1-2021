@@ -18,14 +18,41 @@ using namespace std;
 // -------------------------------------------------------------------------
 // Classes do Leandro - 180145169
 
+///
+/// Padr&atilde;o para representa&ccedil;&atilde;o da Capacidade.
+///
+/// Regras de formato:
+///
+/// - Capacidade &eacute; v&aacute;lido caso igual a 100, 200, 300, 400 ou 500.
+///
 class Capacidade {
     private:
             int valor;
             void validar(int);
     public:
+///
+/// Inicializa o objeto com o Capacidade como 100.
+///
             Capacidade();
+///
+/// Inicializa o objeto caso o Capacidade informado seja v&aacute;lido.
+///
+/// @param valor int Capacidade.
+///
             Capacidade(int);
+///
+/// Armazena Capacidade.
+///
+/// @param valor int Capacidade.
+///
+/// @return void
+///
             void setValor(int valor);
+///
+/// Retorna Capacidade.
+///
+/// @return int Capacidade.
+///
             int getValor() const;
 
 };
@@ -34,14 +61,43 @@ inline int Capacidade::getValor() const{         // Metodo inline e const.
     return valor;
 }
 
+///
+/// Padr&atilde;o para representa&ccedil;&atilde;o da Hor&aacute;rio.
+///
+/// Regras de formato:
+///
+/// - Hor&aacute;rio &eacute; v&aacute;lido caso igual a "HH:MM"
+/// - Em que HH tem-se a indica&ccedil;&atilde;o de um Hor&aacute;rio: 00 a 23
+/// - Em que MM tem-se a indica&ccedil;&atilde;o de um Hor&aacute;rio: 00, 15, 30 ou 45.
+///
 class Horario {
     private:
             string valor;
             void validar(string valor);
     public:
+///
+/// Inicializa o objeto com o Hor&aacute;rio como 00:00.
+///
             Horario();
+///
+/// Inicializa o objeto caso o Hor&aacute;rio informado seja v&aacute;lido.
+///
+/// @param valor string Hor&aacute;rio.
+///
             Horario(string);
+///
+/// Armazena Hor&aacute;rio.
+///
+/// @param valor string Hor&aacute;rio.
+///
+/// @return void
+///
             void setValor(string valor);
+///
+/// Retorna Hor&aacute;rio.
+///
+/// @return string Hor&aacute;rio.
+///
             string getValor() const;
 
 };
@@ -50,30 +106,96 @@ inline string Horario::getValor() const{         // Metodo inline e const.
     return valor;
 }
 
+///
+/// Padr&atilde;o para representa&ccedil;&atilde;o da Senha.
+///
+/// Regras de formato:
+///
+/// - Senha &eacute; v&aacute;lido caso tenha formato XXXXXXXX.
+/// - Senha &eacute; composta por 8 caracteres.
+/// - Cada caractere "X" &eacute; letra (A-Z ou a-z), d&iacute;gito (0-9) ou caractere especial.
+/// - Caractere especiais s&atilde;o: "!", "@", "#", "$", "%", "&" ou "?".
+/// - N&atilde;o existe caracter repetido.
+/// - Existe pelo menos uma letra (mai&uacute;scula ou min&uacute;scula), um d&iacute;gito e um caractere especial
+///
 class Senha {
     private:
             string valor;
             void validar(string);
     public:
+///
+/// Inicializa o objeto com o Senha como vazio.
+///
             Senha();
+///
+/// Inicializa o objeto caso o Senha informado seja v&aacute;lido.
+///
+/// @param valor string Senha.
+///
             Senha(string);
+///
+/// Armazena Senha.
+///
+/// @param valor string Senha.
+///
+/// @return void
+///
             void setValor(string valor);
+///
+/// Retorna Senha.
+///
+/// @return string Senha.
+///
             string getValor() const;
 };
+
 inline string Senha::getValor() const{         // Metodo inline e const.
     return valor;
 }
 
+///
+/// Padr&atilde;o para representa&ccedil;&atilde;o do Telefone.
+///
+/// Regras de formato:
+///
+/// - Telefone &eacute; v&aacute;lido caso tenha formato (XX)-YYYYYYYYY.
+/// - 'XX' &eacute; um dos seguintes c&oacute;digos: 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 27, 28, 32, 33, 34, 35, 37, 38, 41, 42, 43, 44,
+//// 45, 46, 47, 48, 49, 51, 53, 54, 55, 61, 62, 63, 64, 65, 66, 67, 68, 69, 71, 73, 74, 75, 77, 79, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94, 95, 96, 97, 98, 99.
+/// - Cada caractere "Y" &eacute; um d&iacute;gito (0-9).
+/// - Caractere especiais s&atilde;o: "!", "@", "#", "$", "%", "&" ou "?".
+/// - N&atilde;o existe telefone 000000000.
+///
 class Telefone {
     private:
             string valor;
             void validar(string);
     public:
+///
+/// Inicializa o objeto com o Telefone como vazio.
+///
             Telefone();
+///
+/// Inicializa o objeto caso o Telefone informado seja v&aacute;lido.
+///
+/// @param valor string Telefone.
+///
             Telefone(string);
+///
+/// Armazena Telefone.
+///
+/// @param valor string Telefone.
+///
+/// @return void
+///
             void setValor(string valor);
+///
+/// Retorna Telefone.
+///
+/// @return string Telefone.
+///
             string getValor() const;
 };
+
 inline string Telefone::getValor() const{         // Metodo inline e const.
     return valor;
 }

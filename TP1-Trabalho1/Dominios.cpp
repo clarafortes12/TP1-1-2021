@@ -63,7 +63,7 @@ void Horario::setValor(string valor) {
 //------------------------------------
 
 Senha::Senha(){
-    this->valor = "Abc1Def@";
+    this->valor = "";
 }
 
 Senha::Senha(string valor){
@@ -114,7 +114,7 @@ void Senha::setValor(string valor) {
 }
 //-----------------------------------
 Telefone::Telefone(){
-    this->valor = "(11)-123456789";
+    this->valor = "";
 }
 
 Telefone::Telefone(string valor){

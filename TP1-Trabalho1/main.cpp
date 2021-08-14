@@ -16,65 +16,66 @@ int main()
     // ------------------------------------------------------------------------
     // Criar objetos e interagir com objetos.
 
-    TUCapacidade testeA;
+    TUCapacidade testeCapacidade;
 
     // Invocar m�todo e apresentar mensagem acerca do resultado do teste.
 
-    switch(testeA.run()){
+    switch(testeCapacidade.run()){
         case TUCapacidade::SUCESSO: cout << "SUCESSO - Capacidade" << endl;
                                 break;
         case TUCapacidade::FALHA  : cout << "FALHA   - Capacidade" << endl;
                                 break;
     }
 
-    TUHorario testeB;
+    TUHorario testeHorario;
 
     // Invocar m�todo e apresentar mensagem acerca do resultado do teste.
 
-    switch(testeB.run()){
+    switch(testeHorario.run()){
         case TUHorario::SUCESSO: cout << "SUCESSO - Horario" << endl;
                                 break;
         case TUHorario::FALHA  : cout << "FALHA   - Horario" << endl;
                                 break;
     }
 
-    TUSenha testeC;
+    TUSenha testeSenha;
 
     // Invocar m�todo e apresentar mensagem acerca do resultado do teste.
 
-    switch(testeC.run()){
+    switch(testeSenha.run()){
         case TUSenha::SUCESSO: cout << "SUCESSO - Senha" << endl;
                                 break;
         case TUSenha::FALHA  : cout << "FALHA   - Senha" << endl;
                                 break;
     }
-    TUTelefone testeD;
+
+    TUTelefone testeTelefone;
 
     // Invocar m�todo e apresentar mensagem acerca do resultado do teste.
 
-    switch(testeD.run()){
+    switch(testeTelefone.run()){
         case TUTelefone::SUCESSO: cout << "SUCESSO - Telefone" << endl;
                                 break;
         case TUTelefone::FALHA  : cout << "FALHA   - Telefone" << endl;
                                 break;
     }
 
-    TUPeca testeEA;
+    TUPeca testePeca;
 
     // Invocar método e apresentar mensagem acerca do resultado do teste.
 
-    switch(testeEA.run()){
+    switch(testePeca.run()){
         case TUPeca::SUCESSO: cout << "SUCESSO - PECA" << endl;
                                 break;
         case TUPeca::FALHA  : cout << "FALHA   - PECA" << endl;
                                 break;
     }
 
-    TUSessao testeEB;
+    TUSessao testeSessao;
 
     // Invocar método e apresentar mensagem acerca do resultado do teste.
 
-    switch(testeEB.run()){
+    switch(testeSessao.run()){
         case TUSessao::SUCESSO: cout << "SUCESSO - Sessao" << endl;
                                 break;
         case TUSessao::FALHA  : cout << "FALHA   - Sessao" << endl;
