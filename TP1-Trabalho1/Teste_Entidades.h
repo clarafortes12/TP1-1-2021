@@ -71,5 +71,34 @@ public:
 // -------------------------------------------------------
 // Testes da Clara - 190017503
 
+//------------ Participante
+class TUParticipante {
+    private:
+        const string VALOR_VALIDO_MATRICULA = "12345";
+        const string VALOR_INVALIDO_MATRICULA = "12245";
+        const string VALOR_VALIDO_NOME   = "Maria";
+        const string VALOR_INVALIDO_NOME   = "Liz";
+        const string VALOR_VALIDO_SOBRENOME   = "Fortes";
+        const string VALOR_INVALIDO_SOBRENOME   = ".Fortes";
+        const string VALOR_VALIDO_EMAIL   = "pessoa@hotmail.com";
+        const string VALOR_INVALIDO_EMAIL   = "pessoahotmail.com";
+        const string VALOR_VALIDO_TELEFONE   = "(61)-982277718";
+        const string VALOR_INVALIDO_TELEFONE   = "(09)-000000000";
+        const string VALOR_VALIDO_SENHA   = "Abc1Df$2";
+        const string VALOR_INVALIDO_SENHA   = "AAAA1BBB";
+        const string VALOR_VALIDO_CARGO  = "ator";
+        const string VALOR_INVALIDO_CARGO   = "atoor";
+
+        Participante *participante;
+        int estado;
+        void setUp();
+        void tearDown();
+        void testarCenarioSucesso();
+        void testarCenarioFalha();
+    public:
+        const static int SUCESSO =  0;
+        const static int FALHA   = -1;
+        int run();
+};
 
 #endif // TESTE_ENTIDADES_H_INCLUDED

@@ -99,3 +99,31 @@
 	"Teste_Entidades.h"
 	"Teste_Dominios.h"
 
+1628890474 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho1\dominios.cpp
+	"Dominios.h"
+	<iostream>
+	<string>
+
+1628890474 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho1\dominios.h
+	<stdexcept>
+
+1628890474 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho1\entidades.cpp
+	"Entidades.h"
+
+1628891424 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho1\entidades.h
+	"Dominios.h"
+	<string>
+
+1628890474 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho1\teste_entidades.cpp
+	"Teste_Entidades.h"
+	"Teste_Dominios.h"
+
+1628890474 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho1\teste_entidades.h
+	<string>
+	"Dominios.h"
+	"Entidades.h"
+
+1628892075 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho1\teste_dominios.h
+	<string>
+	"Dominios.h"
+

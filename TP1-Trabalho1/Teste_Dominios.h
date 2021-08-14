@@ -157,5 +157,76 @@ public:
 // -------------------------------------------------------
 // Testes da Clara - 190017503
 
+//Classificação
+class TUClassificacao {
+    private:
+        const string VALOR_VALIDO   = "livre";
+        const string VALOR_INVALIDO = "20";
+        Classificacao *classificacao;
+        int estado;
+        void setUp();
+        void tearDown();
+        void testarCenarioSucesso();
+        void testarCenarioFalha();
+
+    public:
+        const static int SUCESSO =  0;
+        const static int FALHA   = -1;
+        int run();
+};
+
+//Tipo
+class TUTipo {
+    private:
+        const string VALOR_VALIDO   = "comedia";
+        const string VALOR_INVALIDO = "fantasia";
+        Tipo *tipo;
+        int estado;
+        void setUp();
+        void tearDown();
+        void testarCenarioSucesso();
+        void testarCenarioFalha();
+
+    public:
+        const static int SUCESSO =  0;
+        const static int FALHA   = -1;
+        int run();
+};
+
+//Código
+class TUCodigo {
+    private:
+        const string VALOR_VALIDO   = "LM9999";
+        const string VALOR_INVALIDO = "MC200E";
+        Codigo *codigo;
+        int estado;
+        void setUp();
+        void tearDown();
+        void testarCenarioSucesso();
+        void testarCenarioFalha();
+
+    public:
+        const static int SUCESSO =  0;
+        const static int FALHA   = -1;
+        int run();
+};
+
+//Email
+class TUEmail {
+    private:
+        const string VALOR_VALIDO   = "pessoa@hotmail.com";
+        const string VALOR_INVALIDO = "pessoahotmail.com";
+        Email *email;
+        int estado;
+        void setUp();
+        void tearDown();
+        void testarCenarioSucesso();
+        void testarCenarioFalha();
+
+    public:
+        const static int SUCESSO =  0;
+        const static int FALHA   = -1;
+        int run();
+};
 
 #endif // TESTE_DOMINIOS_H_INCLUDED

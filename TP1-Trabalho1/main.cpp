@@ -419,266 +419,59 @@ Telefone teldapessoa("(61)-983669929");                                    // Cr
 
 //--------------------------------------------------------------------------------------
     //tirei testes de data
-//------------ Classifica��o
-    Classificacao classificar1;
-    cout << "Classifica��o1 = " << classificar1.getValor() << endl;
 
-    Classificacao classificar2("livre");
-    cout << "Classificacao = " << classificar2.getValor() << endl;
+// Testes de Entidade da Clara - 190017503
 
+//------------ Participante
+    TUParticipante testeParticipante;
 
-    try{
-        classificar2.setValor("10");
+    switch(testeParticipante.run()){
+        case TUParticipante::SUCESSO: cout << "SUCESSO - Participante" << endl;
+                                break;
+        case TUParticipante::FALHA  : cout << "FALHA   - Participante" << endl;
+                                break;
     }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Classificacao = " << classificar2.getValor() << endl;
 
-    try{
-        classificar2.setValor("12");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Classificacao = " << classificar2.getValor() << endl;
+// Testes de Domínio da Clara - 190017503
 
-    try{
-        classificar2.setValor("14");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Classificacao = " << classificar2.getValor() << endl;
+//------------ Classificacao
+    TUClassificacao testeClassificacao;
 
-    try{
-        classificar2.setValor("16");
+    switch(testeClassificacao.run()){
+        case TUClassificacao::SUCESSO: cout << "SUCESSO - Classificacao" << endl;
+                                break;
+        case TUClassificacao::FALHA  : cout << "FALHA   - Classificacao" << endl;
+                                break;
     }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Classificacao = " << classificar2.getValor() << endl;
-
-    try{
-        classificar2.setValor("18");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Classificacao = " << classificar2.getValor() << endl;
-
-    try{
-        classificar2.setValor("20");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Classificacao = " << classificar2.getValor() << endl;
-
 //------------ Tipo
-    Tipo genero1;
-    cout << "Genero1 = " << genero1.getValor() << endl;
+    TUTipo testeTipo;
 
-    Tipo genero2("auto");
-    cout << "Genero = " << genero2.getValor() << endl;
-
-    try{
-        genero2.setValor("comedia");
+    switch(testeTipo.run()){
+        case TUTipo::SUCESSO: cout << "SUCESSO - Tipo" << endl;
+                                break;
+        case TUTipo::FALHA  : cout << "FALHA   - Tipo" << endl;
+                                break;
     }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Genero = " << genero2.getValor() << endl;
-
-    try{
-        genero2.setValor("drama");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Genero = " << genero2.getValor() << endl;
-
-    try{
-        genero2.setValor("farsa");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Genero = " << genero2.getValor() << endl;
-
-    try{
-        genero2.setValor("melodrama");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Genero = " << genero2.getValor() << endl;
-
-    try{
-        genero2.setValor("monologo");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Genero = " << genero2.getValor() << endl;
-
-    try{
-        genero2.setValor("musical");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Genero = " << genero2.getValor() << endl;
-
-    try{
-        genero2.setValor("opera");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Genero = " << genero2.getValor() << endl;
-
-    try{
-        genero2.setValor("revista");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Genero = " << genero2.getValor() << endl;
-
-    try{
-        genero2.setValor("fantasia");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Genero = " << genero2.getValor() << endl;
 
 //------------ C�digo
-    Codigo codigo1;
-    cout << "Codigo1 = " << codigo1.getValor() << endl;
+    TUCodigo testeCodigo;
 
-    Codigo codigo2("LM9999");
-    cout << "Codigo = " << codigo2.getValor() << endl;
-
-    try{
-        codigo2.setValor("MC2001");
+    switch(testeCodigo.run()){
+        case TUCodigo::SUCESSO: cout << "SUCESSO - Codigo" << endl;
+                                break;
+        case TUCodigo::FALHA  : cout << "FALHA   - Codigo" << endl;
+                                break;
     }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Codigo = " << codigo2.getValor() << endl;
-
-    try{
-        codigo2.setValor("mC2001");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Codigo = " << codigo2.getValor() << endl;
-
-    try{
-        codigo2.setValor("M22001");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Codigo = " << codigo2.getValor() << endl;
-
-    try{
-        codigo2.setValor("MC200E");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Codigo = " << codigo2.getValor() << endl;
-
-    try{
-        codigo2.setValor("MC200e");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Codigo = " << codigo2.getValor() << endl;
 
 //------------ Email
-    Email email1;
-    cout << "Email1 = " << email1.getValor() << endl;
+    TUEmail testeEmail;
 
-    Email email2("pessoa@hotmail.com");
-    cout << "Email = " << email2.getValor() << endl;
-
-    try{
-        email2.setValor("pessoahotmail.com");
+    switch(testeEmail.run()){
+        case TUEmail::SUCESSO: cout << "SUCESSO - Email" << endl;
+                                break;
+        case TUEmail::FALHA  : cout << "FALHA   - Email" << endl;
+                                break;
     }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Email = " << email2.getValor() << endl;
-
-    try{
-        email2.setValor("pessoa@@hotmail.com");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Email = " << email2.getValor() << endl;
-
-    try{
-        email2.setValor("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@hotmail.com");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Email = " << email2.getValor() << endl;
-
-    try{
-        email2.setValor("pessoa@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Email = " << email2.getValor() << endl;
-
-    try{
-        email2.setValor("pessonhinha@hotmail.com");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Email = " << email2.getValor() << endl;
-
-    try{
-        email2.setValor(".pessonhinha@hotmail.com");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Email = " << email2.getValor() << endl;
-
-    try{
-        email2.setValor("pessonhinha.@hotmail.com");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Email = " << email2.getValor() << endl;
-
-    try{
-        email2.setValor("pessonhinha@hotmail.com.");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Email = " << email2.getValor() << endl;
-
-    try{
-        email2.setValor("pessonhinha@hotmail..com");
-    }
-    catch(invalid_argument &exp){
-        cout << "Excecao : " << exp.what() << endl;
-    }
-    cout << "Email = " << email2.getValor() << endl;
 
     return 0;
 }

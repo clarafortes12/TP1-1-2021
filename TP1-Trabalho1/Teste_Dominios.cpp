@@ -332,3 +332,163 @@ int TUData::run(){
 
 // -------------------------------------------------------
 // Testes da Clara - 190017503
+
+//Classificação
+void TUClassificacao::setUp(){
+    classificacao = new Classificacao();
+    estado = SUCESSO;
+}
+
+void TUClassificacao::tearDown(){
+    delete classificacao;
+}
+
+void TUClassificacao::testarCenarioSucesso(){
+    try{
+        classificacao->setValor(VALOR_VALIDO);
+        if (classificacao->getValor() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUClassificacao::testarCenarioFalha(){
+    try{
+        classificacao->setValor(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (classificacao->getValor() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUClassificacao::run(){
+    setUp();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    tearDown();
+    return estado;
+}
+
+//Tipo
+void TUTipo::setUp(){
+    tipo = new Tipo();
+    estado = SUCESSO;
+}
+
+void TUTipo::tearDown(){
+    delete tipo;
+}
+
+void TUTipo::testarCenarioSucesso(){
+    try{
+        tipo->setValor(VALOR_VALIDO);
+        if (tipo->getValor() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUTipo::testarCenarioFalha(){
+    try{
+        tipo->setValor(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (tipo->getValor() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUTipo::run(){
+    setUp();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    tearDown();
+    return estado;
+}
+
+//Código
+void TUCodigo::setUp(){
+    codigo = new Codigo();
+    estado = SUCESSO;
+}
+
+void TUCodigo::tearDown(){
+    delete codigo;
+}
+
+void TUCodigo::testarCenarioSucesso(){
+    try{
+        codigo->setValor(VALOR_VALIDO);
+        if (codigo->getValor() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUCodigo::testarCenarioFalha(){
+    try{
+        codigo->setValor(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (codigo->getValor() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUCodigo::run(){
+    setUp();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    tearDown();
+    return estado;
+}
+
+//Email
+void TUEmail::setUp(){
+    email = new Email();
+    estado = SUCESSO;
+}
+
+void TUEmail::tearDown(){
+    delete email;
+}
+
+void TUEmail::testarCenarioSucesso(){
+    try{
+        email->setValor(VALOR_VALIDO);
+        if (email->getValor() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUEmail::testarCenarioFalha(){
+    try{
+        email->setValor(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (email->getValor() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUEmail::run(){
+    setUp();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    tearDown();
+    return estado;
+}

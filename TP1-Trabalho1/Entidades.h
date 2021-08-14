@@ -155,7 +155,165 @@ inline Capacidade Sala::getCapacidade() const{
 
 // -------------------------------------------------------
 // Entidades da Clara - 190017503
+///
+/// Padr&atilde;o para representa&ccedil;&atilde;o do Participante.
+///
+class Participante {
+    private:
+        Matricula matricula;
+        Nome nome;
+        Nome sobrenome;
+        Email email;
+        Telefone telefone;
+        Senha senha;
+        Cargo cargo;
+    public:
+        void setMatricula(const Matricula&);
+        Matricula getMatricula() const;
+        void setNome(const Nome&);
+        Nome getNome() const;
+        void setSobrenome(const Nome&);
+        Nome getSobrenome() const;
+        void setEmail(const Email&);
+        Email getEmail() const;
+        void setTelefone(const Telefone&);
+        Telefone getTelefone() const;
+        void setSenha(const Senha&);
+        Senha getSenha() const;
+        void setCargo(const Cargo&);
+        Cargo getCargo() const;
+};
 
+/// Armazena matrícula.
+///
+/// @param valor Matricula matrícula.
+///
+/// @return void
+///
+inline void Participante::setMatricula(const Matricula& matricula){
+    this->matricula = matricula;
+}
 
+///
+/// Retorna matr&iacute;cula.
+///
+/// @return Matr&iacute;cula matricula.
+///
+inline Matricula Participante::getMatricula() const{
+    return matricula;
+}
 
+/// Armazena nome.
+///
+/// @param valor Nome nome.
+///
+/// @return void
+///
+inline void Participante::setNome(const Nome& nome){
+    this->nome = nome;
+}
+
+///
+/// Retorna nome.
+///
+/// @return Nome nome.
+///
+inline Nome Participante::getNome() const{
+    return nome;
+}
+
+/// Armazena sobrenome.
+///
+/// @param valor Nome sobrenome.
+///
+/// @return void
+///
+inline void Participante::setSobrenome(const Nome& sobrenome){
+    this->sobrenome = sobrenome;
+}
+
+///
+/// Retorna sobrenome.
+///
+/// @return Nome sobrenome.
+///
+inline Nome Participante::getSobrenome() const{
+    return sobrenome;
+}
+
+/// Armazena email.
+///
+/// @param valor Email email.
+///
+/// @return void
+///
+inline void Participante::setEmail(const Email& email){
+    this->email = email;
+}
+
+///
+/// Retorna email.
+///
+/// @return Email email.
+///
+inline Email Participante::getEmail() const{
+    return email;
+}
+
+/// Armazena telefone.
+///
+/// @param valor Telefone telefone.
+///
+/// @return void
+///
+inline void Participante::setTelefone(const Telefone& telefone){
+    this->telefone = telefone;
+}
+
+///
+/// Retorna telefone.
+///
+/// @return Telefone telefone.
+///
+inline Telefone Participante::getTelefone() const{
+    return telefone;
+}
+
+/// Armazena senha.
+///
+/// @param valor Senha senha.
+///
+/// @return void
+///
+inline void Participante::setSenha(const Senha& senha){
+    this->senha = senha;
+}
+
+///
+/// Retorna senha.
+///
+/// @return Senha senha.
+///
+inline Senha Participante::getSenha() const{
+    return senha;
+}
+
+/// Armazena cargo.
+///
+/// @param valor Cargo cargo.
+///
+/// @return void
+///
+inline void Participante::setCargo(const Cargo& cargo){
+    this->cargo = cargo;
+}
+
+///
+/// Retorna cargo.
+///
+/// @return Cargo cargo.
+///
+inline Cargo Participante::getCargo() const{
+    return cargo;
+}
 #endif // ENTIDADES_H_INCLUDED
