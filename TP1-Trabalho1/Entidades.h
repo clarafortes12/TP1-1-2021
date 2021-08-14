@@ -272,9 +272,9 @@ class Participante {
         Cargo getCargo() const;
 };
 
-/// Armazena matrícula.
+/// Armazena matricula.
 ///
-/// @param valor Matricula matrícula.
+/// @param valor Matricula matricula.
 ///
 /// @return void
 ///
