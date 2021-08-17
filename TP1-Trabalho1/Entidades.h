@@ -4,33 +4,11 @@
 #include "Dominios.h"
 #include <string>
 
-//-------------Pe�a
-// Estrutura de código sugerida para declaração de classe entidade.
-// Substituir Entidade por nome da classe.
-// Substituir Dominio.
-// Substituir nomeAtributo.
-/*
-class Entidade {
-    private:
-            Dominio nomeAtributo;                   // Declarar cada atributo da classe.
-    public:
-            void setnomeAtributo(const Dominio&);   // Declarar método set para cada atributo.
-            Dominio getnomeAtributo() const;        // Declarar método get para cada atributo.
-};
-
-inline void Entidade::setnomeAtributo(const Dominio &nomeAtributo){
-    this->nomeAtributo = nomeAtributo;
-}
-
-inline Dominio Entidade::getnomeAtributo() const{
-    return nomeAtributo;
-}
-*/
 // -------------------------------------------------------
 // Entidades do Leandro - 180145169
 // Peca
 ///
-/// Padr&atilde;o para representa&ccedil;&atilde;o da Pe&ctilde;a.
+/// Padr&atilde;o para representa&ccedil;&atilde;o da Pe&ccedil;a.
 ///
 class Peca {
     private:

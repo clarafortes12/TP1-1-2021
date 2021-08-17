@@ -7,14 +7,6 @@
 
 using namespace std;
 
-///
-/// Padr&atilde;o para representa&ccedil;&atilde;o de cliente.
-///
-/// Regras de formato:
-///
-/// - C&oacute;digo &eacute; v&aacute;lido caso <u>menor</u> ou igual a 5.
-///
-
 // -------------------------------------------------------------------------
 // Classes do Leandro - 180145169
 
@@ -208,7 +200,7 @@ inline string Telefone::getValor() const{         // Metodo inline e const.
 ///
 /// Regras de formato:
 ///
-/// - Cargo &eacute; v&aacute;lido, caso seja igual a um dos seguintes valores: "ator", "cen�grafo", "figurinista", "maquiador", "sonoplasta" ou "iluminador".
+/// - Cargo &eacute; v&aacute;lido, caso seja igual a um dos seguintes valores: "ator", "cen&oacute;grafo", "figurinista", "maquiador", "sonoplasta" ou "iluminador".
 ///
 class Cargo {
     private:
