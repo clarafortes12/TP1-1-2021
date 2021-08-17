@@ -47,7 +47,7 @@ class Capacidade {
 ///
 /// @return void
 ///
-            void setValor(int valor);
+            void setValor(int);
 ///
 /// Retorna Capacidade.
 ///
@@ -92,7 +92,7 @@ class Horario {
 ///
 /// @return void
 ///
-            void setValor(string valor);
+            void setValor(string);
 ///
 /// Retorna Hor&aacute;rio.
 ///
@@ -140,7 +140,7 @@ class Senha {
 ///
 /// @return void
 ///
-            void setValor(string valor);
+            void setValor(string);
 ///
 /// Retorna Senha.
 ///
@@ -187,7 +187,7 @@ class Telefone {
 ///
 /// @return void
 ///
-            void setValor(string valor);
+            void setValor(string);
 ///
 /// Retorna Telefone.
 ///

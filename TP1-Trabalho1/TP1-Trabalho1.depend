@@ -22,7 +22,7 @@
 	<iostream>
 	<string>
 
-1628956453 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\dominios.h
+1629213302 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\dominios.h
 	<stdexcept>
 
 1628181013 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\main.cpp
@@ -50,7 +50,7 @@
 1628171933 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\entidades.cpp
 	"Entidades.h"
 
-1628956891 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\entidades.h
+1629211319 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho1\entidades.h
 	"Dominios.h"
 	<string>
 
