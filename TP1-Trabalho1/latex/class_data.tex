@@ -1,0 +1,90 @@
+\hypertarget{class_data}{}\doxysection{Data Class Reference}
+\label{class_data}\index{Data@{Data}}
+
+
+{\ttfamily \#include $<$Dominios.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_data_af11f741cb7f587e2e495452a8905a22a}{Data}} ()
+\item 
+\mbox{\hyperlink{class_data_a7e546a6e6e55f93cb621011dff413f00}{Data}} (string)
+\item 
+void \mbox{\hyperlink{class_data_aee3a6598533a28a3f446c5f8ecb63c0f}{set\+Valor}} (string)
+\item 
+string \mbox{\hyperlink{class_data_a2d040be2799c23a0a3f745613a70bb43}{get\+Valor}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Padr\~{a}o para representa\c{c}\~{a}o da \mbox{\hyperlink{class_data}{Data}}.
+
+Regras de formato\+:
+
+
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_data}{Data}} \'{e} v\'{a}lido caso\+:
+\item Tenha formato D\+D/\+M\+M/\+A\+A\+AA;
+\item 01 a 31 em DD;
+\item 01 a 12 em MM;
+\item 2000 a 9999 em A\+A\+AA;
+\item A data considera a ocorrência de anos bissextos. 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_data_af11f741cb7f587e2e495452a8905a22a}\label{class_data_af11f741cb7f587e2e495452a8905a22a}} 
+\index{Data@{Data}!Data@{Data}}
+\index{Data@{Data}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Data\+::\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Inicializa o objeto com o valor \char`\"{}01/01/2000\char`\"{}. \mbox{\Hypertarget{class_data_a7e546a6e6e55f93cb621011dff413f00}\label{class_data_a7e546a6e6e55f93cb621011dff413f00}} 
+\index{Data@{Data}!Data@{Data}}
+\index{Data@{Data}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Data\+::\+Data (\begin{DoxyParamCaption}\item[{string}]{valor }\end{DoxyParamCaption})}
+
+Inicializa o objeto, caso a \mbox{\hyperlink{class_data}{Data}} informado seja v\'{a}lida.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & string \mbox{\hyperlink{class_data}{Data}}. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_data_a2d040be2799c23a0a3f745613a70bb43}\label{class_data_a2d040be2799c23a0a3f745613a70bb43}} 
+\index{Data@{Data}!getValor@{getValor}}
+\index{getValor@{getValor}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{getValor()}{getValor()}}
+{\footnotesize\ttfamily string Data\+::get\+Valor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Retorna o valor armazenado no objeto.
+
+\begin{DoxyReturn}{Returns}
+string \mbox{\hyperlink{class_data}{Data}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_data_aee3a6598533a28a3f446c5f8ecb63c0f}\label{class_data_aee3a6598533a28a3f446c5f8ecb63c0f}} 
+\index{Data@{Data}!setValor@{setValor}}
+\index{setValor@{setValor}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{setValor()}{setValor()}}
+{\footnotesize\ttfamily void Data\+::set\+Valor (\begin{DoxyParamCaption}\item[{string}]{valor }\end{DoxyParamCaption})}
+
+Armazena um novo valor no objeto.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & string \mbox{\hyperlink{class_data}{Data}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Dominios.\+h\item 
+Dominios.\+cpp\end{DoxyCompactItemize}

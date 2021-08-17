@@ -1,0 +1,90 @@
+\hypertarget{class_senha}{}\doxysection{Senha Class Reference}
+\label{class_senha}\index{Senha@{Senha}}
+
+
+{\ttfamily \#include $<$Dominios.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_senha_ade5ef5c7f37a1dd7a3bea575fb745a46}{Senha}} ()
+\item 
+\mbox{\hyperlink{class_senha_a9f4ad62d7b5add66ec2647eb3b2aef6f}{Senha}} (string)
+\item 
+void \mbox{\hyperlink{class_senha_acd8421d42899bd42f33643549384cafe}{set\+Valor}} (string valor)
+\item 
+string \mbox{\hyperlink{class_senha_ae0b4d9dfac80da4dc9c4965a9648e6b5}{get\+Valor}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Padr\~{a}o para representa\c{c}\~{a}o da \mbox{\hyperlink{class_senha}{Senha}}.
+
+Regras de formato\+:
+
+
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_senha}{Senha}} \'{e} v\'{a}lido caso tenha formato X\+X\+X\+X\+X\+X\+XX.
+\item \mbox{\hyperlink{class_senha}{Senha}} \'{e} composta por 8 caracteres.
+\item Cada caractere \char`\"{}\+X\char`\"{} \'{e} letra (A-\/Z ou a-\/z), d\'{\i}gito (0-\/9) ou caractere especial.
+\item Caractere especiais s\~{a}o\+: \char`\"{}!\char`\"{}, \char`\"{}@\char`\"{}, \char`\"{}\#\char`\"{}, \char`\"{}\$\char`\"{}, \char`\"{}\%\char`\"{}, \char`\"{}\&\char`\"{} ou \char`\"{}?\char`\"{}.
+\item N\~{a}o existe caracter repetido.
+\item Existe pelo menos uma letra (mai\'{u}scula ou min\'{u}scula), um d\'{\i}gito e um caractere especial 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_senha_ade5ef5c7f37a1dd7a3bea575fb745a46}\label{class_senha_ade5ef5c7f37a1dd7a3bea575fb745a46}} 
+\index{Senha@{Senha}!Senha@{Senha}}
+\index{Senha@{Senha}!Senha@{Senha}}
+\doxysubsubsection{\texorpdfstring{Senha()}{Senha()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Senha\+::\+Senha (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Inicializa o objeto com o \mbox{\hyperlink{class_senha}{Senha}} como vazio. \mbox{\Hypertarget{class_senha_a9f4ad62d7b5add66ec2647eb3b2aef6f}\label{class_senha_a9f4ad62d7b5add66ec2647eb3b2aef6f}} 
+\index{Senha@{Senha}!Senha@{Senha}}
+\index{Senha@{Senha}!Senha@{Senha}}
+\doxysubsubsection{\texorpdfstring{Senha()}{Senha()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Senha\+::\+Senha (\begin{DoxyParamCaption}\item[{string}]{valor }\end{DoxyParamCaption})}
+
+Inicializa o objeto caso o \mbox{\hyperlink{class_senha}{Senha}} informado seja v\'{a}lido.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & string \mbox{\hyperlink{class_senha}{Senha}}. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_senha_ae0b4d9dfac80da4dc9c4965a9648e6b5}\label{class_senha_ae0b4d9dfac80da4dc9c4965a9648e6b5}} 
+\index{Senha@{Senha}!getValor@{getValor}}
+\index{getValor@{getValor}!Senha@{Senha}}
+\doxysubsubsection{\texorpdfstring{getValor()}{getValor()}}
+{\footnotesize\ttfamily string Senha\+::get\+Valor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Retorna \mbox{\hyperlink{class_senha}{Senha}}.
+
+\begin{DoxyReturn}{Returns}
+string \mbox{\hyperlink{class_senha}{Senha}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_senha_acd8421d42899bd42f33643549384cafe}\label{class_senha_acd8421d42899bd42f33643549384cafe}} 
+\index{Senha@{Senha}!setValor@{setValor}}
+\index{setValor@{setValor}!Senha@{Senha}}
+\doxysubsubsection{\texorpdfstring{setValor()}{setValor()}}
+{\footnotesize\ttfamily void Senha\+::set\+Valor (\begin{DoxyParamCaption}\item[{string}]{valor }\end{DoxyParamCaption})}
+
+Armazena \mbox{\hyperlink{class_senha}{Senha}}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & string \mbox{\hyperlink{class_senha}{Senha}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Dominios.\+h\item 
+Dominios.\+cpp\end{DoxyCompactItemize}

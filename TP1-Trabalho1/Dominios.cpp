@@ -193,7 +193,7 @@ void Cargo::setValor(string valor) {
 //------------------------------------
 
 // funcao auxiliar
-bool eh_digito(string teste){
+bool Matricula::eh_digito(string teste){
     bool resposta = false;
     int i = 0;
 
@@ -210,7 +210,7 @@ bool eh_digito(string teste){
 }
 
 // funcao auxiliar
-bool ha_repeticao(string teste){
+bool Matricula::ha_repeticao(string teste){
     bool resposta = false;
     int i, j;
 
@@ -253,7 +253,8 @@ void Matricula::setValor(string valor) {
 
 //--------------------
 
-int caracteres_nome(string nome){
+// funcao auxiliar
+int Nome::caracteres_nome(string nome){
     int resposta = 0;
     int i = 0;
 
@@ -292,13 +293,13 @@ int caracteres_nome(string nome){
     return resposta;
 }
 
+Nome::Nome(){
+    this->valor = "Sem Nome";
+}
+
 Nome::Nome(string valor){
     validar(valor);
     this->valor = valor;
-}
-
-Nome::Nome(){
-    this->valor = "Sem Nome";
 }
 
 // Método para validação com lançamento de exceção.

@@ -1,0 +1,90 @@
+\hypertarget{class_email}{}\doxysection{Email Class Reference}
+\label{class_email}\index{Email@{Email}}
+
+
+{\ttfamily \#include $<$Dominios.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_email_a2cfcfea1e55511208e7858c33f48ad9d}{Email}} ()
+\item 
+\mbox{\hyperlink{class_email_abfa7891fe9bc84c6f19e91a7fceb2fed}{Email}} (string)
+\item 
+void \mbox{\hyperlink{class_email_a6816d28f5db9ae31cf9520011c346f3f}{set\+Valor}} (string)
+\item 
+string \mbox{\hyperlink{class_email_a573b7a1f21085bbb13cf6ec4dd802ecc}{get\+Valor}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Padr\~{a}o para representa\c{c}\~{a}o do email.
+
+Regras de formato\+:
+
+
+\begin{DoxyItemize}
+\item email \'{e} v\'{a}lido caso tenha formato parte-\/local@dom\'{\i}nio.
+\item parte-\/local \'{e} composta por at\'{e} 64 caracteres.
+\item dom\'{\i}nio \'{e} composto por at\'{e} 255 caracteres.
+\item n\~{a}o tenha ponto nem no \'{\i}nicio e nem no fim
+\item n\~{a}o tenha pontos juntos
+\item n\~{a}o tenha mais de um @ 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_email_a2cfcfea1e55511208e7858c33f48ad9d}\label{class_email_a2cfcfea1e55511208e7858c33f48ad9d}} 
+\index{Email@{Email}!Email@{Email}}
+\index{Email@{Email}!Email@{Email}}
+\doxysubsubsection{\texorpdfstring{Email()}{Email()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Email\+::\+Email (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Inicializa o objeto com o email como vazio. \mbox{\Hypertarget{class_email_abfa7891fe9bc84c6f19e91a7fceb2fed}\label{class_email_abfa7891fe9bc84c6f19e91a7fceb2fed}} 
+\index{Email@{Email}!Email@{Email}}
+\index{Email@{Email}!Email@{Email}}
+\doxysubsubsection{\texorpdfstring{Email()}{Email()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Email\+::\+Email (\begin{DoxyParamCaption}\item[{string}]{email }\end{DoxyParamCaption})}
+
+Inicializa o objeto caso o email informado seja v\'{a}lido.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & string email. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_email_a573b7a1f21085bbb13cf6ec4dd802ecc}\label{class_email_a573b7a1f21085bbb13cf6ec4dd802ecc}} 
+\index{Email@{Email}!getValor@{getValor}}
+\index{getValor@{getValor}!Email@{Email}}
+\doxysubsubsection{\texorpdfstring{getValor()}{getValor()}}
+{\footnotesize\ttfamily string Email\+::get\+Valor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Retorna email.
+
+\begin{DoxyReturn}{Returns}
+string email. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_email_a6816d28f5db9ae31cf9520011c346f3f}\label{class_email_a6816d28f5db9ae31cf9520011c346f3f}} 
+\index{Email@{Email}!setValor@{setValor}}
+\index{setValor@{setValor}!Email@{Email}}
+\doxysubsubsection{\texorpdfstring{setValor()}{setValor()}}
+{\footnotesize\ttfamily void Email\+::set\+Valor (\begin{DoxyParamCaption}\item[{string}]{email }\end{DoxyParamCaption})}
+
+Armazena email.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & string email.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Dominios.\+h\item 
+Dominios.\+cpp\end{DoxyCompactItemize}

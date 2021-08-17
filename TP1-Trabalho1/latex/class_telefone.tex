@@ -1,0 +1,89 @@
+\hypertarget{class_telefone}{}\doxysection{Telefone Class Reference}
+\label{class_telefone}\index{Telefone@{Telefone}}
+
+
+{\ttfamily \#include $<$Dominios.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_telefone_a9611a4bc0ee29b63e8246c1d80cb30f3}{Telefone}} ()
+\item 
+\mbox{\hyperlink{class_telefone_a0e07636a72110b0f74bd92c07a25dcce}{Telefone}} (string)
+\item 
+void \mbox{\hyperlink{class_telefone_a24b2c322137693aa9ca1569f5a6f94a7}{set\+Valor}} (string valor)
+\item 
+string \mbox{\hyperlink{class_telefone_a8d9d6134cfb5ec929ab9b42d3be39f85}{get\+Valor}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Padr\~{a}o para representa\c{c}\~{a}o do \mbox{\hyperlink{class_telefone}{Telefone}}.
+
+Regras de formato\+:
+
+
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_telefone}{Telefone}} \'{e} v\'{a}lido caso tenha formato (XX)-\/Y\+Y\+Y\+Y\+Y\+Y\+Y\+YY.
+\item \textquotesingle{}XX\textquotesingle{} \'{e} um dos seguintes c\'{o}digos\+: 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 27, 28, 32, 33, 34, 35, 37, 38, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 53, 54, 55, 61, 62, 63, 64, 65, 66, 67, 68, 69, 71, 73, 74, 75, 77, 79, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94, 95, 96, 97, 98, 99.
+\item Cada caractere \char`\"{}\+Y\char`\"{} \'{e} um d\'{\i}gito (0-\/9).
+\item Caractere especiais s\~{a}o\+: \char`\"{}!\char`\"{}, \char`\"{}@\char`\"{}, \char`\"{}\#\char`\"{}, \char`\"{}\$\char`\"{}, \char`\"{}\%\char`\"{}, \char`\"{}\&\char`\"{} ou \char`\"{}?\char`\"{}.
+\item N\~{a}o existe telefone 000000000. 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_telefone_a9611a4bc0ee29b63e8246c1d80cb30f3}\label{class_telefone_a9611a4bc0ee29b63e8246c1d80cb30f3}} 
+\index{Telefone@{Telefone}!Telefone@{Telefone}}
+\index{Telefone@{Telefone}!Telefone@{Telefone}}
+\doxysubsubsection{\texorpdfstring{Telefone()}{Telefone()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Telefone\+::\+Telefone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Inicializa o objeto com o \mbox{\hyperlink{class_telefone}{Telefone}} como vazio. \mbox{\Hypertarget{class_telefone_a0e07636a72110b0f74bd92c07a25dcce}\label{class_telefone_a0e07636a72110b0f74bd92c07a25dcce}} 
+\index{Telefone@{Telefone}!Telefone@{Telefone}}
+\index{Telefone@{Telefone}!Telefone@{Telefone}}
+\doxysubsubsection{\texorpdfstring{Telefone()}{Telefone()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Telefone\+::\+Telefone (\begin{DoxyParamCaption}\item[{string}]{valor }\end{DoxyParamCaption})}
+
+Inicializa o objeto caso o \mbox{\hyperlink{class_telefone}{Telefone}} informado seja v\'{a}lido.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & string \mbox{\hyperlink{class_telefone}{Telefone}}. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_telefone_a8d9d6134cfb5ec929ab9b42d3be39f85}\label{class_telefone_a8d9d6134cfb5ec929ab9b42d3be39f85}} 
+\index{Telefone@{Telefone}!getValor@{getValor}}
+\index{getValor@{getValor}!Telefone@{Telefone}}
+\doxysubsubsection{\texorpdfstring{getValor()}{getValor()}}
+{\footnotesize\ttfamily string Telefone\+::get\+Valor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Retorna \mbox{\hyperlink{class_telefone}{Telefone}}.
+
+\begin{DoxyReturn}{Returns}
+string \mbox{\hyperlink{class_telefone}{Telefone}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_telefone_a24b2c322137693aa9ca1569f5a6f94a7}\label{class_telefone_a24b2c322137693aa9ca1569f5a6f94a7}} 
+\index{Telefone@{Telefone}!setValor@{setValor}}
+\index{setValor@{setValor}!Telefone@{Telefone}}
+\doxysubsubsection{\texorpdfstring{setValor()}{setValor()}}
+{\footnotesize\ttfamily void Telefone\+::set\+Valor (\begin{DoxyParamCaption}\item[{string}]{valor }\end{DoxyParamCaption})}
+
+Armazena \mbox{\hyperlink{class_telefone}{Telefone}}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & string \mbox{\hyperlink{class_telefone}{Telefone}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Dominios.\+h\item 
+Dominios.\+cpp\end{DoxyCompactItemize}

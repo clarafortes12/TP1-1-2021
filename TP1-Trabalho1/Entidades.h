@@ -205,6 +205,9 @@ inline Horario Sessao::getHorario() const{
 // Entidades da Liz - 180022261
 
 //sala
+///
+/// Padr&atilde;o para representa&ccedil;&atilde;o da Sala.
+///
 class Sala {
     private:
         Codigo codigo;
@@ -219,24 +222,58 @@ class Sala {
         Capacidade getCapacidade() const;
 };
 
+/// Armazena codigo.
+///
+/// @param valor Codigo codigo.
+///
+/// @return void
+///
 inline void Sala::setCodigo(const Codigo& codigo){
     this->codigo = codigo;
 }
 
+/// Armazena nome.
+///
+/// @param valor Nome nome.
+///
+/// @return void
+///
 inline void Sala::setNome(const Nome& nome){
     this->nome = nome;
 }
 
+/// Armazena capacidade.
+///
+/// @param valor Capacidade capacidade.
+///
+/// @return void
+///
 inline void Sala::setCapacidade(const Capacidade& capacidade){
     this->capacidade = capacidade;
 }
 
+///
+/// Retorna codigo.
+///
+/// @return Codigo codigo.
+///
 inline Codigo Sala::getCodigo() const{
     return codigo;
 }
+
+///
+/// Retorna nome.
+///
+/// @return Nome nome.
+///
 inline Nome Sala::getNome() const{
     return nome;
 }
+///
+/// Retorna sala.
+///
+/// @return Sala sala.
+///
 inline Capacidade Sala::getCapacidade() const{
     return capacidade;
 }

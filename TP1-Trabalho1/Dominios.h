@@ -203,14 +203,41 @@ inline string Telefone::getValor() const{         // Metodo inline e const.
 // -------------------------------------------------------------------------
 // Classes da Liz - 180022261
 
+///
+/// Padr&atilde;o para representa&ccedil;&atilde;o do Cargo.
+///
+/// Regras de formato:
+///
+/// - Cargo &eacute; v&aacute;lido, caso seja igual a um dos seguintes valores: "ator", "cen�grafo", "figurinista", "maquiador", "sonoplasta" ou "iluminador".
+///
 class Cargo {
     private:
             string valor;
             void validar(string);
     public:
+///
+/// Inicializa o objeto com o valor "Sem Cargo".
+///
             Cargo();
+///
+/// Inicializa o objeto, caso o Cargo informado seja v&aacute;lido.
+///
+/// @param valor string Cargo.
+///
             Cargo(string);
+///
+/// Armazena um novo valor no objeto.
+///
+/// @param valor string Cargo.
+///
+/// @return void
+///
             void setValor(string);
+///
+/// Retorna o valor armazenado no objeto.
+///
+/// @return string Cargo.
+///
             string getValor() const;
 
 };
@@ -219,14 +246,63 @@ inline string Cargo::getValor() const{         // Metodo inline e const.
     return valor;
 }
 
+///
+/// Padr&atilde;o para representa&ccedil;&atilde;o da Matricula.
+///
+/// Regras de formato:
+///
+/// - Matricula &eacute; v&aacute;lido, caso:
+/// - Tenha formato XXXXX.
+/// - Cada X é um dígito (0-9).
+/// - Não existam dígitos duplicados.
 class Matricula {
     private:
             string valor;
             void validar(string);
+///
+/// Método auxiliar para a validação da Matricula, verificando se cada caractere da string é digito.
+///
+/// @param valor string teste.
+///
+/// @return bool
+/// - true: A string só possui dígitos;
+/// - false: A string possui caractere que não é digito.
+///
+            bool eh_digito(string);
+///
+/// Método auxiliar para a validação da Matricula, verificando se há repetição de dígitos na string.
+///
+/// @param valor string teste.
+///
+/// @return bool
+/// - true: A string possui digitos repetidos;
+/// - false: A string não possui digitos repetidos.
+///
+            bool ha_repeticao(string);
     public:
+///
+/// Inicializa o objeto com o valor "Sem Matricula".
+///
             Matricula();
+///
+/// Inicializa o objeto, caso a Matricula informada seja v&aacute;lida.
+///
+/// @param valor string Matricula.
+///
             Matricula(string);
+///
+/// Armazena um novo valor no objeto.
+///
+/// @param valor string Matricula.
+///
+/// @return void
+///
             void setValor(string);
+///
+/// Retorna o valor armazenado no objeto.
+///
+/// @return string Matricula.
+///
             string getValor() const;
 
 };
@@ -235,14 +311,57 @@ inline string Matricula::getValor() const{         // Metodo inline e const.
     return valor;
 }
 
+///
+/// Padr&atilde;o para representa&ccedil;&atilde;o do Nome.
+///
+/// Regras de formato:
+///
+/// - Nome &eacute; v&aacute;lido, caso:
+/// - Tenha de 5 a 20 caracteres;
+/// - Cada caractere seja letra (A-Z ou a-z), ponto (.) ou espaço em branco;
+/// - Não haja espaços em branco e sequência;
+/// - A primeira letra de cada termo seja letra maiúscula (A-Z).
 class Nome {
     private:
             string valor;
             void validar(string);
+///
+/// Método auxiliar para a validação do Nome, verificando as regras de formato da classe.
+///
+/// @param valor string Nome.
+///
+/// @return int
+/// - 0: O nome informado é válido;
+/// - 1: O nome informado possui caractere não;
+/// - 2: O nome informado possui ponto que não foi precedido por letra;
+/// - 3: O nome informado possui espaços em branco em sequência;
+/// - 4: O nome informado possui termos não iniciados com letra maiúscula (A-Z).
+///
+            int caracteres_nome(string);
     public:
+///
+/// Inicializa o objeto com o valor "Sem Nome".
+///
             Nome();
+///
+/// Inicializa o objeto, caso o Nome informado seja v&aacute;lido.
+///
+/// @param valor string Nome.
+///
             Nome(string);
+///
+/// Armazena um novo valor no objeto.
+///
+/// @param valor string Nome.
+///
+/// @return void
+///
             void setValor(string);
+///
+/// Retorna o valor armazenado no objeto.
+///
+/// @return string Nome.
+///
             string getValor() const;
 
 };
@@ -251,14 +370,46 @@ inline string Nome::getValor() const{         // Metodo inline e const.
     return valor;
 }
 
+///
+/// Padr&atilde;o para representa&ccedil;&atilde;o da Data.
+///
+/// Regras de formato:
+///
+/// - Data &eacute; v&aacute;lido caso:
+/// - Tenha formato DD/MM/AAAA;
+/// - 01 a 31 em DD;
+/// - 01 a 12 em MM;
+/// - 2000 a 9999 em AAAA;
+/// - A data considera a ocorrência de anos bissextos.
+///
 class Data {
     private:
             string valor;
             void validar(string);
     public:
+///
+/// Inicializa o objeto com o valor "01/01/2000".
+///
             Data();
+///
+/// Inicializa o objeto, caso a Data informado seja v&aacute;lida.
+///
+/// @param valor string Data.
+///
             Data(string);
+///
+/// Armazena um novo valor no objeto.
+///
+/// @param valor string Data.
+///
+/// @return void
+///
             void setValor(string);
+///
+/// Retorna o valor armazenado no objeto.
+///
+/// @return string Data.
+///
             string getValor() const;
 
 };
@@ -467,10 +618,5 @@ inline string Email::getValor() const{
         return email;
     }
 }
-
-///////////// FUNÇÕES AUXILIARES /////////////
-
-bool eh_digito(string teste);
-bool ha_repeticao(string teste);
 
 #endif // DOMINIOS_H_INCLUDED
