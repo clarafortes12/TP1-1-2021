@@ -3,6 +3,7 @@
 
 // -------------------------------------------------------
 // Testes do Leandro - 180145169
+
 //Peca
 void TUPeca::setUp(){
     peca = new Peca();
@@ -16,27 +17,27 @@ void TUPeca::tearDown(){
 void TUPeca::testarCenarioSucesso(){
 
     Codigo codigo;
-    codigo.setValor(VALOR_VALIDO1);
+    codigo.setValor(VALOR_VALIDO_CODIGO);
     peca->setCodigo(codigo);
-    if(peca->getCodigo().getValor() != VALOR_VALIDO1)
+    if(peca->getCodigo().getValor() != VALOR_VALIDO_CODIGO)
         estado = FALHA;
 
     Nome nome;
-    nome.setValor(VALOR_VALIDO2);
+    nome.setValor(VALOR_VALIDO_HORARIO);
     peca->setNome(nome);
-    if(peca->getNome().getValor() != VALOR_VALIDO2)
+    if(peca->getNome().getValor() != VALOR_VALIDO_HORARIO)
         estado = FALHA;
 
     Tipo tipo;
-    tipo.setValor(VALOR_VALIDO3);
+    tipo.setValor(VALOR_VALIDO_TIPO);
     peca->setTipo(tipo);
-    if(peca->getTipo().getValor() != VALOR_VALIDO3)
+    if(peca->getTipo().getValor() != VALOR_VALIDO_TIPO)
         estado = FALHA;
 
     Classificacao classificacao;
-    classificacao.setValor(VALOR_VALIDO4);
+    classificacao.setValor(VALOR_VALIDO_CLASSIFICACAO);
     peca->setClassificacao(classificacao);
-    if(peca->getClassificacao().getValor() != VALOR_VALIDO4)
+    if(peca->getClassificacao().getValor() != VALOR_VALIDO_CLASSIFICACAO)
         estado = FALHA;
 }
 
@@ -47,6 +48,7 @@ int TUPeca::run(){
     return estado;
 }
 
+// Testes do Leandro - 180145169
 //Sessao
 void TUSessao::setUp(){
     sessao = new Sessao();
@@ -60,21 +62,21 @@ void TUSessao::tearDown(){
 void TUSessao::testarCenarioSucesso(){
 
     Codigo codigo;
-    codigo.setValor(VALOR_VALIDO1);
+    codigo.setValor(VALOR_VALIDO_CODIGO);
     sessao->setCodigo(codigo);
-    if(sessao->getCodigo().getValor() != VALOR_VALIDO1)
+    if(sessao->getCodigo().getValor() != VALOR_VALIDO_CODIGO)
         estado = FALHA;
 
     Horario horario;
-    horario.setValor(VALOR_VALIDO2);
+    horario.setValor(VALOR_VALIDO_HORARIO);
     sessao->setHorario(horario);
-    if(sessao->getHorario().getValor() != VALOR_VALIDO2)
+    if(sessao->getHorario().getValor() != VALOR_VALIDO_HORARIO)
         estado = FALHA;
 
     Data data;
-    data.setValor(VALOR_VALIDO3);
+    data.setValor(VALOR_VALIDO_DATA);
     sessao->setData(data);
-    if(sessao->getData().getValor() != VALOR_VALIDO3)
+    if(sessao->getData().getValor() != VALOR_VALIDO_DATA)
         estado = FALHA;
 
 }
@@ -220,90 +222,10 @@ void TUParticipante::testarCenarioSucesso(){
     }
 }
 
-void TUParticipante::testarCenarioFalha(){
-    Matricula matricula;
-    Nome nome;
-    Nome sobrenome;
-    Email email;
-    Telefone telefone;
-    Senha senha;
-    Cargo cargo;
-
-    try{
-        matricula.setValor(VALOR_INVALIDO_MATRICULA);
-        participante->setMatricula(matricula);
-        estado = FALHA;
-    }
-    catch(invalid_argument &excecao){
-        if(participante->getMatricula().getValor() == VALOR_INVALIDO_MATRICULA)
-            estado = FALHA;
-    }
-
-    try{
-        nome.setValor(VALOR_INVALIDO_NOME);
-        participante->setNome(nome);
-        estado = FALHA;
-    }
-    catch(invalid_argument &excecao){
-        if(participante->getNome().getValor() == VALOR_INVALIDO_NOME)
-            estado = FALHA;
-    }
-
-    try{
-        sobrenome.setValor(VALOR_INVALIDO_SOBRENOME);
-        participante->setSobrenome(sobrenome);
-        estado = FALHA;
-    }
-    catch(invalid_argument &excecao){
-        if(participante->getSobrenome().getValor() == VALOR_INVALIDO_SOBRENOME)
-            estado = FALHA;
-    }
-
-    try{
-        email.setValor(VALOR_INVALIDO_EMAIL);
-        participante->setEmail(email);
-        estado = FALHA;
-    }
-    catch(invalid_argument &excecao){
-        if(participante->getEmail().getValor() == VALOR_INVALIDO_EMAIL)
-            estado = FALHA;
-    }
-
-    try{
-        telefone.setValor(VALOR_INVALIDO_TELEFONE);
-        participante->setTelefone(telefone);
-        estado = FALHA;
-    }
-    catch(invalid_argument &excecao){
-        if(participante->getTelefone().getValor() == VALOR_INVALIDO_TELEFONE)
-            estado = FALHA;
-    }
-
-    try{
-        senha.setValor(VALOR_INVALIDO_SENHA);
-        participante->setSenha(senha);
-        estado = FALHA;
-    }
-    catch(invalid_argument &excecao){
-        if(participante->getSenha().getValor() == VALOR_INVALIDO_SENHA)
-            estado = FALHA;
-    }
-
-    try{
-        cargo.setValor(VALOR_INVALIDO_CARGO);
-        participante->setCargo(cargo);
-        estado = FALHA;
-    }
-    catch(invalid_argument &excecao){
-        if(participante->getCargo().getValor() == VALOR_INVALIDO_CARGO)
-            estado = FALHA;
-    }
-}
 
 int TUParticipante::run(){
     setUp();
     testarCenarioSucesso();
-    testarCenarioFalha();
     tearDown();
     return estado;
 }

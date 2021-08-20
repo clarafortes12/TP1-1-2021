@@ -13,14 +13,13 @@ Capacidade::Capacidade(int valor){
 Capacidade::Capacidade(){
     this->valor = 100;
 }
-// M�todo para valida��o com lan�amento de exce��o.
+
 
 void Capacidade::validar(int valor){
     if ((valor!=100) && (valor!=200) && (valor!=300) && (valor!=400) && (valor!=500))
         throw invalid_argument("Argumento invalido.");
 }
 
-// M�todo para acesso a atributo.
 
 void Capacidade::setValor(int valor) {
     validar(valor);
@@ -51,7 +50,6 @@ void Horario::validar(string valor){
 
 }
 
-// M�todo para acesso a atributo.
 
 void Horario::setValor(string valor) {
     validar(valor);
@@ -69,7 +67,6 @@ Senha::Senha(string valor){
     this->valor = valor;
 }
 
-// Método para validação com lançamento de exceção.
 
 void Senha::validar(string valor){
     bool cond1, cond2, cond3;
@@ -104,7 +101,6 @@ void Senha::validar(string valor){
     }
 }
 
-// Método para acesso a atributo.
 
 void Senha::setValor(string valor) {
     validar(valor);
@@ -120,7 +116,6 @@ Telefone::Telefone(string valor){
     this->valor = valor;
 }
 
-// Método para validação com lançamento de exceção.
 
 void Telefone::validar(string valor){
     string ddd, numinvalido;
@@ -155,7 +150,6 @@ void Telefone::validar(string valor){
     }
 }
 
-// Método para acesso a atributo.
 
 void Telefone::setValor(string valor) {
     validar(valor);
@@ -174,14 +168,12 @@ Cargo::Cargo(string valor){
     this->valor = valor;
 }
 
-// M�todo para valida��o com lan�amento de exce��o.
 
 void Cargo::validar(string valor){
     if ((valor!="ator") && (valor!="cen�grafo") && (valor!="figurinista") && (valor!="maquiador") && (valor!="sonoplasta") && (valor!="iluminador"))
         throw invalid_argument("Argumento invalido.");
 }
 
-// M�todo para acesso a atributo.
 
 void Cargo::setValor(string valor) {
     validar(valor);
@@ -231,7 +223,6 @@ Matricula::Matricula(string valor){
     this->valor = valor;
 }
 
-// M�todo para valida��o com lan�amento de exce��o.
 
 void Matricula::validar(string valor){
     if (valor[5]!='\0')
@@ -242,7 +233,6 @@ void Matricula::validar(string valor){
         throw invalid_argument("Os digitos da matricula nao podem ser repetidos");
 }
 
-// M�todo para acesso a atributo.
 
 void Matricula::setValor(string valor) {
     validar(valor);
@@ -300,7 +290,6 @@ Nome::Nome(string valor){
     this->valor = valor;
 }
 
-// Método para validação com lançamento de exceção.
 
 void Nome::validar(string valor){
     if (valor.length()<5 || valor.length()>20)
@@ -319,7 +308,6 @@ void Nome::validar(string valor){
     }
 }
 
-// Método para acesso a atributo.
 
 void Nome::setValor(string valor) {
     validar(valor);
@@ -366,7 +354,6 @@ void Data::validar(string valor){
 
 }
 
-// M�todo para acesso a atributo.
 
 void Data::setValor(string valor) {
     validar(valor);

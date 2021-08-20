@@ -13,6 +13,8 @@ using namespace std;
 ///
 /// Padr&atilde;o para representa&ccedil;&atilde;o da Capacidade.
 ///
+/// @author Leandro Bottecchia - 180145169
+///
 /// Regras de formato:
 ///
 /// - Capacidade &eacute; v&aacute;lido caso igual a 100, 200, 300, 400 ou 500.
@@ -55,6 +57,8 @@ inline int Capacidade::getValor() const{         // Metodo inline e const.
 
 ///
 /// Padr&atilde;o para representa&ccedil;&atilde;o da Hor&aacute;rio.
+///
+/// @author Leandro Bottecchia - 180145169
 ///
 /// Regras de formato:
 ///
@@ -100,6 +104,8 @@ inline string Horario::getValor() const{         // Metodo inline e const.
 
 ///
 /// Padr&atilde;o para representa&ccedil;&atilde;o da Senha.
+///
+/// @author Leandro Bottecchia - 180145169
 ///
 /// Regras de formato:
 ///
@@ -147,6 +153,8 @@ inline string Senha::getValor() const{         // Metodo inline e const.
 
 ///
 /// Padr&atilde;o para representa&ccedil;&atilde;o do Telefone.
+///
+/// @author Leandro Bottecchia - 180145169
 ///
 /// Regras de formato:
 ///
@@ -424,6 +432,8 @@ inline string Data::getValor() const{         // Metodo inline e const.
 ///
 /// Padr&atilde;o para representa&ccedil;&atilde;o da classifica&ccedil;&atilde;o.
 ///
+/// @author Clara Fortes - 190017503
+///
 /// Regras de formato:
 ///
 /// - classifica&ccedil;&atilde;o &eacute; v&aacute;lido caso igual a livre, 10, 12, 14 , 16 ou 18.
@@ -471,6 +481,8 @@ inline string Classificacao::getValor() const{
 ///
 /// Padr&atilde;o para representa&ccedil;&atilde;o do tipo.
 ///
+/// @author Clara Fortes - 190017503
+///
 /// Regras de formato:
 ///
 /// - tipo &eacute; v&aacute;lido caso igual a auto, comodia, drama, farsa, melodrama, monologo, musical, opera ou revista.
@@ -514,6 +526,8 @@ inline string Tipo::getValor() const{
 
 ///
 /// Padr&atilde;o para representa&ccedil;&atilde;o do c&oacute;digo.
+///
+/// @author Clara Fortes - 190017503
 ///
 /// Regras de formato:
 ///
@@ -560,6 +574,8 @@ inline string Codigo::getValor() const{
 
 ///
 /// Padr&atilde;o para representa&ccedil;&atilde;o do email.
+///
+/// @author Clara Fortes - 190017503
 ///
 /// Regras de formato:
 ///

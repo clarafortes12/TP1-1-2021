@@ -10,6 +10,8 @@
 ///
 /// Padr&atilde;o para representa&ccedil;&atilde;o da Pe&ccedil;a.
 ///
+/// @author Leandro Bottecchia - 180145169
+///
 class Peca {
     private:
         Codigo codigo;
@@ -108,6 +110,8 @@ inline Classificacao Peca::getClassificacao() const{
 ///
 /// Padr&atilde;o para representa&ccedil;&atilde;o da Sess&atilde;o.
 ///
+/// @author Leandro Bottecchia - 180145169
+///
 class Sessao {
     private:
         Codigo codigo;
@@ -187,6 +191,7 @@ inline Horario Sessao::getHorario() const{
 /// Padr&atilde;o para representa&ccedil;&atilde;o da Sala.
 ///
 /// @author Liz Costato - 180022261
+///
 class Sala {
     private:
         Codigo codigo;
@@ -261,6 +266,8 @@ inline Capacidade Sala::getCapacidade() const{
 // Entidades da Clara - 190017503
 ///
 /// Padr&atilde;o para representa&ccedil;&atilde;o do Participante.
+///
+/// @author Clara Fortes - 190017503
 ///
 class Participante {
     private:
