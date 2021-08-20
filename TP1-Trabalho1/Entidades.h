@@ -186,6 +186,7 @@ inline Horario Sessao::getHorario() const{
 ///
 /// Padr&atilde;o para representa&ccedil;&atilde;o da Sala.
 ///
+/// @author Liz Costato - 180022261
 class Sala {
     private:
         Codigo codigo;

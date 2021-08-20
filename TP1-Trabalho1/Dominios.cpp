@@ -1,8 +1,6 @@
 #include "Dominios.h"
 #include <iostream>
 #include <string>
-//---------------------------------------------------------------------
-// Inicializacao de atributo estatico.
 
 // -------------------------------------------------------------------------
 //Metodos do Leandro - 180145169
@@ -168,7 +166,7 @@ void Telefone::setValor(string valor) {
 //Metodos da Liz - 180022261
 
 Cargo::Cargo(){
-    this->valor = "Sem Cargo";
+    this->valor = "";
 }
 
 Cargo::Cargo(string valor){
@@ -225,7 +223,7 @@ bool Matricula::ha_repeticao(string teste){
 }
 
 Matricula::Matricula(){
-    this->valor = "Sem Matricula";
+    this->valor = "";
 }
 
 Matricula::Matricula(string valor){
@@ -294,7 +292,7 @@ int Nome::caracteres_nome(string nome){
 }
 
 Nome::Nome(){
-    this->valor = "Sem Nome";
+    this->valor = "";
 }
 
 Nome::Nome(string valor){

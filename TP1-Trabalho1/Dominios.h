@@ -198,6 +198,8 @@ inline string Telefone::getValor() const{         // Metodo inline e const.
 ///
 /// Padr&atilde;o para representa&ccedil;&atilde;o do Cargo.
 ///
+/// @author Liz Costato - 180022261
+///
 /// Regras de formato:
 ///
 /// - Cargo &eacute; v&aacute;lido, caso seja igual a um dos seguintes valores: "ator", "cen&oacute;grafo", "figurinista", "maquiador", "sonoplasta" ou "iluminador".
@@ -208,7 +210,7 @@ class Cargo {
             void validar(string);
     public:
 ///
-/// Inicializa o objeto com o valor "Sem Cargo".
+/// Inicializa o objeto com o Cargo como vazio.
 ///
             Cargo();
 ///
@@ -240,6 +242,8 @@ inline string Cargo::getValor() const{         // Metodo inline e const.
 
 ///
 /// Padr&atilde;o para representa&ccedil;&atilde;o da Matricula.
+///
+/// @author Liz Costato - 180022261
 ///
 /// Regras de formato:
 ///
@@ -273,7 +277,7 @@ class Matricula {
             bool ha_repeticao(string);
     public:
 ///
-/// Inicializa o objeto com o valor "Sem Matricula".
+/// Inicializa o objeto com a Matricula como vazio.
 ///
             Matricula();
 ///
@@ -306,6 +310,8 @@ inline string Matricula::getValor() const{         // Metodo inline e const.
 ///
 /// Padr&atilde;o para representa&ccedil;&atilde;o do Nome.
 ///
+/// @author Liz Costato - 180022261
+///
 /// Regras de formato:
 ///
 /// - Nome &eacute; v&aacute;lido, caso:
@@ -332,7 +338,7 @@ class Nome {
             int caracteres_nome(string);
     public:
 ///
-/// Inicializa o objeto com o valor "Sem Nome".
+/// Inicializa o objeto com o Nome como vazio.
 ///
             Nome();
 ///
@@ -364,6 +370,8 @@ inline string Nome::getValor() const{         // Metodo inline e const.
 
 ///
 /// Padr&atilde;o para representa&ccedil;&atilde;o da Data.
+///
+/// @author Liz Costato - 180022261
 ///
 /// Regras de formato:
 ///
