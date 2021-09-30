@@ -1,111 +1,74 @@
 #include "stubs.h"
 
-//----------------------------------------------------------------------------
-// Implementação de método de classe stub.
+// Adequar os valores.
 
-bool StubISAutenticacao::autenticar(const Matricula &matricula, const Senha &senha){
+const string StubServicoAutenticacao::INVALIDO = "12345";
+const string StubServicoPessoal::INVALIDO = "12345";
+const string StubServicoProdutosFinanceiros::INVALIDO = "12345";
 
-    // Apresentar dados recebidos.
+//--------------------------------------------------------------------------------------------
+// Implementações dos métodos dos stubs.
 
-    cout << endl << "StubISAutenticacao::autenticar" << endl ;
-
-    cout << "Matricula = " << matricula.getValor() << endl ;
-    cout << "Senha     = " << senha.getValor()     << endl ;
-
-    bool resultado = true;
-
-    // Diferentes comportamentos dependendo do valor da matrícula.
-
-    switch(matricula.getValor()){
-        case TRIGGER_FALHA:
-            resultado = false;
-            break;
-        case TRIGGER_ERRO_SISTEMA:
-            throw runtime_error("Erro de sistema");
-        }
-
-    return resultado;
+bool StubServicoAutenticacao::autenticar(CPF cpf, Senha senha){
+    if(cpf.getValor().compare(INVALIDO) == 0)
+        return false;
+    return true;
 }
 
-//----------------------------------------------------------------------------
-// Implementações de métodos de classe stub.
-
-bool StubISGerente::incluir(const Gerente &gerente){
-
-    // Apresentar dados recebidos.
-
-    cout << endl << "StubISGerente::incluir" << endl ;
-
-    bool resultado = true;
-
-    // Diferentes comportamentos dependendo do valor da matrícula.
-
-    switch(gerente.getMatricula().getValor()){
-        case TRIGGER_FALHA:
-            resultado = false;
-            break;
-        case TRIGGER_ERRO_SISTEMA:
-            throw runtime_error("Erro de sistema");
-        }
-
-    return resultado;
+bool StubServicoPessoal::cadastrarUsuario(Usuario usuario){
+    if(usuario.getCPF().getValor().compare(INVALIDO) == 0)
+        return false;
+    return true;
 }
 
-bool StubISGerente::remover(const Matricula &matricula) {
-
-    // Apresentar dados recebidos.
-
-    cout << endl << "StubISGerente::remover" << endl ;
-
-    bool resultado = true;
-
-    // Diferentes comportamentos dependendo do valor da matrícula.
-
-    switch(matricula.getValor()){
-        case TRIGGER_FALHA:
-            resultado = false;
-            break;
-        case TRIGGER_ERRO_SISTEMA:
-            throw runtime_error("Erro de sistema");
-        }
-
-    return resultado;
+bool StubServicoProdutosFinanceiros::cadastrarConta(Conta conta){
+    if(conta.getNumero().getValor().compare(INVALIDO) == 0)
+        return false;
+    return true;
 }
 
-bool StubISGerente::pesquisar(Gerente &gerente) {
+bool StubServicoProdutosFinanceiros::consultarConta(Conta *conta){
+    if(conta->getNumero().getValor().compare(INVALIDO) == 0)
+        return false;
 
-    // Apresentar dados recebidos.
+    //--------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------
+    // Implementar código que atribui valores ao objeto identificado por conta.
+    //--------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------
 
-    cout << endl << "StubISGerente::pesquisar" << endl ;
-
-    bool resultado = true;
-
-    // A seguir devem ser implementados os diferentes comportamentos.
-
-    // Sucesso.
-
-    // Falha.
-
-    // Erro de sistema.
-
-    return resultado;
+    return true;
 }
 
-bool StubISGerente::editar(const Gerente &gerente) {
-
-    // Apresentar dados recebidos.
-
-    cout << endl << "StubISGerente::editar" << endl ;
-
-    bool resultado = true;
-
-    // A seguir devem ser implementados os diferentes comportamentos.
-
-    // Sucesso.
-
-    // Falha.
-
-    // Erro de sistema.
-
-    return resultado;
+bool StubServicoProdutosFinanceiros::cadastrarProdutoInvestimento(Produto produto){
+    if(produto.getCodigo().getValor().compare(INVALIDO) == 0)
+        return false;
+    return true;
 }
+
+bool StubServicoProdutosFinanceiros::descadastrarProdutoInvestimento(Codigo codigo){
+    if(codigo.getValor().compare(INVALIDO) == 0)
+        return false;
+    return true;
+}
+
+bool StubServicoProdutosFinanceiros::realizarAplicacao(Aplicacao aplicacao){
+    if(aplicacao.getCodigo().getValor().compare(INVALIDO) == 0)
+        return false;
+    return true;
+}
+
+bool StubServicoProdutosFinanceiros::recuperarAplicacao(Aplicacao *aplicacao){
+    if(aplicacao->getCodigo().getValor().compare(INVALIDO) == 0)
+        return false;
+
+    //--------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------
+    // Implementar código que atribui valores ao objeto identificado por aplicacao.
+    //--------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------
+
+    return true;
+}
+
+

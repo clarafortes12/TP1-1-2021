@@ -1,61 +1,45 @@
 #ifndef STUBS_H_INCLUDED
 #define STUBS_H_INCLUDED
 
-#include "Interfaces.h"
-#include <stdexcept>
-#include <iostream>
+#include <string>
+#include "dominios.h"
+#include "interfaces.h"
 
 using namespace std;
 
-//----------------------------------------------------------------------------
-// Declaração de stub que implementa interface da camada de serviço.
+//--------------------------------------------------------------------------------------------
+// Classe stub do serviço autenticação.
 
-class StubISAutenticacao:public ISAutenticacao{
-public:
-
-    // Definições de valores a serem usados como gatilhos para notificações de erros.
-
-    const static int TRIGGER_FALHA        = 67890;
-    const static int TRIGGER_ERRO_SISTEMA = 78901;
-
-    // Declaração de método relacionado na interface.
-
-    bool autenticar(const Matricula&, const Senha&) ;
+class StubServicoAutenticacao:public IServicoAutenticacao {
+    private:
+        static const string INVALIDO;
+    public:
+        bool autenticar(CPF, Senha);
 };
 
-//----------------------------------------------------------------------------
-// Declaração de stub que implementa interface da camada de serviço.
+//--------------------------------------------------------------------------------------------
+// Classe stub do serviço pessoal.
 
-class StubISGerente:public ISGerente{
-public:
-
-    // Definições de valores a serem usados como gatilhos para notificações de erros.
-
-    const static int TRIGGER_FALHA        = 67890;
-    const static int TRIGGER_ERRO_SISTEMA = 78901;
-
-    // Declarações de métodos relacionados na interface.
-
-    bool incluir(const Gerente&);
-    bool remover(const Matricula&);
-    bool pesquisar(Gerente&);
-    bool editar(const Gerente&);
+class StubServicoPessoal:public IServicoPessoal {
+    private:
+        static const string INVALIDO;
+    public:
+        bool cadastrarUsuario(Usuario);
 };
 
-class StubISPeca:public ISPeca{
-public:
+//--------------------------------------------------------------------------------------------
+// Classe stub do serviço produtos financeiros.
 
-    // Definições de valores a serem usados como gatilhos para notificações de erros.
-
-    const static int TRIGGER_FALHA        = 67890;
-    const static int TRIGGER_ERRO_SISTEMA = 78901;
-
-    // Declarações de métodos relacionados na interface.
-
-    bool incluir(const Peca&);
-    bool remover(const Matricula&);
-    bool pesquisar(Peca&);
-    bool editar(const Peca&);
+class StubServicoProdutosFinanceiros:public IServicoProdutosFinanceiros {
+    private:
+        static const string INVALIDO;
+    public:
+        bool cadastrarConta(Conta);
+        bool consultarConta(Conta*);
+        bool cadastrarProdutoInvestimento(Produto);
+        bool descadastrarProdutoInvestimento(Codigo);
+        bool realizarAplicacao(Aplicacao);
+        bool recuperarAplicacao(Aplicacao*);                        // Adaptar assinatura.
 };
 
 #endif // STUBS_H_INCLUDED
