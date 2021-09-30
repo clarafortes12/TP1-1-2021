@@ -31,6 +31,20 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Dominios.cpp" />
+		<Unit filename="Dominios.h" />
+		<Unit filename="Entidades.cpp" />
+		<Unit filename="Entidades.h" />
+		<Unit filename="Interfaces.h" />
+		<Unit filename="comandos.cpp" />
+		<Unit filename="comandos.h" />
+		<Unit filename="controladoras.cpp" />
+		<Unit filename="controladoras.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="stubs.cpp" />
+		<Unit filename="stubs.h" />
+		<Unit filename="testes.cpp" />
+		<Unit filename="testes.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
