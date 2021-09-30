@@ -13,15 +13,19 @@
 
 class CntrApresentacaoControle{
     private:
-        CPF cpf;
+        Matricula matricula;
         IApresentacaoAutenticacao *cntrApresentacaoAutenticacao;
         IApresentacaoPessoal *cntrApresentacaoPessoal;
-        IApresentacaoProdutosFinanceiros *cntrApresentacaoProdutosFinanceiros;
+        IApresentacaoPeca *cntrApresentacaoPeca;
+        IApresentacaoSessao *cntrApresentacaoSessao;
+        IApresentacaoSala *cntrApresentacaoSala;
     public:
         void executar();
         void setCntrApresentacaoAutenticacao(IApresentacaoAutenticacao*);
         void setCntrApresentacaoPessoal(IApresentacaoPessoal*);
-        void setCntrApresentacaoProdutosFinanceiros(IApresentacaoProdutosFinanceiros*);
+        void setCntrApresentacaoPeca(IApresentacaoPeca*);
+        void setCntrApresentacaoSessao(IApresentacaoSessao*);
+        void setCntrApresentacaoSala(IApresentacaoSala*);
 };
 
 inline void CntrApresentacaoControle::setCntrApresentacaoAutenticacao(IApresentacaoAutenticacao *cntr){
@@ -32,8 +36,16 @@ inline void CntrApresentacaoControle::setCntrApresentacaoPessoal(IApresentacaoPe
             cntrApresentacaoPessoal = cntr;
 }
 
-inline void CntrApresentacaoControle::setCntrApresentacaoProdutosFinanceiros(IApresentacaoProdutosFinanceiros *cntr){
-    cntrApresentacaoProdutosFinanceiros = cntr;
+inline void CntrApresentacaoControle::setCntrApresentacaoPessa(IApresentacaoPessa *cntr){
+            cntrApresentacaoPessa = cntr;
+}
+
+inline void CntrApresentacaoControle::setCntrApresentacaoSessao(IApresentacaoSessao *cntr){
+            cntrApresentacaoSessao = cntr;
+}
+
+inline void CntrApresentacaoControle::setCntrApresentacaoSala(IApresentacaoSala *cntr){
+            cntrApresentacaoSala = cntr;
 }
 
 //--------------------------------------------------------------------------------------------
@@ -42,7 +54,7 @@ class CntrApresentacaoAutenticacao:public IApresentacaoAutenticacao{
     private:
         IServicoAutenticacao *cntr;
     public:
-        bool autenticar(CPF*);
+        bool autenticar(Matricula*);
         void setCntrServicoAutenticacao(IServicoAutenticacao*);
 };
 
@@ -70,6 +82,26 @@ inline void CntrApresentacaoPessoal::setCntrServicoPessoal(IServicoPessoal *cntr
 
 inline void CntrApresentacaoPessoal::setCntrServicoProdutosFinanceiros(IServicoProdutosFinanceiros *cntr){
     cntrServicoProdutosFinanceiros = cntr;
+}
+
+//--------------------------------------------------------------------------------------------
+
+class CntrApresentacaoSala:public IApresentacaoSala{
+    private:
+        IServicoSala *cntrServicoSala;
+        void listarSala();
+        void incluirSala();
+        void excluirSala();
+        void editarSala();
+        void visualizarSala();
+    public:
+        void executar(Matricula);
+        void executar();
+        void setCntrServicoSala(IServicoSala*);
+};
+
+inline void CntrApresentacaoSala::setCntrServicoSala(IServicoSala *cntr){
+    cntrServicoSala = cntr;
 }
 
 //--------------------------------------------------------------------------------------------

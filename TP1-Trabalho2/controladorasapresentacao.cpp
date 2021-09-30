@@ -9,15 +9,19 @@ void CntrApresentacaoControle::executar(){
 
     char texto1[]="Selecione um dos servicos : ";
     char texto2[]="1 - Acessar sistema.";
-    char texto3[]="2 - Cadastrar usuario.";
-    char texto4[]="3 - Acessar dados sobre produtos financeiros.";
+    char texto3[]="2 - Cadastrar participante.";
+    char texto4_1[]="3 - Listar peças.";
+    char texto4_2[]="3 - Listar sessões.";
+    char texto4_3[]="3 - Listar salas.";
     char texto5[]="4 - Encerrar execucao do sistema.";
 
-    // Mensagens a serem apresentadas na tela de seleção de serviço.
+    // Mensagens a serem apresentadas na tela de seleção de serviço (usuario autenticado).
 
     char texto6[]="Selecione um dos servicos : ";
-    char texto7[]="1 - Selecionar servicos de pessoal.";
-    char texto8[]="2 - Selecionar servicos relacionados a produtos financeiros.";
+    char texto7[]="1 - Selecionar servicos de participante.";
+    char texto8_1[]="2 - Selecionar servicos relacionados a peças.";
+    char texto8_2[]="2 - Selecionar servicos relacionados a sessões.";
+    char texto8_3[]="2 - Selecionar servicos relacionados a salas.";
     char texto9[]="3 - Encerrar sessao.";
 
     char texto10[]="Falha na autenticacao. Digite algo para continuar.";                        // Mensagem a ser apresentada.
@@ -38,7 +42,9 @@ void CntrApresentacaoControle::executar(){
         mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
         mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
         mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 6,coluna/4,"%s",texto4_1);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 6,coluna/4,"%s",texto4_2);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 6,coluna/4,"%s",texto4_3);                                             // Imprime nome do campo.
         mvprintw(linha/4 + 8,coluna/4,"%s",texto5);                                             // Imprime nome do campo.
 
         noecho();
@@ -55,7 +61,9 @@ void CntrApresentacaoControle::executar(){
                             clear();                                                            // Limpa janela.
                             mvprintw(linha/4,coluna/4,"%s",texto6);                             // Imprime nome do campo.
                             mvprintw(linha/4 + 2,coluna/4,"%s",texto7);                         // Imprime nome do campo.
-                            mvprintw(linha/4 + 4,coluna/4,"%s",texto8);                         // Imprime nome do campo.
+                            mvprintw(linha/4 + 4,coluna/4,"%s",texto8_1);                         // Imprime nome do campo.
+                            mvprintw(linha/4 + 4,coluna/4,"%s",texto8_2);                         // Imprime nome do campo.
+                            mvprintw(linha/4 + 4,coluna/4,"%s",texto8_3);                         // Imprime nome do campo.
                             mvprintw(linha/4 + 6,coluna/4,"%s",texto9);                         // Imprime nome do campo.                                    // Apresenta tela de seleção de serviço.
                             noecho();
                             campo = getch() - 48;                                               // Leitura do campo de entrada e conversão de ASCII.
@@ -92,13 +100,13 @@ void CntrApresentacaoControle::executar(){
 
 //--------------------------------------------------------------------------------------------
 
-bool CntrApresentacaoAutenticacao::autenticar(CPF *cpf){
+bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula){
 
     // Mensagens a serem apresentadas na tela de autenticação.
 
-    char texto1[]="Digite o CPF  : ";
-    char texto2[]="Digite a senha: ";
-    char texto3[]="Dado em formato incorreto. Digite algo.";
+    char texto1[]="Digite a Matrícula   : ";
+    char texto2[]="Digite a senha       : ";
+    char texto3[]="Dado em formato incorreto. Digite algo para continuar.";
 
     // Campos de entrada.
 
@@ -124,7 +132,7 @@ bool CntrApresentacaoAutenticacao::autenticar(CPF *cpf){
         getstr(campo2);                                                                         // Lê valor do campo.
 
         try{
-            cpf->setValor(string(campo1));                                                      // Atribui valor ao CPF.
+            matricula->setValor(string(campo1));                                                      // Atribui valor ao CPF.
             senha.setValor(string(campo2));                                                     // Atribui Valor à senha.
             break;                                                                              // Abandona laço em caso de formatos corretos.
         }
@@ -136,7 +144,7 @@ bool CntrApresentacaoAutenticacao::autenticar(CPF *cpf){
             echo();
         }
     }
-    return (cntr->autenticar(*cpf, senha));                                                     // Solicita serviço de autenticação.
+    return (cntr->autenticar(*matricula, senha));                                                     // Solicita serviço de autenticação.
 }
 
 //--------------------------------------------------------------------------------------------
@@ -315,6 +323,382 @@ void CntrApresentacaoPessoal::consultarDadosPessoais(){
     getch();
     echo();
 }
+
+//--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoSala::listarSala(){ //preciso pegar os dados com controladora servico
+    cntrServicoSala->listar();
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoSala::incluirSala(){ //preciso pegar os dados com controladora servico
+
+    // Mensagens a serem apresentadas na tela de cadastramento.
+
+    char texto1[] ="Preencha os seguintes campos: ";
+    char texto2[] ="Codido      :";
+    char texto3[] ="Nome        :";
+    char texto4[] ="Capacidade  :";
+    char texto10[]="Dados em formato incorreto. Digite algo.";
+    char texto11[]="Sucesso no cadastramento. Digite algo.";
+    char texto12[]="Falha no cadastramento. Digite algo.";
+
+    char campo1[80], campo2[80], campo3[80];                                                   // Cria campos para entrada dos dados.
+
+    // Instancia os domínios.
+
+    Codigo codigo;
+    Nome nome;
+    Capacidade capacidade;
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    // Apresenta tela de cadastramento.
+
+    clear();                                                                                    // Limpa janela.
+
+    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
+    mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                                 // Imprime nome do campo.
+    getstr(campo1);                                                                             // Lê valor do campo.
+    mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                                 // Imprime nome do campo.
+    getstr(campo2);                                                                             // Lê valor do campo.
+    mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                                 // Imprime nome do campo.
+    getstr(campo3);
+
+    try{
+        codigo.setValor(string(campo1));
+        nome.setValor(string(campo2));
+        capacidade.setValor(string(campo3));
+    }
+    catch(invalid_argument &exp){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
+        noecho();                                                                               // Desabilita eco.
+        getch();                                                                                // Leitura de caracter digitado.
+        echo();                                                                                 // Habilita eco.
+        return;
+    }
+
+    // Instancia e inicializa entidade.
+
+    Sala sala;
+
+    sala.setCodigo(codigo);
+    sala.setNome(nome);
+    sala.setCapacidade(capacidade);
+
+    // Incluir sala.
+
+    if(cntrServicoSala->incluir(sala)){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
+        noecho();
+        getch();
+        echo();
+        return;
+    }
+
+    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
+    noecho();
+    getch();
+    echo();
+
+    return;
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoSala::excluirSala(){ //preciso pegar os dados com controladora servico
+
+    // Mensagens a serem apresentadas na tela de cadastramento.
+
+    char texto1[] ="Informe o codigo da sala a ser excluida: ";
+    char texto10[]="Dado em formato incorreto. Digite algo.";
+    char texto11[]="Sucesso na exclusao. Digite algo.";
+    char texto12[]="Falha na exclusao. Digite algo.";
+
+    char campo1[80];                                                                           // Cria campos para entrada dos dados.
+
+    // Instancia os domínios.
+
+    Codigo codigo;
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    // Apresenta tela de cadastramento.
+
+    clear();                                                                                    // Limpa janela.
+
+    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
+    getstr(campo1);                                                                             // Lê valor do campo.
+
+    try{
+        codigo.setValor(string(campo1));
+    }
+    catch(invalid_argument &exp){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
+        noecho();                                                                               // Desabilita eco.
+        getch();                                                                                // Leitura de caracter digitado.
+        echo();                                                                                 // Habilita eco.
+        return;
+    }
+
+    // Exclui a sala.
+
+    if(cntrServicoSala->excluir(codigo)){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
+        noecho();
+        getch();
+        echo();
+        return;
+    }
+
+    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
+    noecho();
+    getch();
+    echo();
+
+    return;
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoSala::editarSala(){ //preciso pegar os dados com controladora servico
+
+    // Mensagens a serem apresentadas na tela de edicao de sala.
+
+    char texto1[] ="Preencha os seguintes campos: ";
+    char texto2[] ="Codido da sala a ser editada:";
+    char texto3[] ="Nome                        :";
+    char texto4[] ="Capacidade                  :";
+    char texto10[]="Dados em formato incorreto. Digite algo.";
+    char texto11[]="Sucesso na edicao. Digite algo.";
+    char texto12[]="Falha na edicao. Digite algo.";
+
+    char campo1[80], campo2[80], campo3[80];                                                   // Cria campos para entrada dos dados.
+
+    // Instancia os domínios.
+
+    Codigo codigo;
+    Nome nome;
+    Capacidade capacidade;
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    // Apresenta tela de cadastramento.
+
+    clear();                                                                                    // Limpa janela.
+
+    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
+    mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                                 // Imprime nome do campo.
+    getstr(campo1);                                                                             // Lê valor do campo.
+    mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                                 // Imprime nome do campo.
+    getstr(campo2);                                                                             // Lê valor do campo.
+    mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                                 // Imprime nome do campo.
+    getstr(campo3);
+
+    try{
+        codigo.setValor(string(campo1));
+        nome.setValor(string(campo2));
+        capacidade.setValor(string(campo3));
+    }
+    catch(invalid_argument &exp){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
+        noecho();                                                                               // Desabilita eco.
+        getch();                                                                                // Leitura de caracter digitado.
+        echo();                                                                                 // Habilita eco.
+        return;
+    }
+
+    // Instancia e inicializa entidade.
+
+    Sala sala;
+
+    sala.setCodigo(codigo);
+    sala.setNome(nome);
+    sala.setCapacidade(capacidade);
+
+    // Incluir sala.
+
+    if(cntrServicoSala->editar(Sala)){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
+        noecho();
+        getch();
+        echo();
+        return;
+    }
+
+    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
+    noecho();
+    getch();
+    echo();
+
+    return;
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoSala::visualizarSala(){ //preciso pegar os dados com controladora servico
+
+    // Mensagens a serem apresentadas na tela de visualizar sala.
+
+    char texto1[] ="Informe o codigo da sala que se deseja visualizar: ";
+    char texto10[]="Dado em formato incorreto. Digite algo.";
+    char texto11[]="Sucesso na exclusao. Digite algo.";
+    char texto12[]="Falha na exclusao. Digite algo.";
+
+    char campo1[80];                                                                           // Cria campos para entrada dos dados.
+
+    // Instancia os domínios.
+
+    Codigo codigo;
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    // Apresenta tela de visualizacao de sala.
+
+    clear();                                                                                    // Limpa janela.
+
+    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
+    getstr(campo1);                                                                             // Lê valor do campo.
+
+    try{
+        codigo.setValor(string(campo1));
+    }
+    catch(invalid_argument &exp){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
+        noecho();                                                                               // Desabilita eco.
+        getch();                                                                                // Leitura de caracter digitado.
+        echo();                                                                                 // Habilita eco.
+        return;
+    }
+
+    // Visualizacao da sala.
+
+    if(cntrServicoSala->visualizar(codigo)){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
+        noecho();
+        getch();
+        echo();
+        return;
+    }
+
+    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
+    noecho();
+    getch();
+    echo();
+
+    return;
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoSala::executar(){
+
+    // Mensagens a serem apresentadas na tela simplificada de salas.
+
+    char texto1[]="Selecione um dos servicos : ";
+    char texto2[]="1 - Listar salas disponiveis.";
+    char texto3[]="2 - Retornar.";
+
+    int campo;                                                                                  // Campo de entrada.
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    echo();                                                                                     // Habilita eco.
+
+    bool apresentar = true;                                                                     // Controle de laço.
+
+    while(apresentar){
+
+        // Apresenta tela simplificada de salas.
+
+        clear();                                                                                // Limpa janela.
+        mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
+        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
+        noecho();
+        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversão de ASCII.
+        echo();
+
+        switch(campo){
+            case 1: listarSala();
+                    break;
+            case 2: apresentar = false;
+                    break;
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoSala::executar(Matricula){
+
+    // Mensagens a serem apresentadas tela completa de salas.
+
+    char texto1[] ="Selecione um dos servicos : ";
+    char texto2[] ="1 - Listar salas";
+    char texto3[] ="2 - Incluir sala.";
+    char texto4[] ="3 - Excluir sala.";
+    char texto5[] ="4 - Editar sala.";
+    char texto6[] ="5 - Visualizar sala.";
+    char texto7[] ="6 - Retornar.";
+
+    int campo;                                                                                  // Campo de entrada.
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    echo();                                                                                     // Habilita eco.
+
+    bool apresentar = true;                                                                     // Controle de laço.
+
+    echo();                                                                                     // Habilita eco.
+
+    while(apresentar){
+
+        // Apresenta tela completa de salas.
+
+        clear();                                                                                // Limpa janela.
+        mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
+        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 8,coluna/4,"%s",texto5);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 10,coluna/4,"%s",texto6);                                            // Imprime nome do campo.
+        mvprintw(linha/4 + 12,coluna/4,"%s",texto7);                                            // Imprime nome do campo.
+        noecho();
+        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversão de ASCII.
+        echo();
+
+        switch(campo){
+            case 1: listarSala();
+                    break;
+            case 2: incluirSala();
+                    break;
+            case 3: excluirSala();
+                    break;
+            case 4: editarSala();
+                    break;
+            case 5: visualizarSala();
+                    break;
+            case 6: apresentar = false;
+                    break;
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------
 

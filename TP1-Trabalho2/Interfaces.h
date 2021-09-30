@@ -1,73 +1,81 @@
-
 #ifndef INTERFACES_H_INCLUDED
 #define INTERFACES_H_INCLUDED
 
 #include "dominios.h"
 #include "entidades.h"
-#include <stdexcept>
 
-using namespace std;
+//--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
+// Adequar as declarações das interfaces de acordo com as necessidades.
+//--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
-//-----------------------------------------------------------------------------------
-// Declarações adiantadas (forward declaration).
+// Forward declarations.
 
-class ISAutenticacao;
-class ISGerente;
+class IServicoAutenticacao;
+class IServicoPessoal;
+class IServicoPeca;
+class IServicoProdutosFinanceiros;
 
-//-----------------------------------------------------------------------------------
-// Declaração de interface da camada de apresentação.
+//--------------------------------------------------------------------------------------------
+// Declarações das interfaces da camada de apresentação.
 
-class IAAutenticacao {
-public:
-    virtual bool autenticar(Matricula*) = 0;                        // Método por meio do qual é solicitado o serviço.
-    virtual void setCntrISAutenticacao(ISAutenticacao *) = 0;       // Método para estabelecer ligação (link) com a controladora na camada de serviço.
-    virtual ~IAAutenticacao(){}                                     // Método destrutor virtual.
+class IApresentacaoAutenticacao {
+    public:
+        virtual bool autenticar(CPF*) = 0;
+        virtual void setCntrServicoAutenticacao(IServicoAutenticacao*) = 0;
+        virtual ~IApresentacaoAutenticacao(){}
 };
 
-//-----------------------------------------------------------------------------------
-// Declaração de interface da camada de serviço.
-
-class ISAutenticacao {
-public:
-    virtual bool autenticar(const Matricula&, const Senha&) = 0;    // Método por meio do qual é solicitado o serviço.
-    virtual ~ISAutenticacao(){}                                     // Método destrutor virtual.
+class IApresentacaoPessoal{
+    public:
+        virtual void executar(CPF) = 0;
+        virtual void cadastrar() = 0;
+        virtual void setCntrServicoPessoal(IServicoPessoal*) = 0;
+        virtual void setCntrServicoProdutosFinanceiros(IServicoProdutosFinanceiros*) = 0;
+        virtual ~IApresentacaoPessoal(){}
 };
 
-//-----------------------------------------------------------------------------------
-// Declaração de interface da camada de apresentação.
-
-class IAGerente {
+class IApresentacaoPeca {
 public:
-    virtual void executar(const Matricula&) = 0;                    // Método por meio do qual é solicitado o serviço.
-    virtual void setCntrISGerente(ISGerente *) = 0;                 // Método para estabelecer ligação (link) com a controladora de serviço.
-    virtual ~IAGerente(){}                                          // Método destrutor virtual.
+    virtual void executar(const Matricula&) = 0;                 // Método por meio do qual é solicitado o serviço.
+    virtual void executar() = 0;
+    virtual void setCntrServicoPeca(IServicoPeca *) = 0;         // Método para estabelecer ligação (link) com a controladora de serviço.
+    virtual ~IApresentacaoPeca(){}                                          // Método destrutor virtual.
 };
 
-//-----------------------------------------------------------------------------------
-// Declaração de interface da camada de serviço
-
-class ISGerente {
+class IApresentacaoSala {
 public:
-
-    // Métodos por meio dos quais são solicitados os serviços.
-
-    virtual bool incluir(const Gerente&) = 0;
-    virtual bool remover(const Matricula&) = 0;
-    virtual bool pesquisar(Gerente&) = 0;
-    virtual bool editar(const Gerente&) = 0;
-
-    virtual ~ISGerente(){}                                         // Método destrutor virtual.
+    virtual void executar(const Matricula&) = 0;                 // Método por meio do qual é solicitado o serviço.
+    virtual void executar() = 0;
+    virtual void setCntrServicoSala(IServicoSala *) = 0;         // Método para estabelecer ligação (link) com a controladora de serviço.
+    virtual ~IApresentacaoSala(){}                                          // Método destrutor virtual.
 };
 
-
-class IAPeca {
-public:
-    virtual void executar(const Matricula&) = 0;                    // Método por meio do qual é solicitado o serviço.
-    virtual void setCntrISPeca(ISPeca *) = 0;                 // Método para estabelecer ligação (link) com a controladora de serviço.
-    virtual ~IAPeca(){}                                          // Método destrutor virtual.
+class IApresentacaoProdutosFinanceiros{
+    public:
+        virtual void executar() = 0;
+        virtual void executar(CPF) = 0;
+        virtual void setCntrServicoProdutosFinanceiros(IServicoProdutosFinanceiros*) = 0;
+        virtual ~IApresentacaoProdutosFinanceiros(){}
 };
 
-class ISPeca {
+//--------------------------------------------------------------------------------------------
+// Declarações das interfaces da camada de serviço.
+
+class IServicoAutenticacao {
+    public:
+        virtual bool autenticar(CPF, Senha) = 0;
+        virtual ~IServicoAutenticacao(){}
+};
+
+class IServicoPessoal{
+public:
+        virtual bool cadastrarUsuario(Usuario) = 0;
+        virtual ~IServicoPessoal(){}
+};
+
+class IServicoPeca{
 public:
 
     // Métodos por meio dos quais são solicitados os serviços.
@@ -76,28 +84,31 @@ public:
     virtual bool descadastrar(const Matricula&) = 0;
     virtual bool listar(Peca&) = 0;
     virtual bool alterar(const Peca&) = 0;
-
-    virtual ~ISPeca(){}                                         // Método destrutor virtual.
+    virtual ~IServicoPeca(){}                                         // Método destrutor virtual.
 };
 
-class IASala {
-public:
-    virtual void executar(const Matricula&) = 0;                    // Método por meio do qual é solicitado o serviço.
-    virtual void setCntrISSala(ISSala *) = 0;                 // Método para estabelecer ligação (link) com a controladora de serviço.
-    virtual ~IAPeca(){}                                          // Método destrutor virtual.
-};
-
-class ISSala {
+class IServicoSala{
 public:
 
     // Métodos por meio dos quais são solicitados os serviços.
 
-    virtual bool cadastrar(const Sala&) = 0;
-    virtual bool descadastrar(const Matricula&) = 0;
-    virtual bool listar(Sala&) = 0;
-    virtual bool alterar(const Sala&) = 0;
+    virtual bool listar() = 0;
+    virtual bool incluir(Sala) = 0;
+    virtual bool excluir(Sala*) = 0;
+    virtual bool editar(Sala*) = 0; // O prof costuma colocar o objeto Sala, como se passasse todo um novo objeto ao alterar, mas acho melhor ser pelo endereço, n?
+    virtual bool visualizar(Sala*) = 0;
+    virtual ~IServicoSala(){}                                         // Método destrutor virtual.
+};
 
-    virtual ~ISSala(){}                                         // Método destrutor virtual.
+class IServicoProdutosFinanceiros{
+public:
+        virtual bool cadastrarConta(Conta) = 0;
+        virtual bool consultarConta(Conta*) = 0;
+        virtual bool cadastrarProdutoInvestimento(Produto) = 0;
+        virtual bool descadastrarProdutoInvestimento(Codigo) = 0;
+        virtual bool realizarAplicacao(Aplicacao) = 0;
+        virtual bool recuperarAplicacao(Aplicacao*) = 0;                        // Adaptar aos requisitos.
+        virtual ~IServicoProdutosFinanceiros(){}
 };
 
 #endif // INTERFACES_H_INCLUDED
