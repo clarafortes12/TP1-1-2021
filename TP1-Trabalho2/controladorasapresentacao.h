@@ -9,7 +9,7 @@
 
 
 //--------------------------------------------------------------------------------------------
-// Declarações de classes controladoras e implementações de métodos.
+// Declaraï¿½ï¿½es de classes controladoras e implementaï¿½ï¿½es de mï¿½todos.
 
 class CntrApresentacaoControle{
     private:
@@ -36,8 +36,8 @@ inline void CntrApresentacaoControle::setCntrApresentacaoPessoal(IApresentacaoPe
             cntrApresentacaoPessoal = cntr;
 }
 
-inline void CntrApresentacaoControle::setCntrApresentacaoPessa(IApresentacaoPessa *cntr){
-            cntrApresentacaoPessa = cntr;
+inline void CntrApresentacaoControle::setCntrApresentacaoPeca(IApresentacaoPeca *cntr){
+            cntrApresentacaoPeca = cntr;
 }
 
 inline void CntrApresentacaoControle::setCntrApresentacaoSessao(IApresentacaoSessao *cntr){
@@ -106,6 +106,45 @@ inline void CntrApresentacaoSala::setCntrServicoSala(IServicoSala *cntr){
 
 //--------------------------------------------------------------------------------------------
 
+class CntrApresentacaoPeca:public IApresentacaoPeca{
+    private:
+        IServicoPeca *cntrServicoPeca;
+        void listarPeca();
+        void incluirPeca();
+        void excluirPeca();
+        void editarPeca();
+        void visualizarPeca();
+    public:
+        void executar(Matricula);
+        void executar();
+        void setCntrServicoPeca(IServicoPeca*);
+};
+
+inline void CntrApresentacaoPeca::setCntrServicoPeca(IServicoPeca *cntr){
+    cntrServicoPeca = cntr;
+}
+
+//--------------------------------------------------------------------------------------------
+
+class CntrApresentacaoSessao:public IApresentacaoSessao{
+    private:
+        IServicoSessao *cntrServicoSessao;
+        void listarSessao();
+        void incluirSessao();
+        void excluirSessao();
+        void editarSessao();
+        void visualizarSessao();
+    public:
+        void executar(Matricula);
+        void executar();
+        void setCntrServicoSessao(IServicoSessao*);
+};
+
+inline void CntrApresentacaoSessao::setCntrServicoSessao(IServicoSessao *cntr){
+    cntrServicoSessao = cntr;
+}
+
+//--------------------------------------------------------------------------------------------
 class CntrApresentacaoProdutosFinanceiros:public IApresentacaoProdutosFinanceiros{
     private:
         IServicoProdutosFinanceiros *cntr;

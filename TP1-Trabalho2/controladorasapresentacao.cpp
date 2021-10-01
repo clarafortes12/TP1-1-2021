@@ -1,7 +1,7 @@
 #include "controladorasapresentacao.h"
 
 //--------------------------------------------------------------------------------------------
-// Implementações dos métodos de classes controladoras.
+// Implementaï¿½ï¿½es dos mï¿½todos de classes controladoras.
 
 void CntrApresentacaoControle::executar(){
 
@@ -10,17 +10,17 @@ void CntrApresentacaoControle::executar(){
     char texto1[]="Selecione um dos servicos : ";
     char texto2[]="1 - Acessar sistema.";
     char texto3[]="2 - Cadastrar participante.";
-    char texto4_1[]="3 - Listar peças.";
-    char texto4_2[]="3 - Listar sessões.";
+    char texto4_1[]="3 - Listar peï¿½as.";
+    char texto4_2[]="3 - Listar sessï¿½es.";
     char texto4_3[]="3 - Listar salas.";
     char texto5[]="4 - Encerrar execucao do sistema.";
 
-    // Mensagens a serem apresentadas na tela de seleção de serviço (usuario autenticado).
+    // Mensagens a serem apresentadas na tela de seleï¿½ï¿½o de serviï¿½o (usuario autenticado).
 
     char texto6[]="Selecione um dos servicos : ";
     char texto7[]="1 - Selecionar servicos de participante.";
-    char texto8_1[]="2 - Selecionar servicos relacionados a peças.";
-    char texto8_2[]="2 - Selecionar servicos relacionados a sessões.";
+    char texto8_1[]="2 - Selecionar servicos relacionados a peï¿½as.";
+    char texto8_2[]="2 - Selecionar servicos relacionados a sessï¿½es.";
     char texto8_3[]="2 - Selecionar servicos relacionados a salas.";
     char texto9[]="3 - Encerrar sessao.";
 
@@ -32,7 +32,7 @@ void CntrApresentacaoControle::executar(){
 
     getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
 
-    bool apresentar = true;                                                                     // Controle de laço.
+    bool apresentar = true;                                                                     // Controle de laï¿½o.
 
     while(apresentar){
 
@@ -48,15 +48,15 @@ void CntrApresentacaoControle::executar(){
         mvprintw(linha/4 + 8,coluna/4,"%s",texto5);                                             // Imprime nome do campo.
 
         noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversão de ASCII.
+        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversï¿½o de ASCII.
         echo();
 
         switch(campo){
-            case 1: if(cntrApresentacaoAutenticacao->autenticar(&cpf)){                         // Solicita autenticação.
-                        bool apresentar = true;                                                 // Controle de laço.
+            case 1: if(cntrApresentacaoAutenticacao->autenticar(&cpf)){                         // Solicita autenticaï¿½ï¿½o.
+                        bool apresentar = true;                                                 // Controle de laï¿½o.
                         while(apresentar){
 
-                            // Apresenta tela de seleção de serviço.
+                            // Apresenta tela de seleï¿½ï¿½o de serviï¿½o.
 
                             clear();                                                            // Limpa janela.
                             mvprintw(linha/4,coluna/4,"%s",texto6);                             // Imprime nome do campo.
@@ -64,15 +64,15 @@ void CntrApresentacaoControle::executar(){
                             mvprintw(linha/4 + 4,coluna/4,"%s",texto8_1);                         // Imprime nome do campo.
                             mvprintw(linha/4 + 4,coluna/4,"%s",texto8_2);                         // Imprime nome do campo.
                             mvprintw(linha/4 + 4,coluna/4,"%s",texto8_3);                         // Imprime nome do campo.
-                            mvprintw(linha/4 + 6,coluna/4,"%s",texto9);                         // Imprime nome do campo.                                    // Apresenta tela de seleção de serviço.
+                            mvprintw(linha/4 + 6,coluna/4,"%s",texto9);                         // Imprime nome do campo.                                    // Apresenta tela de seleï¿½ï¿½o de serviï¿½o.
                             noecho();
-                            campo = getch() - 48;                                               // Leitura do campo de entrada e conversão de ASCII.
+                            campo = getch() - 48;                                               // Leitura do campo de entrada e conversï¿½o de ASCII.
                             echo();
 
                             switch(campo){
-                                case 1: cntrApresentacaoPessoal->executar(cpf);                 // Solicita serviço de pessoal.
+                                case 1: cntrApresentacaoPessoal->executar(cpf);                 // Solicita serviï¿½o de pessoal.
                                         break;
-                                case 2: cntrApresentacaoProdutosFinanceiros->executar(cpf);     // Solicita serviço de produto financeiro.
+                                case 2: cntrApresentacaoProdutosFinanceiros->executar(cpf);     // Solicita serviï¿½o de produto financeiro.
                                         break;
                                 case 3: apresentar = false;
                                         break;
@@ -102,9 +102,9 @@ void CntrApresentacaoControle::executar(){
 
 bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula){
 
-    // Mensagens a serem apresentadas na tela de autenticação.
+    // Mensagens a serem apresentadas na tela de autenticaï¿½ï¿½o.
 
-    char texto1[]="Digite a Matrícula   : ";
+    char texto1[]="Digite a Matrï¿½cula   : ";
     char texto2[]="Digite a senha       : ";
     char texto3[]="Dado em formato incorreto. Digite algo para continuar.";
 
@@ -123,35 +123,35 @@ bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula){
 
     while(true){
 
-        // Apresenta tela de autenticação.
+        // Apresenta tela de autenticaï¿½ï¿½o.
 
         clear();                                                                                // Limpa janela.
         mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
-        getstr(campo1);                                                                         // Lê valor do campo.
+        getstr(campo1);                                                                         // Lï¿½ valor do campo.
         mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
-        getstr(campo2);                                                                         // Lê valor do campo.
+        getstr(campo2);                                                                         // Lï¿½ valor do campo.
 
         try{
             matricula->setValor(string(campo1));                                                      // Atribui valor ao CPF.
-            senha.setValor(string(campo2));                                                     // Atribui Valor à senha.
-            break;                                                                              // Abandona laço em caso de formatos corretos.
+            senha.setValor(string(campo2));                                                     // Atribui Valor ï¿½ senha.
+            break;                                                                              // Abandona laï¿½o em caso de formatos corretos.
         }
-        catch(invalid_argument &exp){                                                           // Captura exceção devido a formato incorreto.
+        catch(invalid_argument &exp){                                                           // Captura exceï¿½ï¿½o devido a formato incorreto.
             clear();                                                                            // Limpa janela.
             mvprintw(linha/4,coluna/4,"%s",texto3);                                             // Informa formato incorreto.
             noecho();
-            getch();                                                                            // Lê caracter digitado.
+            getch();                                                                            // Lï¿½ caracter digitado.
             echo();
         }
     }
-    return (cntr->autenticar(*matricula, senha));                                                     // Solicita serviço de autenticação.
+    return (cntr->autenticar(*matricula, senha));                                                     // Solicita serviï¿½o de autenticaï¿½ï¿½o.
 }
 
 //--------------------------------------------------------------------------------------------
 
 void CntrApresentacaoPessoal::executar(CPF cpf){
 
-    // Mensagens a serem apresentadas na tela de seleção de serviço..
+    // Mensagens a serem apresentadas na tela de seleï¿½ï¿½o de serviï¿½o..
 
     char texto1[]="Selecione um dos servicos : ";
     char texto2[]="1 - Consultar dados pessoais.";
@@ -163,20 +163,20 @@ void CntrApresentacaoPessoal::executar(CPF cpf){
 
     getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
 
-    bool apresentar = true;                                                                     // Controle de laço.
+    bool apresentar = true;                                                                     // Controle de laï¿½o.
 
     echo();                                                                                     // Habilita eco.
 
     while(apresentar){
 
-        // Apresenta tela de selação de serviço.
+        // Apresenta tela de selaï¿½ï¿½o de serviï¿½o.
 
         clear();                                                                                // Limpa janela.
         mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
         mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
         mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
         noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversão de ASCII.
+        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversï¿½o de ASCII.
         echo();
 
         switch(campo){
@@ -210,7 +210,7 @@ void CntrApresentacaoPessoal::cadastrar(){
     char campo1[80], campo2[80], campo3[80], campo4[80], campo5[80];                            // Cria campos para entrada dos dados.
     char campo6[80], campo7[80], campo8[80];                                                    // Cria campos para entrada dos dados.
 
-    // Instancia os domínios.
+    // Instancia os domï¿½nios.
 
     Nome nome;
     Endereco endereco;
@@ -231,21 +231,21 @@ void CntrApresentacaoPessoal::cadastrar(){
 
     mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
     mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                                 // Imprime nome do campo.
-    getstr(campo1);                                                                             // Lê valor do campo.
+    getstr(campo1);                                                                             // Lï¿½ valor do campo.
     mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                                 // Imprime nome do campo.
-    getstr(campo2);                                                                             // Lê valor do campo.
+    getstr(campo2);                                                                             // Lï¿½ valor do campo.
     mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                                 // Imprime nome do campo.
-    getstr(campo3);                                                                             // Lê valor do campo.
+    getstr(campo3);                                                                             // Lï¿½ valor do campo.
     mvprintw(linha/4 + 8,coluna/4,"%s",texto5);                                                 // Imprime nome do campo.
-    getstr(campo4);                                                                             // Lê valor do campo.
+    getstr(campo4);                                                                             // Lï¿½ valor do campo.
     mvprintw(linha/4 + 10,coluna/4,"%s",texto6);                                                // Imprime nome do campo.
-    getstr(campo5);                                                                             // Lê valor do campo.
+    getstr(campo5);                                                                             // Lï¿½ valor do campo.
     mvprintw(linha/4 + 12,coluna/4,"%s",texto7);                                                // Imprime nome do campo.
-    getstr(campo6);                                                                             // Lê valor do campo.
+    getstr(campo6);                                                                             // Lï¿½ valor do campo.
     mvprintw(linha/4 + 14,coluna/4,"%s",texto8);                                                // Imprime nome do campo.
-    getstr(campo7);                                                                             // Lê valor do campo.
+    getstr(campo7);                                                                             // Lï¿½ valor do campo.
     mvprintw(linha/4 + 16,coluna/4,"%s",texto9);                                                // Imprime nome do campo.
-    getstr(campo8);                                                                             // Lê valor do campo.
+    getstr(campo8);                                                                             // Lï¿½ valor do campo.
 
     try{
         nome.setValor(string(campo1));
@@ -282,7 +282,7 @@ void CntrApresentacaoPessoal::cadastrar(){
     conta.setBanco(banco);
     conta.setCPF(cpf);
 
-    // Cadastra usuário e conta.
+    // Cadastra usuï¿½rio e conta.
 
     if(cntrServicoPessoal->cadastrarUsuario(usuario))
         if(cntrServicoProdutosFinanceiros->cadastrarConta(conta)){
@@ -307,11 +307,11 @@ void CntrApresentacaoPessoal::consultarDadosPessoais(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
-    // Substituir código seguinte pela implementação do método.
+    // Substituir cï¿½digo seguinte pela implementaï¿½ï¿½o do mï¿½todo.
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
 
-    // Mensagens a serem apresentadas na tela de apresentação de dados pessoais.
+    // Mensagens a serem apresentadas na tela de apresentaï¿½ï¿½o de dados pessoais.
 
     int linha,coluna;                                                                           // Dados sobre tamanho da tela.
     getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
@@ -347,7 +347,7 @@ void CntrApresentacaoSala::incluirSala(){ //preciso pegar os dados com controlad
 
     char campo1[80], campo2[80], campo3[80];                                                   // Cria campos para entrada dos dados.
 
-    // Instancia os domínios.
+    // Instancia os domï¿½nios.
 
     Codigo codigo;
     Nome nome;
@@ -363,9 +363,9 @@ void CntrApresentacaoSala::incluirSala(){ //preciso pegar os dados com controlad
 
     mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
     mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                                 // Imprime nome do campo.
-    getstr(campo1);                                                                             // Lê valor do campo.
+    getstr(campo1);                                                                             // Lï¿½ valor do campo.
     mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                                 // Imprime nome do campo.
-    getstr(campo2);                                                                             // Lê valor do campo.
+    getstr(campo2);                                                                             // Lï¿½ valor do campo.
     mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                                 // Imprime nome do campo.
     getstr(campo3);
 
@@ -421,7 +421,7 @@ void CntrApresentacaoSala::excluirSala(){ //preciso pegar os dados com controlad
 
     char campo1[80];                                                                           // Cria campos para entrada dos dados.
 
-    // Instancia os domínios.
+    // Instancia os domï¿½nios.
 
     Codigo codigo;
 
@@ -434,7 +434,7 @@ void CntrApresentacaoSala::excluirSala(){ //preciso pegar os dados com controlad
     clear();                                                                                    // Limpa janela.
 
     mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
-    getstr(campo1);                                                                             // Lê valor do campo.
+    getstr(campo1);                                                                             // Lï¿½ valor do campo.
 
     try{
         codigo.setValor(string(campo1));
@@ -481,7 +481,7 @@ void CntrApresentacaoSala::editarSala(){ //preciso pegar os dados com controlado
 
     char campo1[80], campo2[80], campo3[80];                                                   // Cria campos para entrada dos dados.
 
-    // Instancia os domínios.
+    // Instancia os domï¿½nios.
 
     Codigo codigo;
     Nome nome;
@@ -497,9 +497,9 @@ void CntrApresentacaoSala::editarSala(){ //preciso pegar os dados com controlado
 
     mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
     mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                                 // Imprime nome do campo.
-    getstr(campo1);                                                                             // Lê valor do campo.
+    getstr(campo1);                                                                             // Lï¿½ valor do campo.
     mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                                 // Imprime nome do campo.
-    getstr(campo2);                                                                             // Lê valor do campo.
+    getstr(campo2);                                                                             // Lï¿½ valor do campo.
     mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                                 // Imprime nome do campo.
     getstr(campo3);
 
@@ -555,7 +555,7 @@ void CntrApresentacaoSala::visualizarSala(){ //preciso pegar os dados com contro
 
     char campo1[80];                                                                           // Cria campos para entrada dos dados.
 
-    // Instancia os domínios.
+    // Instancia os domï¿½nios.
 
     Codigo codigo;
 
@@ -568,7 +568,7 @@ void CntrApresentacaoSala::visualizarSala(){ //preciso pegar os dados com contro
     clear();                                                                                    // Limpa janela.
 
     mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
-    getstr(campo1);                                                                             // Lê valor do campo.
+    getstr(campo1);                                                                             // Lï¿½ valor do campo.
 
     try{
         codigo.setValor(string(campo1));
@@ -616,7 +616,7 @@ void CntrApresentacaoSala::executar(){
 
     echo();                                                                                     // Habilita eco.
 
-    bool apresentar = true;                                                                     // Controle de laço.
+    bool apresentar = true;                                                                     // Controle de laï¿½o.
 
     while(apresentar){
 
@@ -627,7 +627,7 @@ void CntrApresentacaoSala::executar(){
         mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
         mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
         noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversão de ASCII.
+        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversï¿½o de ASCII.
         echo();
 
         switch(campo){
@@ -661,7 +661,7 @@ void CntrApresentacaoSala::executar(Matricula){
 
     echo();                                                                                     // Habilita eco.
 
-    bool apresentar = true;                                                                     // Controle de laço.
+    bool apresentar = true;                                                                     // Controle de laï¿½o.
 
     echo();                                                                                     // Habilita eco.
 
@@ -678,7 +678,7 @@ void CntrApresentacaoSala::executar(Matricula){
         mvprintw(linha/4 + 10,coluna/4,"%s",texto6);                                            // Imprime nome do campo.
         mvprintw(linha/4 + 12,coluna/4,"%s",texto7);                                            // Imprime nome do campo.
         noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversão de ASCII.
+        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversï¿½o de ASCII.
         echo();
 
         switch(campo){
@@ -699,6 +699,766 @@ void CntrApresentacaoSala::executar(Matricula){
 }
 
 //--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoSessao::listarSessao(){ //preciso pegar os dados com controladora servico
+    cntrServicoSessao->listar();
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoSessao::incluirSessao(){ //preciso pegar os dados com controladora servico
+
+    // Mensagens a serem apresentadas na tela de cadastramento.
+
+    char texto1[] ="Preencha os seguintes campos: ";
+    char texto2[] ="Codido      :";
+    char texto3[] ="Data        :";
+    char texto4[] ="Horario     :";
+    char texto10[]="Dados em formato incorreto. Digite algo.";
+    char texto11[]="Sucesso no cadastramento. Digite algo.";
+    char texto12[]="Falha no cadastramento. Digite algo.";
+
+    char campo1[80], campo2[80], campo3[80];                                                   // Cria campos para entrada dos dados.
+
+    // Instancia os domï¿½nios.
+
+    Codigo codigo;
+    Data data;
+    Horario horario;
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    // Apresenta tela de cadastramento.
+
+    clear();                                                                                    // Limpa janela.
+
+    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
+    mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                                 // Imprime nome do campo.
+    getstr(campo1);                                                                             // Lï¿½ valor do campo.
+    mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                                 // Imprime nome do campo.
+    getstr(campo2);                                                                             // Lï¿½ valor do campo.
+    mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                                 // Imprime nome do campo.
+    getstr(campo3);
+
+    try{
+        codigo.setValor(string(campo1));
+        data.setValor(string(campo2));
+        horario.setValor(string(campo3));
+    }
+    catch(invalid_argument &exp){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
+        noecho();                                                                               // Desabilita eco.
+        getch();                                                                                // Leitura de caracter digitado.
+        echo();                                                                                 // Habilita eco.
+        return;
+    }
+
+    // Instancia e inicializa entidade.
+
+    Sessao sessao;
+
+    sessao.setCodigo(codigo);
+    sessao.setData(data);
+    sessao.setHorario(horario);
+
+    // Incluir Sessao.
+
+    if(cntrServicoSessao->incluir(sessao)){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
+        noecho();
+        getch();
+        echo();
+        return;
+    }
+
+    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
+    noecho();
+    getch();
+    echo();
+
+    return;
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoSessao::excluirSessao(){ //preciso pegar os dados com controladora servico
+
+    // Mensagens a serem apresentadas na tela de cadastramento.
+
+    char texto1[] ="Informe o codigo da Sessao a ser excluida: ";
+    char texto10[]="Dado em formato incorreto. Digite algo.";
+    char texto11[]="Sucesso na exclusao. Digite algo.";
+    char texto12[]="Falha na exclusao. Digite algo.";
+
+    char campo1[80];                                                                           // Cria campos para entrada dos dados.
+
+    // Instancia os domï¿½nios.
+
+    Codigo codigo;
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    // Apresenta tela de cadastramento.
+
+    clear();                                                                                    // Limpa janela.
+
+    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
+    getstr(campo1);                                                                             // Lï¿½ valor do campo.
+
+    try{
+        codigo.setValor(string(campo1));
+    }
+    catch(invalid_argument &exp){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
+        noecho();                                                                               // Desabilita eco.
+        getch();                                                                                // Leitura de caracter digitado.
+        echo();                                                                                 // Habilita eco.
+        return;
+    }
+
+    // Exclui a Sessao.
+
+    if(cntrServicoSessao->excluir(codigo)){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
+        noecho();
+        getch();
+        echo();
+        return;
+    }
+
+    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
+    noecho();
+    getch();
+    echo();
+
+    return;
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoSessao::editarSessao(){ //preciso pegar os dados com controladora servico
+
+    // Mensagens a serem apresentadas na tela de edicao de Sessao.
+
+    char texto1[] ="Preencha os seguintes campos: ";
+    char texto2[] ="Codido da Sessao a ser editada:";
+    char texto3[] ="Data                        :";
+    char texto4[] ="Horario                     :";
+    char texto10[]="Dados em formato incorreto. Digite algo.";
+    char texto11[]="Sucesso na edicao. Digite algo.";
+    char texto12[]="Falha na edicao. Digite algo.";
+
+    char campo1[80], campo2[80], campo3[80];                                                   // Cria campos para entrada dos dados.
+
+    // Instancia os domï¿½nios.
+
+    Codigo codigo;
+    Data data;
+    Horario horario;
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    // Apresenta tela de cadastramento.
+
+    clear();                                                                                    // Limpa janela.
+
+    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
+    mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                                 // Imprime nome do campo.
+    getstr(campo1);                                                                             // Lï¿½ valor do campo.
+    mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                                 // Imprime nome do campo.
+    getstr(campo2);                                                                             // Lï¿½ valor do campo.
+    mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                                 // Imprime nome do campo.
+    getstr(campo3);
+
+    try{
+        codigo.setValor(string(campo1));
+        data.setValor(string(campo2));
+        horario.setValor(string(campo3));
+    }
+    catch(invalid_argument &exp){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
+        noecho();                                                                               // Desabilita eco.
+        getch();                                                                                // Leitura de caracter digitado.
+        echo();                                                                                 // Habilita eco.
+        return;
+    }
+
+    // Instancia e inicializa entidade.
+
+    Sessao sessao;
+
+    sessao.setCodigo(codigo);
+    sessao.setData(data);
+    sessao.setHorario(horario);
+
+    // Incluir Sessao.
+
+    if(cntrServicoSessao->editar(sessao)){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
+        noecho();
+        getch();
+        echo();
+        return;
+    }
+
+    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
+    noecho();
+    getch();
+    echo();
+
+    return;
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoSessao::visualizarSessao(){ //preciso pegar os dados com controladora servico
+
+    // Mensagens a serem apresentadas na tela de visualizar Sessao.
+
+    char texto1[] ="Informe o codigo da Sessao que se deseja visualizar: ";
+    char texto10[]="Dado em formato incorreto. Digite algo.";
+    char texto11[]="Sucesso na exclusao. Digite algo.";
+    char texto12[]="Falha na exclusao. Digite algo.";
+
+    char campo1[80];                                                                           // Cria campos para entrada dos dados.
+
+    // Instancia os domï¿½nios.
+
+    Codigo codigo;
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    // Apresenta tela de visualizacao de Sessao.
+
+    clear();                                                                                    // Limpa janela.
+
+    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
+    getstr(campo1);                                                                             // Lï¿½ valor do campo.
+
+    try{
+        codigo.setValor(string(campo1));
+    }
+    catch(invalid_argument &exp){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
+        noecho();                                                                               // Desabilita eco.
+        getch();                                                                                // Leitura de caracter digitado.
+        echo();                                                                                 // Habilita eco.
+        return;
+    }
+
+    // Visualizacao da Sessao.
+
+    if(cntrServicoSessao->visualizar(codigo)){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
+        noecho();
+        getch();
+        echo();
+        return;
+    }
+
+    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
+    noecho();
+    getch();
+    echo();
+
+    return;
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoSessao::executar(){
+
+    // Mensagens a serem apresentadas na tela simplificada de Sessaos.
+
+    char texto1[]="Selecione um dos servicos : ";
+    char texto2[]="1 - Listar Sessaos disponiveis.";
+    char texto3[]="2 - Retornar.";
+
+    int campo;                                                                                  // Campo de entrada.
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    echo();                                                                                     // Habilita eco.
+
+    bool apresentar = true;                                                                     // Controle de laï¿½o.
+
+    while(apresentar){
+
+        // Apresenta tela simplificada de Sessaos.
+
+        clear();                                                                                // Limpa janela.
+        mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
+        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
+        noecho();
+        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversï¿½o de ASCII.
+        echo();
+
+        switch(campo){
+            case 1: listarSessao();
+                    break;
+            case 2: apresentar = false;
+                    break;
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoSessao::executar(Matricula){
+
+    // Mensagens a serem apresentadas tela completa de Sessaos.
+
+    char texto1[] ="Selecione um dos servicos : ";
+    char texto2[] ="1 - Listar Sessoes";
+    char texto3[] ="2 - Incluir Sessao.";
+    char texto4[] ="3 - Excluir Sessao.";
+    char texto5[] ="4 - Editar Sessao.";
+    char texto6[] ="5 - Visualizar Sessao.";
+    char texto7[] ="6 - Retornar.";
+
+    int campo;                                                                                  // Campo de entrada.
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    echo();                                                                                     // Habilita eco.
+
+    bool apresentar = true;                                                                     // Controle de laï¿½o.
+
+    echo();                                                                                     // Habilita eco.
+
+    while(apresentar){
+
+        // Apresenta tela completa de Sessaos.
+
+        clear();                                                                                // Limpa janela.
+        mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
+        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 8,coluna/4,"%s",texto5);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 10,coluna/4,"%s",texto6);                                            // Imprime nome do campo.
+        mvprintw(linha/4 + 12,coluna/4,"%s",texto7);                                            // Imprime nome do campo.
+        noecho();
+        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversï¿½o de ASCII.
+        echo();
+
+        switch(campo){
+            case 1: listarSessao();
+                    break;
+            case 2: incluirSessao();
+                    break;
+            case 3: excluirSessao();
+                    break;
+            case 4: editarSessao();
+                    break;
+            case 5: visualizarSessao();
+                    break;
+            case 6: apresentar = false;
+                    break;
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoPeca::listarPeca(){ //preciso pegar os dados com controladora servico
+    cntrServicoPeca->listar();
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoPeca::incluirPeca(){ //preciso pegar os dados com controladora servico
+
+    // Mensagens a serem apresentadas na tela de cadastramento.
+
+    char texto1[] ="Preencha os seguintes campos: ";
+    char texto2[] ="Codigo         :";
+    char texto3[] ="Nome           :";
+    char texto4[] ="Tipo           :";
+    char texto5[] ="ClassificaÃ§Ã£o  :";
+    char texto10[]="Dados em formato incorreto. Digite algo.";
+    char texto11[]="Sucesso no cadastramento. Digite algo.";
+    char texto12[]="Falha no cadastramento. Digite algo.";
+
+    char campo1[80], campo2[80], campo3[80], campo4[80];                                                   // Cria campos para entrada dos dados.
+
+    // Instancia os domï¿½nios.
+
+    Codigo codigo;
+    Nome nome;
+    Tipo tipo;
+    Classificacao classificacao;
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    // Apresenta tela de cadastramento.
+
+    clear();                                                                                    // Limpa janela.
+
+    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
+    mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                                 // Imprime nome do campo.
+    getstr(campo1);                                                                             // Lï¿½ valor do campo.
+    mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                                 // Imprime nome do campo.
+    getstr(campo2);                                                                             // Lï¿½ valor do campo.
+    mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                                 // Imprime nome do campo.
+    getstr(campo3);
+    mvprintw(linha/4 + 6,coluna/4,"%s",texto5);                                                 // Imprime nome do campo.
+    getstr(campo4);
+
+    try{
+        codigo.setValor(string(campo1));
+        nome.setValor(string(campo2));
+        tipo.setValor(string(campo3));
+        classificacao.setValor(string(campo4));
+    }
+    catch(invalid_argument &exp){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
+        noecho();                                                                               // Desabilita eco.
+        getch();                                                                                // Leitura de caracter digitado.
+        echo();                                                                                 // Habilita eco.
+        return;
+    }
+
+    // Instancia e inicializa entidade.
+
+    Peca peca;
+
+    peca.setCodigo(codigo);
+    peca.setNome(nome);
+    peca.setTipo(tipo);
+    peca.setClassificacao(classificacao);
+
+    // Incluir Peca.
+
+    if(cntrServicoPeca->incluir(peca)){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
+        noecho();
+        getch();
+        echo();
+        return;
+    }
+
+    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
+    noecho();
+    getch();
+    echo();
+
+    return;
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoPeca::excluirPeca(){ //preciso pegar os dados com controladora servico
+
+    // Mensagens a serem apresentadas na tela de cadastramento.
+
+    char texto1[] ="Informe o codigo da peca a ser excluida: ";
+    char texto10[]="Dado em formato incorreto. Digite algo.";
+    char texto11[]="Sucesso na exclusao. Digite algo.";
+    char texto12[]="Falha na exclusao. Digite algo.";
+
+    char campo1[80];                                                                           // Cria campos para entrada dos dados.
+
+    // Instancia os domï¿½nios.
+
+    Codigo codigo;
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    // Apresenta tela de cadastramento.
+
+    clear();                                                                                    // Limpa janela.
+
+    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
+    getstr(campo1);                                                                             // Lï¿½ valor do campo.
+
+    try{
+        codigo.setValor(string(campo1));
+    }
+    catch(invalid_argument &exp){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
+        noecho();                                                                               // Desabilita eco.
+        getch();                                                                                // Leitura de caracter digitado.
+        echo();                                                                                 // Habilita eco.
+        return;
+    }
+
+    // Exclui a Peca.
+
+    if(cntrServicoPeca->excluir(codigo)){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
+        noecho();
+        getch();
+        echo();
+        return;
+    }
+
+    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
+    noecho();
+    getch();
+    echo();
+
+    return;
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoPeca::editarPeca(){ //preciso pegar os dados com controladora servico
+
+    // Mensagens a serem apresentadas na tela de edicao de Peca.
+
+    char texto1[] ="Preencha os seguintes campos: ";
+    char texto2[] ="Codido da peca a ser editada:";
+    char texto3[] ="Nome                        :";
+    char texto4[] ="Tipo                        :";
+    char texto5[] ="ClassificaÃ§Ã£o               :";
+    char texto10[]="Dados em formato incorreto. Digite algo.";
+    char texto11[]="Sucesso na edicao. Digite algo.";
+    char texto12[]="Falha na edicao. Digite algo.";
+
+    char campo1[80], campo2[80], campo3[80], campo4[80];                                                   // Cria campos para entrada dos dados.
+
+    // Instancia os domï¿½nios.
+
+    Codigo codigo;
+    Nome nome;
+    Tipo tipo;
+    Classificacao classificacao;
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    // Apresenta tela de cadastramento.
+
+    clear();                                                                                    // Limpa janela.
+
+    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
+    mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                                 // Imprime nome do campo.
+    getstr(campo1);                                                                             // Lï¿½ valor do campo.
+    mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                                 // Imprime nome do campo.
+    getstr(campo2);                                                                             // Lï¿½ valor do campo.
+    mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                                 // Imprime nome do campo.
+    getstr(campo3);
+    mvprintw(linha/4 + 6,coluna/4,"%s",texto5);                                                 // Imprime nome do campo.
+    getstr(campo4);
+
+    try{
+        codigo.setValor(string(campo1));
+        nome.setValor(string(campo2));
+        tipo.setValor(string(campo3));
+        classificacao.setValor(string(campo4));
+    }
+    catch(invalid_argument &exp){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
+        noecho();                                                                               // Desabilita eco.
+        getch();                                                                                // Leitura de caracter digitado.
+        echo();                                                                                 // Habilita eco.
+        return;
+    }
+
+    // Instancia e inicializa entidade.
+
+    Peca peca;
+
+    peca.setCodigo(codigo);
+    peca.setNome(nome);
+    peca.setTipo(tipo);
+    peca.setClassificacao(classificacao);
+
+    // Incluir peca.
+
+    if(cntrServicoPeca->editar(Peca)){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
+        noecho();
+        getch();
+        echo();
+        return;
+    }
+
+    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
+    noecho();
+    getch();
+    echo();
+
+    return;
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoPeca::visualizarPeca(){ //preciso pegar os dados com controladora servico
+
+    // Mensagens a serem apresentadas na tela de visualizar Peca.
+
+    char texto1[] ="Informe o codigo da Peca que se deseja visualizar: ";
+    char texto10[]="Dado em formato incorreto. Digite algo.";
+    char texto11[]="Sucesso na exclusao. Digite algo.";
+    char texto12[]="Falha na exclusao. Digite algo.";
+
+    char campo1[80];                                                                           // Cria campos para entrada dos dados.
+
+    // Instancia os domï¿½nios.
+
+    Codigo codigo;
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    // Apresenta tela de visualizacao de Peca.
+
+    clear();                                                                                    // Limpa janela.
+
+    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
+    getstr(campo1);                                                                             // Lï¿½ valor do campo.
+
+    try{
+        codigo.setValor(string(campo1));
+    }
+    catch(invalid_argument &exp){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
+        noecho();                                                                               // Desabilita eco.
+        getch();                                                                                // Leitura de caracter digitado.
+        echo();                                                                                 // Habilita eco.
+        return;
+    }
+
+    // Visualizacao da Peca.
+
+    if(cntrServicoPeca->visualizar(codigo)){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
+        noecho();
+        getch();
+        echo();
+        return;
+    }
+
+    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
+    noecho();
+    getch();
+    echo();
+
+    return;
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoPeca::executar(){
+
+    // Mensagens a serem apresentadas na tela simplificada de Pecas.
+
+    char texto1[]="Selecione um dos servicos : ";
+    char texto2[]="1 - Listar Pecas disponiveis.";
+    char texto3[]="2 - Retornar.";
+
+    int campo;                                                                                  // Campo de entrada.
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    echo();                                                                                     // Habilita eco.
+
+    bool apresentar = true;                                                                     // Controle de laï¿½o.
+
+    while(apresentar){
+
+        // Apresenta tela simplificada de Pecas.
+
+        clear();                                                                                // Limpa janela.
+        mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
+        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
+        noecho();
+        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversï¿½o de ASCII.
+        echo();
+
+        switch(campo){
+            case 1: listarPeca();
+                    break;
+            case 2: apresentar = false;
+                    break;
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoPeca::executar(Matricula){
+
+    // Mensagens a serem apresentadas tela completa de Pecas.
+
+    char texto1[] ="Selecione um dos servicos : ";
+    char texto2[] ="1 - Listar Pecas";
+    char texto3[] ="2 - Incluir Peca.";
+    char texto4[] ="3 - Excluir Peca.";
+    char texto5[] ="4 - Editar Peca.";
+    char texto6[] ="5 - Visualizar Peca.";
+    char texto7[] ="6 - Retornar.";
+
+    int campo;                                                                                  // Campo de entrada.
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    echo();                                                                                     // Habilita eco.
+
+    bool apresentar = true;                                                                     // Controle de laï¿½o.
+
+    echo();                                                                                     // Habilita eco.
+
+    while(apresentar){
+
+        // Apresenta tela completa de Pecas.
+
+        clear();                                                                                // Limpa janela.
+        mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
+        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 8,coluna/4,"%s",texto5);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 10,coluna/4,"%s",texto6);                                            // Imprime nome do campo.
+        mvprintw(linha/4 + 12,coluna/4,"%s",texto7);                                            // Imprime nome do campo.
+        noecho();
+        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversï¿½o de ASCII.
+        echo();
+
+        switch(campo){
+            case 1: listarPeca();
+                    break;
+            case 2: incluirPeca();
+                    break;
+            case 3: excluirPeca();
+                    break;
+            case 4: editarPeca();
+                    break;
+            case 5: visualizarPeca();
+                    break;
+            case 6: apresentar = false;
+                    break;
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------
+
 
 //--------------------------------------------------------------------------------------------
 
@@ -717,7 +1477,7 @@ void CntrApresentacaoProdutosFinanceiros::executar(){
 
     echo();                                                                                     // Habilita eco.
 
-    bool apresentar = true;                                                                     // Controle de laço.
+    bool apresentar = true;                                                                     // Controle de laï¿½o.
 
     while(apresentar){
 
@@ -728,7 +1488,7 @@ void CntrApresentacaoProdutosFinanceiros::executar(){
         mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
         mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
         noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversão de ASCII.
+        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversï¿½o de ASCII.
         echo();
 
         switch(campo){
@@ -763,7 +1523,7 @@ void CntrApresentacaoProdutosFinanceiros::executar(CPF){
 
     echo();                                                                                     // Habilita eco.
 
-    bool apresentar = true;                                                                     // Controle de laço.
+    bool apresentar = true;                                                                     // Controle de laï¿½o.
 
     echo();                                                                                     // Habilita eco.
 
@@ -781,7 +1541,7 @@ void CntrApresentacaoProdutosFinanceiros::executar(CPF){
         mvprintw(linha/4 + 12,coluna/4,"%s",texto7);                                            // Imprime nome do campo.
         mvprintw(linha/4 + 14,coluna/4,"%s",texto8);                                            // Imprime nome do campo.
         noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversão de ASCII.
+        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversï¿½o de ASCII.
         echo();
 
         switch(campo){
@@ -809,7 +1569,7 @@ void CntrApresentacaoProdutosFinanceiros::consultarConta(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
-    // Substituir código seguinte pela implementação do método.
+    // Substituir cï¿½digo seguinte pela implementaï¿½ï¿½o do mï¿½todo.
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
 
@@ -832,7 +1592,7 @@ void CntrApresentacaoProdutosFinanceiros::cadastrarProdutoInvestimento(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
-    // Substituir código seguinte pela implementação do método.
+    // Substituir cï¿½digo seguinte pela implementaï¿½ï¿½o do mï¿½todo.
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
 
@@ -855,7 +1615,7 @@ void CntrApresentacaoProdutosFinanceiros::descadastrarProdutoInvestimento(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
-    // Substituir código seguinte pela implementação do método.
+    // Substituir cï¿½digo seguinte pela implementaï¿½ï¿½o do mï¿½todo.
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
 
@@ -878,7 +1638,7 @@ void CntrApresentacaoProdutosFinanceiros::consultarProdutoInvestimento(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
-    // Substituir código seguinte pela implementação do método.
+    // Substituir cï¿½digo seguinte pela implementaï¿½ï¿½o do mï¿½todo.
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
 
@@ -901,7 +1661,7 @@ void CntrApresentacaoProdutosFinanceiros::realizarAplicacao(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
-    // Substituir código seguinte pela implementação do método.
+    // Substituir cï¿½digo seguinte pela implementaï¿½ï¿½o do mï¿½todo.
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
 
@@ -924,7 +1684,7 @@ void CntrApresentacaoProdutosFinanceiros::listarAplicacoes(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
-    // Substituir código seguinte pela implementação do método.
+    // Substituir cï¿½digo seguinte pela implementaï¿½ï¿½o do mï¿½todo.
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
 

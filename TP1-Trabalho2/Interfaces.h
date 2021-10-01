@@ -6,7 +6,7 @@
 
 //--------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------
-// Adequar as declarações das interfaces de acordo com as necessidades.
+// Adequar as declaraï¿½ï¿½es das interfaces de acordo com as necessidades.
 //--------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------
 
@@ -15,10 +15,12 @@
 class IServicoAutenticacao;
 class IServicoPessoal;
 class IServicoPeca;
+class IServicoSessao;
+class IServicoSala;
 class IServicoProdutosFinanceiros;
 
 //--------------------------------------------------------------------------------------------
-// Declarações das interfaces da camada de apresentação.
+// Declaraï¿½ï¿½es das interfaces da camada de apresentaï¿½ï¿½o.
 
 class IApresentacaoAutenticacao {
     public:
@@ -38,18 +40,26 @@ class IApresentacaoPessoal{
 
 class IApresentacaoPeca {
 public:
-    virtual void executar(const Matricula&) = 0;                 // Método por meio do qual é solicitado o serviço.
+    virtual void executar(const Matricula&) = 0;                 // Mï¿½todo por meio do qual ï¿½ solicitado o serviï¿½o.
     virtual void executar() = 0;
-    virtual void setCntrServicoPeca(IServicoPeca *) = 0;         // Método para estabelecer ligação (link) com a controladora de serviço.
-    virtual ~IApresentacaoPeca(){}                                          // Método destrutor virtual.
+    virtual void setCntrServicoPeca(IServicoPeca *) = 0;         // Mï¿½todo para estabelecer ligaï¿½ï¿½o (link) com a controladora de serviï¿½o.
+    virtual ~IApresentacaoPeca(){}                                          // Mï¿½todo destrutor virtual.
 };
 
 class IApresentacaoSala {
 public:
-    virtual void executar(const Matricula&) = 0;                 // Método por meio do qual é solicitado o serviço.
+    virtual void executar(const Matricula&) = 0;                 // Mï¿½todo por meio do qual ï¿½ solicitado o serviï¿½o.
     virtual void executar() = 0;
-    virtual void setCntrServicoSala(IServicoSala *) = 0;         // Método para estabelecer ligação (link) com a controladora de serviço.
-    virtual ~IApresentacaoSala(){}                                          // Método destrutor virtual.
+    virtual void setCntrServicoSala(IServicoSala *) = 0;         // Mï¿½todo para estabelecer ligaï¿½ï¿½o (link) com a controladora de serviï¿½o.
+    virtual ~IApresentacaoSala(){}                                          // Mï¿½todo destrutor virtual.
+};
+
+class IApresentacaoSessao {
+public:
+    virtual void executar(const Matricula&) = 0;                 // Mï¿½todo por meio do qual ï¿½ solicitado o serviï¿½o.
+    virtual void executar() = 0;
+    virtual void setCntrServicoSessao(IServicoPeca *) = 0;         // Mï¿½todo para estabelecer ligaï¿½ï¿½o (link) com a controladora de serviï¿½o.
+    virtual ~IApresentacaoSessao(){}                                          // Mï¿½todo destrutor virtual.
 };
 
 class IApresentacaoProdutosFinanceiros{
@@ -61,7 +71,7 @@ class IApresentacaoProdutosFinanceiros{
 };
 
 //--------------------------------------------------------------------------------------------
-// Declarações das interfaces da camada de serviço.
+// Declaraï¿½ï¿½es das interfaces da camada de serviï¿½o.
 
 class IServicoAutenticacao {
     public:
@@ -78,37 +88,51 @@ public:
 class IServicoPeca{
 public:
 
-    // Métodos por meio dos quais são solicitados os serviços.
+    // Mï¿½todos por meio dos quais sï¿½o solicitados os serviï¿½os.
 
-    virtual bool cadastrar(const Peca&) = 0;
-    virtual bool descadastrar(const Matricula&) = 0;
-    virtual bool listar(Peca&) = 0;
-    virtual bool alterar(const Peca&) = 0;
-    virtual ~IServicoPeca(){}                                         // Método destrutor virtual.
+    virtual bool incluir(Peca) = 0;
+    virtual bool excluir(Peca*) = 0;
+    virtual bool listar() = 0;
+    virtual bool editar(Peca*) = 0;
+    virtual bool visualizar(Peca*) = 0;
+    virtual ~IServicoPeca(){}                                         // Mï¿½todo destrutor virtual.
+};
+
+class IServicoSessao{
+public:
+
+    // Mï¿½todos por meio dos quais sï¿½o solicitados os serviï¿½os.
+
+    virtual bool incluir(Sessao) = 0;
+    virtual bool excluir(Sessao*) = 0;
+    virtual bool listar() = 0;
+    virtual bool editar(Sessao*) = 0;
+    virtual bool visualizar(Sessao*) = 0;
+    virtual ~IServicoSessao(){}                                         // Mï¿½todo destrutor virtual.
 };
 
 class IServicoSala{
 public:
 
-    // Métodos por meio dos quais são solicitados os serviços.
+    // Mï¿½todos por meio dos quais sï¿½o solicitados os serviï¿½os.
 
     virtual bool listar() = 0;
     virtual bool incluir(Sala) = 0;
     virtual bool excluir(Sala*) = 0;
-    virtual bool editar(Sala*) = 0; // O prof costuma colocar o objeto Sala, como se passasse todo um novo objeto ao alterar, mas acho melhor ser pelo endereço, n?
+    virtual bool editar(Sala*) = 0; // O prof costuma colocar o objeto Sala, como se passasse todo um novo objeto ao alterar, mas acho melhor ser pelo endereï¿½o, n? 
     virtual bool visualizar(Sala*) = 0;
-    virtual ~IServicoSala(){}                                         // Método destrutor virtual.
+    virtual ~IServicoSala(){}                                         // Mï¿½todo destrutor virtual.
 };
 
-class IServicoProdutosFinanceiros{
-public:
-        virtual bool cadastrarConta(Conta) = 0;
-        virtual bool consultarConta(Conta*) = 0;
-        virtual bool cadastrarProdutoInvestimento(Produto) = 0;
-        virtual bool descadastrarProdutoInvestimento(Codigo) = 0;
-        virtual bool realizarAplicacao(Aplicacao) = 0;
-        virtual bool recuperarAplicacao(Aplicacao*) = 0;                        // Adaptar aos requisitos.
-        virtual ~IServicoProdutosFinanceiros(){}
-};
+// class IServicoProdutosFinanceiros{
+// public:
+//         virtual bool cadastrarConta(Conta) = 0;
+//         virtual bool consultarConta(Conta*) = 0;
+//         virtual bool cadastrarProdutoInvestimento(Produto) = 0;
+//         virtual bool descadastrarProdutoInvestimento(Codigo) = 0;
+//         virtual bool realizarAplicacao(Aplicacao) = 0;
+//         virtual bool recuperarAplicacao(Aplicacao*) = 0;                        // Adaptar aos requisitos.
+//         virtual ~IServicoProdutosFinanceiros(){}
+// };
 
 #endif // INTERFACES_H_INCLUDED
