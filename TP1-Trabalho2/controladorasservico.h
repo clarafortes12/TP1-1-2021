@@ -17,7 +17,7 @@ class CntrServicoAutenticacao:public IServicoAutenticacao{
 
 //--------------------------------------------------------------------------------------------
 
-class CntrServicoPessoal:public IServicoPessoal{
+class CntrServicoParticipante:public IServicoParticipante{
 };
 
 //--------------------------------------------------------------------------------------------

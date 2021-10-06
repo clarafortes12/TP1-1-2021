@@ -15,14 +15,14 @@ class CntrApresentacaoControle{
     private:
         Matricula matricula;
         IApresentacaoAutenticacao *cntrApresentacaoAutenticacao;
-        IApresentacaoPessoal *cntrApresentacaoPessoal;
+        IApresentacaoParticipante *cntrApresentacaoParticipante;
         IApresentacaoPeca *cntrApresentacaoPeca;
         IApresentacaoSessao *cntrApresentacaoSessao;
         IApresentacaoSala *cntrApresentacaoSala;
     public:
         void executar();
         void setCntrApresentacaoAutenticacao(IApresentacaoAutenticacao*);
-        void setCntrApresentacaoPessoal(IApresentacaoPessoal*);
+        void setCntrApresentacaoParticipante(IApresentacaoParticipante*);
         void setCntrApresentacaoPeca(IApresentacaoPeca*);
         void setCntrApresentacaoSessao(IApresentacaoSessao*);
         void setCntrApresentacaoSala(IApresentacaoSala*);
@@ -32,8 +32,8 @@ inline void CntrApresentacaoControle::setCntrApresentacaoAutenticacao(IApresenta
     cntrApresentacaoAutenticacao = cntr;
 }
 
-inline void CntrApresentacaoControle::setCntrApresentacaoPessoal(IApresentacaoPessoal *cntr){
-            cntrApresentacaoPessoal = cntr;
+inline void CntrApresentacaoControle::setCntrApresentacaoParticipante(IApresentacaoPessoal *cntr){
+            cntrApresentacaoParticipante = cntr;
 }
 
 inline void CntrApresentacaoControle::setCntrApresentacaoPeca(IApresentacaoPeca *cntr){
@@ -64,26 +64,21 @@ inline void CntrApresentacaoAutenticacao::setCntrServicoAutenticacao(IServicoAut
 
 //--------------------------------------------------------------------------------------------
 
-class CntrApresentacaoPessoal:public IApresentacaoPessoal{
+class CntrApresentacaoParticipante:public IApresentacaoParticipante{
     private:
-        IServicoPessoal *cntrServicoPessoal;
-        IServicoProdutosFinanceiros *cntrServicoProdutosFinanceiros;
-        void consultarDadosPessoais();
+        IServicoParticipante *cntrServicoParticipante;
+        void consultar();
     public:
-        void executar(CPF);
-        void cadastrar();
-        void setCntrServicoPessoal(IServicoPessoal*);
-        void setCntrServicoProdutosFinanceiros(IServicoProdutosFinanceiros*);
+        void executar(Matricula);
+        void cadastrar(Matricula);
+        void editar(Matricula);
+        void excluir(Matricula);
+        void setCntrServicoParticipante(IServicoParticipante*);
 };
 
-inline void CntrApresentacaoPessoal::setCntrServicoPessoal(IServicoPessoal *cntr){
-    cntrServicoPessoal = cntr;
+inline void CntrApresentacaoParticipante::setCntrServicoParticipante(IServicoParticipante *cntr){
+    cntrServicoParticipante = cntr;
 }
-
-inline void CntrApresentacaoPessoal::setCntrServicoProdutosFinanceiros(IServicoProdutosFinanceiros *cntr){
-    cntrServicoProdutosFinanceiros = cntr;
-}
-
 //--------------------------------------------------------------------------------------------
 
 class CntrApresentacaoSala:public IApresentacaoSala{
@@ -142,26 +137,6 @@ class CntrApresentacaoSessao:public IApresentacaoSessao{
 
 inline void CntrApresentacaoSessao::setCntrServicoSessao(IServicoSessao *cntr){
     cntrServicoSessao = cntr;
-}
-
-//--------------------------------------------------------------------------------------------
-class CntrApresentacaoProdutosFinanceiros:public IApresentacaoProdutosFinanceiros{
-    private:
-        IServicoProdutosFinanceiros *cntr;
-        void consultarConta();
-        void cadastrarProdutoInvestimento();
-        void descadastrarProdutoInvestimento();
-        void consultarProdutoInvestimento();
-        void realizarAplicacao();
-        void listarAplicacoes();
-    public:
-        void executar();
-        void executar(CPF);
-        void setCntrServicoProdutosFinanceiros(IServicoProdutosFinanceiros*);
-};
-
-inline void CntrApresentacaoProdutosFinanceiros::setCntrServicoProdutosFinanceiros(IServicoProdutosFinanceiros *cntr){
-    this->cntr = cntr;
 }
 
 

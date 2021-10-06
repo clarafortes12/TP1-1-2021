@@ -36,15 +36,16 @@
 		<Unit filename="Entidades.cpp" />
 		<Unit filename="Entidades.h" />
 		<Unit filename="Interfaces.h" />
-		<Unit filename="comandos.cpp" />
-		<Unit filename="comandos.h" />
 		<Unit filename="controladoras.cpp" />
 		<Unit filename="controladoras.h" />
+		<Unit filename="controladorasapresentacao.cpp" />
+		<Unit filename="controladorasapresentacao.h" />
+		<Unit filename="controladorasservico.cpp" />
+		<Unit filename="controladorasservico.h" />
+		<Unit filename="curses.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="stubs.cpp" />
 		<Unit filename="stubs.h" />
-		<Unit filename="testes.cpp" />
-		<Unit filename="testes.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

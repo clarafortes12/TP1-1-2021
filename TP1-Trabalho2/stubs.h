@@ -14,17 +14,20 @@ class StubServicoAutenticacao:public IServicoAutenticacao {
     private:
         static const string INVALIDO;
     public:
-        bool autenticar(CPF, Senha);
+        bool autenticar(Matricula, Senha);
 };
 
 //--------------------------------------------------------------------------------------------
-// Classe stub do serviço pessoal.
+// Classe stub do serviço participante.
 
-class StubServicoPessoal:public IServicoPessoal {
+class StubServicoParticipante:public IServicoParticipante {
     private:
         static const string INVALIDO;
     public:
-        bool cadastrarUsuario(Usuario);
+        bool cadastrar(Participante);
+        bool consultar(Participante*);
+        bool editar(Participante*);
+        bool excluir(Participante*);
 };
 
 //--------------------------------------------------------------------------------------------

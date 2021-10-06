@@ -149,40 +149,48 @@ bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula){
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoPessoal::executar(CPF cpf){
+void CntrApresentacaoParticipante::executar(Matricula cpf){
 
     // Mensagens a serem apresentadas na tela de sele��o de servi�o..
 
     char texto1[]="Selecione um dos servicos : ";
     char texto2[]="1 - Consultar dados pessoais.";
-    char texto3[]="2 - Retornar.";
+    char texto3[]="2 - Editar dados pessoais.";
+    char texto4[]="3 - Deletar cadastro.";
+    char texto5[]="4 - Retornar.";
 
-    int campo;                                                                                  // Campo de entrada.
+    int campo;
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    int linha,coluna;
 
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    getmaxyx(stdscr,linha,coluna);
 
-    bool apresentar = true;                                                                     // Controle de la�o.
+    bool apresentar = true;
 
-    echo();                                                                                     // Habilita eco.
+    echo();
 
     while(apresentar){
 
         // Apresenta tela de sela��o de servi�o.
 
-        clear();                                                                                // Limpa janela.
-        mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
-        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
+        clear();
+        mvprintw(linha/4,coluna/4,"%s",texto1);
+        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);
+        mvprintw(linha/4 + 4,coluna/4,"%s",texto3);
+        mvprintw(linha/4 + 4,coluna/4,"%s",texto4);
+        mvprintw(linha/4 + 4,coluna/4,"%s",texto5);
         noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
+        campo = getch() - 48;
         echo();
 
         switch(campo){
-            case 1: consultarDadosPessoais();
+            case 1: consultar(Matricula);
                     break;
-            case 2: apresentar = false;
+            case 2: editar(Matricula);
+                    break;
+            case 3: excluir(Matricula);
+                    break;
+            case 4: apresentar = false;
                     break;
         }
     }
@@ -190,108 +198,89 @@ void CntrApresentacaoPessoal::executar(CPF cpf){
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoPessoal::cadastrar(){
+void CntrApresentacaoParticipante::cadastrar(){
 
     // Mensagens a serem apresentadas na tela de cadastramento.
 
     char texto1[] ="Preencha os seguintes campos: ";
     char texto2[] ="Nome            :";
-    char texto3[] ="Endereco        :";
-    char texto4[] ="CEP             :";
-    char texto5[] ="CPF             :";
+    char texto3[] ="Sobrenome       :";
+    char texto4[] ="E-mail          :";
+    char texto5[] ="Telefone        :";
     char texto6[] ="Senha           :";
-    char texto7[] ="Numero de conta :";
-    char texto8[] ="Agencia         :";
-    char texto9[] ="Banco           :";
-    char texto10[]="Dados em formato incorreto. Digite algo.";
-    char texto11[]="Sucesso no cadastramento. Digite algo.";
-    char texto12[]="Falha no cadastramento. Digite algo.";
+    char texto7[] ="Matrícula       :";
+    char texto8[] ="Cargo           :";
+    char texto9[]="Dados em formato incorreto. Digite algo.";
+    char texto10[]="Sucesso no cadastramento. Digite algo.";
+    char texto11[]="Falha no cadastramento. Digite algo.";
 
-    char campo1[80], campo2[80], campo3[80], campo4[80], campo5[80];                            // Cria campos para entrada dos dados.
-    char campo6[80], campo7[80], campo8[80];                                                    // Cria campos para entrada dos dados.
+    char campo_nome[50], campo_sobrenome[50], campo_email[350];
+    char campo_telefone[50], campo_senha[50], campo_cargo[50], campo_matricula[50];
 
     // Instancia os dom�nios.
 
     Nome nome;
-    Endereco endereco;
-    CEP cep;
-    CPF cpf;
+    Nome sobrenome;
+    Email email;
+    Telefone telefone;
     Senha senha;
-    Numero numero;
-    Agencia agencia;
-    Banco banco;
+    Matricula matricula;
+    Cargo cargo;
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    int linha,coluna;
+    getmaxyx(stdscr,linha,coluna);
 
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    clear();
 
-    // Apresenta tela de cadastramento.
-
-    clear();                                                                                    // Limpa janela.
-
-    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
-    mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                                 // Imprime nome do campo.
-    getstr(campo1);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                                 // Imprime nome do campo.
-    getstr(campo2);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                                 // Imprime nome do campo.
-    getstr(campo3);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 8,coluna/4,"%s",texto5);                                                 // Imprime nome do campo.
-    getstr(campo4);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 10,coluna/4,"%s",texto6);                                                // Imprime nome do campo.
-    getstr(campo5);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 12,coluna/4,"%s",texto7);                                                // Imprime nome do campo.
-    getstr(campo6);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 14,coluna/4,"%s",texto8);                                                // Imprime nome do campo.
-    getstr(campo7);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 16,coluna/4,"%s",texto9);                                                // Imprime nome do campo.
-    getstr(campo8);                                                                             // L� valor do campo.
+    mvprintw(linha/4,coluna/4,"%s",texto1);
+    mvprintw(linha/4 + 2,coluna/4,"%s",texto2);
+    getstr(campo_nome);
+    mvprintw(linha/4 + 4,coluna/4,"%s",texto3);
+    getstr(campo_sobrenome);
+    mvprintw(linha/4 + 6,coluna/4,"%s",texto4);
+    getstr(campo_email);
+    mvprintw(linha/4 + 8,coluna/4,"%s",texto5);
+    getstr(campo_telefone);
+    mvprintw(linha/4 + 10,coluna/4,"%s",texto6);
+    getstr(campo_senha);
+    mvprintw(linha/4 + 12,coluna/4,"%s",texto7);
+    getstr(campo_matricula);
+    mvprintw(linha/4 + 14,coluna/4,"%s",texto8);
+    getstr(campo_cargo);
 
     try{
-        nome.setValor(string(campo1));
-        endereco.setValor(string(campo2));
-        cep.setValor(string(campo3));
-        cpf.setValor(string(campo4));
-        senha.setValor(string(campo5));
-        numero.setValor(string(campo6));
-        agencia.setValor(string(campo7));
-        banco.setValor(string(campo8));
+        nome.setValor(string(campo_nome));
+        sobrenome.setValor(string(campo_sobrenome));
+        email.setValor(string(campo_email));
+        telefone.setValor(string(campo_telefone));
+        senha.setValor(string(campo_senha));
+        matricula.setValor(string(campo_matricula));
+        cargo.setValor(string(campo_cargo));
     }
     catch(invalid_argument &exp){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
-        noecho();                                                                               // Desabilita eco.
-        getch();                                                                                // Leitura de caracter digitado.
-        echo();                                                                                 // Habilita eco.
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);
+        noecho();
+        getch();
+        echo();
         return;
     }
 
-    // Instancia e inicializa entidades.
+    Participante participante;
 
-    Usuario usuario;
+    participante.setNome(nome);
+    participante.setSobrenome(sobrenome);
+    participante.setEmail(email);
+    participante.setTelefone(telefone);
+    participante.setSenha(senha);
+    participante.setCargo(cargo);
 
-    usuario.setNome(nome);
-    usuario.setEndereco(endereco);
-    usuario.setCEP(cep);
-    usuario.setCPF(cpf);
-    usuario.setSenha(senha);
-
-    Conta conta;
-
-    conta.setNumero(numero);
-    conta.setAgencia(agencia);
-    conta.setBanco(banco);
-    conta.setCPF(cpf);
-
-    // Cadastra usu�rio e conta.
-
-    if(cntrServicoPessoal->cadastrarUsuario(usuario))
-        if(cntrServicoProdutosFinanceiros->cadastrarConta(conta)){
-            mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
-            noecho();
-            getch();
-            echo();
-            return;
-        }
+    if(CntrServicoParticipante->cadastrar(participante)){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
+        noecho();
+        getch();
+        echo();
+        return;
+    }
 
     mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
     noecho();
@@ -303,7 +292,7 @@ void CntrApresentacaoPessoal::cadastrar(){
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoPessoal::consultarDadosPessoais(){
+void CntrApresentacaoParticipante::consultar(Matricula){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
@@ -325,6 +314,49 @@ void CntrApresentacaoPessoal::consultarDadosPessoais(){
 }
 
 //--------------------------------------------------------------------------------------------
+
+void CntrApresentacaoParticipante::editar(Matricula){
+
+    //--------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------
+    // Substituir c�digo seguinte pela implementa��o do m�todo.
+    //--------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------
+
+    // Mensagens a serem apresentadas na tela de apresenta��o de dados pessoais.
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    char texto[]="Servico consultar dados pessoais nao implementado. Digite algo.";             // Mensagem a ser apresentada.
+    clear();                                                                                    // Limpa janela.
+    mvprintw(linha/4,coluna/4,"%s",texto);                                                      // Imprime nome do campo.
+    noecho();
+    getch();
+    echo();
+}
+
+void CntrApresentacaoParticipante::deletar(Matricula){
+
+    //--------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------
+    // Substituir c�digo seguinte pela implementa��o do m�todo.
+    //--------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------
+
+    // Mensagens a serem apresentadas na tela de apresenta��o de dados pessoais.
+
+    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+
+    char texto[]="Servico consultar dados pessoais nao implementado. Digite algo.";             // Mensagem a ser apresentada.
+    clear();                                                                                    // Limpa janela.
+    mvprintw(linha/4,coluna/4,"%s",texto);                                                      // Imprime nome do campo.
+    noecho();
+    getch();
+    echo();
+}
+
 //--------------------------------------------------------------------------------------------
 
 void CntrApresentacaoSala::listarSala(){ //preciso pegar os dados com controladora servico
