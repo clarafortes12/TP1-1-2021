@@ -16,40 +16,49 @@ int main()
 
     CntrApresentacaoControle *cntrApresentacaoControle;
     IApresentacaoAutenticacao *cntrApresentacaoAutenticacao;
-    IApresentacaoPessoal *cntrApresentacaoPessoal;
-    IApresentacaoProdutosFinanceiros *cntrApresentacaoProdutosFinanceiros;
+    IApresentacaoParticipante *cntrApresentacaoParticipante;
+    IApresentacaoPeca *cntrApresentacaoPeca;
+    IApresentacaoSala *cntrApresentacaoSala;
+    IApresentacaoSessao *cntrApresentacaoSessao;
 
     cntrApresentacaoControle = new CntrApresentacaoControle();
     cntrApresentacaoAutenticacao = new CntrApresentacaoAutenticacao();
-    cntrApresentacaoPessoal = new CntrApresentacaoPessoal();
-    cntrApresentacaoProdutosFinanceiros = new CntrApresentacaoProdutosFinanceiros();
+    cntrApresentacaoParticipante = new CntrApresentacaoParticipante();
+    cntrApresentacaoPeca = new CntrApresentacaoPeca();
+    cntrApresentacaoSala = new CntrApresentacaoSala();
+    cntrApresentacaoSessao = new CntrApresentacaoSessao();
 
     // Instanciar stubs de serviço.
 
     IServicoAutenticacao *stubServicoAutenticacao;
-    IServicoPessoal *stubServicoPessoal;
-    IServicoProdutosFinanceiros *stubServicoProdutosFinanceiros;
+    IServicoParticipante *stubServicoPessoal;
+    IServicoPeca *stubServicoPeca;
+    IServicoSala *stubServicoSala;
+    IServicoSessao *stubServicoSessao;
 
     stubServicoAutenticacao = new StubServicoAutenticacao();
-    stubServicoPessoal = new StubServicoPessoal();
-    stubServicoProdutosFinanceiros = new StubServicoProdutosFinanceiros();
+    stubServicoParticipante = new StubServicoParticipante();
+    stubServicoPeca = new StubServicoPeca();
+    stubServicoSala = new StubServicoSala();
+    stubServicoSessao = new StubServicoSessao();
 
     // Interligar controladoras e stubs.
 
     cntrApresentacaoControle->setCntrApresentacaoAutenticacao(cntrApresentacaoAutenticacao);
-    cntrApresentacaoControle->setCntrApresentacaoPessoal(cntrApresentacaoPessoal);
-    cntrApresentacaoControle->setCntrApresentacaoProdutosFinanceiros(cntrApresentacaoProdutosFinanceiros);
+    cntrApresentacaoControle->setCntrApresentacaoParticipante(cntrApresentacaoParticipante);
+    cntrApresentacaoControle->setCntrApresentacaoPeca(cntrApresentacaoPeca);
+    cntrApresentacaoControle->setCntrApresentacaoSala(cntrApresentacaoSala);
+    cntrApresentacaoControle->setCntrApresentacaoSessao(cntrApresentacaoSessao);
 
     cntrApresentacaoAutenticacao->setCntrServicoAutenticacao(stubServicoAutenticacao);
+    cntrApresentacaoParticipante->setCntrServicoParticipante(stubServicoParticipante);
+    cntrApresentacaoPeca->setCntrServicoPeca(stubServicoPeca);
+    cntrApresentacaoSala->setCntrServicoSala(stubServicoSala);
+    cntrApresentacaoSessao->setCntrServicoSessao(stubServicoSessao);
 
-    cntrApresentacaoPessoal->setCntrServicoPessoal(stubServicoPessoal);
-    cntrApresentacaoPessoal->setCntrServicoProdutosFinanceiros(stubServicoProdutosFinanceiros);
-
-    cntrApresentacaoProdutosFinanceiros->setCntrServicoProdutosFinanceiros(stubServicoProdutosFinanceiros);
-
-    initscr();                                                                      // Iniciar curses.
-    cntrApresentacaoControle->executar();                                           // Solicitar serviço apresentacao.
-    endwin();                                                                       // Finalizar curses.
+    initscr();
+    cntrApresentacaoControle->executar();
+    endwin();
 
     return 0;
 }

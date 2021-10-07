@@ -2,30 +2,67 @@
 
 // Adequar os valores.
 
-const string StubServicoAutenticacao::INVALIDO = "12345";
-const string StubServicoPessoal::INVALIDO = "12345";
-const string StubServicoProdutosFinanceiros::INVALIDO = "12345";
+const string StubServicoAutenticacao::INVALIDO = "12345"; // Essa é a matrícula invalida
+const string StubServicoParticipante::INVALIDO = "12345";
+const string StubServicoPeca::INVALIDO = "12345"; //Tem que mudar para código inválido
+const string StubServicoSala::INVALIDO = "12345";
+const string StubServicoSessao::INVALIDO = "12345";
 
 //--------------------------------------------------------------------------------------------
-// Implementa��es dos m�todos dos stubs.
+// Implementações dos métodos dos stubs de autenticação.
 
-bool StubServicoAutenticacao::autenticar(CPF cpf, Senha senha){
-    if(cpf.getValor().compare(INVALIDO) == 0)
+bool StubServicoAutenticacao::autenticar(Matricula matricula, Senha senha){
+    if(matricula.getValor().compare(INVALIDO) == 0)
         return false;
     return true;
 }
 
-bool StubServicoPessoal::cadastrarUsuario(Usuario usuario){
-    if(usuario.getCPF().getValor().compare(INVALIDO) == 0)
+//--------------------------------------------------------------------------------------------
+// Implementações dos métodos dos stubs de participante.
+
+bool StubServicoParticipante::cadastrarParticipante(Participante participante){
+    if(participante.getMatricula().getValor().compare(INVALIDO) == 0)
         return false;
     return true;
 }
+
+bool StubServicoParticipante::consultarParticipante(Participante *participante){
+    if(participante->getMatricula().getValor().compare(INVALIDO) == 0)
+        return false;
+    return true;
+}
+
+bool StubServicoParticipante::descadastrarParticipante(Participante *participante){
+    if(participante->getMatricula().getValor().compare(INVALIDO) == 0)
+        return false;
+    return true;
+}
+
+bool StubServicoParticipante::editarParticipante(Participante *participante){
+    if(participante->getMatricula().getValor().compare(INVALIDO) == 0)
+        return false;
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------
+// Implementações dos métodos dos stubs de peca.
+
+
+//--------------------------------------------------------------------------------------------
+// Implementações dos métodos dos stubs de sala.
+
+
+//--------------------------------------------------------------------------------------------
+// Implementações dos métodos dos stubs de sessão.
+
 
 bool StubServicoProdutosFinanceiros::cadastrarConta(Conta conta){
     if(conta.getNumero().getValor().compare(INVALIDO) == 0)
         return false;
     return true;
 }
+
+//
 
 bool StubServicoProdutosFinanceiros::consultarConta(Conta *conta){
     if(conta->getNumero().getValor().compare(INVALIDO) == 0)

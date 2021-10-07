@@ -149,7 +149,7 @@ bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula){
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoParticipante::executar(Matricula cpf){
+void CntrApresentacaoParticipante::executar(Matricula matricula){
 
     // Mensagens a serem apresentadas na tela de sele��o de servi�o..
 
@@ -184,11 +184,11 @@ void CntrApresentacaoParticipante::executar(Matricula cpf){
         echo();
 
         switch(campo){
-            case 1: consultar(Matricula);
+            case 1: consultarParticipante(Matricula);
                     break;
-            case 2: editar(Matricula);
+            case 2: editarParticipante(Matricula);
                     break;
-            case 3: excluir(Matricula);
+            case 3: descadastrarParticipante(Matricula);
                     break;
             case 4: apresentar = false;
                     break;
@@ -198,7 +198,7 @@ void CntrApresentacaoParticipante::executar(Matricula cpf){
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoParticipante::cadastrar(){
+void CntrApresentacaoParticipante::cadastrarParticipante(){
 
     // Mensagens a serem apresentadas na tela de cadastramento.
 
@@ -292,7 +292,7 @@ void CntrApresentacaoParticipante::cadastrar(){
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoParticipante::consultar(Matricula){
+void CntrApresentacaoParticipante::consultarParticipante(Matricula){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
@@ -315,7 +315,7 @@ void CntrApresentacaoParticipante::consultar(Matricula){
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoParticipante::editar(Matricula){
+void CntrApresentacaoParticipante::editarParticipante(Matricula){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
@@ -328,7 +328,7 @@ void CntrApresentacaoParticipante::editar(Matricula){
     int linha,coluna;                                                                           // Dados sobre tamanho da tela.
     getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
 
-    char texto[]="Servico consultar dados pessoais nao implementado. Digite algo.";             // Mensagem a ser apresentada.
+    char texto[]="Servico editar dados pessoais nao implementado. Digite algo.";             // Mensagem a ser apresentada.
     clear();                                                                                    // Limpa janela.
     mvprintw(linha/4,coluna/4,"%s",texto);                                                      // Imprime nome do campo.
     noecho();
@@ -336,7 +336,7 @@ void CntrApresentacaoParticipante::editar(Matricula){
     echo();
 }
 
-void CntrApresentacaoParticipante::deletar(Matricula){
+void CntrApresentacaoParticipante::descadastrarParticipante(Matricula){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
@@ -349,7 +349,7 @@ void CntrApresentacaoParticipante::deletar(Matricula){
     int linha,coluna;                                                                           // Dados sobre tamanho da tela.
     getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
 
-    char texto[]="Servico consultar dados pessoais nao implementado. Digite algo.";             // Mensagem a ser apresentada.
+    char texto[]="Servico descadastrar dados pessoais nao implementado. Digite algo.";             // Mensagem a ser apresentada.
     clear();                                                                                    // Limpa janela.
     mvprintw(linha/4,coluna/4,"%s",texto);                                                      // Imprime nome do campo.
     noecho();

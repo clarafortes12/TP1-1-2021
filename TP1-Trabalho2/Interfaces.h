@@ -6,7 +6,7 @@
 
 //--------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------
-// Adequar as declara��es das interfaces de acordo com as necessidades.
+// Adequar as declarações das interfaces de acordo com as necessidades.
 //--------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------
 
@@ -15,11 +15,11 @@
 class IServicoAutenticacao;
 class IServicoParticipante;
 class IServicoPeca;
-class IServicoSessao;
 class IServicoSala;
+class IServicoSessao;
 
 //--------------------------------------------------------------------------------------------
-// Declara��es das interfaces da camada de apresenta��o.
+// Declarações das interfaces da camada de apresentação.
 
 class IApresentacaoAutenticacao {
     public:
@@ -31,9 +31,9 @@ class IApresentacaoAutenticacao {
 class IApresentacaoParticipante{
     public:
         virtual void executar(Matricula) = 0;
-        virtual void cadastrar() = 0;
+        virtual void executar() = 0;
         virtual void setCntrServicoParticipantes(IServicoParticipantes*) = 0;
-        virtual ~IApresentacaoParticipantes(){}
+        virtual ~IApresentacaoParticipante(){}
 };
 
 class IApresentacaoPeca {
@@ -61,7 +61,7 @@ public:
 };
 
 //--------------------------------------------------------------------------------------------
-// Declara��es das interfaces da camada de servi�o.
+// Declarações das interfaces da camada de serviço.
 
 class IServicoAutenticacao {
     public:
@@ -71,9 +71,10 @@ class IServicoAutenticacao {
 
 class IServicoParticipante{
 public:
-        virtual bool cadastrar(Participante) = 0;
-        virtual bool editar(Participante*) = 0;
-        virtual bool excluir(Participante*) = 0;
+        virtual bool cadastrarParticipante(Participante) = 0;
+        virtual bool consultarParticipante(Participante*) = 0;
+        virtual bool editarParticipante(Participante*) = 0;
+        virtual bool descadastrarParticipante(Participante*) = 0;
         virtual ~IServicoParticipante(){}
 };
 

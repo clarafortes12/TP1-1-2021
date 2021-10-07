@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1633476406 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\dominios.cpp
+	"Dominios.h"
+	<iostream>
+	<string>
+
+1633476406 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\dominios.h
+	<stdexcept>
+
+1633476406 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\entidades.cpp
+	"Entidades.h"
+
+1633476406 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\entidades.h
+	"Dominios.h"
+	<string>
+

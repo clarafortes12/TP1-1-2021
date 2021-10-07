@@ -20,9 +20,32 @@ class CntrServicoAutenticacao:public IServicoAutenticacao{
 class CntrServicoParticipante:public IServicoParticipante{
 };
 
+class CntrServicoParticipante:public IServicoParticipante{
+    public:
+        void consultarParticipante(Participante*);
+        void executarParticipante(Participante*);
+        void cadastrarParticipante(Participante);
+        void editarParticipante(Participante*);
+        void descadastrarParticipante(Participante*);
+};
+
+inline void CntrApresentacaoParticipante::setCntrServicoParticipante(IServicoParticipante *cntr){
+    cntrServicoParticipante = cntr;
+}
+
 //--------------------------------------------------------------------------------------------
 
-class CntrServicoProdutosFinanceiros:public IServicoProdutosFinanceiros{
+class CntrServicoPeca:public IServicoPeca{
+};
+
+//--------------------------------------------------------------------------------------------
+
+class CntrServicoSala:public IServicoSala{
+};
+
+//--------------------------------------------------------------------------------------------
+
+class CntrServicoSessao:public IServicoSessao{
 };
 
 #endif // CONTROLADORASSERVICO_H_INCLUDED

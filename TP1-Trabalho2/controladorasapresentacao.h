@@ -17,35 +17,35 @@ class CntrApresentacaoControle{
         IApresentacaoAutenticacao *cntrApresentacaoAutenticacao;
         IApresentacaoParticipante *cntrApresentacaoParticipante;
         IApresentacaoPeca *cntrApresentacaoPeca;
-        IApresentacaoSessao *cntrApresentacaoSessao;
         IApresentacaoSala *cntrApresentacaoSala;
+        IApresentacaoSessao *cntrApresentacaoSessao;
     public:
         void executar();
         void setCntrApresentacaoAutenticacao(IApresentacaoAutenticacao*);
         void setCntrApresentacaoParticipante(IApresentacaoParticipante*);
         void setCntrApresentacaoPeca(IApresentacaoPeca*);
-        void setCntrApresentacaoSessao(IApresentacaoSessao*);
         void setCntrApresentacaoSala(IApresentacaoSala*);
+        void setCntrApresentacaoSessao(IApresentacaoSessao*);
 };
 
 inline void CntrApresentacaoControle::setCntrApresentacaoAutenticacao(IApresentacaoAutenticacao *cntr){
     cntrApresentacaoAutenticacao = cntr;
 }
 
-inline void CntrApresentacaoControle::setCntrApresentacaoParticipante(IApresentacaoPessoal *cntr){
-            cntrApresentacaoParticipante = cntr;
+inline void CntrApresentacaoControle::setCntrApresentacaoParticipante(IApresentacaoParticipante *cntr){
+    cntrApresentacaoParticipante = cntr;
 }
 
 inline void CntrApresentacaoControle::setCntrApresentacaoPeca(IApresentacaoPeca *cntr){
-            cntrApresentacaoPeca = cntr;
-}
-
-inline void CntrApresentacaoControle::setCntrApresentacaoSessao(IApresentacaoSessao *cntr){
-            cntrApresentacaoSessao = cntr;
+    cntrApresentacaoPeca = cntr;
 }
 
 inline void CntrApresentacaoControle::setCntrApresentacaoSala(IApresentacaoSala *cntr){
-            cntrApresentacaoSala = cntr;
+    cntrApresentacaoSala = cntr;
+}
+
+inline void CntrApresentacaoControle::setCntrApresentacaoSessao(IApresentacaoSessao *cntr){
+    cntrApresentacaoSessao = cntr;
 }
 
 //--------------------------------------------------------------------------------------------
@@ -66,13 +66,13 @@ inline void CntrApresentacaoAutenticacao::setCntrServicoAutenticacao(IServicoAut
 
 class CntrApresentacaoParticipante:public IApresentacaoParticipante{
     private:
-        IServicoParticipante *cntrServicoParticipante;
-        void consultar();
+        IServicoParticipante *cntr;
+        void consultarParticipante();
+        void editarParticipante();
+        void descadastrarParticipante();
     public:
         void executar(Matricula);
-        void cadastrar(Matricula);
-        void editar(Matricula);
-        void excluir(Matricula);
+        void cadastrarParticipante();
         void setCntrServicoParticipante(IServicoParticipante*);
 };
 
