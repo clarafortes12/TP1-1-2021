@@ -9,10 +9,10 @@
 
 #include <list>
 
-#include <iostream>
-#include <conio.h>
+//#include <iostream>
+//#include <conio.h>
 #include <string>
-#include <stdio.h>
+//#include <stdio.h>
 
 #include "sqlite3.h"            // Incluir cabeçalho da biblioteca SQLite.
 
