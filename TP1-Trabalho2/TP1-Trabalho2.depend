@@ -99,6 +99,7 @@
 1633719318 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\trabalho - liz\tp1-1-2021\tp1-trabalho2\controladorasservico.cpp
 	"controladorasservico.h"
 
+<<<<<<< Updated upstream
 1633719318 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\trabalho - liz\tp1-1-2021\tp1-trabalho2\controladorasservico.h
 	"dominios.h"
 	"entidades.h"
@@ -106,6 +107,9 @@
 	"UnidadePersistencia.h"
 
 1633719318 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\trabalho - liz\tp1-1-2021\tp1-trabalho2\unidadepersistencia.h
+=======
+1633726230 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\unidadepersistencia.h
+>>>>>>> Stashed changes
 	"Dominios.h"
 	"Entidades.h"
 	<list>
@@ -130,6 +134,23 @@
 	"stubs.h"
 
 1633719318 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\trabalho - liz\tp1-1-2021\tp1-trabalho2\stubs.h
+	<string>
+	"dominios.h"
+	"entidades.h"
+	"interfaces.h"
+
+1633725751 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\main.cpp
+	<string.h>
+	<stdexcept>
+	<iostream>
+	"curses.h"
+	"dominios.h"
+	"interfaces.h"
+	"controladorasapresentacao.h"
+	"controladorasservico.h"
+	"stubs.h"
+
+1633718201 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\stubs.h
 	<string>
 	"dominios.h"
 	"entidades.h"
