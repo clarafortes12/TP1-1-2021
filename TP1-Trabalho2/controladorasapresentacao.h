@@ -67,12 +67,13 @@ inline void CntrApresentacaoAutenticacao::setCntrServicoAutenticacao(IServicoAut
 class CntrApresentacaoParticipante:public IApresentacaoParticipante{
     private:
         IServicoParticipante *cntrServicoParticipante;
+        void cadastrarParticipante();
         void consultarParticipante();
         void editarParticipante();
         void descadastrarParticipante();
     public:
         void executar(Matricula);
-        void cadastrarParticipante();
+        void executar();
         void setCntrServicoParticipante(IServicoParticipante*);
 };
 

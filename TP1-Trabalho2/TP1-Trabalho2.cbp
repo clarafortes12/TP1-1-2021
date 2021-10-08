@@ -36,8 +36,6 @@
 		<Unit filename="Entidades.cpp" />
 		<Unit filename="Entidades.h" />
 		<Unit filename="Interfaces.h" />
-		<Unit filename="controladoras.cpp" />
-		<Unit filename="controladoras.h" />
 		<Unit filename="controladorasapresentacao.cpp" />
 		<Unit filename="controladorasapresentacao.h" />
 		<Unit filename="controladorasservico.cpp" />

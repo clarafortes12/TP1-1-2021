@@ -6,6 +6,7 @@
 #include "dominios.h"
 #include "interfaces.h"
 #include "controladorasapresentacao.h"
+#include "controladorasservico.h"
 #include "stubs.h"
 
 using namespace std;
@@ -31,7 +32,7 @@ int main()
     // Instanciar stubs de serviço.
 
     IServicoAutenticacao *stubServicoAutenticacao;
-    IServicoParticipante *stubServicoPessoal;
+    IServicoParticipante *stubServicoParticipante;
     IServicoPeca *stubServicoPeca;
     IServicoSala *stubServicoSala;
     IServicoSessao *stubServicoSessao;
