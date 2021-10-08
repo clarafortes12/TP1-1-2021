@@ -4,7 +4,7 @@
 #include "UnidadePersistencia.h"
 
 // Atributo estático.
-/*
+
 list<ElementoResultado> ComandoSQL::listaResultado;
 
 //---------------------------------------------------------------------------
@@ -106,7 +106,7 @@ Sala ComandoPesquisarSala::getResultado() {
                 throw EErroPersistencia("Lista de resultados vazia.");
         resultado = listaResultado.back();
         listaResultado.pop_back();
-        sala.setCodigoa(Codigo(resultado.getValorColuna()));
+        sala.setCodigo(Codigo(resultado.getValorColuna()));
 
         // Remover nome;
         if (listaResultado.empty())
@@ -184,13 +184,6 @@ Participante ComandoPesquisarParticipante::getResultado() {
         listaResultado.pop_back();
         participante.setTelefone(Telefone(resultado.getValorColuna()));
 
-        // Remover matrícula do orientador;
-        if (listaResultado.empty())
-                throw EErroPersistencia("Lista de resultados vazia.");
-        resultado = listaResultado.back();
-        listaResultado.pop_back();
-        participante.setMatriculaOrientador(Matricula(resultado.getValorColuna()));
-
         return participante;
 
 }
@@ -202,7 +195,7 @@ ComandoCadastrarParticipante::ComandoCadastrarParticipante(Participante particip
         comandoSQL = "INSERT INTO participante VALUES (";
         comandoSQL += "'" + participante.getMatricula().getValor() + "', ";
         comandoSQL += "'" + participante.getNome().getValor() + "', ";
-        comandoSQL += "'" + participante.getSobtenome().getValor() + "', ";
+        comandoSQL += "'" + participante.getSobrenome().getValor() + "', ";
         comandoSQL += "'" + participante.getEmail().getValor() + "', ";
         comandoSQL += "'" + participante.getTelefone().getValor() + "', ";
         comandoSQL += "'" + participante.getSenha().getValor() + "', ";
@@ -212,7 +205,7 @@ ComandoCadastrarParticipante::ComandoCadastrarParticipante(Participante particip
 //---------------------------------------------------------------------------
 // Implementações de métodos da classe ComandoRemoverAluno.
 
-ComandoRemoverParticipante::ComandoRemoverParticipante(Participante participante) {
+ComandoRemoverParticipante::ComandoRemoverParticipante(Matricula matricula) {
         comandoSQL = "DELETE FROM participante WHERE matricula = ";
         comandoSQL += matricula.getValor();
 }
@@ -230,5 +223,3 @@ ComandoAtualizarParticipante::ComandoAtualizarParticipante(Participante particip
         comandoSQL += "', cargo = '" + participante.getCargo().getValor();
         comandoSQL += "' WHERE matricula = " + participante.getMatricula().getValor();
 }
-
-*/

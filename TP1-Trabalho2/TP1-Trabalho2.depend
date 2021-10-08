@@ -52,7 +52,7 @@
 	"dominios.h"
 	"interfaces.h"
 
-1633725088 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.cpp
+1633728336 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.cpp
 	"controladorasapresentacao.h"
 	"curses.h"
 
@@ -77,7 +77,7 @@
 	"Dominios.h"
 	<string>
 
-1633725386 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\interfaces.h
+1633728336 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\interfaces.h
 	"dominios.h"
 	"entidades.h"
 
@@ -92,9 +92,9 @@
 1633724606 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\unidadepersistencia.cpp
 	"UnidadePersistencia.h"
 
-1633725970 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\unidadepersistencia.h
-	"dominios.h"
-	"entidades.h"
+1633728917 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\unidadepersistencia.h
+	"Dominios.h"
+	"Entidades.h"
 	<list>
 	<string>
 	"sqlite3.h"
@@ -102,7 +102,7 @@
 1633717427 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\sqlite3.h
 	<stdarg.h>
 
-1633725588 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\controladorasservico.cpp
+1633728336 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\controladorasservico.cpp
 	"controladorasservico.h"
 
 1633719225 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\controladorasservico.h
@@ -110,4 +110,21 @@
 	"entidades.h"
 	"interfaces.h"
 	"UnidadePersistencia.h"
+
+1633728336 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\main.cpp
+	<string.h>
+	<stdexcept>
+	<iostream>
+	"curses.h"
+	"dominios.h"
+	"interfaces.h"
+	"controladorasapresentacao.h"
+	"controladorasservico.h"
+	"stubs.h"
+
+1633718201 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\stubs.h
+	<string>
+	"dominios.h"
+	"entidades.h"
+	"interfaces.h"
 
