@@ -22,7 +22,7 @@
 	"entidades.h"
 	"interfaces.h"
 
-1633705953 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\interfaces.h
+1633721492 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\interfaces.h
 	"dominios.h"
 	"entidades.h"
 
@@ -30,12 +30,11 @@
 	"controladorasapresentacao.h"
 	"curses.h"
 
-1633709676 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.h
+1633709700 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.h
 	<string.h>
 	"curses.h"
 	"dominios.h"
 	"entidades.h"
-	"controladorasservico.h"
 	"interfaces.h"
 
 1633705953 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\curses.h

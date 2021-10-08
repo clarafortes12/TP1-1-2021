@@ -29,19 +29,19 @@ int main()
     cntrApresentacaoSala = new CntrApresentacaoSala();
     cntrApresentacaoSessao = new CntrApresentacaoSessao();
 
-    // Instanciar stubs de serviço.
+    // Instanciar cntr de serviço.
 
-    IServicoAutenticacao *stubServicoAutenticacao;
-    IServicoParticipante *stubServicoParticipante;
-    IServicoPeca *stubServicoPeca;
-    IServicoSala *stubServicoSala;
-    IServicoSessao *stubServicoSessao;
+    IServicoAutenticacao *cntrServicoAutenticacao;
+    IServicoParticipante *cntrServicoParticipante;
+    IServicoPeca *cntrServicoPeca;
+    IServicoSala *cntrServicoSala;
+    IServicoSessao *cntrServicoSessao;
 
-    stubServicoAutenticacao = new StubServicoAutenticacao();
-    stubServicoParticipante = new StubServicoParticipante();
-    stubServicoPeca = new StubServicoPeca();
-    stubServicoSala = new StubServicoSala();
-    stubServicoSessao = new StubServicoSessao();
+    cntrServicoAutenticacao = new CntrServicoAutenticacao();
+    cntrServicoParticipante = new CntrServicoParticipante();
+    cntrServicoPeca = new CntrServicoPeca();
+    cntrServicoSala = new CntrServicoSala();
+    cntrServicoSessao = new CntrServicoSessao();
 
     // Interligar controladoras e stubs.
 
@@ -51,11 +51,11 @@ int main()
     cntrApresentacaoControle->setCntrApresentacaoSala(cntrApresentacaoSala);
     cntrApresentacaoControle->setCntrApresentacaoSessao(cntrApresentacaoSessao);
 
-    cntrApresentacaoAutenticacao->setCntrServicoAutenticacao(stubServicoAutenticacao);
-    cntrApresentacaoParticipante->setCntrServicoParticipante(stubServicoParticipante);
-    cntrApresentacaoPeca->setCntrServicoPeca(stubServicoPeca);
-    cntrApresentacaoSala->setCntrServicoSala(stubServicoSala);
-    cntrApresentacaoSessao->setCntrServicoSessao(stubServicoSessao);
+    cntrApresentacaoAutenticacao->setCntrServicoAutenticacao(cntrServicoAutenticacao);
+    cntrApresentacaoParticipante->setCntrServicoParticipante(cntrServicoParticipante);
+    cntrApresentacaoPeca->setCntrServicoPeca(cntrServicoPeca);
+    cntrApresentacaoSala->setCntrServicoSala(cntrServicoSala);
+    cntrApresentacaoSessao->setCntrServicoSessao(cntrServicoSessao);
 
     initscr();
     cntrApresentacaoControle->executar();
