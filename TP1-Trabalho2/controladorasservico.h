@@ -13,52 +13,54 @@
 // Falta implementar c�digos.
 
 class CntrServicoAutenticacao:public IServicoAutenticacao{
+    
 };
 
 //--------------------------------------------------------------------------------------------
 
-class CntrServicoParticipante:public IServicoParticipante{
-};
 
 class CntrServicoParticipante:public IServicoParticipante{
     public:
-        void consultarParticipante(Participante*);
-        void executarParticipante(Participante*);
-        void cadastrarParticipante(Participante);
-        void editarParticipante(Participante*);
-        void descadastrarParticipante(Participante*);
+        bool consultarParticipante(Participante*);
+        bool executarParticipante(Participante*);
+        bool cadastrarParticipante(Participante);
+        bool editarParticipante(Participante*);
+        bool descadastrarParticipante(Participante*);
 };
 
-inline void CntrApresentacaoParticipante::setCntrServicoParticipante(IServicoParticipante *cntr){
-    cntrServicoParticipante = cntr;
-}
 
 //--------------------------------------------------------------------------------------------
 
 class CntrServicoPeca:public IServicoPeca{
-};
-
-class CntrServicoPeca:public IServicoPeca{
     public:
-        void listarPeca(Peca*);
-        void visualizarPeca(Peca*);
-        void incluirPeca(Peca);
-        void editarPeca(Peca*);
-        void excluirPeca(Peca*);
+        bool listarPeca(Peca*);
+        bool visualizarPeca(Peca*);
+        bool incluirPeca(Peca);
+        bool editarPeca(Peca*);
+        bool excluirPeca(Peca*);
 };
 
-inline void CntrApresentacaoPeca::setCntrServicoPeca(IServicoPeca *cntr){
-    cntrServicoPeca = cntr;
-}
 
 //--------------------------------------------------------------------------------------------
 
 class CntrServicoSala:public IServicoSala{
+    public:
+        bool listarSala(Sala*);
+        bool visualizarSala(Sala*);
+        bool incluirSala(Sala);
+        bool editarSala(Sala*);
+        bool excluirSala(Sala*);
 };
 
 //--------------------------------------------------------------------------------------------
 
 class CntrServicoSessao:public IServicoSessao{
+    public:
+        bool listarSessao(Sessao*);
+        bool visualizarSessao(Sessao*);
+        bool incluirSessao(Sessao);
+        bool editarSessao(Sessao*);
+        bool excluirSessao(Sessao*);
 };
 
 #endif // CONTROLADORASSERVICO_H_INCLUDED
