@@ -52,21 +52,21 @@ inline void CntrApresentacaoControle::setCntrApresentacaoSessao(IApresentacaoSes
 
 class CntrApresentacaoAutenticacao:public IApresentacaoAutenticacao{
     private:
-        IServicoAutenticacao *cntr;
+        IServicoAutenticacao *cntrServicoAutenticacao;
     public:
         bool autenticar(Matricula*);
         void setCntrServicoAutenticacao(IServicoAutenticacao*);
 };
 
 inline void CntrApresentacaoAutenticacao::setCntrServicoAutenticacao(IServicoAutenticacao *cntr){
-    this->cntr = cntr;
+    cntrServicoAutenticacao = cntr;
 }
 
 //--------------------------------------------------------------------------------------------
 
 class CntrApresentacaoParticipante:public IApresentacaoParticipante{
     private:
-        IServicoParticipante *cntr;
+        IServicoParticipante *cntrServicoParticipante;
         void consultarParticipante();
         void editarParticipante();
         void descadastrarParticipante();
