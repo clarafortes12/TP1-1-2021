@@ -8,7 +8,7 @@
 using namespace std;
 
 //--------------------------------------------------------------------------------------------
-// Classe stub do serviço autenticação.
+// Classe stub do serviï¿½o autenticaï¿½ï¿½o.
 
 class StubServicoAutenticacao:public IServicoAutenticacao {
     private:
@@ -18,7 +18,7 @@ class StubServicoAutenticacao:public IServicoAutenticacao {
 };
 
 //--------------------------------------------------------------------------------------------
-// Classe stub do serviço participante.
+// Classe stub do serviï¿½o participante.
 
 class StubServicoParticipante:public IServicoParticipante {
     private:
@@ -31,22 +31,22 @@ class StubServicoParticipante:public IServicoParticipante {
 };
 
 //--------------------------------------------------------------------------------------------
-// Classe stub do serviço peça.
+// Classe stub do serviï¿½o peï¿½a.
 
 class StubServicoPeca:public IServicoPeca {
     private:
         static const string INVALIDO;
     public:
-        bool cadastrarConta(Conta);
-        bool consultarConta(Conta*);
-        bool cadastrarProdutoInvestimento(Produto);
-        bool descadastrarProdutoInvestimento(Codigo);
-        bool realizarAplicacao(Aplicacao);
+        bool incluirPeca(Peca);
+        bool visualizarPeca(Peca*);
+        bool editarPeca(Peca*);
+        bool excluirPeca(Peca);
+        bool listarPeca(Peca);
         bool recuperarAplicacao(Aplicacao*);
 };
 
 //--------------------------------------------------------------------------------------------
-// Classe stub do serviço sala.
+// Classe stub do serviï¿½o sala.
 
 class StubServicoSala:public IServicoSala {
     private:
@@ -61,7 +61,7 @@ class StubServicoSala:public IServicoSala {
 };
 
 //--------------------------------------------------------------------------------------------
-// Classe stub do serviço sessão.
+// Classe stub do serviï¿½o sessï¿½o.
 
 class StubServicoSessao:public IServicoSessao {
     private:

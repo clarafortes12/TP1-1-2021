@@ -8,9 +8,9 @@
 
 
 //--------------------------------------------------------------------------------------------
-// Declarações de classes controladoras da camada de serviços.
+// Declaraï¿½ï¿½es de classes controladoras da camada de serviï¿½os.
 //
-// Falta implementar códigos.
+// Falta implementar cï¿½digos.
 
 class CntrServicoAutenticacao:public IServicoAutenticacao{
 };
@@ -37,6 +37,19 @@ inline void CntrApresentacaoParticipante::setCntrServicoParticipante(IServicoPar
 
 class CntrServicoPeca:public IServicoPeca{
 };
+
+class CntrServicoPeca:public IServicoPeca{
+    public:
+        void listarPeca(Peca*);
+        void visualizarPeca(Peca*);
+        void incluirPeca(Peca);
+        void editarPeca(Peca*);
+        void excluirPeca(Peca*);
+};
+
+inline void CntrApresentacaoPeca::setCntrServicoPeca(IServicoPeca *cntr){
+    cntrServicoPeca = cntr;
+}
 
 //--------------------------------------------------------------------------------------------
 
