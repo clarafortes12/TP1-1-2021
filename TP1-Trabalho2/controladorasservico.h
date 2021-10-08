@@ -13,7 +13,7 @@
 // Falta implementar c�digos.
 
 class CntrServicoAutenticacao:public IServicoAutenticacao{
-    
+
 };
 
 //--------------------------------------------------------------------------------------------
@@ -25,7 +25,7 @@ class CntrServicoParticipante:public IServicoParticipante{
         bool executarParticipante(Participante*);
         bool cadastrarParticipante(Participante);
         bool editarParticipante(Participante*);
-        bool descadastrarParticipante(Participante*);
+        bool descadastrarParticipante(Participante*); //trocar o parametro para matricula
 };
 
 
@@ -33,11 +33,11 @@ class CntrServicoParticipante:public IServicoParticipante{
 
 class CntrServicoPeca:public IServicoPeca{
     public:
-        bool listarPeca(Peca*);
-        bool visualizarPeca(Peca*);
+        bool listarPeca();
+        bool visualizarPeca(Codigo);
         bool incluirPeca(Peca);
-        bool editarPeca(Peca*);
-        bool excluirPeca(Peca*);
+        bool editarPeca(Peca);
+        bool excluirPeca(Codigo);
 };
 
 
@@ -45,22 +45,22 @@ class CntrServicoPeca:public IServicoPeca{
 
 class CntrServicoSala:public IServicoSala{
     public:
-        bool listarSala(Sala*);
-        bool visualizarSala(Sala*);
+        bool listarSala();
+        bool visualizarSala(Codigo);
         bool incluirSala(Sala);
-        bool editarSala(Sala*);
-        bool excluirSala(Sala*);
+        bool editarSala(Sala);
+        bool excluirSala(Codigo);
 };
 
 //--------------------------------------------------------------------------------------------
 
 class CntrServicoSessao:public IServicoSessao{
     public:
-        bool listarSessao(Sessao*);
-        bool visualizarSessao(Sessao*);
+        bool listarSessao();
+        bool visualizarSessao(Codigo);
         bool incluirSessao(Sessao);
-        bool editarSessao(Sessao*);
-        bool excluirSessao(Sessao*);
+        bool editarSessao(Sessao);
+        bool excluirSessao(Codigo);
 };
 
 #endif // CONTROLADORASSERVICO_H_INCLUDED

@@ -1,4 +1,5 @@
 #include "controladorasapresentacao.h"
+#include "curses.h"
 
 //--------------------------------------------------------------------------------------------
 // Implementa��es dos m�todos de classes controladoras.
@@ -10,8 +11,8 @@ void CntrApresentacaoControle::executar(){
     char texto1[]="Selecione um dos servicos : ";
     char texto2[]="1 - Acessar sistema.";
     char texto3[]="2 - Cadastrar participante.";
-    char texto4_1[]="3 - Listar pe�as.";
-    char texto4_2[]="3 - Listar sess�es.";
+    char texto4_1[]="3 - Listar pecas.";
+    char texto4_2[]="3 - Listar sessoes.";
     char texto4_3[]="3 - Listar salas.";
     char texto5[]="4 - Encerrar execucao do sistema.";
 
@@ -19,8 +20,8 @@ void CntrApresentacaoControle::executar(){
 
     char texto6[]="Selecione um dos servicos : ";
     char texto7[]="1 - Selecionar servicos de participante.";
-    char texto8_1[]="2 - Selecionar servicos relacionados a pe�as.";
-    char texto8_2[]="2 - Selecionar servicos relacionados a sess�es.";
+    char texto8_1[]="2 - Selecionar servicos relacionados a pecas.";
+    char texto8_2[]="2 - Selecionar servicos relacionados a sessoes.";
     char texto8_3[]="2 - Selecionar servicos relacionados a salas.";
     char texto9[]="3 - Encerrar sessao.";
 
@@ -52,7 +53,7 @@ void CntrApresentacaoControle::executar(){
         echo();
 
         switch(campo){
-            case 1: if(cntrApresentacaoAutenticacao->autenticar(&cpf)){                         // Solicita autentica��o.
+            case 1: if(cntrApresentacaoAutenticacao->autenticar(&matricula)){                         // Solicita autentica��o.
                         bool apresentar = true;                                                 // Controle de la�o.
                         while(apresentar){
 
@@ -70,9 +71,9 @@ void CntrApresentacaoControle::executar(){
                             echo();
 
                             switch(campo){
-                                case 1: cntrApresentacaoPessoal->executar(cpf);                 // Solicita servi�o de pessoal.
+                                case 1: cntrApresentacaoParticipante->executar(matricula);                 // Solicita servi�o de pessoal.
                                         break;
-                                case 2: cntrApresentacaoProdutosFinanceiros->executar(cpf);     // Solicita servi�o de produto financeiro.
+                                case 2: cntrApresentacaoParticipante->executar(matricula);                 // Solicita servi�o de pessoal.
                                         break;
                                 case 3: apresentar = false;
                                         break;
@@ -87,7 +88,7 @@ void CntrApresentacaoControle::executar(){
                         echo();                                                                 // Habilita eco.
                     }
                     break;
-            case 2: cntrApresentacaoPessoal->cadastrar();
+            case 2: cntrApresentacaoParticipante->executar();
                     break;
             case 3: cntrApresentacaoProdutosFinanceiros->executar();
                     break;
@@ -370,7 +371,7 @@ void CntrApresentacaoSala::incluirSala(){ //preciso pegar os dados com controlad
     // Mensagens a serem apresentadas na tela de cadastramento.
 
     char texto1[] ="Preencha os seguintes campos: ";
-    char texto2[] ="Codido      :";
+    char texto2[] ="Codigo      :";
     char texto3[] ="Nome        :";
     char texto4[] ="Capacidade  :";
     char texto10[]="Dados em formato incorreto. Digite algo.";
@@ -404,7 +405,7 @@ void CntrApresentacaoSala::incluirSala(){ //preciso pegar os dados com controlad
     try{
         codigo.setValor(string(campo1));
         nome.setValor(string(campo2));
-        capacidade.setValor(string(campo3));
+        capacidade.setValor(int(campo3));
     }
     catch(invalid_argument &exp){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
@@ -424,7 +425,7 @@ void CntrApresentacaoSala::incluirSala(){ //preciso pegar os dados com controlad
 
     // Incluir sala.
 
-    if(cntrServicoSala->incluir(sala)){
+    if(cntrServicoSala->incluirSala(sala)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -481,7 +482,7 @@ void CntrApresentacaoSala::excluirSala(){ //preciso pegar os dados com controlad
 
     // Exclui a sala.
 
-    if(cntrServicoSala->excluir(codigo)){
+    if(cntrServicoSala->excluirSala(codigo)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -538,7 +539,7 @@ void CntrApresentacaoSala::editarSala(){ //preciso pegar os dados com controlado
     try{
         codigo.setValor(string(campo1));
         nome.setValor(string(campo2));
-        capacidade.setValor(string(campo3));
+        capacidade.setValor(int(campo3));
     }
     catch(invalid_argument &exp){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
@@ -558,7 +559,7 @@ void CntrApresentacaoSala::editarSala(){ //preciso pegar os dados com controlado
 
     // Incluir sala.
 
-    if(cntrServicoSala->editar(Sala)){
+    if(cntrServicoSala->editarSala(sala)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -615,7 +616,7 @@ void CntrApresentacaoSala::visualizarSala(){ //preciso pegar os dados com contro
 
     // Visualizacao da sala.
 
-    if(cntrServicoSala->visualizar(codigo)){
+    if(cntrServicoSala->visualizarSala(codigo)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -734,7 +735,7 @@ void CntrApresentacaoSala::executar(Matricula){
 //--------------------------------------------------------------------------------------------
 
 void CntrApresentacaoSessao::listarSessao(){ //preciso pegar os dados com controladora servico
-    cntrServicoSessao->listar();
+    cntrServicoSessao->listarSessao();
 }
 
 //--------------------------------------------------------------------------------------------
@@ -744,7 +745,7 @@ void CntrApresentacaoSessao::incluirSessao(){ //preciso pegar os dados com contr
     // Mensagens a serem apresentadas na tela de cadastramento.
 
     char texto1[] ="Preencha os seguintes campos: ";
-    char texto2[] ="Codido      :";
+    char texto2[] ="Codigo      :";
     char texto3[] ="Data        :";
     char texto4[] ="Horario     :";
     char texto10[]="Dados em formato incorreto. Digite algo.";
@@ -798,7 +799,7 @@ void CntrApresentacaoSessao::incluirSessao(){ //preciso pegar os dados com contr
 
     // Incluir Sessao.
 
-    if(cntrServicoSessao->incluir(sessao)){
+    if(cntrServicoSessao->incluirSessao(sessao)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -855,7 +856,7 @@ void CntrApresentacaoSessao::excluirSessao(){ //preciso pegar os dados com contr
 
     // Exclui a Sessao.
 
-    if(cntrServicoSessao->excluir(codigo)){
+    if(cntrServicoSessao->excluirSessao(codigo)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -932,7 +933,7 @@ void CntrApresentacaoSessao::editarSessao(){ //preciso pegar os dados com contro
 
     // Incluir Sessao.
 
-    if(cntrServicoSessao->editar(sessao)){
+    if(cntrServicoSessao->editarSessao(sessao)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -989,7 +990,7 @@ void CntrApresentacaoSessao::visualizarSessao(){ //preciso pegar os dados com co
 
     // Visualizacao da Sessao.
 
-    if(cntrServicoSessao->visualizar(codigo)){
+    if(cntrServicoSessao->visualizarSessao(codigo)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -1107,7 +1108,7 @@ void CntrApresentacaoSessao::executar(Matricula){
 //--------------------------------------------------------------------------------------------
 
 void CntrApresentacaoPeca::listarPeca(){ //preciso pegar os dados com controladora servico
-    cntrServicoPeca->listar();
+    cntrServicoPeca->listarPeca();
 }
 
 //--------------------------------------------------------------------------------------------
@@ -1177,7 +1178,7 @@ void CntrApresentacaoPeca::incluirPeca(){ //preciso pegar os dados com controlad
 
     // Incluir Peca.
 
-    if(cntrServicoPeca->incluir(peca)){
+    if(cntrServicoPeca->incluirPeca(peca)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -1234,7 +1235,7 @@ void CntrApresentacaoPeca::excluirPeca(){ //preciso pegar os dados com controlad
 
     // Exclui a Peca.
 
-    if(cntrServicoPeca->excluir(codigo)){
+    if(cntrServicoPeca->excluirPeca(codigo)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -1317,7 +1318,7 @@ void CntrApresentacaoPeca::editarPeca(){ //preciso pegar os dados com controlado
 
     // Incluir peca.
 
-    if(cntrServicoPeca->editar(Peca)){
+    if(cntrServicoPeca->editarPeca(peca)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -1374,7 +1375,7 @@ void CntrApresentacaoPeca::visualizarPeca(){ //preciso pegar os dados com contro
 
     // Visualizacao da Peca.
 
-    if(cntrServicoPeca->visualizar(codigo)){
+    if(cntrServicoPeca->visualizarPeca(codigo)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -1491,244 +1492,3 @@ void CntrApresentacaoPeca::executar(Matricula){
 
 //--------------------------------------------------------------------------------------------
 
-
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoProdutosFinanceiros::executar(){
-
-    // Mensagens a serem apresentadas na tela simplificada de produtos financeiros.
-
-    char texto1[]="Selecione um dos servicos : ";
-    char texto2[]="1 - Consultar produto de investimento.";
-    char texto3[]="2 - Retornar.";
-
-    int campo;                                                                                  // Campo de entrada.
-
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
-
-    echo();                                                                                     // Habilita eco.
-
-    bool apresentar = true;                                                                     // Controle de la�o.
-
-    while(apresentar){
-
-        // Apresenta tela simplificada de produtos financeiros.
-
-        clear();                                                                                // Limpa janela.
-        mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
-        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
-        noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
-        echo();
-
-        switch(campo){
-            case 1: consultarProdutoInvestimento();
-                    break;
-            case 2: apresentar = false;
-                    break;
-        }
-    }
-}
-
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoProdutosFinanceiros::executar(CPF){
-
-    // Mensagens a serem apresentadas tela completa de produtos financeiros.
-
-    char texto1[] ="Selecione um dos servicos : ";
-    char texto2[] ="1 - Consultar conta corrente.";
-    char texto3[] ="2 - Cadastrar produto de investimento.";
-    char texto4[] ="3 - Descadastrar produto de investimento.";
-    char texto5[] ="4 - Consultar produto de investimento.";
-    char texto6[] ="5 - Realizar aplicacao em produto de investimento.";
-    char texto7[] ="6 - Listar aplicacoes em produto de investimento.";
-    char texto8[] ="7 - Retornar.";
-
-    int campo;                                                                                  // Campo de entrada.
-
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
-
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
-
-    echo();                                                                                     // Habilita eco.
-
-    bool apresentar = true;                                                                     // Controle de la�o.
-
-    echo();                                                                                     // Habilita eco.
-
-    while(apresentar){
-
-        // Apresenta tela completa de produtos financeiros.
-
-        clear();                                                                                // Limpa janela.
-        mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
-        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 8,coluna/4,"%s",texto5);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 10,coluna/4,"%s",texto6);                                            // Imprime nome do campo.
-        mvprintw(linha/4 + 12,coluna/4,"%s",texto7);                                            // Imprime nome do campo.
-        mvprintw(linha/4 + 14,coluna/4,"%s",texto8);                                            // Imprime nome do campo.
-        noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
-        echo();
-
-        switch(campo){
-            case 1: consultarConta();
-                    break;
-            case 2: cadastrarProdutoInvestimento();
-                    break;
-            case 3: descadastrarProdutoInvestimento();
-                    break;
-            case 4: consultarProdutoInvestimento();
-                    break;
-            case 5: realizarAplicacao();
-                    break;
-            case 6: listarAplicacoes();
-                    break;
-            case 7: apresentar = false;
-                    break;
-        }
-    }
-}
-
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoProdutosFinanceiros::consultarConta(){
-
-    //--------------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------------
-    // Substituir c�digo seguinte pela implementa��o do m�todo.
-    //--------------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------------
-
-    // Mensagens a serem apresentadas.
-
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
-
-    char texto[]="Servico consultar conta nao implementado. Digite algo.";                      // Mensagem a ser apresentada.
-    clear();                                                                                    // Limpa janela.
-    mvprintw(linha/4,coluna/4,"%s",texto);                                                      // Imprime nome do campo.
-    noecho();
-    getch();
-    echo();
-}
-
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoProdutosFinanceiros::cadastrarProdutoInvestimento(){
-
-    //--------------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------------
-    // Substituir c�digo seguinte pela implementa��o do m�todo.
-    //--------------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------------
-
-    // Mensagens a serem apresentadas.
-
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
-
-    char texto[]="Servico cadastrar produto investimento nao implementado. Digite algo.";       // Mensagem a ser apresentada.
-    clear();                                                                                    // Limpa janela.
-    mvprintw(linha/4,coluna/4,"%s",texto);                                                      // Imprime nome do campo.
-    noecho();
-    getch();
-    echo();
-}
-
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoProdutosFinanceiros::descadastrarProdutoInvestimento(){
-
-    //--------------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------------
-    // Substituir c�digo seguinte pela implementa��o do m�todo.
-    //--------------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------------
-
-    // Mensagens a serem apresentadas.
-
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
-
-    char texto[]="Servico descadastrar produto investimento nao implementado. Digite algo.";    // Mensagem a ser apresentada.
-    clear();                                                                                    // Limpa janela.
-    mvprintw(linha/4,coluna/4,"%s",texto);                                                      // Imprime nome do campo.
-    noecho();
-    getch();
-    echo();
-}
-
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoProdutosFinanceiros::consultarProdutoInvestimento(){
-
-    //--------------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------------
-    // Substituir c�digo seguinte pela implementa��o do m�todo.
-    //--------------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------------
-
-    // Mensagens a serem apresentadas.
-
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
-
-    char texto[]="Servico consultar produto investimento nao implementado. Digite algo.";       // Mensagem a ser apresentada.
-    clear();                                                                                    // Limpa janela.
-    mvprintw(linha/4,coluna/4,"%s",texto);                                                      // Imprime nome do campo.
-    noecho();
-    getch();
-    echo();
-}
-
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoProdutosFinanceiros::realizarAplicacao(){
-
-    //--------------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------------
-    // Substituir c�digo seguinte pela implementa��o do m�todo.
-    //--------------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------------
-
-    // Mensagens a serem apresentadas.
-
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
-
-    char texto[]="Servico realizar aplicacao nao implementado. Digite algo.";                   // Mensagem a ser apresentada.
-    clear();                                                                                    // Limpa janela.
-    mvprintw(linha/4,coluna/4,"%s",texto);                                                      // Imprime nome do campo.
-    noecho();
-    getch();
-    echo();
-}
-
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoProdutosFinanceiros::listarAplicacoes(){
-
-    //--------------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------------
-    // Substituir c�digo seguinte pela implementa��o do m�todo.
-    //--------------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------------
-
-    // Mensagens a serem apresentadas.
-
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
-
-    char texto[]="Servico listar aplicacoes nao implementado. Digite algo.";                    // Mensagem a ser apresentada.
-    clear();                                                                                    // Limpa janela.
-    mvprintw(linha/4,coluna/4,"%s",texto);                                                      // Imprime nome do campo.
-    noecho();
-    getch();
-    echo();
-}
