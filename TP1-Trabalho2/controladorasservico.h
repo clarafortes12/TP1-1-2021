@@ -5,6 +5,7 @@
 #include "dominios.h"
 #include "entidades.h"
 #include "interfaces.h"
+#include "UnidadePersistencia.h"
 
 
 //--------------------------------------------------------------------------------------------
@@ -13,7 +14,7 @@
 // Falta implementar c�digos.
 
 class CntrServicoAutenticacao:public IServicoAutenticacao{
-
+    bool autenticar(Matricula, Senha);
 };
 
 //--------------------------------------------------------------------------------------------
@@ -21,11 +22,10 @@ class CntrServicoAutenticacao:public IServicoAutenticacao{
 
 class CntrServicoParticipante:public IServicoParticipante{
     public:
-        bool consultarParticipante(Participante*);
-        bool executarParticipante(Participante*);
+        bool consultarParticipante(Matricula);
         bool cadastrarParticipante(Participante);
-        bool editarParticipante(Participante*);
-        bool descadastrarParticipante(Participante*); //trocar o parametro para matricula
+        bool editarParticipante(Participante);
+        bool descadastrarParticipante(Matricula);
 };
 
 

@@ -90,6 +90,43 @@ string ComandoLerSenha::getResultado() {
 }
 
 //---------------------------------------------------------------------------
+// Implementações de métodos da classe ComandoPesquisarSala.
+
+ComandoPesquisarSala::ComandoPesquisarSala(Codigo codigo) {
+        comandoSQL = "SELECT * FROM sala WHERE codigo = ";
+        comandoSQL += codigo.getValor();
+}
+
+Sala ComandoPesquisarSala::getResultado() {
+        ElementoResultado resultado;
+        Sala sala;
+
+        // Remover codigo;
+        if (listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        sala.setCodigoa(Codigo(resultado.getValorColuna()));
+
+        // Remover nome;
+        if (listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        sala.setNome(Nome(resultado.getValorColuna()));
+
+        // Remover capacidade;
+        if (listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        sala.setCapacidade(Capacidade(resultado.getValorColuna()));
+
+        return sala;
+
+}
+
+//---------------------------------------------------------------------------
 // Implementações de métodos da classe ComandoPesquisarParticipante.
 
 ComandoPesquisarParticipante::ComandoPesquisarParticipante(Matricula matricula) {
