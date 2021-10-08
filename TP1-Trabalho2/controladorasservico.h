@@ -7,6 +7,18 @@
 #include "interfaces.h"
 #include "UnidadePersistencia.h"
 
+//---------------------------------------------------------------------------
+//Classe CntrInteracao.
+
+class CntrInteracao {
+     virtual void apresentarOpcoes() = 0;
+protected:
+     void notificarErroAcesso();
+     void notificarErroDigitacao();
+     void notificarSucessoOperacao();
+public:
+     virtual void executar() = 0;
+};
 
 //--------------------------------------------------------------------------------------------
 // Declara��es de classes controladoras da camada de servi�os.

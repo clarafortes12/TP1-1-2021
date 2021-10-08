@@ -85,6 +85,30 @@ public:
 };
 
 //---------------------------------------------------------------------------
+//Classe ComandoAtualizarSala.
+
+class ComandoAtualizarSala:public ComandoSQL {
+public:
+        ComandoAtualizarSala(Sala);
+};
+
+//---------------------------------------------------------------------------
+// Declaração da classe ComandoCadastrarSala.
+
+class ComandoCadastrarSala:public ComandoSQL {
+public:
+        ComandoCadastrarSala(Sala);
+};
+
+//---------------------------------------------------------------------------
+// Declaração da classe ComandoRemoverSala.
+
+class ComandoRemoverSala:public ComandoSQL {
+public:
+        ComandoRemoverSala(Codigo);
+};
+
+//---------------------------------------------------------------------------
 //Classe ComandoPesquisarAluno.
 
 class ComandoPesquisarParticipante:public ComandoSQL {

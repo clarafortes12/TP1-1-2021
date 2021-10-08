@@ -125,6 +125,24 @@ Sala ComandoPesquisarSala::getResultado() {
         return sala;
 
 }
+//---------------------------------------------------------------------------
+// Implementações de métodos da classe AtualizarSala.
+
+ComandoAtualizarSala::ComandoAtualizarSala(Sala sala) {
+        comandoSQL = "UPDATE sala ";
+        comandoSQL += "SET nome = '" + sala.getNome().getValor();
+        comandoSQL += "', capacidade = '" + sala.getCapacidade().getValor();
+        comandoSQL += "' WHERE codigo = " + sala.getCodigo().getValor();
+}
+
+//---------------------------------------------------------------------------
+// Implementações de métodos da classe ComandoRemoverSala.
+
+ComandoRemoverSala::ComandoRemoverSala(Codigo codigo) {
+        comandoSQL = "DELETE FROM sala WHERE codigo = ";
+        comandoSQL += codigo.getValor();
+}
+
 
 //---------------------------------------------------------------------------
 // Implementações de métodos da classe ComandoPesquisarParticipante.
