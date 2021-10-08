@@ -267,7 +267,7 @@ void CntrApresentacaoParticipante::cadastrarParticipante(){
         cargo.setValor(string(campo_cargo));
     }
     catch(invalid_argument &exp){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto9);
         noecho();
         getch();
         echo();
@@ -284,7 +284,7 @@ void CntrApresentacaoParticipante::cadastrarParticipante(){
     participante.setCargo(cargo);
 
     if(cntrServicoParticipante->cadastrarParticipante(participante)){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                               // Informa sucesso.
         noecho();
         getch();
         echo();
