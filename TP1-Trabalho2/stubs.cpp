@@ -1,5 +1,6 @@
 #include "stubs.h"
 
+
 // Adequar os valores.
 
 const string StubServicoAutenticacao::INVALIDO = "12345"; // Essa é a matrícula invalida
@@ -26,20 +27,20 @@ bool StubServicoParticipante::cadastrarParticipante(Participante participante){
     return true;
 }
 
-bool StubServicoParticipante::consultarParticipante(Participante *participante){
+bool StubServicoParticipante::consultarParticipante(Matricula matricula){
     if(participante->getMatricula().getValor().compare(INVALIDO) == 0)
         return false;
     return true;
 }
 
-bool StubServicoParticipante::descadastrarParticipante(Participante *participante){
+bool StubServicoParticipante::descadastrarParticipante(Matricula matricula){
     if(participante->getMatricula().getValor().compare(INVALIDO) == 0)
         return false;
     return true;
 }
 
-bool StubServicoParticipante::editarParticipante(Participante *participante){
-    if(participante->getMatricula().getValor().compare(INVALIDO) == 0)
+bool StubServicoParticipante::editarParticipante(Participante participante){
+    if(participante.getMatricula().getValor().compare(INVALIDO) == 0)
         return false;
     return true;
 }

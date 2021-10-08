@@ -12,11 +12,10 @@
 
 class CntrInteracao {
      virtual void apresentarOpcoes() = 0;
-protected:
+public:
      void notificarErroAcesso();
      void notificarErroDigitacao();
      void notificarSucessoOperacao();
-public:
      virtual void executar() = 0;
 };
 

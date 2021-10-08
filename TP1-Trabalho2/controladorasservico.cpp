@@ -37,10 +37,9 @@ bool CntrServicoAutenticacao::autenticar(Matricula matricula, Senha senhaEntrada
 
             //Comparar senha informada com a senha recuperada.
 
-            if(senhaRecuperada == senhaEntrada) break;
+            if(senhaRecuperada == senhaEntrada) return true;
             cout << endl << "Senha digitada diferente da cadastrada.";
-            cout << endl << endl << "Digite algo para continuar.";
-            getch();
+            return false;
     }
     catch(EErroPersistencia &exp) {
             cout << endl << exp.what();
@@ -53,24 +52,9 @@ bool CntrServicoSala::listarSala(){
 
 }
 
-bool CntrServicoSala::visualizarSala(Codigo codigo){
-    string codigoEntrada;
-    Codigo codigo;
+bool CntrServicoSala::visualizarSala(Codigo codigoEntrada){
+
     Sala sala;
-
-    // Mudar para comandos do PDcurses
-    CLR_SCR;
-    cout << "Visualizar Sala." << endl << endl;
-    cout << "Digite o codigo da Sala que deseja visualizar : ";
-    cin >> codigoEntrada;
-
-    try {
-            codigo.setValor(codigoEntrada);
-    }
-    catch (invalid_argument &exp) {
-            notificarErroDigitacao();
-            return;
-    }
 
     ComandoPesquisarSala comando(codigo);
 
@@ -101,35 +85,6 @@ bool CntrServicoSala::visualizarSala(Codigo codigo){
 
 bool CntrServicoSala::incluirSala(Sala sala){
 
-    string codigoEntrada;
-    string nomeEntrada;
-    string capacidadeEntrada;
-
-    Codigo codigo;
-    Nome nome;
-    Capacidade capacidade;
-
-    CLR_SCR;
-    cout << "Cadastrar uma sala." << endl << endl;
-    cout << "Digite o codigo : ";
-    cin >> codigoEntrada;
-    cout << "Digite o nome : ";
-    cin >> nomeEntrada;
-    cout << "Digite a capacidade : ";
-    cin >> capacidadeEntrada;
-
-    try {
-            codigo.setValor(codigoEntrada);
-            nome.setValor(nomeEntrada);
-            capacidade.setValor(capacidadeEntrada);
-    }
-    catch (invalid_argument &exp) {
-            notificarErroDigitacao();
-            return;
-    }
-
-    Sala sala(codigo, nome, capacidade);
-
     ComandoCadastrarSala comando (sala);
 
     try {
@@ -144,28 +99,10 @@ bool CntrServicoSala::incluirSala(Sala sala){
 }
 
 bool CntrServicoSala::editarSala(Sala sala){
-    string codigoEntrada;
-    string nomeEntrada;
-    string capacidadeEntrada;
-
+    /*
     Codigo codigo;
-    Nome nome;
-    Capacidade capacidade;
 
-    CLR_SCR;
-
-    cout << "Editar uma sala." << endl << endl;
-    cout << "Digite o codigo da sala que deseja editar : ";
-
-    cin >> codigoEntrada;
-
-    try {
-            codigo.setValor(codigoEntrada);
-    }
-    catch (invalid_argument &exp) {
-            notificarErroDigitacao();
-            return;
-    }
+    codigo = sala.getCodigo();
 
     ComandoPesquisarSala comandoA(codigo);
 
@@ -177,33 +114,14 @@ bool CntrServicoSala::editarSala(Sala sala){
             return;
     }
 
-    Sala sala = comandoA.getResultado();
+    Sala salaAtual = comandoA.getResultado();
 
     cout << endl << "Dados atuais:" << endl << endl;
-    cout << "Codigo : " << sala.getCodigo().getValor() << endl;
-    cout << "Nome : " << sala.getNome().getValor() << endl;
-    cout << "Capacidade : " << sala.getCapacidade().getValor() << endl;
+    cout << "Codigo : " << salaAtual.getCodigo().getValor() << endl;
+    cout << "Nome : " << salaAtual.getNome().getValor() << endl;
+    cout << "Capacidade : " << salaAtual.getCapacidade().getValor() << endl;*/
 
-    cout << "Digite os novos dados: " << endl << endl;
-    // nao tem codigo pq n pode alterar
-    cout << "Nome : ";
-    cin >> nomeEntrada;
-    cout << "Capacidade : ";
-
-    try {
-        codigo.setValor(codigoEntrada);
-        nome.setValor(nomeEntrada);
-        capacidade.setValor(capacidadeEntrada);
-    }
-    catch (invalid_argument &exp) {
-            notificarErroDigitacao();
-            return;
-    }
-
-    sala.setCodigo(codigo);
-    sala.setNome(nome);
-    sala.setCapacidade(capacidade);
-
+    // talvez seja melhor deixar so daqui pra baixo:
     ComandoAtualizarSala comandoB(sala);
 
     try {
@@ -218,21 +136,6 @@ bool CntrServicoSala::editarSala(Sala sala){
 }
 
 bool CntrServicoSala::excluirSala(Codigo codigo){
-    string codigoEntrada;
-    Codigo codigo;
-
-    CLR_SCR;
-    cout << "Excluir uma sala." << endl << endl;
-    cout << "Digite o codigo : ";
-    cin >> codigoEntrada;
-
-    try {
-            codigo.setValor(codigoEntrada);
-    }
-    catch (invalid_argument &exp) {
-            notificarErroDigitacao();
-            return;
-    }
 
     ComandoRemoverSala comando(codigo);
 
