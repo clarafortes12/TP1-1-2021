@@ -81,30 +81,30 @@ public:
 class IServicoPeca{
 public:
     virtual bool incluirPeca(Peca) = 0;
-    virtual bool excluirPeca(Peca*) = 0;
+    virtual bool excluirPeca(Codigo) = 0;
     virtual bool listarPeca() = 0;
-    virtual bool editarPeca(Peca*) = 0;
-    virtual bool visualizarPeca(Peca*) = 0;
+    virtual bool editarPeca(Peca) = 0;
+    virtual bool visualizarPeca(Codigo) = 0;
     virtual ~IServicoPeca(){}
 };
 
 class IServicoSessao{
 public:
     virtual bool incluirSessao(Sessao) = 0;
-    virtual bool excluirSessao(Sessao*) = 0;
+    virtual bool excluirSessao(Codigo) = 0;
     virtual bool listarSessao() = 0;
-    virtual bool editarSessao(Sessao*) = 0;
-    virtual bool visualizarSessao(Sessao*) = 0;
+    virtual bool editarSessao(Sessao) = 0;
+    virtual bool visualizarSessao(Codigo) = 0;
     virtual ~IServicoSessao(){}
 };
 
 class IServicoSala{
 public:
-    virtual bool listarSala() = 0;
     virtual bool incluirSala(Sala) = 0;
-    virtual bool excluirSala(Sala*) = 0;
-    virtual bool editarSala(Sala*) = 0; // O prof costuma colocar o objeto Sala, como se passasse todo um novo objeto ao alterar, mas acho melhor ser pelo endere�o, n?
-    virtual bool visualizarSala(Sala*) = 0;
+    virtual bool excluirSala(Codigo) = 0;
+    virtual bool listarSala() = 0;
+    virtual bool editarSala(Sala) = 0;
+    virtual bool visualizarSala(Codigo) = 0;
     virtual ~IServicoSala(){}
 };
 

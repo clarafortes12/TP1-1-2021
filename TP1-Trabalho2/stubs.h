@@ -25,9 +25,9 @@ class StubServicoParticipante:public IServicoParticipante {
         static const string INVALIDO;
     public:
         bool cadastrarParticipante(Participante);
-        bool consultarParticipante(Participante*);
-        bool editarParticipante(Participante*);
-        bool descadastrarParticipante(Participante*);
+        bool consultarParticipante(Matricula);
+        bool editarParticipante(Participante);
+        bool descadastrarParticipante(Matricula);
 };
 
 //--------------------------------------------------------------------------------------------
@@ -38,11 +38,10 @@ class StubServicoPeca:public IServicoPeca {
         static const string INVALIDO;
     public:
         bool incluirPeca(Peca);
-        bool visualizarPeca(Peca*);
-        bool editarPeca(Peca*);
-        bool excluirPeca(Peca);
-        bool listarPeca(Peca);
-        bool recuperarAplicacao(Aplicacao*);
+        bool visualizarPeca(Codigo);
+        bool editarPeca(Peca);
+        bool excluirPeca(Codigo);
+        bool listarPeca();
 };
 
 //--------------------------------------------------------------------------------------------
@@ -52,12 +51,11 @@ class StubServicoSala:public IServicoSala {
     private:
         static const string INVALIDO;
     public:
-        bool cadastrarConta(Conta);
-        bool consultarConta(Conta*);
-        bool cadastrarProdutoInvestimento(Produto);
-        bool descadastrarProdutoInvestimento(Codigo);
-        bool realizarAplicacao(Aplicacao);
-        bool recuperarAplicacao(Aplicacao*);
+        bool incluirSala(Sala);
+        bool visualizarSala(Codigo);
+        bool editarSala(Sala);
+        bool excluirSala(Codigo);
+        bool listarSala();
 };
 
 //--------------------------------------------------------------------------------------------
@@ -67,12 +65,11 @@ class StubServicoSessao:public IServicoSessao {
     private:
         static const string INVALIDO;
     public:
-        bool cadastrarConta(Conta);
-        bool consultarConta(Conta*);
-        bool cadastrarProdutoInvestimento(Produto);
-        bool descadastrarProdutoInvestimento(Codigo);
-        bool realizarAplicacao(Aplicacao);
-        bool recuperarAplicacao(Aplicacao*);
+        bool incluirSessao(Sessao);
+        bool visualizarSessao(Codigo);
+        bool editarSessao(Sessao);
+        bool excluirSessao(Codigo);
+        bool listarSessao();
 };
 
 #endif // STUBS_H_INCLUDED

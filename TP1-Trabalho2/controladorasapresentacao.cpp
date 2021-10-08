@@ -12,18 +12,18 @@ void CntrApresentacaoControle::executar(){
     char texto2[]="1 - Acessar sistema.";
     char texto3[]="2 - Cadastrar participante.";
     char texto4_1[]="3 - Listar pecas.";
-    char texto4_2[]="3 - Listar sessoes.";
-    char texto4_3[]="3 - Listar salas.";
-    char texto5[]="4 - Encerrar execucao do sistema.";
+    char texto4_2[]="4 - Listar sessoes.";
+    char texto4_3[]="5 - Listar salas.";
+    char texto5[]="6 - Encerrar execucao do sistema.";
 
     // Mensagens a serem apresentadas na tela de sele��o de servi�o (usuario autenticado).
 
     char texto6[]="Selecione um dos servicos : ";
     char texto7[]="1 - Selecionar servicos de participante.";
     char texto8_1[]="2 - Selecionar servicos relacionados a pecas.";
-    char texto8_2[]="2 - Selecionar servicos relacionados a sessoes.";
-    char texto8_3[]="2 - Selecionar servicos relacionados a salas.";
-    char texto9[]="3 - Encerrar sessao.";
+    char texto8_2[]="3 - Selecionar servicos relacionados a sessoes.";
+    char texto8_3[]="4 - Selecionar servicos relacionados a salas.";
+    char texto9[]="5 - Encerrar sessao.";
 
     char texto10[]="Falha na autenticacao. Digite algo para continuar.";                        // Mensagem a ser apresentada.
 
@@ -41,7 +41,7 @@ void CntrApresentacaoControle::executar(){
 
         clear();                                                                                // Limpa janela.
         mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
-        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
+        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);//n sei se esses valores tao certos pra linha e coluna  // Imprime nome do campo.
         mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
         mvprintw(linha/4 + 6,coluna/4,"%s",texto4_1);                                             // Imprime nome do campo.
         mvprintw(linha/4 + 6,coluna/4,"%s",texto4_2);                                             // Imprime nome do campo.
@@ -73,9 +73,13 @@ void CntrApresentacaoControle::executar(){
                             switch(campo){
                                 case 1: cntrApresentacaoParticipante->executar(matricula);                 // Solicita servi�o de pessoal.
                                         break;
-                                case 2: cntrApresentacaoParticipante->executar(matricula);                 // Solicita servi�o de pessoal.
+                                case 2: cntrApresentacaoPeca->executar(matricula);                 // Solicita servi�o de peca.
                                         break;
-                                case 3: apresentar = false;
+                                case 3: cntrApresentacaoSessao->executar(matricula);                 // Solicita servi�o de sessao.
+                                        break;
+                                case 4: cntrApresentacaoSala->executar(matricula);                 // Solicita servi�o de sala.
+                                        break;
+                                case 5: apresentar = false;
                                         break;
                             }
                         }
@@ -90,9 +94,13 @@ void CntrApresentacaoControle::executar(){
                     break;
             case 2: cntrApresentacaoParticipante->executar();
                     break;
-            case 3: cntrApresentacaoProdutosFinanceiros->executar();
+            case 3: cntrApresentacaoPeca->executar();
                     break;
-            case 4: apresentar = false;
+            case 4: cntrApresentacaoSessao->executar();
+                    break;
+            case 5: cntrApresentacaoSala->executar();
+                    break;
+            case 6: apresentar = false;
                     break;
         }
     }
@@ -145,7 +153,7 @@ bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula){
             echo();
         }
     }
-    return (cntr->autenticar(*matricula, senha));                                                     // Solicita servi�o de autentica��o.
+    return (cntrServicoAutenticacao->autenticar(*matricula, senha));                                                     // Solicita servi�o de autentica��o.
 }
 
 //--------------------------------------------------------------------------------------------
@@ -185,11 +193,11 @@ void CntrApresentacaoParticipante::executar(Matricula matricula){
         echo();
 
         switch(campo){
-            case 1: consultarParticipante(Matricula);
+            case 1: consultarParticipante();
                     break;
-            case 2: editarParticipante(Matricula);
+            case 2: editarParticipante();
                     break;
-            case 3: descadastrarParticipante(Matricula);
+            case 3: descadastrarParticipante();
                     break;
             case 4: apresentar = false;
                     break;
@@ -275,7 +283,7 @@ void CntrApresentacaoParticipante::cadastrarParticipante(){
     participante.setSenha(senha);
     participante.setCargo(cargo);
 
-    if(CntrServicoParticipante->cadastrar(participante)){
+    if(cntrServicoParticipante->cadastrarParticipante(participante)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -283,7 +291,7 @@ void CntrApresentacaoParticipante::cadastrarParticipante(){
         return;
     }
 
-    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
+    mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                                       // Informa falha.
     noecho();
     getch();
     echo();
@@ -293,7 +301,7 @@ void CntrApresentacaoParticipante::cadastrarParticipante(){
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoParticipante::consultarParticipante(Matricula){
+void CntrApresentacaoParticipante::consultarParticipante(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
@@ -316,7 +324,7 @@ void CntrApresentacaoParticipante::consultarParticipante(Matricula){
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoParticipante::editarParticipante(Matricula){
+void CntrApresentacaoParticipante::editarParticipante(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
@@ -337,7 +345,7 @@ void CntrApresentacaoParticipante::editarParticipante(Matricula){
     echo();
 }
 
-void CntrApresentacaoParticipante::descadastrarParticipante(Matricula){
+void CntrApresentacaoParticipante::descadastrarParticipante(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
@@ -361,7 +369,7 @@ void CntrApresentacaoParticipante::descadastrarParticipante(Matricula){
 //--------------------------------------------------------------------------------------------
 
 void CntrApresentacaoSala::listarSala(){ //preciso pegar os dados com controladora servico
-    cntrServicoSala->listar();
+    cntrServicoSala->listarSala();
 }
 
 //--------------------------------------------------------------------------------------------
