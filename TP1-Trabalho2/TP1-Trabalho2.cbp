@@ -36,12 +36,15 @@
 		<Unit filename="Entidades.cpp" />
 		<Unit filename="Entidades.h" />
 		<Unit filename="Interfaces.h" />
+		<Unit filename="UnidadePersistencia.cpp" />
+		<Unit filename="UnidadePersistencia.h" />
 		<Unit filename="controladorasapresentacao.cpp" />
 		<Unit filename="controladorasapresentacao.h" />
 		<Unit filename="controladorasservico.cpp" />
 		<Unit filename="controladorasservico.h" />
 		<Unit filename="curses.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="sqlite3.h" />
 		<Unit filename="stubs.cpp" />
 		<Unit filename="stubs.h" />
 		<Extensions>

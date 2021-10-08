@@ -1,5 +1,5 @@
 #include "controladorasservico.h"
-
+#include "curses.h"
 //---------------------------------------------------------------------------
 // Implementações de métodos da classe CntrInteracao.
 
