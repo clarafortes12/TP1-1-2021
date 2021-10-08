@@ -42,37 +42,37 @@ class StubServicoPeca:public IServicoPeca {
         bool editarPeca(Peca*);
         bool excluirPeca(Peca);
         bool listarPeca(Peca);
-        bool recuperarAplicacao(Aplicacao*);
+        bool recuperarPeca(Peca*);
 };
 
 //--------------------------------------------------------------------------------------------
-// Classe stub do servi�o sala.
+// Classe stub do servi�o Sala.
 
 class StubServicoSala:public IServicoSala {
     private:
         static const string INVALIDO;
     public:
-        bool cadastrarConta(Conta);
-        bool consultarConta(Conta*);
-        bool cadastrarProdutoInvestimento(Produto);
-        bool descadastrarProdutoInvestimento(Codigo);
-        bool realizarAplicacao(Aplicacao);
-        bool recuperarAplicacao(Aplicacao*);
+        bool incluirSala(Sala);
+        bool visualizarSala(Sala*);
+        bool editarSala(Sala*);
+        bool excluirSala(Sala);
+        bool listarSala(Sala);
+        bool recuperarSala(Sala*);
 };
 
 //--------------------------------------------------------------------------------------------
-// Classe stub do servi�o sess�o.
+// Classe stub do servi�o Sala.
 
 class StubServicoSessao:public IServicoSessao {
     private:
         static const string INVALIDO;
     public:
-        bool cadastrarConta(Conta);
-        bool consultarConta(Conta*);
-        bool cadastrarProdutoInvestimento(Produto);
-        bool descadastrarProdutoInvestimento(Codigo);
-        bool realizarAplicacao(Aplicacao);
-        bool recuperarAplicacao(Aplicacao*);
+        bool incluirSessao(Sessao);
+        bool visualizarSessao(Sessao*);
+        bool editarSessao(Sessao*);
+        bool excluirSessao(Sessao);
+        bool listarSessao(Sessao);
+        bool recuperarSessao(Sessao*);
 };
 
-#endif // STUBS_H_INCLUDED
+#endif

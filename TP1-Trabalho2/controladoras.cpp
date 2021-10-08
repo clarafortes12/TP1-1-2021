@@ -1,5 +1,5 @@
 #include "controladoras.h"
-#include "comandos.h"
+//#include "comandos.h"
 
 //-----------------------------------------------------------------------------------
 // Implmentações de métodos de classe controladora.

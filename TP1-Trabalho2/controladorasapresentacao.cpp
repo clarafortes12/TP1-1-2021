@@ -90,7 +90,7 @@ void CntrApresentacaoControle::executar(){
                     break;
             case 2: cntrApresentacaoParticipante->executar();
                     break;
-            case 3: cntrApresentacaoProdutosFinanceiros->executar();
+            case 3: cntrApresentacaoParticipante->executar();
                     break;
             case 4: apresentar = false;
                     break;
@@ -145,7 +145,7 @@ bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula){
             echo();
         }
     }
-    return (cntr->autenticar(*matricula, senha));                                                     // Solicita servi�o de autentica��o.
+    return (cntrServicoAutenticacao->autenticar(*matricula, senha));                                                     // Solicita servi�o de autentica��o.
 }
 
 //--------------------------------------------------------------------------------------------
@@ -185,11 +185,11 @@ void CntrApresentacaoParticipante::executar(Matricula matricula){
         echo();
 
         switch(campo){
-            case 1: consultarParticipante(Matricula);
+            case 1: consultarParticipante();
                     break;
-            case 2: editarParticipante(Matricula);
+            case 2: editarParticipante();
                     break;
-            case 3: descadastrarParticipante(Matricula);
+            case 3: descadastrarParticipante();
                     break;
             case 4: apresentar = false;
                     break;
@@ -259,7 +259,7 @@ void CntrApresentacaoParticipante::cadastrarParticipante(){
         cargo.setValor(string(campo_cargo));
     }
     catch(invalid_argument &exp){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto9);
         noecho();
         getch();
         echo();
@@ -275,15 +275,15 @@ void CntrApresentacaoParticipante::cadastrarParticipante(){
     participante.setSenha(senha);
     participante.setCargo(cargo);
 
-    if(CntrServicoParticipante->cadastrar(participante)){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
+    if(cntrServicoParticipante->cadastrarParticipante(participante)){
+        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                               // Informa sucesso.
         noecho();
         getch();
         echo();
         return;
     }
 
-    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
+    mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                                       // Informa falha.
     noecho();
     getch();
     echo();
@@ -293,7 +293,7 @@ void CntrApresentacaoParticipante::cadastrarParticipante(){
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoParticipante::consultarParticipante(Matricula){
+void CntrApresentacaoParticipante::consultarParticipante(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
@@ -316,7 +316,7 @@ void CntrApresentacaoParticipante::consultarParticipante(Matricula){
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoParticipante::editarParticipante(Matricula){
+void CntrApresentacaoParticipante::editarParticipante(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
@@ -337,7 +337,7 @@ void CntrApresentacaoParticipante::editarParticipante(Matricula){
     echo();
 }
 
-void CntrApresentacaoParticipante::descadastrarParticipante(Matricula){
+void CntrApresentacaoParticipante::descadastrarParticipante(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
@@ -361,7 +361,7 @@ void CntrApresentacaoParticipante::descadastrarParticipante(Matricula){
 //--------------------------------------------------------------------------------------------
 
 void CntrApresentacaoSala::listarSala(){ //preciso pegar os dados com controladora servico
-    cntrServicoSala->listar();
+    cntrServicoSala->listarSala();
 }
 
 //--------------------------------------------------------------------------------------------
@@ -405,7 +405,7 @@ void CntrApresentacaoSala::incluirSala(){ //preciso pegar os dados com controlad
     try{
         codigo.setValor(string(campo1));
         nome.setValor(string(campo2));
-        capacidade.setValor(int(campo3));
+        //capacidade.setValor(string(campo3)); //Verificar como pega inteiro
     }
     catch(invalid_argument &exp){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
@@ -481,8 +481,9 @@ void CntrApresentacaoSala::excluirSala(){ //preciso pegar os dados com controlad
     }
 
     // Exclui a sala.
+    Sala sala;
 
-    if(cntrServicoSala->excluirSala(codigo)){
+    if(cntrServicoSala->excluirSala(&sala)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -539,7 +540,7 @@ void CntrApresentacaoSala::editarSala(){ //preciso pegar os dados com controlado
     try{
         codigo.setValor(string(campo1));
         nome.setValor(string(campo2));
-        capacidade.setValor(int(campo3));
+        //capacidade.setValor(string(campo3)); // Verificar como pegar inteiro
     }
     catch(invalid_argument &exp){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
@@ -559,7 +560,7 @@ void CntrApresentacaoSala::editarSala(){ //preciso pegar os dados com controlado
 
     // Incluir sala.
 
-    if(cntrServicoSala->editarSala(sala)){
+    if(cntrServicoSala->editarSala(&sala)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -615,8 +616,9 @@ void CntrApresentacaoSala::visualizarSala(){ //preciso pegar os dados com contro
     }
 
     // Visualizacao da sala.
+    Sala sala;
 
-    if(cntrServicoSala->visualizarSala(codigo)){
+    if(cntrServicoSala->visualizarSala(&sala)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -855,8 +857,9 @@ void CntrApresentacaoSessao::excluirSessao(){ //preciso pegar os dados com contr
     }
 
     // Exclui a Sessao.
+    Sessao sessao;
 
-    if(cntrServicoSessao->excluirSessao(codigo)){
+    if(cntrServicoSessao->excluirSessao(&sessao)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -933,7 +936,7 @@ void CntrApresentacaoSessao::editarSessao(){ //preciso pegar os dados com contro
 
     // Incluir Sessao.
 
-    if(cntrServicoSessao->editarSessao(sessao)){
+    if(cntrServicoSessao->editarSessao(&sessao)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -989,8 +992,9 @@ void CntrApresentacaoSessao::visualizarSessao(){ //preciso pegar os dados com co
     }
 
     // Visualizacao da Sessao.
+    Sessao sessao;
 
-    if(cntrServicoSessao->visualizarSessao(codigo)){
+    if(cntrServicoSessao->visualizarSessao(&sessao)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -1234,8 +1238,9 @@ void CntrApresentacaoPeca::excluirPeca(){ //preciso pegar os dados com controlad
     }
 
     // Exclui a Peca.
+    Peca peca;
 
-    if(cntrServicoPeca->excluirPeca(codigo)){
+    if(cntrServicoPeca->excluirPeca(&peca)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -1318,7 +1323,7 @@ void CntrApresentacaoPeca::editarPeca(){ //preciso pegar os dados com controlado
 
     // Incluir peca.
 
-    if(cntrServicoPeca->editarPeca(peca)){
+    if(cntrServicoPeca->editarPeca(&peca)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
@@ -1374,8 +1379,9 @@ void CntrApresentacaoPeca::visualizarPeca(){ //preciso pegar os dados com contro
     }
 
     // Visualizacao da Peca.
+    Peca peca;
 
-    if(cntrServicoPeca->visualizarPeca(codigo)){
+    if(cntrServicoPeca->visualizarPeca(&peca)){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
         noecho();
         getch();
