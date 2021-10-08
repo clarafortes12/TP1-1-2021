@@ -682,7 +682,7 @@ void CntrApresentacaoSala::executar(){
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoSala::executar(Matricula){
+void CntrApresentacaoSala::executar(Matricula matricula){
 
     // Mensagens a serem apresentadas tela completa de salas.
 
@@ -1056,7 +1056,7 @@ void CntrApresentacaoSessao::executar(){
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoSessao::executar(Matricula){
+void CntrApresentacaoSessao::executar(Matricula matricula){
 
     // Mensagens a serem apresentadas tela completa de Sessaos.
 
@@ -1441,7 +1441,7 @@ void CntrApresentacaoPeca::executar(){
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoPeca::executar(Matricula){
+void CntrApresentacaoPeca::executar(Matricula matricula){
 
     // Mensagens a serem apresentadas tela completa de Pecas.
 

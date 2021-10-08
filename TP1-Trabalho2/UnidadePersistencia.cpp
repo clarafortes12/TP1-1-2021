@@ -4,7 +4,7 @@
 #include "UnidadePersistencia.h"
 
 // Atributo estático.
-
+/*
 list<ElementoResultado> ComandoSQL::listaResultado;
 
 //---------------------------------------------------------------------------
@@ -231,3 +231,4 @@ ComandoAtualizarParticipante::ComandoAtualizarParticipante(Participante particip
         comandoSQL += "' WHERE matricula = " + participante.getMatricula().getValor();
 }
 
+*/

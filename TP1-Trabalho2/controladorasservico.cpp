@@ -1,32 +1,33 @@
 #include "controladorasservico.h"
 
+
 //---------------------------------------------------------------------------
 // Implementações de métodos da classe CntrInteracao.
 
+
 void CntrInteracao::notificarErroAcesso(){
-     cout << endl << "Erro no acesso ao banco de dados.";
+    /* cout << endl << "Erro no acesso ao banco de dados.";
      cout << "Digite algo para continuar :";
-     getch();
+     getch();*/
 }
 
 void CntrInteracao::notificarErroDigitacao() {
-     cout << endl << "Dado informado incorretamente." << endl << endl;
+    /* cout << endl << "Dado informado incorretamente." << endl << endl;
      cout << "Digite algo para continuar :";
-     getch();
+     getch();*/
 }
 
 void CntrInteracao::notificarSucessoOperacao() {
-     cout << endl << "Operacao efetuada com sucesso." << endl << endl;
+     /*cout << endl << "Operacao efetuada com sucesso." << endl << endl;
      cout << "Digite algo para continuar :";
-     getch();
+     getch();*/
 }
-
 
 //--------------------------------------------------------------------------------------------
 //Implementações de métodos de classes controladoras.
 //
 bool CntrServicoAutenticacao::autenticar(Matricula matricula, Senha senhaEntrada){
-
+/*
     ComandoLerSenha comandoLerSenha(matricula);
 
     try {
@@ -46,6 +47,7 @@ bool CntrServicoAutenticacao::autenticar(Matricula matricula, Senha senhaEntrada
             cout << endl << endl << "Digite algo para continuar.";
             getch();
     }
+    */
 }
 
 bool CntrServicoSala::listarSala(){
@@ -53,7 +55,7 @@ bool CntrServicoSala::listarSala(){
 }
 
 bool CntrServicoSala::visualizarSala(Codigo codigoEntrada){
-
+/*
     Sala sala;
 
     ComandoPesquisarSala comando(codigo);
@@ -81,10 +83,12 @@ bool CntrServicoSala::visualizarSala(Codigo codigoEntrada){
             cout << endl << endl << "Digite algo para continuar.";
             getch();
     }
+    */
 }
 
-bool CntrServicoSala::incluirSala(Sala sala){
 
+bool CntrServicoSala::incluirSala(Sala sala){
+/*
     ComandoCadastrarSala comando (sala);
 
     try {
@@ -96,6 +100,7 @@ bool CntrServicoSala::incluirSala(Sala sala){
     }
 
     notificarSucessoOperacao();
+    */
 }
 
 bool CntrServicoSala::editarSala(Sala sala){
@@ -120,7 +125,7 @@ bool CntrServicoSala::editarSala(Sala sala){
     cout << "Codigo : " << salaAtual.getCodigo().getValor() << endl;
     cout << "Nome : " << salaAtual.getNome().getValor() << endl;
     cout << "Capacidade : " << salaAtual.getCapacidade().getValor() << endl;*/
-
+/*
     // talvez seja melhor deixar so daqui pra baixo:
     ComandoAtualizarSala comandoB(sala);
 
@@ -133,10 +138,11 @@ bool CntrServicoSala::editarSala(Sala sala){
     }
 
     notificarSucessoOperacao();
+    */
 }
 
 bool CntrServicoSala::excluirSala(Codigo codigo){
-
+/*
     ComandoRemoverSala comando(codigo);
 
     try {
@@ -148,4 +154,22 @@ bool CntrServicoSala::excluirSala(Codigo codigo){
     }
 
     notificarSucessoOperacao();
+    */
 }
+
+bool CntrServicoParticipante::consultarParticipante(Matricula matricula){}
+bool CntrServicoParticipante::cadastrarParticipante(Participante participante){}
+bool CntrServicoParticipante::editarParticipante(Participante participante){}
+bool CntrServicoParticipante::descadastrarParticipante(Matricula matricula){}
+
+bool CntrServicoPeca::listarPeca(){}
+bool CntrServicoPeca::visualizarPeca(Codigo codigo){}
+bool CntrServicoPeca::incluirPeca(Peca peca){}
+bool CntrServicoPeca::editarPeca(Peca peca){}
+bool CntrServicoPeca::excluirPeca(Codigo codgio){}
+
+bool CntrServicoSessao::listarSessao(){}
+bool CntrServicoSessao::visualizarSessao(Codigo codigo){}
+bool CntrServicoSessao::incluirSessao(Sessao sessao){}
+bool CntrServicoSessao::editarSessao(Sessao sessao){}
+bool CntrServicoSessao::excluirSessao(Codigo codigo){}

@@ -38,7 +38,7 @@ class IApresentacaoParticipante{
 
 class IApresentacaoPeca {
 public:
-    virtual void executar(const Matricula&) = 0;
+    virtual void executar(Matricula) = 0;
     virtual void executar() = 0;
     virtual void setCntrServicoPeca(IServicoPeca *) = 0;
     virtual ~IApresentacaoPeca(){}
@@ -46,7 +46,7 @@ public:
 
 class IApresentacaoSala {
 public:
-    virtual void executar(const Matricula&) = 0;
+    virtual void executar(Matricula) = 0;
     virtual void executar() = 0;
     virtual void setCntrServicoSala(IServicoSala *) = 0;
     virtual ~IApresentacaoSala(){}
@@ -54,9 +54,9 @@ public:
 
 class IApresentacaoSessao {
 public:
-    virtual void executar(const Matricula&) = 0;
+    virtual void executar(Matricula) = 0;
     virtual void executar() = 0;
-    virtual void setCntrServicoSessao(IServicoPeca *) = 0;
+    virtual void setCntrServicoSessao(IServicoSessao *) = 0;
     virtual ~IApresentacaoSessao(){}
 };
 
@@ -72,9 +72,9 @@ class IServicoAutenticacao {
 class IServicoParticipante{
 public:
         virtual bool cadastrarParticipante(Participante) = 0;
-        virtual bool consultarParticipante(Participante*) = 0;
-        virtual bool editarParticipante(Participante*) = 0;
-        virtual bool descadastrarParticipante(Participante*) = 0;
+        virtual bool consultarParticipante(Matricula) = 0;
+        virtual bool editarParticipante(Participante) = 0;
+        virtual bool descadastrarParticipante(Matricula) = 0;
         virtual ~IServicoParticipante(){}
 };
 
