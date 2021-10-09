@@ -284,7 +284,7 @@ void CntrApresentacaoParticipante::cadastrarParticipante()
     char texto4[] ="E-mail          :";
     char texto5[] ="Telefone        :";
     char texto6[] ="Senha           :";
-    char texto7[] ="Matrícula       :";
+    char texto7[] ="Matricula       :";
     char texto8[] ="Cargo           :";
     char texto9[]="Dados em formato incorreto. Digite algo.";
     char texto10[]="Sucesso no cadastramento. Digite algo.";
@@ -307,9 +307,9 @@ void CntrApresentacaoParticipante::cadastrarParticipante()
 
     cout << texto1 << endl;                                                                    // Imprime solicitação ao usuário.
     cout << texto2 << " ";                                                                     // Imprime nome do campo.
-    cin.getline(campo_nome,sizeof(campo_nome));                                                        // Lê valor do campo composto.
-
-    cout << "Valor lido" << campo_nome << " ";
+    //cin.getline(campo_nome,sizeof(campo_nome));                                                        // Lê valor do campo composto.
+    cin >> campo_nome;
+    //cout << "Valor lido" << campo_nome << " ";
 
     cout << texto3 << " ";                                                                     // Imprime nome do campo.
     cin >> campo_sobrenome;                                                                             // Lê valor do campo.

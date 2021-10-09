@@ -60,10 +60,65 @@ bool CntrServicoAutenticacao::autenticar(Matricula matricula, Senha senhaEntrada
 
 bool CntrServicoParticipante::consultarParticipante(Matricula matricula){
     cout << endl << "Consultar Participante";
-    return true;
+    Participante participante;
+
+    ComandoPesquisarParticipante comando(matricula);
+
+    try
+    {
+        comando.executar();
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";;
+        cout << "Digite algo para continuar : ";
+        getchar();
+        return false;
+    }
+
+    try
+    {
+        getchar();
+        participante = comando.getResultado();
+
+        cout << endl << "Resultados obtidos." << endl << endl;
+        cout << "Matricula  : " << participante.getMatricula().getValor() << endl;
+        cout << "Nome       : " << participante.getNome().getValor() << endl;
+        cout << "Sobrenome  : " << participante.getSobrenome().getValor() << endl;
+        cout << "Email      : " << participante.getEmail().getValor() << endl;
+        cout << "Telefone   : " << participante.getTelefone().getValor() << endl;
+        // apresenta a senha? kkkkkkkkk
+        cout << "Cargo      : " << participante.getCargo().getValor() << endl;
+        cout << "Digite algo para continuar : ";
+        getchar();
+        return true;
+    }
+    catch(EErroPersistencia exp)
+    {
+        cout << endl << exp.what();
+        cout << endl << endl << "Digite algo para continuar.";
+        getchar();
+        return false;
+    }
+    return false;
 }
 bool CntrServicoParticipante::cadastrarParticipante(Participante participante){
     cout << endl << "Cadastrar Participante";
+    ComandoCadastrarParticipante comando(participante);
+
+    try
+    {
+        comando.executar();
+        return true;
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";
+        return false;
+    }
+
+    //notificarSucessoOperacao();
+
     return true;
 }
 bool CntrServicoParticipante::descadastrarParticipante(Matricula matricula){
@@ -112,8 +167,7 @@ bool CntrServicoSala::listarSala(){
     return true;
 }
 
-bool CntrServicoSala::visualizarSala(Codigo codigoEntrada)
-{
+bool CntrServicoSala::visualizarSala(Codigo codigoEntrada){
 
     Sala sala;
 
@@ -152,9 +206,7 @@ bool CntrServicoSala::visualizarSala(Codigo codigoEntrada)
         return false;
     }
 }
-
-bool CntrServicoSala::incluirSala(Sala sala)
-{
+bool CntrServicoSala::incluirSala(Sala sala){
 
     ComandoCadastrarSala comando(sala);
 
@@ -171,9 +223,7 @@ bool CntrServicoSala::incluirSala(Sala sala)
 
     //notificarSucessoOperacao();
 }
-
-bool CntrServicoSala::editarSala(Sala sala)
-{
+bool CntrServicoSala::editarSala(Sala sala){
     /*
     Codigo codigo;
 
@@ -213,8 +263,7 @@ bool CntrServicoSala::editarSala(Sala sala)
     //notificarSucessoOperacao();
 }
 
-bool CntrServicoSala::excluirSala(Codigo codigo)
-{
+bool CntrServicoSala::excluirSala(Codigo codigo){
 
     ComandoRemoverSala comando(codigo);
 

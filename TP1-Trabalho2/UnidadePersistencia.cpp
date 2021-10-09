@@ -118,7 +118,7 @@ ComandoLerSenha::ComandoLerSenha(Matricula matricula)
 {
     comandoSQL = "SELECT senha FROM participante WHERE matricula = ";
     comandoSQL += matricula.getValor();
-    cout << endl << "criei o comando para procurar participante com a matricula informada." << endl ; // Liz incluiu isso
+    cout << endl << "criou o comando para procurar participante com a matricula informada." << endl ; // Liz incluiu isso
 }
 
 string ComandoLerSenha::getResultado()
@@ -129,7 +129,7 @@ string ComandoLerSenha::getResultado()
     //Remover senha;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia. Aqui senha");
-        //to entendendo que ta mandando isso aqui pq n ta chamando o callback...n ta imprimindo meu print la. Dai de fato nada eh incluido em listaResultado
+        //to entendendo que ta tendo essa excessao aqui pq n ta chamando o callback...n ta imprimindo meu print la. Dai de fato nada eh incluido em listaResultado
     resultado = listaResultado.back();
     listaResultado.pop_back();
     senha = resultado.getValorColuna();
