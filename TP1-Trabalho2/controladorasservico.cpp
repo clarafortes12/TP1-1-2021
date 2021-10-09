@@ -33,27 +33,16 @@ bool CntrServicoAutenticacao::autenticar(Matricula matricula, Senha senhaEntrada
     try
     {
         comandoLerSenha.executar();
-        cout << endl << "Executou comandoLerSenha.executar() sem problemas." << endl ; // Liz incluiu isso
-        cout << "Digite algo para continuar : ";  // Liz incluiu isso
-        getchar(); // Liz incluiu isso
         string senhaRecuperada;
         senhaRecuperada = comandoLerSenha.getResultado();
 
         //Comparar senha informada com a senha recuperada.
-        cout << endl << "Chegou a recuperar algo." << endl ; // Liz incluiu isso
-        cout << "Digite algo para continuar : ";  // Liz incluiu isso
-        getchar(); // Liz incluiu isso
         if(senhaRecuperada == senhaEntrada.getValor()) return true;
-        cout << endl << "Senha digitada diferente da cadastrada.";
-        cout << "Digite algo para continuar : ";  // Liz incluiu isso
-        getchar(); // Liz incluiu isso
         return false;
     }
     catch(EErroPersistencia &exp)
     {
         cout << endl << exp.what();
-        cout << endl << endl << "Entrou no erro em controladorasservico. Digite algo para continuar."; // Liz incluiu isso
-        getchar(); // Liz incluiu isso
         return false;
     }
     return false;

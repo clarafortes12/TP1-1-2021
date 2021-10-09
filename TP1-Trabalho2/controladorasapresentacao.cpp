@@ -437,6 +437,7 @@ void CntrApresentacaoParticipante::descadastrarParticipante()
 
 //--------------------------------------------------------------------------------------------
 
+// esse ainda falta implementar
 void CntrApresentacaoSala::listarSala()  //preciso pegar os dados com controladora servico
 {
     cntrServicoSala->listarSala();
@@ -597,7 +598,7 @@ void CntrApresentacaoSala::editarSala()  //preciso pegar os dados com controlado
     char texto3[] ="Nome                        :";
     char texto4[] ="Capacidade                  :";
     char texto10[]="Dados em formato incorreto. Digite algo.";
-    //char texto11[]="Sucesso na edicao. Digite algo.";
+    char texto11[]="Sucesso na edicao. Digite algo.";
     char texto12[]="Falha na edicao. Digite algo.";
 
     char campo1[80], campo2[80], campo3[80];                                                   // Cria campos para entrada dos dados.
@@ -651,7 +652,7 @@ void CntrApresentacaoSala::editarSala()  //preciso pegar os dados com controlado
 
     if(cntrServicoSala->editarSala(sala))
     {
-        cout << texto10 << endl;                                               // Informa sucesso.
+        cout << texto11 << endl;                                               // Informa sucesso.
 
         getchar();
 
@@ -674,21 +675,14 @@ void CntrApresentacaoSala::visualizarSala()  //preciso pegar os dados com contro
     // Mensagens a serem apresentadas na tela de visualizar sala.
 
     char texto1[] ="Informe o codigo da sala que se deseja visualizar: ";
-    char texto10[]="Dado em formato incorreto. Digite algo.";
-    char texto11[]="Sucesso na exclusao. Digite algo.";
-    char texto12[]="Falha na exclusao. Digite algo.";
+    char texto2[]="Dado em formato incorreto. Digite algo.";
+    char texto3[]="Falha na visualizacao. Digite algo.";
 
     char campo1[80];                                                                           // Cria campos para entrada dos dados.
 
     // Instancia os dom�nios.
 
     Codigo codigo;
-
-    // Dados sobre tamanho da tela.
-
-    // Armazena quantidade de linhas e colunas.
-
-    // Apresenta tela de visualizacao de sala.
 
     CLR_SCR;                                                                                     // Limpa janela.
 
@@ -701,7 +695,7 @@ void CntrApresentacaoSala::visualizarSala()  //preciso pegar os dados com contro
     }
     catch(invalid_argument &exp)
     {
-        cout << texto10 << endl;                                           // Informa formato incorreto.
+        cout << texto2 << endl;                                           // Informa formato incorreto.
         // Desabilita eco.
         getchar();                                                                                // Leitura de caracter digitado.
         // Habilita eco.
@@ -710,20 +704,10 @@ void CntrApresentacaoSala::visualizarSala()  //preciso pegar os dados com contro
 
     // Visualizacao da sala.
 
-    if(cntrServicoSala->visualizarSala(codigo))
-    {
-        cout << texto11 << endl;                                               // Informa sucesso.
+    if(cntrServicoSala->visualizarSala(codigo)) return;
 
-        getchar();
-
-        return;
-    }
-
-    cout << texto12 << endl;                                                       // Informa falha.
-
+    cout << texto3 << endl;                                               // Informa sucesso.
     getchar();
-
-
     return;
 }
 

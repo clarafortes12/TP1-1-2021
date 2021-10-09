@@ -38,14 +38,14 @@ void ElementoResultado::setValorColuna(const string& valorColuna)
 
 void ComandoSQL::conectar()
 {
-    rc = sqlite3_open(nomeBancoDados, &bd); // possivel funcai definida pelo prof
+    rc = sqlite3_open(nomeBancoDados, &bd);
     if( rc != SQLITE_OK )
         throw EErroPersistencia("Erro na conexao ao banco de dados");
 }
 
 void ComandoSQL::desconectar()
 {
-    rc =  sqlite3_close(bd); // possivel funcai definida pelo prof
+    rc =  sqlite3_close(bd);
     if( rc != SQLITE_OK )
         throw EErroPersistencia("Erro na desconexao ao banco de dados");
 }
@@ -53,35 +53,12 @@ void ComandoSQL::desconectar()
 void ComandoSQL::executar()
 {
     conectar();
-    cout << endl << "Conectou com o banco de dados em executar()." << endl;
 
-    //  Declaração sqlite3_exec
-    //int sqlite3_exec(
-    //  sqlite3*,                                  /* An open database */
-    //  const char *sql,                           /* SQL to be evaluated */
-    //  int (*callback)(void*,int,char**,char**),  /* Callback function */
-    //  void *,                                    /* 1st argument to callback */
-    //  char **errmsg                              /* Error msg written here */
-    //);
-
-    // -bd é o ponteiro para o banco de dados que vamos acessar
-    // -O parametro comandoSQL.c_str() passa o comandoSQL como uma strig C pura (sem usar a biblioteca <string>)
-    // -callback é uma funcao pra receber na lista listaResultado o retorno do comando SQL, se for pra pesquisar algo
-    // -SQLITE_OK eh definido como 0, sendo assim, o 4º parametro de sqlite3_exec, que ta como zero, é pra dizer
-    // que o retorno de sqlite3_exec tem seu primeiro argumento com 0, pelo que entendi
-    // -mensagem é para receber uma mensagem de erro que n vai ser usada pq esvaziamos em sqlite3_free(mensagem);
     rc = sqlite3_exec(bd, comandoSQL.c_str(), callback, 0, &mensagem);
     if(rc != SQLITE_OK)
     {
-        cout << endl << "if(rc != SQLITE_OK)."; // Liz incluiu isso
-        cout << endl << "rc = " << rc << endl; // Liz incluiu isso
-        cout << "Digite algo para continuar : "; // Liz incluiu isso
-        getchar(); // Liz incluiu isso
         sqlite3_free(mensagem); // so para esvaziar a memoria mensagem
         desconectar();
-        cout << endl << "desconectou."; // Liz incluiu isso
-        cout << "Digite algo para continuar : "; // Liz incluiu isso
-        getchar(); // Liz incluiu isso
         throw EErroPersistencia("Erro na execucao do comando SQL");
     }
     desconectar();
@@ -93,11 +70,8 @@ int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nom
     ElementoResultado elemento;
     int i;
 
-    cout << endl << "argc = " << argc << endl; // Liz incluiu isso
-
     for(i=0; i<argc; i++)
     {
-        cout << endl << "i = " << i << endl; // Liz incluiu isso
         elemento.setNomeColuna(nomeColuna[i]);
         elemento.setValorColuna(valorColuna[i] ? valorColuna[i]: "NULL");
         listaResultado.push_front(elemento);
@@ -108,17 +82,10 @@ int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nom
 //---------------------------------------------------------------------------
 // Implementa��es de m�todos da classe ComandoLerSenha.
 
-// Pelo que entendi, cada objeto ComandoAlgumaCoisa, que herda de ComandoSQL, tem um atributo protected
-// chamado comandoSQL, que vai informar qual o comando que vc quer fazer no banco de dados.
-// O metodo construtor das classes ComandoAlgumaCoisa apenas criam esse comando SQL, como abaixo:
-// Quando voce manda executar(), ele já vai rodar esse comandoSQL na linha:
-// rc = sqlite3_exec(bd, comandoSQL.c_str(), callback, 0, &mensagem);
-// O parametro comandoSQL.c_str() passa o comandoSQL como uma strig C pura (sem usar a biblioteca <string>)
 ComandoLerSenha::ComandoLerSenha(Matricula matricula)
 {
     comandoSQL = "SELECT senha FROM participante WHERE matricula = ";
     comandoSQL += matricula.getValor();
-    cout << endl << "criou o comando para procurar participante com a matricula informada." << endl ; // Liz incluiu isso
 }
 
 string ComandoLerSenha::getResultado()
@@ -129,11 +96,9 @@ string ComandoLerSenha::getResultado()
     //Remover senha;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia. Aqui senha");
-        //to entendendo que ta tendo essa excessao aqui pq n ta chamando o callback...n ta imprimindo meu print la. Dai de fato nada eh incluido em listaResultado
     resultado = listaResultado.back();
     listaResultado.pop_back();
     senha = resultado.getValorColuna();
-    cout << endl << "chegou aqui." << endl ; // Liz incluiu isso
 
     return senha;
 }
@@ -171,8 +136,8 @@ ComandoCadastrarSala::ComandoCadastrarSala(Sala sala)
 
 ComandoPesquisarSala::ComandoPesquisarSala(Codigo codigo)
 {
-    comandoSQL = "SELECT * FROM sala WHERE codigo = ";
-    comandoSQL += codigo.getValor();
+    comandoSQL = "SELECT * FROM sala WHERE codigo = '";
+    comandoSQL += codigo.getValor()+"'";
 }
 
 Sala ComandoPesquisarSala::getResultado()
@@ -182,7 +147,7 @@ Sala ComandoPesquisarSala::getResultado()
 
     // Remover codigo;
     if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia. Aqui"); // Liz incluiu o "Aqui"
+        throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
     sala.setCodigo(Codigo(resultado.getValorColuna()));
@@ -212,7 +177,7 @@ ComandoAtualizarSala::ComandoAtualizarSala(Sala sala)
     comandoSQL = "UPDATE sala ";
     comandoSQL += "SET nome = '" + sala.getNome().getValor();
     comandoSQL += "', capacidade = '" + sala.getCapacidade().getValor();
-    comandoSQL += "' WHERE codigo = " + sala.getCodigo().getValor();
+    comandoSQL += "' WHERE codigo = '" + sala.getCodigo().getValor()+"'";
 }
 
 //---------------------------------------------------------------------------
@@ -220,8 +185,8 @@ ComandoAtualizarSala::ComandoAtualizarSala(Sala sala)
 
 ComandoRemoverSala::ComandoRemoverSala(Codigo codigo)
 {
-    comandoSQL = "DELETE FROM sala WHERE codigo = ";
-    comandoSQL += codigo.getValor();
+    comandoSQL = "DELETE FROM sala WHERE codigo = '";
+    comandoSQL += codigo.getValor()+"'";
 }
 
 
@@ -230,21 +195,14 @@ ComandoRemoverSala::ComandoRemoverSala(Codigo codigo)
 
 ComandoPesquisarParticipante::ComandoPesquisarParticipante(Matricula matricula)
 {
-    comandoSQL = "SELECT * FROM participante WHERE matricula = ";
-    comandoSQL += matricula.getValor();
+    comandoSQL = "SELECT * FROM participante WHERE matricula = '";
+    comandoSQL += matricula.getValor()+"'";
 }
 
 Participante ComandoPesquisarParticipante::getResultado()
 {
     ElementoResultado resultado;
     Participante participante;
-
-    // Remover nome;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    participante.setNome(Nome(resultado.getValorColuna()));
 
     // Remover matricula;
     if (listaResultado.empty())
@@ -253,12 +211,26 @@ Participante ComandoPesquisarParticipante::getResultado()
     listaResultado.pop_back();
     participante.setMatricula(Matricula(resultado.getValorColuna()));
 
-    // Remover senha;
+    // Remover nome;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    participante.setSenha(Senha(resultado.getValorColuna()));
+    participante.setNome(Nome(resultado.getValorColuna()));
+
+    // Remover sobrenome;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    participante.setSobrenome(Nome(resultado.getValorColuna()));
+
+    // Remover email;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    participante.setEmail(Email(resultado.getValorColuna()));
 
     // Remover telefone;
     if (listaResultado.empty())
@@ -267,12 +239,19 @@ Participante ComandoPesquisarParticipante::getResultado()
     listaResultado.pop_back();
     participante.setTelefone(Telefone(resultado.getValorColuna()));
 
-    // Remover matr�cula do orientador;
-    /*if (listaResultado.empty())
-            throw EErroPersistencia("Lista de resultados vazia.");
+    // Remover senha;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    participante.setMatriculaOrientador(Matricula(resultado.getValorColuna()));*/
+    participante.setSenha(Senha(resultado.getValorColuna()));
+
+    // Remover cargo;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    participante.setCargo(Cargo(resultado.getValorColuna()));
 
     return participante;
 
@@ -298,8 +277,8 @@ ComandoCadastrarParticipante::ComandoCadastrarParticipante(Participante particip
 
 ComandoRemoverParticipante::ComandoRemoverParticipante(Matricula matricula)
 {
-    comandoSQL = "DELETE FROM participante WHERE matricula = ";
-    comandoSQL += matricula.getValor();
+    comandoSQL = "DELETE FROM participante WHERE matricula = '";
+    comandoSQL += matricula.getValor()+"'";
 }
 
 //---------------------------------------------------------------------------
@@ -314,6 +293,6 @@ ComandoAtualizarParticipante::ComandoAtualizarParticipante(Participante particip
     comandoSQL += "', telefone = '" + participante.getTelefone().getValor();
     comandoSQL += "', senha = '" + participante.getSenha().getValor();
     comandoSQL += "', cargo = '" + participante.getCargo().getValor();
-    comandoSQL += "' WHERE matricula = " + participante.getMatricula().getValor();
+    comandoSQL += "' WHERE matricula = '" + participante.getMatricula().getValor()+"'";
 }
 
