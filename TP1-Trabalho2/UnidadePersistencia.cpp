@@ -189,6 +189,14 @@ ComandoRemoverSala::ComandoRemoverSala(Codigo codigo)
     comandoSQL += codigo.getValor()+"'";
 }
 
+//---------------------------------------------------------------------------
+// Implementa��es de m�todos da classe ComandoListarSala.
+/*
+ComandoListarSala::ComandoListarSala()
+{
+    comandoSQL = "SELECT codigo, nome FROM sala ";
+}*/
+
 
 //---------------------------------------------------------------------------
 // Implementa��es de m�todos da classe ComandoPesquisarParticipante.

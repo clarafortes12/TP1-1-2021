@@ -178,8 +178,44 @@ bool CntrServicoPeca::excluirPeca(Codigo codigo){
 }
 
 bool CntrServicoSala::listarSala(){
-    cout << endl << "Listar Sala";
     return true;
+/*
+    list<Sala> sala;
+
+    ComandoListarSala comando();
+
+    try
+    {
+        comando.executar();
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";;
+        cout << "Digite algo para continuar : ";
+        getchar();
+        return false;
+    }
+
+    try
+    {
+        getchar();
+        sala = comando.getResultado();
+
+        cout << endl << "Resultados obtidos." << endl << endl;
+        cout << "Codigo : " << sala.getCodigo().getValor() << endl;
+        cout << "Nome : " << sala.getNome().getValor() << endl;
+        cout << "Capacidade : " << sala.getCapacidade().getValor() << endl;
+        cout << "Digite algo para continuar : ";
+        getchar();
+        return true;
+    }
+    catch(EErroPersistencia exp)
+    {
+        cout << endl << exp.what();
+        cout << endl << endl << "Digite algo para continuar.";
+        getchar();
+        return false;
+    }*/
 }
 bool CntrServicoSala::visualizarSala(Codigo codigoEntrada){
 

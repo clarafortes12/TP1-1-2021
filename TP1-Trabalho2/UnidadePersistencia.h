@@ -118,6 +118,15 @@ public:
 };
 
 //---------------------------------------------------------------------------
+// Declara��o da classe ComandoRemoverSala.
+/*
+class ComandoListarSala:public ComandoSQL
+{
+public:
+    ComandoListarSala();
+};*/
+
+//---------------------------------------------------------------------------
 // Declara��o da classe ComandoCadastrarAluno.
 
 class ComandoCadastrarSessao:public ComandoSQL
