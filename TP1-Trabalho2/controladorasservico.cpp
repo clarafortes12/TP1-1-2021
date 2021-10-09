@@ -1,29 +1,29 @@
 #include "controladorasservico.h"
-#include "curses.h"
+
 //---------------------------------------------------------------------------
-// Implementações de métodos da classe CntrInteracao.
+// Implementaï¿½ï¿½es de mï¿½todos da classe CntrInteracao.
 
 void CntrInteracao::notificarErroAcesso(){
      cout << endl << "Erro no acesso ao banco de dados.";
      cout << "Digite algo para continuar :";
-     getch();
+     getchar();
 }
 
 void CntrInteracao::notificarErroDigitacao() {
      cout << endl << "Dado informado incorretamente." << endl << endl;
      cout << "Digite algo para continuar :";
-     getch();
+     getchar();
 }
 
 void CntrInteracao::notificarSucessoOperacao() {
      cout << endl << "Operacao efetuada com sucesso." << endl << endl;
      cout << "Digite algo para continuar :";
-     getch();
+     getchar();
 }
 
 
 //--------------------------------------------------------------------------------------------
-//Implementações de métodos de classes controladoras.
+//Implementaï¿½ï¿½es de mï¿½todos de classes controladoras.
 //
 bool CntrServicoAutenticacao::autenticar(Matricula matricula, Senha senhaEntrada){
 
@@ -37,14 +37,14 @@ bool CntrServicoAutenticacao::autenticar(Matricula matricula, Senha senhaEntrada
 
             //Comparar senha informada com a senha recuperada.
 
-            if(senhaRecuperada == senhaEntrada) return true;
+            if(senhaRecuperada == senhaEntrada.getValor()) return true;
             cout << endl << "Senha digitada diferente da cadastrada.";
             return false;
     }
     catch(EErroPersistencia &exp) {
             cout << endl << exp.what();
             cout << endl << endl << "Digite algo para continuar.";
-            getch();
+            getchar();
     }
 }
 
@@ -56,14 +56,14 @@ bool CntrServicoSala::visualizarSala(Codigo codigoEntrada){
 
     Sala sala;
 
-    ComandoPesquisarSala comando(codigo);
+    ComandoPesquisarSala comando(codigoEntrada);
 
     try {
             comando.executar();
     }
     catch (EErroPersistencia exp) {
-            notificarErroAcesso();
-            return;
+            cout << endl << "Erro no acesso ao banco de dados.";;
+            return false;
     }
 
     try {
@@ -74,12 +74,12 @@ bool CntrServicoSala::visualizarSala(Codigo codigoEntrada){
             cout << "Nome : " << sala.getNome().getValor() << endl;
             cout << "Capacidade : " << sala.getCapacidade().getValor() << endl;
             cout << "Digite algo para continuar : ";
-            getch();
+            getchar();
     }
     catch(EErroPersistencia exp) {
             cout << endl << exp.what();
             cout << endl << endl << "Digite algo para continuar.";
-            getch();
+            getchar();
     }
 }
 
@@ -91,11 +91,11 @@ bool CntrServicoSala::incluirSala(Sala sala){
             comando.executar();
     }
     catch (EErroPersistencia exp) {
-            notificarErroAcesso();
-            return;
+            cout << endl << "Erro no acesso ao banco de dados.";
+            return false;
     }
 
-    notificarSucessoOperacao();
+    //notificarSucessoOperacao();
 }
 
 bool CntrServicoSala::editarSala(Sala sala){
@@ -128,11 +128,11 @@ bool CntrServicoSala::editarSala(Sala sala){
             comandoB.executar();
     }
     catch (EErroPersistencia exp) {
-            notificarErroAcesso();
-            return;
+            cout << endl << "Erro no acesso ao banco de dados.";
+            return false;
     }
 
-    notificarSucessoOperacao();
+    //notificarSucessoOperacao();
 }
 
 bool CntrServicoSala::excluirSala(Codigo codigo){
@@ -143,9 +143,9 @@ bool CntrServicoSala::excluirSala(Codigo codigo){
             comando.executar();
     }
     catch (EErroPersistencia exp) {
-            notificarErroAcesso();
-            return;
+            cout << endl << "Erro no acesso ao banco de dados.";
+            return false;
     }
 
-    notificarSucessoOperacao();
+    //notificarSucessoOperacao();
 }

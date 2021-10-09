@@ -21,8 +21,8 @@ using namespace std;
 ///
 class Capacidade {
     private:
-            int valor;
-            void validar(int);
+            string valor;
+            void validar(string);
     public:
 ///
 /// Inicializa o objeto com o Capacidade como 100.
@@ -31,27 +31,27 @@ class Capacidade {
 ///
 /// Inicializa o objeto caso o Capacidade informado seja v&aacute;lido.
 ///
-/// @param valor int Capacidade.
+/// @param valor string Capacidade.
 ///
-            Capacidade(int);
+            Capacidade(string);
 ///
 /// Armazena Capacidade.
 ///
-/// @param valor int Capacidade.
+/// @param valor string Capacidade.
 ///
 /// @return void
 ///
-            void setValor(int);
+            void setValor(string);
 ///
 /// Retorna Capacidade.
 ///
-/// @return int Capacidade.
+/// @return string Capacidade.
 ///
-            int getValor() const;
+            string getValor() const;
 
 };
 
-inline int Capacidade::getValor() const{         // Metodo inline e const.
+inline string Capacidade::getValor() const{         // Metodo inline e const.
     return valor;
 }
 

@@ -42,11 +42,8 @@
 		<Unit filename="controladorasapresentacao.h" />
 		<Unit filename="controladorasservico.cpp" />
 		<Unit filename="controladorasservico.h" />
-		<Unit filename="curses.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="sqlite3.h" />
-		<Unit filename="stubs.cpp" />
-		<Unit filename="stubs.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

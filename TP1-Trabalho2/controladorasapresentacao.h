@@ -1,11 +1,14 @@
 #ifndef CONTROLADORASAPRESENTACAO_H_INCLUDED
 #define CONTROLADORASAPRESENTACAO_H_INCLUDED
-
+#include <iostream>
 #include <string.h>
-#include "curses.h"
+
+
 #include "dominios.h"
 #include "entidades.h"
 #include "interfaces.h"
+
+#define CLR_SCR system("cls");
 
 
 //--------------------------------------------------------------------------------------------

@@ -32,13 +32,13 @@ class IApresentacaoParticipante{
     public:
         virtual void executar(Matricula) = 0;
         virtual void executar() = 0;
-        virtual void setCntrServicoParticipantes(IServicoParticipante*) = 0;
+        virtual void setCntrServicoParticipante(IServicoParticipante*) = 0;
         virtual ~IApresentacaoParticipante(){}
 };
 
 class IApresentacaoPeca {
 public:
-    virtual void executar(const Matricula&) = 0;
+    virtual void executar(Matricula) = 0;
     virtual void executar() = 0;
     virtual void setCntrServicoPeca(IServicoPeca *) = 0;
     virtual ~IApresentacaoPeca(){}
@@ -46,7 +46,7 @@ public:
 
 class IApresentacaoSala {
 public:
-    virtual void executar(const Matricula&) = 0;
+    virtual void executar(Matricula) = 0;
     virtual void executar() = 0;
     virtual void setCntrServicoSala(IServicoSala *) = 0;
     virtual ~IApresentacaoSala(){}
@@ -54,9 +54,9 @@ public:
 
 class IApresentacaoSessao {
 public:
-    virtual void executar(const Matricula&) = 0;
+    virtual void executar(Matricula) = 0;
     virtual void executar() = 0;
-    virtual void setCntrServicoSessao(IServicoPeca *) = 0;
+    virtual void setCntrServicoSessao(IServicoSessao *) = 0;
     virtual ~IApresentacaoSessao(){}
 };
 

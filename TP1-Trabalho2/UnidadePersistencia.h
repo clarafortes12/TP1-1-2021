@@ -2,7 +2,7 @@
 #define UnidadePersistenciaH
 
 //---------------------------------------------------------------------------
-// Incluir cabeçalhos.
+// Incluir cabeï¿½alhos.
 
 #include "Dominios.h"
 #include "Entidades.h"
@@ -10,16 +10,15 @@
 #include <list>
 
 #include <iostream>
-#include <conio.h>
 #include <string>
 #include <stdio.h>
 
-#include "sqlite3.h"            // Incluir cabeçalho da biblioteca SQLite.
+#include "sqlite3.h"            // Incluir cabeï¿½alho da biblioteca SQLite.
 
 using namespace std;
 
 //---------------------------------------------------------------------------
-// Declaração da classe EErroPersistencia.
+// Declaraï¿½ï¿½o da classe EErroPersistencia.
 
 class EErroPersistencia {
 private:
@@ -30,7 +29,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declaração da classe ElementoResultado.
+// Declaraï¿½ï¿½o da classe ElementoResultado.
 
 class ElementoResultado {
 private:
@@ -44,7 +43,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declaração da classe ComandoSQL.
+// Declaraï¿½ï¿½o da classe ComandoSQL.
 
 class ComandoSQL {
 private:
@@ -67,7 +66,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declaração da classe ComandoLerSenha.
+// Declaraï¿½ï¿½o da classe ComandoLerSenha.
 
 class ComandoLerSenha:public ComandoSQL {
 public:
@@ -93,7 +92,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declaração da classe ComandoCadastrarSala.
+// Declaraï¿½ï¿½o da classe ComandoCadastrarSala.
 
 class ComandoCadastrarSala:public ComandoSQL {
 public:
@@ -101,7 +100,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declaração da classe ComandoRemoverSala.
+// Declaraï¿½ï¿½o da classe ComandoRemoverSala.
 
 class ComandoRemoverSala:public ComandoSQL {
 public:
@@ -118,7 +117,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declaração da classe ComandoCadastrarAluno.
+// Declaraï¿½ï¿½o da classe ComandoCadastrarAluno.
 
 class ComandoCadastrarParticipante:public ComandoSQL {
 public:
@@ -134,7 +133,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declaração da classe ComandoRemoverAluno.
+// Declaraï¿½ï¿½o da classe ComandoRemoverAluno.
 
 class ComandoRemoverParticipante:public ComandoSQL {
 public:
@@ -142,7 +141,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Implementações de métodos.
+// Implementaï¿½ï¿½es de mï¿½todos.
 
 inline string ElementoResultado::getNomeColuna() const {
         return nomeColuna;

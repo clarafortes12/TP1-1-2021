@@ -7,7 +7,6 @@
 #include "interfaces.h"
 #include "controladorasapresentacao.h"
 #include "controladorasservico.h"
-#include "stubs.h"
 
 using namespace std;
 
@@ -31,17 +30,17 @@ int main()
 
     // Instanciar stubs de serviço.
 
-    IServicoAutenticacao *stubServicoAutenticacao;
-    IServicoParticipante *stubServicoParticipante;
-    IServicoPeca *stubServicoPeca;
-    IServicoSala *stubServicoSala;
-    IServicoSessao *stubServicoSessao;
+    // IServicoAutenticacao *stubServicoAutenticacao;
+    // IServicoParticipante *stubServicoParticipante;
+    // IServicoPeca *stubServicoPeca;
+    // IServicoSala *stubServicoSala;
+    // IServicoSessao *stubServicoSessao;
 
-    stubServicoAutenticacao = new StubServicoAutenticacao();
-    stubServicoParticipante = new StubServicoParticipante();
-    stubServicoPeca = new StubServicoPeca();
-    stubServicoSala = new StubServicoSala();
-    stubServicoSessao = new StubServicoSessao();
+    // stubServicoAutenticacao = new StubServicoAutenticacao();
+    // stubServicoParticipante = new StubServicoParticipante();
+    // stubServicoPeca = new StubServicoPeca();
+    // stubServicoSala = new StubServicoSala();
+    // stubServicoSessao = new StubServicoSessao();
 
     // Interligar controladoras e stubs.
 
@@ -51,15 +50,15 @@ int main()
     cntrApresentacaoControle->setCntrApresentacaoSala(cntrApresentacaoSala);
     cntrApresentacaoControle->setCntrApresentacaoSessao(cntrApresentacaoSessao);
 
-    cntrApresentacaoAutenticacao->setCntrServicoAutenticacao(stubServicoAutenticacao);
-    cntrApresentacaoParticipante->setCntrServicoParticipante(stubServicoParticipante);
-    cntrApresentacaoPeca->setCntrServicoPeca(stubServicoPeca);
-    cntrApresentacaoSala->setCntrServicoSala(stubServicoSala);
-    cntrApresentacaoSessao->setCntrServicoSessao(stubServicoSessao);
+    // cntrApresentacaoAutenticacao->setCntrServicoAutenticacao(stubServicoAutenticacao);
+    // cntrApresentacaoParticipante->setCntrServicoParticipante(stubServicoParticipante);
+    // cntrApresentacaoPeca->setCntrServicoPeca(stubServicoPeca);
+    // cntrApresentacaoSala->setCntrServicoSala(stubServicoSala);
+    // cntrApresentacaoSessao->setCntrServicoSessao(stubServicoSessao);
 
-    initscr();
+    initscr(); // possivel funcai definida pelo prof
     cntrApresentacaoControle->executar();
-    endwin();
+    endwin(); // possivel funcai definida pelo prof
 
     return 0;
 }

@@ -2,10 +2,12 @@
 #ifndef CONTROLADORASSERVICO_H_INCLUDED
 #define CONTROLADORASSERVICO_H_INCLUDED
 
+#include <iostream>
 #include "dominios.h"
 #include "entidades.h"
 #include "interfaces.h"
 #include "UnidadePersistencia.h"
+
 
 //---------------------------------------------------------------------------
 //Classe CntrInteracao.

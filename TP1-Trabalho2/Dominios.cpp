@@ -5,23 +5,23 @@
 // -------------------------------------------------------------------------
 //Metodos do Leandro - 180145169
 
-Capacidade::Capacidade(int valor){
+Capacidade::Capacidade(string valor){
     validar(valor);
     this->valor = valor;
 }
 
 Capacidade::Capacidade(){
-    this->valor = 100;
+    this->valor = "100";
 }
 
 
-void Capacidade::validar(int valor){
-    if ((valor!=100) && (valor!=200) && (valor!=300) && (valor!=400) && (valor!=500))
+void Capacidade::validar(string valor){
+    if ((valor!="100") && (valor!="200") && (valor!="300") && (valor!="400") && (valor!="500"))
         throw invalid_argument("Argumento invalido.");
 }
 
 
-void Capacidade::setValor(int valor) {
+void Capacidade::setValor(string valor) {
     validar(valor);
     this->valor = valor;
 }

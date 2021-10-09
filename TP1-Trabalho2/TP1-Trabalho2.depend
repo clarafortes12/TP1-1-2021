@@ -62,9 +62,13 @@
 1633710393 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\stubs.cpp
 	"stubs.h"
 
-1633710481 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\stubs.h
+1633718201 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\stubs.h
 	<string>
 	"dominios.h"
+	"interfaces.h"
+	<string>
+	"dominios.h"
+	"entidades.h"
 	"interfaces.h"
 
 1633719318 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\trabalho - liz\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.cpp
@@ -99,7 +103,8 @@
 1633719318 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\trabalho - liz\tp1-1-2021\tp1-trabalho2\controladorasservico.cpp
 	"controladorasservico.h"
 
-<<<<<<< Updated upstream
+1633719318 ated upstream
+
 1633719318 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\trabalho - liz\tp1-1-2021\tp1-trabalho2\controladorasservico.h
 	"dominios.h"
 	"entidades.h"
@@ -107,9 +112,10 @@
 	"UnidadePersistencia.h"
 
 1633719318 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\trabalho - liz\tp1-1-2021\tp1-trabalho2\unidadepersistencia.h
-=======
+
 1633726230 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\unidadepersistencia.h
->>>>>>> Stashed changes
+
+1633726230 shed changes
 	"Dominios.h"
 	"Entidades.h"
 	<list>
@@ -150,9 +156,79 @@
 	"controladorasservico.h"
 	"stubs.h"
 
-1633718201 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\stubs.h
-	<string>
+1633744806 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.cpp
+	"controladorasapresentacao.h"
+	<iostream>
+	<string.h>
 	"dominios.h"
 	"entidades.h"
 	"interfaces.h"
+
+1633744979 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.h
+	<iostream>
+	<string.h>
+	"dominios.h"
+	"entidades.h"
+	"interfaces.h"
+
+1633743327 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\dominios.h
+	<stdexcept>
+
+1633743200 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\entidades.h
+	"Dominios.h"
+	<string>
+
+1633742756 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\interfaces.h
+	"dominios.h"
+	"entidades.h"
+
+1633743375 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\dominios.cpp
+	"Dominios.h"
+	<iostream>
+	<string>
+
+1633743198 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\entidades.cpp
+	"Entidades.h"
+
+1633743462 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\unidadepersistencia.cpp
+	"UnidadePersistencia.h"
+
+1633744744 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\unidadepersistencia.h
+	"Dominios.h"
+	"Entidades.h"
+	<list>
+	<iostream>
+	<string>
+	<stdio.h>
+	"sqlite3.h"
+
+1633719810 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\sqlite3.h
+	<stdarg.h>
+
+1633744978 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\controladorasservico.cpp
+	"controladorasservico.h"
+
+1633745011 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\controladorasservico.h
+	<iostream>
+	"dominios.h"
+	"entidades.h"
+	"interfaces.h"
+	"UnidadePersistencia.h"
+
+1633742821 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\main.cpp
+	<string.h>
+	<stdexcept>
+	<iostream>
+	"curses.h"
+	"dominios.h"
+	"interfaces.h"
+	"controladorasapresentacao.h"
+	"controladorasservico.h"
+
+1633729554 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\curses.h
+	<stdarg.h>
+	<stddef.h>
+	<stdio.h>
+	<wchar.h>
+	<stdbool.h>
 

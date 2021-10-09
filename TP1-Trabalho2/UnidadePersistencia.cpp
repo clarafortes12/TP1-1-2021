@@ -1,14 +1,14 @@
 //---------------------------------------------------------------------------
-// Incluir cabeçalhos.
+// Incluir cabeï¿½alhos.
 
 #include "UnidadePersistencia.h"
 
-// Atributo estático.
+// Atributo estï¿½tico.
 
 list<ElementoResultado> ComandoSQL::listaResultado;
 
 //---------------------------------------------------------------------------
-// Implementações de métodos da classe ErroPersistencia.
+// Implementaï¿½ï¿½es de mï¿½todos da classe ErroPersistencia.
 
 EErroPersistencia::EErroPersistencia(string mensagem){
         this->mensagem = mensagem;
@@ -19,7 +19,7 @@ string EErroPersistencia::what() {
 }
 
 //---------------------------------------------------------------------------
-// Implementações de métodos da classe ElementoResultado.
+// Implementaï¿½ï¿½es de mï¿½todos da classe ElementoResultado.
 
 void ElementoResultado::setNomeColuna(const string& nomeColuna) {
         this->nomeColuna = nomeColuna;
@@ -30,25 +30,25 @@ void ElementoResultado::setValorColuna(const string& valorColuna){
 }
 
 //---------------------------------------------------------------------------
-// Implementações de métodos da classe ComandoSQL.
+// Implementaï¿½ï¿½es de mï¿½todos da classe ComandoSQL.
 
 void ComandoSQL::conectar() {
-      rc = sqlite3_open(nomeBancoDados, &bd);
+      rc = sqlite3_open(nomeBancoDados, &bd); // possivel funcai definida pelo prof
       if( rc != SQLITE_OK )
         throw EErroPersistencia("Erro na conexao ao banco de dados");
 }
 
 void ComandoSQL::desconectar() {
-      rc =  sqlite3_close(bd);
+      rc =  sqlite3_close(bd); // possivel funcai definida pelo prof
       if( rc != SQLITE_OK )
         throw EErroPersistencia("Erro na desconexao ao banco de dados");
 }
 
 void ComandoSQL::executar() {
         conectar();
-        rc = sqlite3_exec(bd, comandoSQL.c_str(), callback, 0, &mensagem);
+        rc = sqlite3_exec(bd, comandoSQL.c_str(), callback, 0, &mensagem); // possivel funcai definida pelo prof
         if(rc != SQLITE_OK){
-                sqlite3_free(mensagem);
+                sqlite3_free(mensagem); // possivel funcai definida pelo prof
                 desconectar();
                 throw EErroPersistencia("Erro na execucao do comando SQL");
         }
@@ -68,7 +68,7 @@ int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nom
 }
 
 //---------------------------------------------------------------------------
-// Implementações de métodos da classe ComandoLerSenha.
+// Implementaï¿½ï¿½es de mï¿½todos da classe ComandoLerSenha.
 
 ComandoLerSenha::ComandoLerSenha(Matricula matricula) {
         comandoSQL = "SELECT senha FROM participante WHERE matricula = ";
@@ -90,7 +90,7 @@ string ComandoLerSenha::getResultado() {
 }
 
 //---------------------------------------------------------------------------
-// Implementações de métodos da classe ComandoPesquisarSala.
+// Implementaï¿½ï¿½es de mï¿½todos da classe ComandoPesquisarSala.
 
 ComandoPesquisarSala::ComandoPesquisarSala(Codigo codigo) {
         comandoSQL = "SELECT * FROM sala WHERE codigo = ";
@@ -120,13 +120,13 @@ Sala ComandoPesquisarSala::getResultado() {
                 throw EErroPersistencia("Lista de resultados vazia.");
         resultado = listaResultado.back();
         listaResultado.pop_back();
-        sala.setCapacidade(Capacidade(resultado.getValorColuna());
+        sala.setCapacidade(Capacidade(resultado.getValorColuna()));
 
         return sala;
 
 }
 //---------------------------------------------------------------------------
-// Implementações de métodos da classe AtualizarSala.
+// Implementaï¿½ï¿½es de mï¿½todos da classe AtualizarSala.
 
 ComandoAtualizarSala::ComandoAtualizarSala(Sala sala) {
         comandoSQL = "UPDATE sala ";
@@ -136,7 +136,7 @@ ComandoAtualizarSala::ComandoAtualizarSala(Sala sala) {
 }
 
 //---------------------------------------------------------------------------
-// Implementações de métodos da classe ComandoRemoverSala.
+// Implementaï¿½ï¿½es de mï¿½todos da classe ComandoRemoverSala.
 
 ComandoRemoverSala::ComandoRemoverSala(Codigo codigo) {
         comandoSQL = "DELETE FROM sala WHERE codigo = ";
@@ -145,7 +145,7 @@ ComandoRemoverSala::ComandoRemoverSala(Codigo codigo) {
 
 
 //---------------------------------------------------------------------------
-// Implementações de métodos da classe ComandoPesquisarParticipante.
+// Implementaï¿½ï¿½es de mï¿½todos da classe ComandoPesquisarParticipante.
 
 ComandoPesquisarParticipante::ComandoPesquisarParticipante(Matricula matricula) {
         comandoSQL = "SELECT * FROM participante WHERE matricula = ";
@@ -184,7 +184,7 @@ Participante ComandoPesquisarParticipante::getResultado() {
         listaResultado.pop_back();
         participante.setTelefone(Telefone(resultado.getValorColuna()));
 
-        // Remover matrícula do orientador;
+        // Remover matrï¿½cula do orientador;
         /*if (listaResultado.empty())
                 throw EErroPersistencia("Lista de resultados vazia.");
         resultado = listaResultado.back();
@@ -196,7 +196,7 @@ Participante ComandoPesquisarParticipante::getResultado() {
 }
 
 //---------------------------------------------------------------------------
-// Implementações de métodos da classe ComandoCadastrarAluno.
+// Implementaï¿½ï¿½es de mï¿½todos da classe ComandoCadastrarAluno.
 
 ComandoCadastrarParticipante::ComandoCadastrarParticipante(Participante participante) {
         comandoSQL = "INSERT INTO participante VALUES (";
@@ -210,7 +210,7 @@ ComandoCadastrarParticipante::ComandoCadastrarParticipante(Participante particip
 }
 
 //---------------------------------------------------------------------------
-// Implementações de métodos da classe ComandoRemoverAluno.
+// Implementaï¿½ï¿½es de mï¿½todos da classe ComandoRemoverAluno.
 
 ComandoRemoverParticipante::ComandoRemoverParticipante(Matricula matricula) {
         comandoSQL = "DELETE FROM participante WHERE matricula = ";
@@ -218,7 +218,7 @@ ComandoRemoverParticipante::ComandoRemoverParticipante(Matricula matricula) {
 }
 
 //---------------------------------------------------------------------------
-// Implementações de métodos da classe ComandoEditarAluno.
+// Implementaï¿½ï¿½es de mï¿½todos da classe ComandoEditarAluno.
 
 ComandoAtualizarParticipante::ComandoAtualizarParticipante(Participante participante) {
         comandoSQL = "UPDATE participante ";
