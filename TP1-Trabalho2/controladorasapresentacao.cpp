@@ -2,9 +2,9 @@
 #include <iostream>
 #include <string.h>
 
-#include "dominios.h"
-#include "entidades.h"
-#include "interfaces.h"
+#include "Dominios.h"
+#include "Entidades.h"
+#include "Interfaces.h"
 
 
 //--------------------------------------------------------------------------------------------
@@ -179,8 +179,8 @@ void CntrApresentacaoParticipante::executar(Matricula matricula)
     // Mensagens a serem apresentadas na tela de sele��o de servi�o..
 
     char texto1[]="Selecione um dos servicos : ";
-    char texto2[]="1 - Consultar dados pessoais.";
-    char texto3[]="2 - Editar dados pessoais.";
+    char texto2[]="1 - Consultar dados.";
+    char texto3[]="2 - Editar dados.";
     char texto4[]="3 - Deletar cadastro.";
     char texto5[]="4 - Retornar.";
 
@@ -206,10 +206,10 @@ void CntrApresentacaoParticipante::executar(Matricula matricula)
         switch(campo)
         {
         case 1:
-            consultarParticipante();
+            consultarParticipante(matricula);
             break;
         case 2:
-            editarParticipante();
+            editarParticipante(matricula);
             break;
         case 3:
             descadastrarParticipante();
@@ -224,15 +224,11 @@ void CntrApresentacaoParticipante::executar(Matricula matricula)
 //Ajustar -> acho que n precisa...se vc n tiver a matricula, so tem a opcao de cadastrar um usuario msm (Liz aqui)
 void CntrApresentacaoParticipante::executar()
 {
-    cadastrarParticipante();
-    /*
     // Mensagens a serem apresentadas na tela de sele��o de servi�o..
 
     char texto1[]="Selecione um dos servicos : ";
-    char texto2[]="1 - Consultar dados pessoais.";
-    char texto3[]="2 - Editar dados pessoais.";
-    char texto4[]="3 - Deletar cadastro.";
-    char texto5[]="4 - Retornar.";
+    char texto2[]="1 - Cadastrar novo participante.";
+    char texto3[]="2 - Retornar.";
 
     int campo;
 
@@ -247,28 +243,20 @@ void CntrApresentacaoParticipante::executar()
 
         cout << texto1 << endl;                                                                 // Imprime nome do campo.
         cout << texto2 << endl;                                                                 // Imprime nome do campo.
-        cout << texto3 << endl;
-        cout << texto4 << endl;
-        cout << texto5 << endl;                                                                     // Imprime nome do campo.
+        cout << texto3 << endl;                                                                   // Imprime nome do campo.
 
         campo = getchar() - 48;                                                                   // Leitura do campo de entrada.
 
         switch(campo)
         {
         case 1:
-            consultarParticipante();
+            cadastrarParticipante();;
             break;
         case 2:
-            editarParticipante();
-            break;
-        case 3:
-            descadastrarParticipante();
-            break;
-        case 4:
             apresentar = false;
             break;
         }
-    }*/
+    }
 }
 
 //--------------------------------------------------------------------------------------------
@@ -315,15 +303,14 @@ void CntrApresentacaoParticipante::cadastrarParticipante()
     cin >> campo_sobrenome;                                                                             // Lê valor do campo.
     cout << texto4 << " ";                                                                     // Imprime nome do campo.
     cin >> campo_email;                                                                             // Lê valor do campo.
-    cout << texto5 << " ";                                                                     // Imprime nome do campo.
+    cout << texto5 << " ";                                                                  // Imprime nome do campo.
     cin >> campo_telefone;                                                                             // Lê valor do campo.
     cout << texto6 << " ";                                                                     // Imprime nome do campo.
     cin >> campo_senha;                                                                             // Lê valor do campo.
     cout << texto7 << " ";                                                                     // Imprime nome do campo.
-    cin >> campo_cargo;                                                                             // Lê valor do campo.
-    cout << texto8 << " ";                                                                     // Imprime nome do campo.
     cin >> campo_matricula;                                                                             // Lê valor do campo.
-
+    cout << texto8 << " ";                                                                     // Imprime nome do campo.
+    cin >> campo_cargo;                                                                             // Lê valor do campo.
     try
     {
         nome.setValor(string(campo_nome));
@@ -333,6 +320,7 @@ void CntrApresentacaoParticipante::cadastrarParticipante()
         senha.setValor(string(campo_senha));
         matricula.setValor(string(campo_matricula));
         cargo.setValor(string(campo_cargo));
+
     }
     catch(invalid_argument &exp)
     {
@@ -367,71 +355,143 @@ void CntrApresentacaoParticipante::cadastrarParticipante()
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoParticipante::consultarParticipante()
+void CntrApresentacaoParticipante::consultarParticipante(Matricula matricula)
 {
+    char texto2[]="Falha na visualizacao. Digite algo.";
 
-    //--------------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------------
-    // Substituir c�digo seguinte pela implementa��o do m�todo.
-    //--------------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------------
+    if(cntrServicoParticipante->consultarParticipante(matricula)) return;
 
-    // Mensagens a serem apresentadas na tela de apresenta��o de dados pessoais.
-
-    // Dados sobre tamanho da tela.
-    // Armazena quantidade de linhas e colunas.
-
-    char texto[]="Servico consultar dados pessoais nao implementado. Digite algo.";             // Mensagem a ser apresentada.
-    CLR_SCR;                                                                                     // Limpa janela.
-    cout << texto << endl;                                                      // Imprime nome do campo.
-
+    cout << texto2 << endl;
     getchar();
+    return;
 
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoParticipante::editarParticipante()
+void CntrApresentacaoParticipante::editarParticipante(Matricula matricula)
 {
+     // Mensagens a serem apresentadas na tela de cadastramento.
+    char texto1[] ="Preencha os seguintes campos: ";
+    char texto2[] ="Nome            :";
+    char texto3[] ="Sobrenome       :";
+    char texto4[] ="E-mail          :";
+    char texto5[] ="Telefone        :";
+    char texto6[] ="Senha           :";
+    char texto7[] ="Cargo           :";
+    char texto8[]="Dados em formato incorreto. Digite algo.";
+    char texto9[]="Sucesso no cadastramento. Digite algo.";
+    char texto10[]="Falha no cadastramento. Digite algo.";
 
-    //--------------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------------
-    // Substituir c�digo seguinte pela implementa��o do m�todo.
-    //--------------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------------
+    char campo_nome[50], campo_sobrenome[50], campo_email[350];
+    char campo_telefone[50], campo_senha[50], campo_cargo[50];
 
-    // Mensagens a serem apresentadas na tela de apresenta��o de dados pessoais.
+    // Instancia os dom�nios.
 
-    // Dados sobre tamanho da tela.
-    // Armazena quantidade de linhas e colunas.
+    Nome nome;
+    Nome sobrenome;
+    Email email;
+    Telefone telefone;
+    Senha senha;
+    Cargo cargo;
 
-    char texto[]="Servico editar dados pessoais nao implementado. Digite algo.";             // Mensagem a ser apresentada.
-    CLR_SCR;                                                                                     // Limpa janela.
-    cout << texto << endl;                                                     // Imprime nome do campo.
+    CLR_SCR;                                                                                   // Limpa janela.
 
+    cout << texto1 << endl;                                                                    // Imprime solicitação ao usuário.
+    cout << texto2 << " ";                                                                     // Imprime nome do campo.
+    cin >> campo_nome;
+    cout << texto3 << " ";                                                                     // Imprime nome do campo.
+    cin >> campo_sobrenome;                                                                             // Lê valor do campo.
+    cout << texto4 << " ";                                                                     // Imprime nome do campo.
+    cin >> campo_email;                                                                             // Lê valor do campo.
+    cout << texto5 << " ";                                                                  // Imprime nome do campo.
+    cin >> campo_telefone;                                                                             // Lê valor do campo.
+    cout << texto6 << " ";                                                                     // Imprime nome do campo.
+    cin >> campo_senha;                                                                             // Lê valor do campo.
+    cout << texto7 << " ";                                                                     // Imprime nome do campo.
+    cin >> campo_cargo;                                                                             // Lê valor do campo.
+    try
+    {
+        nome.setValor(string(campo_nome));
+        sobrenome.setValor(string(campo_sobrenome));
+        email.setValor(string(campo_email));
+        telefone.setValor(string(campo_telefone));
+        senha.setValor(string(campo_senha));
+        cargo.setValor(string(campo_cargo));
+
+    }
+    catch(invalid_argument &exp)
+    {
+        CLR_SCR;
+        cout << texto8 << endl;
+        getchar();
+        return;
+    }
+
+    Participante participante;
+
+    participante.setNome(nome);
+    participante.setSobrenome(sobrenome);
+    participante.setEmail(email);
+    participante.setTelefone(telefone);
+    participante.setMatricula(matricula);
+    participante.setSenha(senha);
+    participante.setCargo(cargo);
+
+    if(cntrServicoParticipante->editarParticipante(participante))
+    {
+        CLR_SCR;
+        cout << texto9 << endl;
+        getchar();
+        return;
+    }
+
+    cout << texto10 << endl;
     getchar();
+
+    return;
 
 }
 
 void CntrApresentacaoParticipante::descadastrarParticipante()
 {
 
-    //--------------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------------
-    // Substituir c�digo seguinte pela implementa��o do m�todo.
-    //--------------------------------------------------------------------------------------------
-    //--------------------------------------------------------------------------------------------
+    char texto1[] ="Informe a sua matricula: ";
+    char texto2[]="Dado em formato incorreto. Digite algo.";
+    char texto3[]="Sucesso na exclusao. Digite algo.";
+    char texto4[]="Falha na exclusao. Digite algo.";
 
-    // Mensagens a serem apresentadas na tela de apresenta��o de dados pessoais.
+    char campo_matricula[80];
 
-    // Dados sobre tamanho da tela.
-    // Armazena quantidade de linhas e colunas.
+    Matricula matricula;
 
-    char texto[]="Servico descadastrar dados pessoais nao implementado. Digite algo.";             // Mensagem a ser apresentada.
-    CLR_SCR;                                                                                     // Limpa janela.
-    cout << texto << endl;                                                      // Imprime nome do campo.
+    CLR_SCR;
 
+    cout << texto1 << " ";
+    cin >> campo_matricula;
+
+    try
+    {
+        matricula.setValor(string(campo_matricula));
+    }
+    catch(invalid_argument &exp)
+    {
+        cout << texto2 << endl;
+        getchar();
+        return;
+    }
+
+    if(cntrServicoParticipante->descadastrarParticipante(matricula))
+    {
+        cout << texto3 << endl;
+        getchar();
+        return;
+    }
+
+    cout << texto4 << endl;
     getchar();
+
+    return;
 
 }
 

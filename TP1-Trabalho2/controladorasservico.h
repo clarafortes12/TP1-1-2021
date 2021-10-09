@@ -3,9 +3,9 @@
 #define CONTROLADORASSERVICO_H_INCLUDED
 
 #include <iostream>
-#include "dominios.h"
-#include "entidades.h"
-#include "interfaces.h"
+#include "Dominios.h"
+#include "Entidades.h"
+#include "Interfaces.h"
 #include "UnidadePersistencia.h"
 
 

@@ -3,8 +3,8 @@
 #include <iostream>
 
 #include "sqlite3.h"
-#include "dominios.h"
-#include "interfaces.h"
+#include "Dominios.h"
+#include "Interfaces.h"
 #include "controladorasapresentacao.h"
 #include "controladorasservico.h"
 

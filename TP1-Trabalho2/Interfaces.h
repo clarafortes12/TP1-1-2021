@@ -1,8 +1,8 @@
 #ifndef INTERFACES_H_INCLUDED
 #define INTERFACES_H_INCLUDED
 
-#include "dominios.h"
-#include "entidades.h"
+#include "Dominios.h"
+#include "Entidades.h"
 
 //--------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------

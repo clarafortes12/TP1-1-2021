@@ -71,13 +71,13 @@ bool CntrServicoParticipante::consultarParticipante(Matricula matricula){
         getchar();
         participante = comando.getResultado();
 
-        cout << endl << "Resultados obtidos." << endl << endl;
+        cout << endl << "Seus Dados" << endl << endl;
         cout << "Matricula  : " << participante.getMatricula().getValor() << endl;
         cout << "Nome       : " << participante.getNome().getValor() << endl;
         cout << "Sobrenome  : " << participante.getSobrenome().getValor() << endl;
         cout << "Email      : " << participante.getEmail().getValor() << endl;
         cout << "Telefone   : " << participante.getTelefone().getValor() << endl;
-        // apresenta a senha? kkkkkkkkk
+        cout << "Senha      : " << participante.getSenha().getValor() << endl;
         cout << "Cargo      : " << participante.getCargo().getValor() << endl;
         cout << "Digite algo para continuar : ";
         getchar();

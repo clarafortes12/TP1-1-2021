@@ -1,16 +1,16 @@
 # depslib dependency file v1.0
-1633746139 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\dominios.cpp
+1633814767 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\dominios.cpp
 	"Dominios.h"
 	<iostream>
 	<string>
 
-1633746139 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\dominios.h
+1633815313 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\dominios.h
 	<stdexcept>
 
-1633705953 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\entidades.cpp
+1633814767 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\entidades.cpp
 	"Entidades.h"
 
-1633746139 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\entidades.h
+1633814767 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\entidades.h
 	"Dominios.h"
 	<string>
 
@@ -41,9 +41,9 @@
 
 1633710481 D
 
-1633747677 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\interfaces.h
-	"dominios.h"
-	"entidades.h"
+1633815306 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\interfaces.h
+	"Dominios.h"
+	"Entidades.h"
 
 1633779236 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\interfaces.h
 	"dominios.h"
@@ -66,12 +66,12 @@
 	"entidades.h"
 	"interfaces.h"
 
-1633746139 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.h
+1633818719 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.h
 	<iostream>
 	<string.h>
-	"dominios.h"
-	"entidades.h"
-	"interfaces.h"
+	"Dominios.h"
+	"Entidades.h"
+	"Interfaces.h"
 
 1633779236 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.h
 	<iostream>
@@ -268,25 +268,25 @@
 	<wchar.h>
 	<stdbool.h>
 
-1633748125 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.cpp
+1633816293 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.cpp
 	"controladorasapresentacao.h"
 	<iostream>
 	<string.h>
-	"dominios.h"
-	"entidades.h"
-	"interfaces.h"
+	"Dominios.h"
+	"Entidades.h"
+	"Interfaces.h"
 
-1633749327 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasservico.cpp
+1633818831 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasservico.cpp
 	"controladorasservico.h"
 
-1633749013 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasservico.h
+1633815295 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasservico.h
 	<iostream>
-	"dominios.h"
-	"entidades.h"
-	"interfaces.h"
+	"Dominios.h"
+	"Entidades.h"
+	"Interfaces.h"
 	"UnidadePersistencia.h"
 
-1633749575 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\unidadepersistencia.h
+1633814767 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\unidadepersistencia.h
 	"Dominios.h"
 	"Entidades.h"
 	<list>
@@ -296,16 +296,16 @@
 	<stdio.h>
 	"sqlite3.h"
 
-1633746139 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\sqlite3.h
+1633814768 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\sqlite3.h
 	<stdarg.h>
 
-1633748121 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\main.cpp
+1633815234 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\main.cpp
 	<string.h>
 	<stdexcept>
 	<iostream>
 	"sqlite3.h"
-	"dominios.h"
-	"interfaces.h"
+	"Dominios.h"
+	"Interfaces.h"
 	"controladorasapresentacao.h"
 	"controladorasservico.h"
 
@@ -316,7 +316,7 @@
 	<wchar.h>
 	<stdbool.h>
 
-1633749487 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\unidadepersistencia.cpp
+1633814767 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\unidadepersistencia.cpp
 	"UnidadePersistencia.h"
 
 1624042341 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\sqlite3.c
@@ -442,4 +442,63 @@
 
 1633806911 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\unidadepersistencia.cpp
 	"UnidadePersistencia.h"
+
+1633815399 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\sqlite3.c
+	"config.h"
+	<vxWorks.h>
+	<pthread.h>
+	"mingw.h"
+	"_mingw.h"
+	<stdarg.h>
+	<stdint.h>
+	<inttypes.h>
+	<intrin.h>
+	<cmnintrin.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stddef.h>
+	<TargetConditionals.h>
+	<ctype.h>
+	<time.h>
+	<sys/sysctl.h>
+	<malloc/malloc.h>
+	<libkern/OSAtomic.h>
+	<malloc.h>
+	<pthread.h>
+	"windows.h"
+	<sys/cygwin.h>
+	<errno.h>
+	<process.h>
+	<math.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<sys/time.h>
+	<errno.h>
+	<sys/mman.h>
+	<sys/file.h>
+	<sys/param.h>
+	<semaphore.h>
+	<limits.h>
+	<sys/mount.h>
+	<utime.h>
+	<sys/dcmd_blk.h>
+	<sys/statvfs.h>
+	<dlfcn.h>
+	"sqlite_tcl.h"
+	"tcl.h"
+	<ctype.h>
+	"sqlite3rtree.h"
+	<ctype.h>
+	<unicode/utypes.h>
+	<unicode/uregex.h>
+	<unicode/ustring.h>
+	<unicode/ucol.h>
+	<unicode/ubrk.h>
+	<unicode/utf16.h>
+	<math.h>
 

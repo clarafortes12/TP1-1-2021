@@ -4,9 +4,9 @@
 #include <string.h>
 
 
-#include "dominios.h"
-#include "entidades.h"
-#include "interfaces.h"
+#include "Dominios.h"
+#include "Entidades.h"
+#include "Interfaces.h"
 
 #define CLR_SCR system("cls");
 
@@ -80,8 +80,8 @@ class CntrApresentacaoParticipante:public IApresentacaoParticipante
 private:
     IServicoParticipante *cntrServicoParticipante;
     void cadastrarParticipante();
-    void consultarParticipante();
-    void editarParticipante();
+    void consultarParticipante(Matricula);
+    void editarParticipante(Matricula);
     void descadastrarParticipante();
 public:
     void executar(Matricula);
