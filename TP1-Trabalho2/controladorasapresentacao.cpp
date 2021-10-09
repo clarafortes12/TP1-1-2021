@@ -1,10 +1,17 @@
 #include "controladorasapresentacao.h"
-#include "curses.h"
+#include <iostream>
+#include <string.h>
+
+#include "dominios.h"
+#include "entidades.h"
+#include "interfaces.h"
+
 
 //--------------------------------------------------------------------------------------------
 // Implementa��es dos m�todos de classes controladoras.
 
-void CntrApresentacaoControle::executar(){
+void CntrApresentacaoControle::executar()
+{
 
     // Mensagens a serem apresentadas na tela inicial.
 
@@ -12,88 +19,109 @@ void CntrApresentacaoControle::executar(){
     char texto2[]="1 - Acessar sistema.";
     char texto3[]="2 - Cadastrar participante.";
     char texto4_1[]="3 - Listar pecas.";
-    char texto4_2[]="3 - Listar sessoes.";
-    char texto4_3[]="3 - Listar salas.";
-    char texto5[]="4 - Encerrar execucao do sistema.";
+    char texto4_2[]="4 - Listar sessoes.";
+    char texto4_3[]="5 - Listar salas.";
+    char texto5[]="6 - Encerrar execucao do sistema.";
 
     // Mensagens a serem apresentadas na tela de sele��o de servi�o (usuario autenticado).
 
     char texto6[]="Selecione um dos servicos : ";
     char texto7[]="1 - Selecionar servicos de participante.";
     char texto8_1[]="2 - Selecionar servicos relacionados a pecas.";
-    char texto8_2[]="2 - Selecionar servicos relacionados a sessoes.";
-    char texto8_3[]="2 - Selecionar servicos relacionados a salas.";
-    char texto9[]="3 - Encerrar sessao.";
+    char texto8_2[]="3 - Selecionar servicos relacionados a sessoes.";
+    char texto8_3[]="4 - Selecionar servicos relacionados a salas.";
+    char texto9[]="5 - Encerrar sessao.";
 
     char texto10[]="Falha na autenticacao. Digite algo para continuar.";                        // Mensagem a ser apresentada.
 
     int campo;                                                                                  // Campo de entrada.
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    bool apresentar = true;                                                                          // Dados sobre tamanho da tela.
 
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
 
-    bool apresentar = true;                                                                     // Controle de la�o.
-
-    while(apresentar){
+    while(apresentar)
+    {
 
         // Apresenta tela inicial.
 
-        clear();                                                                                // Limpa janela.
-        mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
-        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 6,coluna/4,"%s",texto4_1);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 6,coluna/4,"%s",texto4_2);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 6,coluna/4,"%s",texto4_3);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 8,coluna/4,"%s",texto5);                                             // Imprime nome do campo.
+        CLR_SCR;                                                                                // Limpa janela.
 
-        noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
-        echo();
+        cout << texto1 << endl;                                                                 // Imprime nome do campo.
+        cout << texto2 << endl;                                                                 // Imprime nome do campo.
+        cout << texto3 << endl;                                                                 // Imprime nome do campo.
+        cout << texto4_1 << endl;
+        cout << texto4_2 << endl;
+        cout << texto4_3 << endl;                                                                         // Imprime nome do campo.
+        cout << texto5 << endl;                                            // Imprime nome do campo.
 
-        switch(campo){
-            case 1: if(cntrApresentacaoAutenticacao->autenticar(&matricula)){                         // Solicita autentica��o.
-                        bool apresentar = true;                                                 // Controle de la�o.
-                        while(apresentar){
+        campo = getchar() - 48;
 
-                            // Apresenta tela de sele��o de servi�o.
+        switch(campo)
+        {
+        case 1:
+            if(cntrApresentacaoAutenticacao->autenticar(&matricula))                          // Solicita autentica��o.
+            {
+                bool apresentar = true;                                                 // Controle de la�o.
+                while(apresentar)
+                {
 
-                            clear();                                                            // Limpa janela.
-                            mvprintw(linha/4,coluna/4,"%s",texto6);                             // Imprime nome do campo.
-                            mvprintw(linha/4 + 2,coluna/4,"%s",texto7);                         // Imprime nome do campo.
-                            mvprintw(linha/4 + 4,coluna/4,"%s",texto8_1);                         // Imprime nome do campo.
-                            mvprintw(linha/4 + 4,coluna/4,"%s",texto8_2);                         // Imprime nome do campo.
-                            mvprintw(linha/4 + 4,coluna/4,"%s",texto8_3);                         // Imprime nome do campo.
-                            mvprintw(linha/4 + 6,coluna/4,"%s",texto9);                         // Imprime nome do campo.                                    // Apresenta tela de sele��o de servi�o.
-                            noecho();
-                            campo = getch() - 48;                                               // Leitura do campo de entrada e convers�o de ASCII.
-                            echo();
+                    // Apresenta tela de sele��o de servi�o.
 
-                            switch(campo){
-                                case 1: cntrApresentacaoParticipante->executar(matricula);                 // Solicita servi�o de pessoal.
-                                        break;
-                                case 2: cntrApresentacaoParticipante->executar(matricula);                 // Solicita servi�o de pessoal.
-                                        break;
-                                case 3: apresentar = false;
-                                        break;
-                            }
-                        }
+                    CLR_SCR;                                                            // Limpa janela.
+
+                    cout << texto6 << endl;                                             // Imprime nome do campo.
+                    cout << texto7 << endl;                                             // Imprime nome do campo.
+                    cout << texto8_1 << endl;
+                    cout << texto8_2 << endl;
+                    cout << texto8_3 << endl;                                              // Imprime nome do campo.
+                    cout << texto9 << endl;                      // Imprime nome do campo.                                    // Apresenta tela de sele��o de servi�o.
+
+                    campo = getchar() - 48;                                               // Leitura do campo de entrada e convers�o de ASCII.
+
+
+                    switch(campo)
+                    {
+                    case 1:
+                        cntrApresentacaoParticipante->executar(matricula);                 // Solicita servi�o de pessoal.
+                        break;
+                    case 2:
+                        cntrApresentacaoPeca->executar(matricula);                 // Solicita servi�o de peca.
+                        break;
+                    case 3:
+                        cntrApresentacaoSessao->executar(matricula);                 // Solicita servi�o de sessao.
+                        break;
+                    case 4:
+                        cntrApresentacaoSala->executar(matricula);                 // Solicita servi�o de sala.
+                        break;
+                    case 5:
+                        apresentar = false;
+                        break;
                     }
-                    else {
-                        clear();                                                                // Limpa janela.
-                        mvprintw(linha/4,coluna/4,"%s",texto10);                                // Imprime mensagem.
-                        noecho();                                                               // Desabilita eco.
-                        getch();                                                                // Leitura de caracter digitado.
-                        echo();                                                                 // Habilita eco.
-                    }
-                    break;
-            case 2: cntrApresentacaoParticipante->executar();
-                    break;
-            case 3: cntrApresentacaoParticipante->executar();
-                    break;
-            case 4: apresentar = false;
-                    break;
+                }
+            }
+            else
+            {
+
+                CLR_SCR;                                                                // Limpa janela.
+                cout << texto10 << endl;                                                // Imprime mensagem.
+                getchar();                                                                 // Habilita eco.
+            }
+            break;
+        case 2:
+            cntrApresentacaoParticipante->executar();
+            break;
+        case 3:
+            cntrApresentacaoPeca->executar();
+            break;
+        case 4:
+            cntrApresentacaoSessao->executar();
+            break;
+        case 5:
+            cntrApresentacaoSala->executar();
+            break;
+        case 6:
+            apresentar = false;
+            break;
         }
     }
     return;
@@ -101,12 +129,13 @@ void CntrApresentacaoControle::executar(){
 
 //--------------------------------------------------------------------------------------------
 
-bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula){
+bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula)
+{
 
     // Mensagens a serem apresentadas na tela de autentica��o.
 
-    char texto1[]="Digite a Matr�cula   : ";
-    char texto2[]="Digite a senha       : ";
+    char texto1[]="Digite a Matricula    : ";
+    char texto2[]="Digite a senha        : ";
     char texto3[]="Dado em formato incorreto. Digite algo para continuar.";
 
     // Campos de entrada.
@@ -114,35 +143,29 @@ bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula){
     char campo1[80];
     char campo2[80];
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
-
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
-
     Senha senha;                                                                                // Instancia a classe Senha.
 
-    echo();                                                                                     // Habilita eco.
-
-    while(true){
+    while(true)
+    {
 
         // Apresenta tela de autentica��o.
+        CLR_SCR;                                                                                // Limpa janela.
+        cout << texto1 << " ";                                                                  // Imprime nome do campo.
+        cin >> campo1;                                                                          // Lê valor do campo.
+        cout << texto2 << " ";                                                                  // Imprime nome do campo.
+        cin >> campo2;                                                                         // L� valor do campo.
 
-        clear();                                                                                // Limpa janela.
-        mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
-        getstr(campo1);                                                                         // L� valor do campo.
-        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
-        getstr(campo2);                                                                         // L� valor do campo.
-
-        try{
+        try
+        {
             matricula->setValor(string(campo1));                                                      // Atribui valor ao CPF.
             senha.setValor(string(campo2));                                                     // Atribui Valor � senha.
             break;                                                                              // Abandona la�o em caso de formatos corretos.
         }
-        catch(invalid_argument &exp){                                                           // Captura exce��o devido a formato incorreto.
-            clear();                                                                            // Limpa janela.
-            mvprintw(linha/4,coluna/4,"%s",texto3);                                             // Informa formato incorreto.
-            noecho();
-            getch();                                                                            // L� caracter digitado.
-            echo();
+        catch(invalid_argument &exp)                                                            // Captura exce��o devido a formato incorreto.
+        {
+            CLR_SCR;                                                                            // Limpa janela.
+            cout << texto3 << endl;                                                             // Informa formato incorreto.
+            getchar();
         }
     }
     return (cntrServicoAutenticacao->autenticar(*matricula, senha));                                                     // Solicita servi�o de autentica��o.
@@ -150,7 +173,8 @@ bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula){
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoParticipante::executar(Matricula matricula){
+void CntrApresentacaoParticipante::executar(Matricula matricula)
+{
 
     // Mensagens a serem apresentadas na tela de sele��o de servi�o..
 
@@ -162,44 +186,94 @@ void CntrApresentacaoParticipante::executar(Matricula matricula){
 
     int campo;
 
-    int linha,coluna;
-
-    getmaxyx(stdscr,linha,coluna);
-
     bool apresentar = true;
 
-    echo();
-
-    while(apresentar){
+    while(apresentar)
+    {
 
         // Apresenta tela de sela��o de servi�o.
 
-        clear();
-        mvprintw(linha/4,coluna/4,"%s",texto1);
-        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);
-        mvprintw(linha/4 + 4,coluna/4,"%s",texto3);
-        mvprintw(linha/4 + 4,coluna/4,"%s",texto4);
-        mvprintw(linha/4 + 4,coluna/4,"%s",texto5);
-        noecho();
-        campo = getch() - 48;
-        echo();
+        CLR_SCR;                                                                                // Limpa janela.
 
-        switch(campo){
-            case 1: consultarParticipante();
-                    break;
-            case 2: editarParticipante();
-                    break;
-            case 3: descadastrarParticipante();
-                    break;
-            case 4: apresentar = false;
-                    break;
+        cout << texto1 << endl;                                                                 // Imprime nome do campo.
+        cout << texto2 << endl;                                                                 // Imprime nome do campo.
+        cout << texto3 << endl;
+        cout << texto4 << endl;
+        cout << texto5 << endl;                                                                     // Imprime nome do campo.
+
+        campo = getchar() - 48;                                                                   // Leitura do campo de entrada.
+
+        switch(campo)
+        {
+        case 1:
+            consultarParticipante();
+            break;
+        case 2:
+            editarParticipante();
+            break;
+        case 3:
+            descadastrarParticipante();
+            break;
+        case 4:
+            apresentar = false;
+            break;
+        }
+    }
+}
+
+//Ajustar
+void CntrApresentacaoParticipante::executar()
+{
+
+    // Mensagens a serem apresentadas na tela de sele��o de servi�o..
+
+    char texto1[]="Selecione um dos servicos : ";
+    char texto2[]="1 - Consultar dados pessoais.";
+    char texto3[]="2 - Editar dados pessoais.";
+    char texto4[]="3 - Deletar cadastro.";
+    char texto5[]="4 - Retornar.";
+
+    int campo;
+
+    bool apresentar = true;
+
+    while(apresentar)
+    {
+
+        // Apresenta tela de sela��o de servi�o.
+
+        CLR_SCR;                                                                                // Limpa janela.
+
+        cout << texto1 << endl;                                                                 // Imprime nome do campo.
+        cout << texto2 << endl;                                                                 // Imprime nome do campo.
+        cout << texto3 << endl;
+        cout << texto4 << endl;
+        cout << texto5 << endl;                                                                     // Imprime nome do campo.
+
+        campo = getchar() - 48;                                                                   // Leitura do campo de entrada.
+
+        switch(campo)
+        {
+        case 1:
+            consultarParticipante();
+            break;
+        case 2:
+            editarParticipante();
+            break;
+        case 3:
+            descadastrarParticipante();
+            break;
+        case 4:
+            apresentar = false;
+            break;
         }
     }
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoParticipante::cadastrarParticipante(){
+void CntrApresentacaoParticipante::cadastrarParticipante()
+{
 
     // Mensagens a serem apresentadas na tela de cadastramento.
 
@@ -228,28 +302,29 @@ void CntrApresentacaoParticipante::cadastrarParticipante(){
     Matricula matricula;
     Cargo cargo;
 
-    int linha,coluna;
-    getmaxyx(stdscr,linha,coluna);
+    CLR_SCR;                                                                                   // Limpa janela.
 
-    clear();
+    cout << texto1 << endl;                                                                    // Imprime solicitação ao usuário.
+    cout << texto2 << " ";                                                                     // Imprime nome do campo.
+    cin.getline(campo_nome,sizeof(campo_nome));                                                        // Lê valor do campo composto.
 
-    mvprintw(linha/4,coluna/4,"%s",texto1);
-    mvprintw(linha/4 + 2,coluna/4,"%s",texto2);
-    getstr(campo_nome);
-    mvprintw(linha/4 + 4,coluna/4,"%s",texto3);
-    getstr(campo_sobrenome);
-    mvprintw(linha/4 + 6,coluna/4,"%s",texto4);
-    getstr(campo_email);
-    mvprintw(linha/4 + 8,coluna/4,"%s",texto5);
-    getstr(campo_telefone);
-    mvprintw(linha/4 + 10,coluna/4,"%s",texto6);
-    getstr(campo_senha);
-    mvprintw(linha/4 + 12,coluna/4,"%s",texto7);
-    getstr(campo_matricula);
-    mvprintw(linha/4 + 14,coluna/4,"%s",texto8);
-    getstr(campo_cargo);
+    cout << "Valor lido" << campo_nome << " ";
 
-    try{
+    cout << texto3 << " ";                                                                     // Imprime nome do campo.
+    cin >> campo_sobrenome;                                                                             // Lê valor do campo.
+    cout << texto4 << " ";                                                                     // Imprime nome do campo.
+    cin >> campo_email;                                                                             // Lê valor do campo.
+    cout << texto5 << " ";                                                                     // Imprime nome do campo.
+    cin >> campo_telefone;                                                                             // Lê valor do campo.
+    cout << texto6 << " ";                                                                     // Imprime nome do campo.
+    cin >> campo_senha;                                                                             // Lê valor do campo.
+    cout << texto7 << " ";                                                                     // Imprime nome do campo.
+    cin >> campo_cargo;                                                                             // Lê valor do campo.
+    cout << texto8 << " ";                                                                     // Imprime nome do campo.
+    cin >> campo_matricula;                                                                             // Lê valor do campo.
+
+    try
+    {
         nome.setValor(string(campo_nome));
         sobrenome.setValor(string(campo_sobrenome));
         email.setValor(string(campo_email));
@@ -258,11 +333,11 @@ void CntrApresentacaoParticipante::cadastrarParticipante(){
         matricula.setValor(string(campo_matricula));
         cargo.setValor(string(campo_cargo));
     }
-    catch(invalid_argument &exp){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto9);
-        noecho();
-        getch();
-        echo();
+    catch(invalid_argument &exp)
+    {
+        CLR_SCR;
+        cout << texto9 << endl;
+        getchar();
         return;
     }
 
@@ -275,25 +350,24 @@ void CntrApresentacaoParticipante::cadastrarParticipante(){
     participante.setSenha(senha);
     participante.setCargo(cargo);
 
-    if(cntrServicoParticipante->cadastrarParticipante(participante)){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                               // Informa sucesso.
-        noecho();
-        getch();
-        echo();
+    if(cntrServicoParticipante->cadastrarParticipante(participante))
+    {
+        CLR_SCR;
+        cout << texto10 << endl;
+        getchar();
         return;
     }
 
-    mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                                       // Informa falha.
-    noecho();
-    getch();
-    echo();
+    cout << texto11 << endl;
+    getchar();
 
     return;
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoParticipante::consultarParticipante(){
+void CntrApresentacaoParticipante::consultarParticipante()
+{
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
@@ -303,20 +377,21 @@ void CntrApresentacaoParticipante::consultarParticipante(){
 
     // Mensagens a serem apresentadas na tela de apresenta��o de dados pessoais.
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Dados sobre tamanho da tela.
+    // Armazena quantidade de linhas e colunas.
 
     char texto[]="Servico consultar dados pessoais nao implementado. Digite algo.";             // Mensagem a ser apresentada.
-    clear();                                                                                    // Limpa janela.
-    mvprintw(linha/4,coluna/4,"%s",texto);                                                      // Imprime nome do campo.
-    noecho();
-    getch();
-    echo();
+    CLR_SCR;                                                                                     // Limpa janela.
+    cout << texto << endl;                                                      // Imprime nome do campo.
+
+    getchar();
+
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoParticipante::editarParticipante(){
+void CntrApresentacaoParticipante::editarParticipante()
+{
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
@@ -326,18 +401,19 @@ void CntrApresentacaoParticipante::editarParticipante(){
 
     // Mensagens a serem apresentadas na tela de apresenta��o de dados pessoais.
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Dados sobre tamanho da tela.
+    // Armazena quantidade de linhas e colunas.
 
     char texto[]="Servico editar dados pessoais nao implementado. Digite algo.";             // Mensagem a ser apresentada.
-    clear();                                                                                    // Limpa janela.
-    mvprintw(linha/4,coluna/4,"%s",texto);                                                      // Imprime nome do campo.
-    noecho();
-    getch();
-    echo();
+    CLR_SCR;                                                                                     // Limpa janela.
+    cout << texto << endl;                                                     // Imprime nome do campo.
+
+    getchar();
+
 }
 
-void CntrApresentacaoParticipante::descadastrarParticipante(){
+void CntrApresentacaoParticipante::descadastrarParticipante()
+{
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
@@ -347,26 +423,28 @@ void CntrApresentacaoParticipante::descadastrarParticipante(){
 
     // Mensagens a serem apresentadas na tela de apresenta��o de dados pessoais.
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Dados sobre tamanho da tela.
+    // Armazena quantidade de linhas e colunas.
 
     char texto[]="Servico descadastrar dados pessoais nao implementado. Digite algo.";             // Mensagem a ser apresentada.
-    clear();                                                                                    // Limpa janela.
-    mvprintw(linha/4,coluna/4,"%s",texto);                                                      // Imprime nome do campo.
-    noecho();
-    getch();
-    echo();
+    CLR_SCR;                                                                                     // Limpa janela.
+    cout << texto << endl;                                                      // Imprime nome do campo.
+
+    getchar();
+
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoSala::listarSala(){ //preciso pegar os dados com controladora servico
+void CntrApresentacaoSala::listarSala()  //preciso pegar os dados com controladora servico
+{
     cntrServicoSala->listarSala();
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoSala::incluirSala(){ //preciso pegar os dados com controladora servico
+void CntrApresentacaoSala::incluirSala()  //preciso pegar os dados com controladora servico
+{
 
     // Mensagens a serem apresentadas na tela de cadastramento.
 
@@ -386,32 +464,34 @@ void CntrApresentacaoSala::incluirSala(){ //preciso pegar os dados com controlad
     Nome nome;
     Capacidade capacidade;
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    // Dados sobre tamanho da tela.
 
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Armazena quantidade de linhas e colunas.
 
     // Apresenta tela de cadastramento.
 
-    clear();                                                                                    // Limpa janela.
+    CLR_SCR;                                                                                     // Limpa janela.
 
-    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
-    mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                                 // Imprime nome do campo.
-    getstr(campo1);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                                 // Imprime nome do campo.
-    getstr(campo2);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                                 // Imprime nome do campo.
-    getstr(campo3);
+    cout << texto1 << endl;                                                    // Imprime nome do campo.
+    cout << texto2 << " ";                                                                     // Imprime nome do campo.
+    cin >> campo1;                                                                             // Lê valor do campo.
+    cout << texto3 << " ";                                                                     // Imprime nome do campo.
+    cin >> campo2;                                                                             // Lê valor do campo.
+    cout << texto4 << " ";                                                                     // Imprime nome do campo.
+    cin >> campo3;                                                                             // Lê valor do campo.
 
-    try{
+    try
+    {
         codigo.setValor(string(campo1));
         nome.setValor(string(campo2));
-        //capacidade.setValor(string(campo3)); //Verificar como pega inteiro
+        capacidade.setValor(string(campo3));
     }
-    catch(invalid_argument &exp){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
-        noecho();                                                                               // Desabilita eco.
-        getch();                                                                                // Leitura de caracter digitado.
-        echo();                                                                                 // Habilita eco.
+    catch(invalid_argument &exp)
+    {
+        cout << texto10 << endl;                                            // Informa formato incorreto.
+        // Desabilita eco.
+        getchar();                                                                                // Leitura de caracter digitado.
+        // Habilita eco.
         return;
     }
 
@@ -425,25 +505,27 @@ void CntrApresentacaoSala::incluirSala(){ //preciso pegar os dados com controlad
 
     // Incluir sala.
 
-    if(cntrServicoSala->incluirSala(sala)){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
-        noecho();
-        getch();
-        echo();
+    if(cntrServicoSala->incluirSala(sala))
+    {
+        cout << texto11 << endl;                                                // Informa sucesso.
+
+        getchar();
+
         return;
     }
 
-    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
-    noecho();
-    getch();
-    echo();
+    cout << texto12 << endl;                                                        // Informa falha.
+
+    getchar();
+
 
     return;
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoSala::excluirSala(){ //preciso pegar os dados com controladora servico
+void CntrApresentacaoSala::excluirSala()  //preciso pegar os dados com controladora servico
+{
 
     // Mensagens a serem apresentadas na tela de cadastramento.
 
@@ -458,50 +540,54 @@ void CntrApresentacaoSala::excluirSala(){ //preciso pegar os dados com controlad
 
     Codigo codigo;
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    // Dados sobre tamanho da tela.
 
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Armazena quantidade de linhas e colunas.
 
     // Apresenta tela de cadastramento.
 
-    clear();                                                                                    // Limpa janela.
+    CLR_SCR;                                                                                     // Limpa janela.
 
-    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
-    getstr(campo1);                                                                             // L� valor do campo.
+    cout << texto1 << " ";                                                    // Imprime nome do campo.                                                                   // Imprime nome do campo.
+    cin >> campo1;
+    // L� valor do campo.
 
-    try{
+    try
+    {
         codigo.setValor(string(campo1));
     }
-    catch(invalid_argument &exp){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
-        noecho();                                                                               // Desabilita eco.
-        getch();                                                                                // Leitura de caracter digitado.
-        echo();                                                                                 // Habilita eco.
+    catch(invalid_argument &exp)
+    {
+        cout << texto10 << endl;                                           // Informa formato incorreto.
+        // Desabilita eco.
+        getchar();                                                                                // Leitura de caracter digitado.
+        // Habilita eco.
         return;
     }
 
     // Exclui a sala.
-    Sala sala;
 
-    if(cntrServicoSala->excluirSala(&sala)){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
-        noecho();
-        getch();
-        echo();
+    if(cntrServicoSala->excluirSala(codigo))
+    {
+        cout << texto11 << endl;                                              // Informa sucesso.
+
+        getchar();
+
         return;
     }
 
-    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
-    noecho();
-    getch();
-    echo();
+    cout << texto12 << endl;                                                       // Informa falha.
+
+    getchar();
+
 
     return;
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoSala::editarSala(){ //preciso pegar os dados com controladora servico
+void CntrApresentacaoSala::editarSala()  //preciso pegar os dados com controladora servico
+{
 
     // Mensagens a serem apresentadas na tela de edicao de sala.
 
@@ -510,7 +596,7 @@ void CntrApresentacaoSala::editarSala(){ //preciso pegar os dados com controlado
     char texto3[] ="Nome                        :";
     char texto4[] ="Capacidade                  :";
     char texto10[]="Dados em formato incorreto. Digite algo.";
-    char texto11[]="Sucesso na edicao. Digite algo.";
+    //char texto11[]="Sucesso na edicao. Digite algo.";
     char texto12[]="Falha na edicao. Digite algo.";
 
     char campo1[80], campo2[80], campo3[80];                                                   // Cria campos para entrada dos dados.
@@ -521,32 +607,34 @@ void CntrApresentacaoSala::editarSala(){ //preciso pegar os dados com controlado
     Nome nome;
     Capacidade capacidade;
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    // Dados sobre tamanho da tela.
 
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Armazena quantidade de linhas e colunas.
 
     // Apresenta tela de cadastramento.
 
-    clear();                                                                                    // Limpa janela.
+    CLR_SCR;                                                                                     // Limpa janela.
 
-    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
-    mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                                 // Imprime nome do campo.
-    getstr(campo1);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                                 // Imprime nome do campo.
-    getstr(campo2);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                                 // Imprime nome do campo.
-    getstr(campo3);
+    cout << texto1 << endl;                                                     // Imprime nome do campo.
+    cout << texto2 << " ";                                                // Imprime nome do campo.
+    cin >> campo1;                                                                             // L� valor do campo.
+    cout << texto3 << " ";                                                // Imprime nome do campo.
+    cin >> campo2;
+    cout << texto4 << " ";                                                // Imprime nome do campo.
+    cin >> campo3;
 
-    try{
+    try
+    {
         codigo.setValor(string(campo1));
         nome.setValor(string(campo2));
-        //capacidade.setValor(string(campo3)); // Verificar como pegar inteiro
+        capacidade.setValor(string(campo3));
     }
-    catch(invalid_argument &exp){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
-        noecho();                                                                               // Desabilita eco.
-        getch();                                                                                // Leitura de caracter digitado.
-        echo();                                                                                 // Habilita eco.
+    catch(invalid_argument &exp)
+    {
+        cout << texto10 << endl;                                           // Informa formato incorreto.
+        // Desabilita eco.
+        getchar();                                                                                // Leitura de caracter digitado.
+        // Habilita eco.
         return;
     }
 
@@ -560,25 +648,27 @@ void CntrApresentacaoSala::editarSala(){ //preciso pegar os dados com controlado
 
     // Incluir sala.
 
-    if(cntrServicoSala->editarSala(&sala)){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
-        noecho();
-        getch();
-        echo();
+    if(cntrServicoSala->editarSala(sala))
+    {
+        cout << texto10 << endl;                                               // Informa sucesso.
+
+        getchar();
+
         return;
     }
 
-    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
-    noecho();
-    getch();
-    echo();
+    cout << texto12 << endl;                                                       // Informa falha.
+
+    getchar();
+
 
     return;
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoSala::visualizarSala(){ //preciso pegar os dados com controladora servico
+void CntrApresentacaoSala::visualizarSala()  //preciso pegar os dados com controladora servico
+{
 
     // Mensagens a serem apresentadas na tela de visualizar sala.
 
@@ -593,50 +683,53 @@ void CntrApresentacaoSala::visualizarSala(){ //preciso pegar os dados com contro
 
     Codigo codigo;
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    // Dados sobre tamanho da tela.
 
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Armazena quantidade de linhas e colunas.
 
     // Apresenta tela de visualizacao de sala.
 
-    clear();                                                                                    // Limpa janela.
+    CLR_SCR;                                                                                     // Limpa janela.
 
-    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
-    getstr(campo1);                                                                             // L� valor do campo.
+    cout << texto1 << " ";                                                     // Imprime nome do campo.
+    cin >> campo1;                                                                             // L� valor do campo.
 
-    try{
+    try
+    {
         codigo.setValor(string(campo1));
     }
-    catch(invalid_argument &exp){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
-        noecho();                                                                               // Desabilita eco.
-        getch();                                                                                // Leitura de caracter digitado.
-        echo();                                                                                 // Habilita eco.
+    catch(invalid_argument &exp)
+    {
+        cout << texto10 << endl;                                           // Informa formato incorreto.
+        // Desabilita eco.
+        getchar();                                                                                // Leitura de caracter digitado.
+        // Habilita eco.
         return;
     }
 
     // Visualizacao da sala.
-    Sala sala;
 
-    if(cntrServicoSala->visualizarSala(&sala)){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
-        noecho();
-        getch();
-        echo();
+    if(cntrServicoSala->visualizarSala(codigo))
+    {
+        cout << texto11 << endl;                                               // Informa sucesso.
+
+        getchar();
+
         return;
     }
 
-    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
-    noecho();
-    getch();
-    echo();
+    cout << texto12 << endl;                                                       // Informa falha.
+
+    getchar();
+
 
     return;
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoSala::executar(){
+void CntrApresentacaoSala::executar()
+{
 
     // Mensagens a serem apresentadas na tela simplificada de salas.
 
@@ -646,37 +739,42 @@ void CntrApresentacaoSala::executar(){
 
     int campo;                                                                                  // Campo de entrada.
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Dados sobre tamanho da tela.
+    // Armazena quantidade de linhas e colunas.
 
-    echo();                                                                                     // Habilita eco.
+    // Habilita eco.
 
     bool apresentar = true;                                                                     // Controle de la�o.
 
-    while(apresentar){
+    while(apresentar)
+    {
 
         // Apresenta tela simplificada de salas.
 
-        clear();                                                                                // Limpa janela.
-        mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
-        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
-        noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
-        echo();
+        CLR_SCR;                                                                                 // Limpa janela.
+        cout << texto1 << endl;                                                // Imprime nome do campo.
+        cout << texto2 << endl;                                             // Imprime nome do campo.
+        cout << texto3 << endl;                                            // Imprime nome do campo.
 
-        switch(campo){
-            case 1: listarSala();
-                    break;
-            case 2: apresentar = false;
-                    break;
+        campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
+
+
+        switch(campo)
+        {
+        case 1:
+            listarSala();
+            break;
+        case 2:
+            apresentar = false;
+            break;
         }
     }
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoSala::executar(Matricula){
+void CntrApresentacaoSala::executar(Matricula)
+{
 
     // Mensagens a serem apresentadas tela completa de salas.
 
@@ -690,45 +788,53 @@ void CntrApresentacaoSala::executar(Matricula){
 
     int campo;                                                                                  // Campo de entrada.
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    // Dados sobre tamanho da tela.
 
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Armazena quantidade de linhas e colunas.
 
-    echo();                                                                                     // Habilita eco.
+    // Habilita eco.
 
     bool apresentar = true;                                                                     // Controle de la�o.
 
-    echo();                                                                                     // Habilita eco.
+    // Habilita eco.
 
-    while(apresentar){
+    while(apresentar)
+    {
 
         // Apresenta tela completa de salas.
 
-        clear();                                                                                // Limpa janela.
-        mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
-        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 8,coluna/4,"%s",texto5);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 10,coluna/4,"%s",texto6);                                            // Imprime nome do campo.
-        mvprintw(linha/4 + 12,coluna/4,"%s",texto7);                                            // Imprime nome do campo.
-        noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
-        echo();
+        CLR_SCR;                                                                                 // Limpa janela.
+        cout << texto1 << endl;                                                 // Imprime nome do campo.
+        cout << texto2 << endl;                                             // Imprime nome do campo.
+        cout << texto3 << endl;                                             // Imprime nome do campo.
+        cout << texto4 << endl;                                            // Imprime nome do campo.
+        cout << texto5 << endl;                                             // Imprime nome do campo.
+        cout << texto6 << endl;                                            // Imprime nome do campo.
+        cout << texto7 << endl;                                            // Imprime nome do campo.
 
-        switch(campo){
-            case 1: listarSala();
-                    break;
-            case 2: incluirSala();
-                    break;
-            case 3: excluirSala();
-                    break;
-            case 4: editarSala();
-                    break;
-            case 5: visualizarSala();
-                    break;
-            case 6: apresentar = false;
-                    break;
+        campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
+
+
+        switch(campo)
+        {
+        case 1:
+            listarSala();
+            break;
+        case 2:
+            incluirSala();
+            break;
+        case 3:
+            excluirSala();
+            break;
+        case 4:
+            editarSala();
+            break;
+        case 5:
+            visualizarSala();
+            break;
+        case 6:
+            apresentar = false;
+            break;
         }
     }
 }
@@ -736,13 +842,15 @@ void CntrApresentacaoSala::executar(Matricula){
 //--------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoSessao::listarSessao(){ //preciso pegar os dados com controladora servico
+void CntrApresentacaoSessao::listarSessao()  //preciso pegar os dados com controladora servico
+{
     cntrServicoSessao->listarSessao();
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoSessao::incluirSessao(){ //preciso pegar os dados com controladora servico
+void CntrApresentacaoSessao::incluirSessao()  //preciso pegar os dados com controladora servico
+{
 
     // Mensagens a serem apresentadas na tela de cadastramento.
 
@@ -762,32 +870,34 @@ void CntrApresentacaoSessao::incluirSessao(){ //preciso pegar os dados com contr
     Data data;
     Horario horario;
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    // Dados sobre tamanho da tela.
 
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Armazena quantidade de linhas e colunas.
 
     // Apresenta tela de cadastramento.
 
-    clear();                                                                                    // Limpa janela.
+    CLR_SCR;                                                                                     // Limpa janela.
 
-    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
-    mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                                 // Imprime nome do campo.
-    getstr(campo1);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                                 // Imprime nome do campo.
-    getstr(campo2);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                                 // Imprime nome do campo.
-    getstr(campo3);
+    cout << texto1 << endl;                                                     // Imprime nome do campo.
+    cout << texto2 << " ";                                                 // Imprime nome do campo.
+    cin >> campo1;                                                                             // L� valor do campo.
+    cout << texto3 << " ";                                                 // Imprime nome do campo.
+    cin >> campo2;
+    cout << texto4 << " ";                                                 // Imprime nome do campo.
+    cin >> campo3;
 
-    try{
+    try
+    {
         codigo.setValor(string(campo1));
         data.setValor(string(campo2));
         horario.setValor(string(campo3));
     }
-    catch(invalid_argument &exp){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
-        noecho();                                                                               // Desabilita eco.
-        getch();                                                                                // Leitura de caracter digitado.
-        echo();                                                                                 // Habilita eco.
+    catch(invalid_argument &exp)
+    {
+        cout << texto10 << endl;                                            // Informa formato incorreto.
+        // Desabilita eco.
+        getchar();                                                                                // Leitura de caracter digitado.
+        // Habilita eco.
         return;
     }
 
@@ -801,25 +911,27 @@ void CntrApresentacaoSessao::incluirSessao(){ //preciso pegar os dados com contr
 
     // Incluir Sessao.
 
-    if(cntrServicoSessao->incluirSessao(sessao)){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
-        noecho();
-        getch();
-        echo();
+    if(cntrServicoSessao->incluirSessao(sessao))
+    {
+        cout << texto11 << endl;                                                // Informa sucesso.
+
+        getchar();
+
         return;
     }
 
-    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
-    noecho();
-    getch();
-    echo();
+    cout << texto12 << endl;                                                       // Informa falha.
+
+    getchar();
+
 
     return;
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoSessao::excluirSessao(){ //preciso pegar os dados com controladora servico
+void CntrApresentacaoSessao::excluirSessao()  //preciso pegar os dados com controladora servico
+{
 
     // Mensagens a serem apresentadas na tela de cadastramento.
 
@@ -834,50 +946,53 @@ void CntrApresentacaoSessao::excluirSessao(){ //preciso pegar os dados com contr
 
     Codigo codigo;
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    // Dados sobre tamanho da tela.
 
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Armazena quantidade de linhas e colunas.
 
     // Apresenta tela de cadastramento.
 
-    clear();                                                                                    // Limpa janela.
+    CLR_SCR;                                                                                     // Limpa janela.
 
-    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
-    getstr(campo1);                                                                             // L� valor do campo.
+    cout << texto1 << " ";                                                      // Imprime nome do campo.
+    cin >> campo1;                                                                             // L� valor do campo.
 
-    try{
+    try
+    {
         codigo.setValor(string(campo1));
     }
-    catch(invalid_argument &exp){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
-        noecho();                                                                               // Desabilita eco.
-        getch();                                                                                // Leitura de caracter digitado.
-        echo();                                                                                 // Habilita eco.
+    catch(invalid_argument &exp)
+    {
+        cout << texto10 << endl;                                           // Informa formato incorreto.
+        // Desabilita eco.
+        getchar();                                                                                // Leitura de caracter digitado.
+        // Habilita eco.
         return;
     }
 
     // Exclui a Sessao.
-    Sessao sessao;
 
-    if(cntrServicoSessao->excluirSessao(&sessao)){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
-        noecho();
-        getch();
-        echo();
+    if(cntrServicoSessao->excluirSessao(codigo))
+    {
+        cout << texto11 << endl;                                                // Informa sucesso.
+
+        getchar();
+
         return;
     }
 
-    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
-    noecho();
-    getch();
-    echo();
+    cout << texto12 << endl;                                                        // Informa falha.
+
+    getchar();
+
 
     return;
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoSessao::editarSessao(){ //preciso pegar os dados com controladora servico
+void CntrApresentacaoSessao::editarSessao()  //preciso pegar os dados com controladora servico
+{
 
     // Mensagens a serem apresentadas na tela de edicao de Sessao.
 
@@ -897,32 +1012,34 @@ void CntrApresentacaoSessao::editarSessao(){ //preciso pegar os dados com contro
     Data data;
     Horario horario;
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    // Dados sobre tamanho da tela.
 
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Armazena quantidade de linhas e colunas.
 
     // Apresenta tela de cadastramento.
 
-    clear();                                                                                    // Limpa janela.
+    CLR_SCR;                                                                                     // Limpa janela.
 
-    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
-    mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                                 // Imprime nome do campo.
-    getstr(campo1);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                                 // Imprime nome do campo.
-    getstr(campo2);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                                 // Imprime nome do campo.
-    getstr(campo3);
+    cout << texto1 << endl;                                                     // Imprime nome do campo.
+    cout << texto2 << " ";                                                  // Imprime nome do campo.
+    cin >> campo1;                                                                             // L� valor do campo.
+    cout << texto3 << " ";                                                  // Imprime nome do campo.
+    cin >> campo2;
+    cout << texto4 << " ";                                                  // Imprime nome do campo.
+    cin >> campo3;
 
-    try{
+    try
+    {
         codigo.setValor(string(campo1));
         data.setValor(string(campo2));
         horario.setValor(string(campo3));
     }
-    catch(invalid_argument &exp){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
-        noecho();                                                                               // Desabilita eco.
-        getch();                                                                                // Leitura de caracter digitado.
-        echo();                                                                                 // Habilita eco.
+    catch(invalid_argument &exp)
+    {
+        cout << texto10 << endl;                                           // Informa formato incorreto.
+        // Desabilita eco.
+        getchar();                                                                                // Leitura de caracter digitado.
+        // Habilita eco.
         return;
     }
 
@@ -936,25 +1053,27 @@ void CntrApresentacaoSessao::editarSessao(){ //preciso pegar os dados com contro
 
     // Incluir Sessao.
 
-    if(cntrServicoSessao->editarSessao(&sessao)){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
-        noecho();
-        getch();
-        echo();
+    if(cntrServicoSessao->editarSessao(sessao))
+    {
+        cout << texto11 << endl;                                               // Informa sucesso.
+
+        getchar();
+
         return;
     }
 
-    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
-    noecho();
-    getch();
-    echo();
+    cout << texto12 << endl;                                                       // Informa falha.
+
+    getchar();
+
 
     return;
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoSessao::visualizarSessao(){ //preciso pegar os dados com controladora servico
+void CntrApresentacaoSessao::visualizarSessao()  //preciso pegar os dados com controladora servico
+{
 
     // Mensagens a serem apresentadas na tela de visualizar Sessao.
 
@@ -969,50 +1088,53 @@ void CntrApresentacaoSessao::visualizarSessao(){ //preciso pegar os dados com co
 
     Codigo codigo;
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    // Dados sobre tamanho da tela.
 
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Armazena quantidade de linhas e colunas.
 
     // Apresenta tela de visualizacao de Sessao.
 
-    clear();                                                                                    // Limpa janela.
+    CLR_SCR;                                                                                     // Limpa janela.
 
-    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
-    getstr(campo1);                                                                             // L� valor do campo.
+    cout << texto1 << " ";                                                     // Imprime nome do campo.
+    cin >> campo1;                                                                             // L� valor do campo.
 
-    try{
+    try
+    {
         codigo.setValor(string(campo1));
     }
-    catch(invalid_argument &exp){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
-        noecho();                                                                               // Desabilita eco.
-        getch();                                                                                // Leitura de caracter digitado.
-        echo();                                                                                 // Habilita eco.
+    catch(invalid_argument &exp)
+    {
+        cout << texto10 << endl;                                           // Informa formato incorreto.
+        // Desabilita eco.
+        getchar();                                                                                // Leitura de caracter digitado.
+        // Habilita eco.
         return;
     }
 
     // Visualizacao da Sessao.
-    Sessao sessao;
 
-    if(cntrServicoSessao->visualizarSessao(&sessao)){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
-        noecho();
-        getch();
-        echo();
+    if(cntrServicoSessao->visualizarSessao(codigo))
+    {
+        cout << texto11 << endl;                                               // Informa sucesso.
+
+        getchar();
+
         return;
     }
 
-    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
-    noecho();
-    getch();
-    echo();
+    cout << texto12 << endl;                                                       // Informa falha.
+
+    getchar();
+
 
     return;
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoSessao::executar(){
+void CntrApresentacaoSessao::executar()
+{
 
     // Mensagens a serem apresentadas na tela simplificada de Sessaos.
 
@@ -1022,37 +1144,42 @@ void CntrApresentacaoSessao::executar(){
 
     int campo;                                                                                  // Campo de entrada.
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Dados sobre tamanho da tela.
+    // Armazena quantidade de linhas e colunas.
 
-    echo();                                                                                     // Habilita eco.
+    // Habilita eco.
 
     bool apresentar = true;                                                                     // Controle de la�o.
 
-    while(apresentar){
+    while(apresentar)
+    {
 
         // Apresenta tela simplificada de Sessaos.
 
-        clear();                                                                                // Limpa janela.
-        mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
-        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
-        noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
-        echo();
+        CLR_SCR;                                                                                 // Limpa janela.
+        cout << texto1 << endl;                                                // Imprime nome do campo.
+        cout << texto2 << endl;                                             // Imprime nome do campo.
+        cout << texto3 << endl;                                            // Imprime nome do campo.
 
-        switch(campo){
-            case 1: listarSessao();
-                    break;
-            case 2: apresentar = false;
-                    break;
+        campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
+
+
+        switch(campo)
+        {
+        case 1:
+            listarSessao();
+            break;
+        case 2:
+            apresentar = false;
+            break;
         }
     }
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoSessao::executar(Matricula){
+void CntrApresentacaoSessao::executar(Matricula)
+{
 
     // Mensagens a serem apresentadas tela completa de Sessaos.
 
@@ -1066,58 +1193,68 @@ void CntrApresentacaoSessao::executar(Matricula){
 
     int campo;                                                                                  // Campo de entrada.
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    // Dados sobre tamanho da tela.
 
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Armazena quantidade de linhas e colunas.
 
-    echo();                                                                                     // Habilita eco.
+    // Habilita eco.
 
     bool apresentar = true;                                                                     // Controle de la�o.
 
-    echo();                                                                                     // Habilita eco.
+    // Habilita eco.
 
-    while(apresentar){
+    while(apresentar)
+    {
 
         // Apresenta tela completa de Sessaos.
 
-        clear();                                                                                // Limpa janela.
-        mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
-        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 8,coluna/4,"%s",texto5);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 10,coluna/4,"%s",texto6);                                            // Imprime nome do campo.
-        mvprintw(linha/4 + 12,coluna/4,"%s",texto7);                                            // Imprime nome do campo.
-        noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
-        echo();
+        CLR_SCR;                                                                                 // Limpa janela.
+        cout << texto1 << endl;                                                 // Imprime nome do campo.
+        cout << texto2 << endl;                                             // Imprime nome do campo.
+        cout << texto3 << endl;                                             // Imprime nome do campo.
+        cout << texto4 << endl;                                                 // Imprime nome do campo.
+        cout << texto5 << endl;                                             // Imprime nome do campo.
+        cout << texto6 << endl;                                          // Imprime nome do campo.
+        cout << texto7 << endl;                                             // Imprime nome do campo.
 
-        switch(campo){
-            case 1: listarSessao();
-                    break;
-            case 2: incluirSessao();
-                    break;
-            case 3: excluirSessao();
-                    break;
-            case 4: editarSessao();
-                    break;
-            case 5: visualizarSessao();
-                    break;
-            case 6: apresentar = false;
-                    break;
+        campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
+
+
+        switch(campo)
+        {
+        case 1:
+            listarSessao();
+            break;
+        case 2:
+            incluirSessao();
+            break;
+        case 3:
+            excluirSessao();
+            break;
+        case 4:
+            editarSessao();
+            break;
+        case 5:
+            visualizarSessao();
+            break;
+        case 6:
+            apresentar = false;
+            break;
         }
     }
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoPeca::listarPeca(){ //preciso pegar os dados com controladora servico
+void CntrApresentacaoPeca::listarPeca()  //preciso pegar os dados com controladora servico
+{
     cntrServicoPeca->listarPeca();
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoPeca::incluirPeca(){ //preciso pegar os dados com controladora servico
+void CntrApresentacaoPeca::incluirPeca()  //preciso pegar os dados com controladora servico
+{
 
     // Mensagens a serem apresentadas na tela de cadastramento.
 
@@ -1139,35 +1276,37 @@ void CntrApresentacaoPeca::incluirPeca(){ //preciso pegar os dados com controlad
     Tipo tipo;
     Classificacao classificacao;
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    // Dados sobre tamanho da tela.
 
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Armazena quantidade de linhas e colunas.
 
     // Apresenta tela de cadastramento.
 
-    clear();                                                                                    // Limpa janela.
+    CLR_SCR;                                                                                     // Limpa janela.
 
-    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
-    mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                                 // Imprime nome do campo.
-    getstr(campo1);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                                 // Imprime nome do campo.
-    getstr(campo2);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                                 // Imprime nome do campo.
-    getstr(campo3);
-    mvprintw(linha/4 + 6,coluna/4,"%s",texto5);                                                 // Imprime nome do campo.
-    getstr(campo4);
+    cout << texto1 << endl;                                                      // Imprime nome do campo.
+    cout << texto2 << " ";                                                  // Imprime nome do campo.
+    cin >> campo1;                                                                             // L� valor do campo.
+    cout << texto3 << " ";                                                  // Imprime nome do campo.
+    cin >> campo2;                                                                              // L� valor do campo.
+    cout << texto4 << " ";                                                  // Imprime nome do campo.
+    cin >> campo3;
+    cout << texto5 << " ";                                                  // Imprime nome do campo.
+    cin >> campo4;
 
-    try{
+    try
+    {
         codigo.setValor(string(campo1));
         nome.setValor(string(campo2));
         tipo.setValor(string(campo3));
         classificacao.setValor(string(campo4));
     }
-    catch(invalid_argument &exp){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
-        noecho();                                                                               // Desabilita eco.
-        getch();                                                                                // Leitura de caracter digitado.
-        echo();                                                                                 // Habilita eco.
+    catch(invalid_argument &exp)
+    {
+        cout << texto10 << endl;                                           // Informa formato incorreto.
+        // Desabilita eco.
+        getchar();                                                                                // Leitura de caracter digitado.
+        // Habilita eco.
         return;
     }
 
@@ -1182,25 +1321,27 @@ void CntrApresentacaoPeca::incluirPeca(){ //preciso pegar os dados com controlad
 
     // Incluir Peca.
 
-    if(cntrServicoPeca->incluirPeca(peca)){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
-        noecho();
-        getch();
-        echo();
+    if(cntrServicoPeca->incluirPeca(peca))
+    {
+        cout << texto11 << endl;                                               // Informa sucesso.
+
+        getchar();
+
         return;
     }
 
-    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
-    noecho();
-    getch();
-    echo();
+    cout << texto12 << endl;                                                       // Informa falha.
+
+    getchar();
+
 
     return;
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoPeca::excluirPeca(){ //preciso pegar os dados com controladora servico
+void CntrApresentacaoPeca::excluirPeca()  //preciso pegar os dados com controladora servico
+{
 
     // Mensagens a serem apresentadas na tela de cadastramento.
 
@@ -1215,50 +1356,53 @@ void CntrApresentacaoPeca::excluirPeca(){ //preciso pegar os dados com controlad
 
     Codigo codigo;
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    // Dados sobre tamanho da tela.
 
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Armazena quantidade de linhas e colunas.
 
     // Apresenta tela de cadastramento.
 
-    clear();                                                                                    // Limpa janela.
+    CLR_SCR;                                                                                     // Limpa janela.
 
-    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
-    getstr(campo1);                                                                             // L� valor do campo.
+    cout << texto1 << " ";                                                     // Imprime nome do campo.
+    cin >> campo1;                                                                             // L� valor do campo.
 
-    try{
+    try
+    {
         codigo.setValor(string(campo1));
     }
-    catch(invalid_argument &exp){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
-        noecho();                                                                               // Desabilita eco.
-        getch();                                                                                // Leitura de caracter digitado.
-        echo();                                                                                 // Habilita eco.
+    catch(invalid_argument &exp)
+    {
+        cout << texto10 << endl;                                           // Informa formato incorreto.
+        // Desabilita eco.
+        getchar();                                                                                // Leitura de caracter digitado.
+        // Habilita eco.
         return;
     }
 
     // Exclui a Peca.
-    Peca peca;
 
-    if(cntrServicoPeca->excluirPeca(&peca)){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
-        noecho();
-        getch();
-        echo();
+    if(cntrServicoPeca->excluirPeca(codigo))
+    {
+        cout << texto11 << endl;                                               // Informa sucesso.
+
+        getchar();
+
         return;
     }
 
-    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
-    noecho();
-    getch();
-    echo();
+    cout << texto12 << endl;                                                       // Informa falha.
+
+    getchar();
+
 
     return;
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoPeca::editarPeca(){ //preciso pegar os dados com controladora servico
+void CntrApresentacaoPeca::editarPeca()  //preciso pegar os dados com controladora servico
+{
 
     // Mensagens a serem apresentadas na tela de edicao de Peca.
 
@@ -1280,35 +1424,37 @@ void CntrApresentacaoPeca::editarPeca(){ //preciso pegar os dados com controlado
     Tipo tipo;
     Classificacao classificacao;
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    // Dados sobre tamanho da tela.
 
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Armazena quantidade de linhas e colunas.
 
     // Apresenta tela de cadastramento.
 
-    clear();                                                                                    // Limpa janela.
+    CLR_SCR;                                                                                     // Limpa janela.
 
-    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
-    mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                                 // Imprime nome do campo.
-    getstr(campo1);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                                 // Imprime nome do campo.
-    getstr(campo2);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                                 // Imprime nome do campo.
-    getstr(campo3);
-    mvprintw(linha/4 + 6,coluna/4,"%s",texto5);                                                 // Imprime nome do campo.
-    getstr(campo4);
+    cout << texto1 << endl;                                                     // Imprime nome do campo.
+    cout << texto2 << " ";                                                 // Imprime nome do campo.
+    cin >> campo1;                                                                             // L� valor do campo.
+    cout << texto3 << " ";                                                 // Imprime nome do campo.
+    cin >> campo2;
+    cout << texto4 << " ";                                                 // Imprime nome do campo.
+    cin >> campo3;                                                                             // L� valor do campo.
+    cout << texto5 << " ";                                                 // Imprime nome do campo.
+    cin >> campo4;
 
-    try{
+    try
+    {
         codigo.setValor(string(campo1));
         nome.setValor(string(campo2));
         tipo.setValor(string(campo3));
         classificacao.setValor(string(campo4));
     }
-    catch(invalid_argument &exp){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
-        noecho();                                                                               // Desabilita eco.
-        getch();                                                                                // Leitura de caracter digitado.
-        echo();                                                                                 // Habilita eco.
+    catch(invalid_argument &exp)
+    {
+        cout << texto10 << endl;                                           // Informa formato incorreto.
+        // Desabilita eco.
+        getchar();                                                                                // Leitura de caracter digitado.
+        // Habilita eco.
         return;
     }
 
@@ -1323,25 +1469,27 @@ void CntrApresentacaoPeca::editarPeca(){ //preciso pegar os dados com controlado
 
     // Incluir peca.
 
-    if(cntrServicoPeca->editarPeca(&peca)){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
-        noecho();
-        getch();
-        echo();
+    if(cntrServicoPeca->editarPeca(peca))
+    {
+        cout << texto11 << endl;                                               // Informa sucesso.
+
+        getchar();
+
         return;
     }
 
-    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
-    noecho();
-    getch();
-    echo();
+    cout << texto12 << endl;                                                       // Informa falha.
+
+    getchar();
+
 
     return;
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoPeca::visualizarPeca(){ //preciso pegar os dados com controladora servico
+void CntrApresentacaoPeca::visualizarPeca()  //preciso pegar os dados com controladora servico
+{
 
     // Mensagens a serem apresentadas na tela de visualizar Peca.
 
@@ -1356,50 +1504,53 @@ void CntrApresentacaoPeca::visualizarPeca(){ //preciso pegar os dados com contro
 
     Codigo codigo;
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    // Dados sobre tamanho da tela.
 
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Armazena quantidade de linhas e colunas.
 
     // Apresenta tela de visualizacao de Peca.
 
-    clear();                                                                                    // Limpa janela.
+    CLR_SCR;                                                                                     // Limpa janela.
 
-    mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
-    getstr(campo1);                                                                             // L� valor do campo.
+    cout << texto1 << " ";                                                    // Imprime nome do campo.
+    cin >> campo1;                                                                             // L� valor do campo.
 
-    try{
+    try
+    {
         codigo.setValor(string(campo1));
     }
-    catch(invalid_argument &exp){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
-        noecho();                                                                               // Desabilita eco.
-        getch();                                                                                // Leitura de caracter digitado.
-        echo();                                                                                 // Habilita eco.
+    catch(invalid_argument &exp)
+    {
+        cout << texto10 << endl;                                           // Informa formato incorreto.
+        // Desabilita eco.
+        getchar();                                                                                // Leitura de caracter digitado.
+        // Habilita eco.
         return;
     }
 
     // Visualizacao da Peca.
-    Peca peca;
 
-    if(cntrServicoPeca->visualizarPeca(&peca)){
-        mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
-        noecho();
-        getch();
-        echo();
+    if(cntrServicoPeca->visualizarPeca(codigo))
+    {
+        cout << texto11 << endl;                                               // Informa sucesso.
+
+        getchar();
+
         return;
     }
 
-    mvprintw(linha/4 + 18,coluna/4,"%s",texto12);                                                       // Informa falha.
-    noecho();
-    getch();
-    echo();
+    cout << texto12 << endl;                                                       // Informa falha.
+
+    getchar();
+
 
     return;
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoPeca::executar(){
+void CntrApresentacaoPeca::executar()
+{
 
     // Mensagens a serem apresentadas na tela simplificada de Pecas.
 
@@ -1409,37 +1560,42 @@ void CntrApresentacaoPeca::executar(){
 
     int campo;                                                                                  // Campo de entrada.
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Dados sobre tamanho da tela.
+    // Armazena quantidade de linhas e colunas.
 
-    echo();                                                                                     // Habilita eco.
+    // Habilita eco.
 
     bool apresentar = true;                                                                     // Controle de la�o.
 
-    while(apresentar){
+    while(apresentar)
+    {
 
         // Apresenta tela simplificada de Pecas.
 
-        clear();                                                                                // Limpa janela.
-        mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
-        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
-        noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
-        echo();
+        CLR_SCR;                                                                                 // Limpa janela.
+        cout << texto1 << endl;                                                 // Imprime nome do campo.
+        cout << texto2 << endl;                                             // Imprime nome do campo.
+        cout << texto3 << endl;                                             // Imprime nome do campo.
 
-        switch(campo){
-            case 1: listarPeca();
-                    break;
-            case 2: apresentar = false;
-                    break;
+        campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
+
+
+        switch(campo)
+        {
+        case 1:
+            listarPeca();
+            break;
+        case 2:
+            apresentar = false;
+            break;
         }
     }
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoPeca::executar(Matricula){
+void CntrApresentacaoPeca::executar(Matricula)
+{
 
     // Mensagens a serem apresentadas tela completa de Pecas.
 
@@ -1453,48 +1609,55 @@ void CntrApresentacaoPeca::executar(Matricula){
 
     int campo;                                                                                  // Campo de entrada.
 
-    int linha,coluna;                                                                           // Dados sobre tamanho da tela.
+    // Dados sobre tamanho da tela.
 
-    getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
+    // Armazena quantidade de linhas e colunas.
 
-    echo();                                                                                     // Habilita eco.
+    // Habilita eco.
 
     bool apresentar = true;                                                                     // Controle de la�o.
 
-    echo();                                                                                     // Habilita eco.
+    // Habilita eco.
 
-    while(apresentar){
+    while(apresentar)
+    {
 
         // Apresenta tela completa de Pecas.
 
-        clear();                                                                                // Limpa janela.
-        mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
-        mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 8,coluna/4,"%s",texto5);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 10,coluna/4,"%s",texto6);                                            // Imprime nome do campo.
-        mvprintw(linha/4 + 12,coluna/4,"%s",texto7);                                            // Imprime nome do campo.
-        noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
-        echo();
+        CLR_SCR;                                                                                 // Limpa janela.
+        cout << texto1 << endl;                                                 // Imprime nome do campo.
+        cout << texto2 << endl;                                             // Imprime nome do campo.
+        cout << texto3 << endl;                                             // Imprime nome do campo.
+        cout << texto4 << endl;                                             // Imprime nome do campo.
+        cout << texto5 << endl;                                             // Imprime nome do campo.
+        cout << texto6 << endl;                                             // Imprime nome do campo.
+        cout << texto7 << endl;                                            // Imprime nome do campo.
 
-        switch(campo){
-            case 1: listarPeca();
-                    break;
-            case 2: incluirPeca();
-                    break;
-            case 3: excluirPeca();
-                    break;
-            case 4: editarPeca();
-                    break;
-            case 5: visualizarPeca();
-                    break;
-            case 6: apresentar = false;
-                    break;
+        campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
+
+
+        switch(campo)
+        {
+        case 1:
+            listarPeca();
+            break;
+        case 2:
+            incluirPeca();
+            break;
+        case 3:
+            excluirPeca();
+            break;
+        case 4:
+            editarPeca();
+            break;
+        case 5:
+            visualizarPeca();
+            break;
+        case 6:
+            apresentar = false;
+            break;
         }
     }
 }
 
 //--------------------------------------------------------------------------------------------
-

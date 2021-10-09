@@ -12,22 +12,23 @@
 ///
 /// @author Leandro Bottecchia - 180145169
 ///
-class Peca {
-    private:
-        Codigo codigo;
-        Nome nome;
-        Tipo tipo;
-        Classificacao classificacao;
-    public:
-        //Peca();
-        void setCodigo(const Codigo&);
-        Codigo getCodigo() const;
-        void setNome(const Nome&);
-        Nome getNome() const;
-        void setTipo(const Tipo&);
-        Tipo getTipo() const;
-        void setClassificacao(const Classificacao&);
-        Classificacao getClassificacao() const;
+class Peca
+{
+private:
+    Codigo codigo;
+    Nome nome;
+    Tipo tipo;
+    Classificacao classificacao;
+public:
+    //Peca();
+    void setCodigo(const Codigo&);
+    Codigo getCodigo() const;
+    void setNome(const Nome&);
+    Nome getNome() const;
+    void setTipo(const Tipo&);
+    Tipo getTipo() const;
+    void setClassificacao(const Classificacao&);
+    Classificacao getClassificacao() const;
 };
 
 /// Armazena codigo.
@@ -36,7 +37,8 @@ class Peca {
 ///
 /// @return void
 ///
-inline void Peca::setCodigo(const Codigo& codigo){
+inline void Peca::setCodigo(const Codigo& codigo)
+{
     this->codigo = codigo;
 }
 
@@ -46,7 +48,8 @@ inline void Peca::setCodigo(const Codigo& codigo){
 ///
 /// @return void
 ///
-inline void Peca::setNome(const Nome& nome){
+inline void Peca::setNome(const Nome& nome)
+{
     this->nome = nome;
 }
 
@@ -56,7 +59,8 @@ inline void Peca::setNome(const Nome& nome){
 ///
 /// @return void
 ///
-inline void Peca::setTipo(const Tipo& tipo){
+inline void Peca::setTipo(const Tipo& tipo)
+{
     this->tipo = tipo;
 }
 
@@ -66,7 +70,8 @@ inline void Peca::setTipo(const Tipo& tipo){
 ///
 /// @return void
 ///
-inline void Peca::setClassificacao(const Classificacao& classificacao){
+inline void Peca::setClassificacao(const Classificacao& classificacao)
+{
     this->classificacao = classificacao;
 }
 
@@ -75,7 +80,8 @@ inline void Peca::setClassificacao(const Classificacao& classificacao){
 ///
 /// @return Codigo codigo.
 ///
-inline Codigo Peca::getCodigo() const{
+inline Codigo Peca::getCodigo() const
+{
     return codigo;
 }
 
@@ -84,7 +90,8 @@ inline Codigo Peca::getCodigo() const{
 ///
 /// @return Nome nome.
 ///
-inline Nome Peca::getNome() const{
+inline Nome Peca::getNome() const
+{
     return nome;
 }
 
@@ -93,7 +100,8 @@ inline Nome Peca::getNome() const{
 ///
 /// @return Tipo tipo.
 ///
-inline Tipo Peca::getTipo() const{
+inline Tipo Peca::getTipo() const
+{
     return tipo;
 }
 
@@ -102,7 +110,8 @@ inline Tipo Peca::getTipo() const{
 ///
 /// @return Classificacao classificacao.
 ///
-inline Classificacao Peca::getClassificacao() const{
+inline Classificacao Peca::getClassificacao() const
+{
     return classificacao;
 }
 
@@ -112,18 +121,19 @@ inline Classificacao Peca::getClassificacao() const{
 ///
 /// @author Leandro Bottecchia - 180145169
 ///
-class Sessao {
-    private:
-        Codigo codigo;
-        Data data;
-        Horario horario;
-    public:
-        void setCodigo(const Codigo&);
-        Codigo getCodigo() const;
-        void setData(const Data&);
-        Data getData() const;
-        void setHorario(const Horario&);
-        Horario getHorario() const;
+class Sessao
+{
+private:
+    Codigo codigo;
+    Data data;
+    Horario horario;
+public:
+    void setCodigo(const Codigo&);
+    Codigo getCodigo() const;
+    void setData(const Data&);
+    Data getData() const;
+    void setHorario(const Horario&);
+    Horario getHorario() const;
 };
 
 /// Armazena codigo.
@@ -132,7 +142,8 @@ class Sessao {
 ///
 /// @return void
 ///
-inline void Sessao::setCodigo(const Codigo& codigo){
+inline void Sessao::setCodigo(const Codigo& codigo)
+{
     this->codigo = codigo;
 }
 
@@ -142,7 +153,8 @@ inline void Sessao::setCodigo(const Codigo& codigo){
 ///
 /// @return void
 ///
-inline void Sessao::setData(const Data& data){
+inline void Sessao::setData(const Data& data)
+{
     this->data = data;
 }
 
@@ -152,7 +164,8 @@ inline void Sessao::setData(const Data& data){
 ///
 /// @return void
 ///
-inline void Sessao::setHorario(const Horario& horario){
+inline void Sessao::setHorario(const Horario& horario)
+{
     this->horario = horario;
 }
 
@@ -161,7 +174,8 @@ inline void Sessao::setHorario(const Horario& horario){
 ///
 /// @return Codigo codigo.
 ///
-inline Codigo Sessao::getCodigo() const{
+inline Codigo Sessao::getCodigo() const
+{
     return codigo;
 }
 
@@ -170,7 +184,8 @@ inline Codigo Sessao::getCodigo() const{
 ///
 /// @return Data data.
 ///
-inline Data Sessao::getData() const{
+inline Data Sessao::getData() const
+{
     return data;
 }
 
@@ -179,7 +194,8 @@ inline Data Sessao::getData() const{
 ///
 /// @return Horario horario.
 ///
-inline Horario Sessao::getHorario() const{
+inline Horario Sessao::getHorario() const
+{
     return horario;
 }
 
@@ -192,18 +208,19 @@ inline Horario Sessao::getHorario() const{
 ///
 /// @author Liz Costato - 180022261
 ///
-class Sala {
-    private:
-        Codigo codigo;
-        Nome nome;
-        Capacidade capacidade;
-    public:
-        void setCodigo(const Codigo&);
-        Codigo getCodigo() const;
-        void setNome(const Nome&);
-        Nome getNome() const;
-        void setCapacidade(const Capacidade&);
-        Capacidade getCapacidade() const;
+class Sala
+{
+private:
+    Codigo codigo;
+    Nome nome;
+    Capacidade capacidade;
+public:
+    void setCodigo(const Codigo&);
+    Codigo getCodigo() const;
+    void setNome(const Nome&);
+    Nome getNome() const;
+    void setCapacidade(const Capacidade&);
+    Capacidade getCapacidade() const;
 };
 
 /// Armazena codigo.
@@ -212,7 +229,8 @@ class Sala {
 ///
 /// @return void
 ///
-inline void Sala::setCodigo(const Codigo& codigo){
+inline void Sala::setCodigo(const Codigo& codigo)
+{
     this->codigo = codigo;
 }
 
@@ -222,7 +240,8 @@ inline void Sala::setCodigo(const Codigo& codigo){
 ///
 /// @return void
 ///
-inline void Sala::setNome(const Nome& nome){
+inline void Sala::setNome(const Nome& nome)
+{
     this->nome = nome;
 }
 
@@ -232,7 +251,8 @@ inline void Sala::setNome(const Nome& nome){
 ///
 /// @return void
 ///
-inline void Sala::setCapacidade(const Capacidade& capacidade){
+inline void Sala::setCapacidade(const Capacidade& capacidade)
+{
     this->capacidade = capacidade;
 }
 
@@ -241,7 +261,8 @@ inline void Sala::setCapacidade(const Capacidade& capacidade){
 ///
 /// @return Codigo codigo.
 ///
-inline Codigo Sala::getCodigo() const{
+inline Codigo Sala::getCodigo() const
+{
     return codigo;
 }
 
@@ -250,7 +271,8 @@ inline Codigo Sala::getCodigo() const{
 ///
 /// @return Nome nome.
 ///
-inline Nome Sala::getNome() const{
+inline Nome Sala::getNome() const
+{
     return nome;
 }
 ///
@@ -258,7 +280,8 @@ inline Nome Sala::getNome() const{
 ///
 /// @return Sala sala.
 ///
-inline Capacidade Sala::getCapacidade() const{
+inline Capacidade Sala::getCapacidade() const
+{
     return capacidade;
 }
 
@@ -269,30 +292,31 @@ inline Capacidade Sala::getCapacidade() const{
 ///
 /// @author Clara Fortes - 190017503
 ///
-class Participante {
-    private:
-        Matricula matricula;
-        Nome nome;
-        Nome sobrenome;
-        Email email;
-        Telefone telefone;
-        Senha senha;
-        Cargo cargo;
-    public:
-        void setMatricula(const Matricula&);
-        Matricula getMatricula() const;
-        void setNome(const Nome&);
-        Nome getNome() const;
-        void setSobrenome(const Nome&);
-        Nome getSobrenome() const;
-        void setEmail(const Email&);
-        Email getEmail() const;
-        void setTelefone(const Telefone&);
-        Telefone getTelefone() const;
-        void setSenha(const Senha&);
-        Senha getSenha() const;
-        void setCargo(const Cargo&);
-        Cargo getCargo() const;
+class Participante
+{
+private:
+    Matricula matricula;
+    Nome nome;
+    Nome sobrenome;
+    Email email;
+    Telefone telefone;
+    Senha senha;
+    Cargo cargo;
+public:
+    void setMatricula(const Matricula&);
+    Matricula getMatricula() const;
+    void setNome(const Nome&);
+    Nome getNome() const;
+    void setSobrenome(const Nome&);
+    Nome getSobrenome() const;
+    void setEmail(const Email&);
+    Email getEmail() const;
+    void setTelefone(const Telefone&);
+    Telefone getTelefone() const;
+    void setSenha(const Senha&);
+    Senha getSenha() const;
+    void setCargo(const Cargo&);
+    Cargo getCargo() const;
 };
 
 /// Armazena matricula.
@@ -301,7 +325,8 @@ class Participante {
 ///
 /// @return void
 ///
-inline void Participante::setMatricula(const Matricula& matricula){
+inline void Participante::setMatricula(const Matricula& matricula)
+{
     this->matricula = matricula;
 }
 
@@ -310,7 +335,8 @@ inline void Participante::setMatricula(const Matricula& matricula){
 ///
 /// @return Matr&iacute;cula matricula.
 ///
-inline Matricula Participante::getMatricula() const{
+inline Matricula Participante::getMatricula() const
+{
     return matricula;
 }
 
@@ -320,7 +346,8 @@ inline Matricula Participante::getMatricula() const{
 ///
 /// @return void
 ///
-inline void Participante::setNome(const Nome& nome){
+inline void Participante::setNome(const Nome& nome)
+{
     this->nome = nome;
 }
 
@@ -329,7 +356,8 @@ inline void Participante::setNome(const Nome& nome){
 ///
 /// @return Nome nome.
 ///
-inline Nome Participante::getNome() const{
+inline Nome Participante::getNome() const
+{
     return nome;
 }
 
@@ -339,7 +367,8 @@ inline Nome Participante::getNome() const{
 ///
 /// @return void
 ///
-inline void Participante::setSobrenome(const Nome& sobrenome){
+inline void Participante::setSobrenome(const Nome& sobrenome)
+{
     this->sobrenome = sobrenome;
 }
 
@@ -348,7 +377,8 @@ inline void Participante::setSobrenome(const Nome& sobrenome){
 ///
 /// @return Nome sobrenome.
 ///
-inline Nome Participante::getSobrenome() const{
+inline Nome Participante::getSobrenome() const
+{
     return sobrenome;
 }
 
@@ -358,7 +388,8 @@ inline Nome Participante::getSobrenome() const{
 ///
 /// @return void
 ///
-inline void Participante::setEmail(const Email& email){
+inline void Participante::setEmail(const Email& email)
+{
     this->email = email;
 }
 
@@ -367,7 +398,8 @@ inline void Participante::setEmail(const Email& email){
 ///
 /// @return Email email.
 ///
-inline Email Participante::getEmail() const{
+inline Email Participante::getEmail() const
+{
     return email;
 }
 
@@ -377,7 +409,8 @@ inline Email Participante::getEmail() const{
 ///
 /// @return void
 ///
-inline void Participante::setTelefone(const Telefone& telefone){
+inline void Participante::setTelefone(const Telefone& telefone)
+{
     this->telefone = telefone;
 }
 
@@ -386,7 +419,8 @@ inline void Participante::setTelefone(const Telefone& telefone){
 ///
 /// @return Telefone telefone.
 ///
-inline Telefone Participante::getTelefone() const{
+inline Telefone Participante::getTelefone() const
+{
     return telefone;
 }
 
@@ -396,7 +430,8 @@ inline Telefone Participante::getTelefone() const{
 ///
 /// @return void
 ///
-inline void Participante::setSenha(const Senha& senha){
+inline void Participante::setSenha(const Senha& senha)
+{
     this->senha = senha;
 }
 
@@ -405,7 +440,8 @@ inline void Participante::setSenha(const Senha& senha){
 ///
 /// @return Senha senha.
 ///
-inline Senha Participante::getSenha() const{
+inline Senha Participante::getSenha() const
+{
     return senha;
 }
 
@@ -415,7 +451,8 @@ inline Senha Participante::getSenha() const{
 ///
 /// @return void
 ///
-inline void Participante::setCargo(const Cargo& cargo){
+inline void Participante::setCargo(const Cargo& cargo)
+{
     this->cargo = cargo;
 }
 
@@ -424,7 +461,8 @@ inline void Participante::setCargo(const Cargo& cargo){
 ///
 /// @return Cargo cargo.
 ///
-inline Cargo Participante::getCargo() const{
+inline Cargo Participante::getCargo() const
+{
     return cargo;
 }
 #endif // ENTIDADES_H_INCLUDED

@@ -19,39 +19,41 @@ using namespace std;
 ///
 /// - Capacidade &eacute; v&aacute;lido caso igual a 100, 200, 300, 400 ou 500.
 ///
-class Capacidade {
-    private:
-            int valor;
-            void validar(int);
-    public:
+class Capacidade
+{
+private:
+    string valor;
+    void validar(string);
+public:
 ///
 /// Inicializa o objeto com o Capacidade como 100.
 ///
-            Capacidade();
+    Capacidade();
 ///
 /// Inicializa o objeto caso o Capacidade informado seja v&aacute;lido.
 ///
-/// @param valor int Capacidade.
+/// @param valor string Capacidade.
 ///
-            Capacidade(int);
+    Capacidade(string);
 ///
 /// Armazena Capacidade.
 ///
-/// @param valor int Capacidade.
+/// @param valor string Capacidade.
 ///
 /// @return void
 ///
-            void setValor(int);
+    void setValor(string);
 ///
 /// Retorna Capacidade.
 ///
-/// @return int Capacidade.
+/// @return string Capacidade.
 ///
-            int getValor() const;
+    string getValor() const;
 
 };
 
-inline int Capacidade::getValor() const{         // Metodo inline e const.
+inline string Capacidade::getValor() const          // Metodo inline e const.
+{
     return valor;
 }
 
@@ -66,21 +68,22 @@ inline int Capacidade::getValor() const{         // Metodo inline e const.
 /// - Em que HH tem-se a indica&ccedil;&atilde;o de um Hor&aacute;rio: 00 a 23
 /// - Em que MM tem-se a indica&ccedil;&atilde;o de um Hor&aacute;rio: 00, 15, 30 ou 45.
 ///
-class Horario {
-    private:
-            string valor;
-            void validar(string valor);
-    public:
+class Horario
+{
+private:
+    string valor;
+    void validar(string valor);
+public:
 ///
 /// Inicializa o objeto com o Hor&aacute;rio como 00:00.
 ///
-            Horario();
+    Horario();
 ///
 /// Inicializa o objeto caso o Hor&aacute;rio informado seja v&aacute;lido.
 ///
 /// @param valor string Hor&aacute;rio.
 ///
-            Horario(string);
+    Horario(string);
 ///
 /// Armazena Hor&aacute;rio.
 ///
@@ -88,17 +91,18 @@ class Horario {
 ///
 /// @return void
 ///
-            void setValor(string);
+    void setValor(string);
 ///
 /// Retorna Hor&aacute;rio.
 ///
 /// @return string Hor&aacute;rio.
 ///
-            string getValor() const;
+    string getValor() const;
 
 };
 
-inline string Horario::getValor() const{         // Metodo inline e const.
+inline string Horario::getValor() const          // Metodo inline e const.
+{
     return valor;
 }
 
@@ -116,21 +120,22 @@ inline string Horario::getValor() const{         // Metodo inline e const.
 /// - N&atilde;o existe caracter repetido.
 /// - Existe pelo menos uma letra (mai&uacute;scula ou min&uacute;scula), um d&iacute;gito e um caractere especial
 ///
-class Senha {
-    private:
-            string valor;
-            void validar(string);
-    public:
+class Senha
+{
+private:
+    string valor;
+    void validar(string);
+public:
 ///
 /// Inicializa o objeto com o Senha como vazio.
 ///
-            Senha();
+    Senha();
 ///
 /// Inicializa o objeto caso o Senha informado seja v&aacute;lido.
 ///
 /// @param valor string Senha.
 ///
-            Senha(string);
+    Senha(string);
 ///
 /// Armazena Senha.
 ///
@@ -138,16 +143,17 @@ class Senha {
 ///
 /// @return void
 ///
-            void setValor(string);
+    void setValor(string);
 ///
 /// Retorna Senha.
 ///
 /// @return string Senha.
 ///
-            string getValor() const;
+    string getValor() const;
 };
 
-inline string Senha::getValor() const{         // Metodo inline e const.
+inline string Senha::getValor() const          // Metodo inline e const.
+{
     return valor;
 }
 
@@ -165,21 +171,22 @@ inline string Senha::getValor() const{         // Metodo inline e const.
 /// - Caractere especiais s&atilde;o: "!", "@", "#", "$", "%", "&" ou "?".
 /// - N&atilde;o existe telefone 000000000.
 ///
-class Telefone {
-    private:
-            string valor;
-            void validar(string);
-    public:
+class Telefone
+{
+private:
+    string valor;
+    void validar(string);
+public:
 ///
 /// Inicializa o objeto com o Telefone como vazio.
 ///
-            Telefone();
+    Telefone();
 ///
 /// Inicializa o objeto caso o Telefone informado seja v&aacute;lido.
 ///
 /// @param valor string Telefone.
 ///
-            Telefone(string);
+    Telefone(string);
 ///
 /// Armazena Telefone.
 ///
@@ -187,16 +194,17 @@ class Telefone {
 ///
 /// @return void
 ///
-            void setValor(string);
+    void setValor(string);
 ///
 /// Retorna Telefone.
 ///
 /// @return string Telefone.
 ///
-            string getValor() const;
+    string getValor() const;
 };
 
-inline string Telefone::getValor() const{         // Metodo inline e const.
+inline string Telefone::getValor() const          // Metodo inline e const.
+{
     return valor;
 }
 
@@ -212,21 +220,22 @@ inline string Telefone::getValor() const{         // Metodo inline e const.
 ///
 /// - Cargo &eacute; v&aacute;lido, caso seja igual a um dos seguintes valores: "ator", "cen&oacute;grafo", "figurinista", "maquiador", "sonoplasta" ou "iluminador".
 ///
-class Cargo {
-    private:
-            string valor;
-            void validar(string);
-    public:
+class Cargo
+{
+private:
+    string valor;
+    void validar(string);
+public:
 ///
 /// Inicializa o objeto com o Cargo como vazio.
 ///
-            Cargo();
+    Cargo();
 ///
 /// Inicializa o objeto, caso o Cargo informado seja v&aacute;lido.
 ///
 /// @param valor string Cargo.
 ///
-            Cargo(string);
+    Cargo(string);
 ///
 /// Armazena um novo valor no objeto.
 ///
@@ -234,17 +243,18 @@ class Cargo {
 ///
 /// @return void
 ///
-            void setValor(string);
+    void setValor(string);
 ///
 /// Retorna o valor armazenado no objeto.
 ///
 /// @return string Cargo.
 ///
-            string getValor() const;
+    string getValor() const;
 
 };
 
-inline string Cargo::getValor() const{         // Metodo inline e const.
+inline string Cargo::getValor() const          // Metodo inline e const.
+{
     return valor;
 }
 
@@ -259,10 +269,11 @@ inline string Cargo::getValor() const{         // Metodo inline e const.
 /// - Tenha formato XXXXX.
 /// - Cada X é um dígito (0-9).
 /// - Não existam dígitos duplicados.
-class Matricula {
-    private:
-            string valor;
-            void validar(string);
+class Matricula
+{
+private:
+    string valor;
+    void validar(string);
 ///
 /// Método auxiliar para a validação da Matricula, verificando se cada caractere da string é digito.
 ///
@@ -272,7 +283,7 @@ class Matricula {
 /// - true: A string só possui dígitos;
 /// - false: A string possui caractere que não é digito.
 ///
-            bool eh_digito(string);
+    bool eh_digito(string);
 ///
 /// Método auxiliar para a validação da Matricula, verificando se há repetição de dígitos na string.
 ///
@@ -282,18 +293,18 @@ class Matricula {
 /// - true: A string possui digitos repetidos;
 /// - false: A string não possui digitos repetidos.
 ///
-            bool ha_repeticao(string);
-    public:
+    bool ha_repeticao(string);
+public:
 ///
 /// Inicializa o objeto com a Matricula como vazio.
 ///
-            Matricula();
+    Matricula();
 ///
 /// Inicializa o objeto, caso a Matricula informada seja v&aacute;lida.
 ///
 /// @param valor string Matricula.
 ///
-            Matricula(string);
+    Matricula(string);
 ///
 /// Armazena um novo valor no objeto.
 ///
@@ -301,17 +312,18 @@ class Matricula {
 ///
 /// @return void
 ///
-            void setValor(string);
+    void setValor(string);
 ///
 /// Retorna o valor armazenado no objeto.
 ///
 /// @return string Matricula.
 ///
-            string getValor() const;
+    string getValor() const;
 
 };
 
-inline string Matricula::getValor() const{         // Metodo inline e const.
+inline string Matricula::getValor() const          // Metodo inline e const.
+{
     return valor;
 }
 
@@ -327,10 +339,11 @@ inline string Matricula::getValor() const{         // Metodo inline e const.
 /// - Cada caractere seja letra (A-Z ou a-z), ponto (.) ou espaço em branco;
 /// - Não haja espaços em branco e sequência;
 /// - A primeira letra de cada termo seja letra maiúscula (A-Z).
-class Nome {
-    private:
-            string valor;
-            void validar(string);
+class Nome
+{
+private:
+    string valor;
+    void validar(string);
 ///
 /// Método auxiliar para a validação do Nome, verificando as regras de formato da classe.
 ///
@@ -343,18 +356,18 @@ class Nome {
 /// - 3: O nome informado possui espaços em branco em sequência;
 /// - 4: O nome informado possui termos não iniciados com letra maiúscula (A-Z).
 ///
-            int caracteres_nome(string);
-    public:
+    int caracteres_nome(string);
+public:
 ///
 /// Inicializa o objeto com o Nome como vazio.
 ///
-            Nome();
+    Nome();
 ///
 /// Inicializa o objeto, caso o Nome informado seja v&aacute;lido.
 ///
 /// @param valor string Nome.
 ///
-            Nome(string);
+    Nome(string);
 ///
 /// Armazena um novo valor no objeto.
 ///
@@ -362,17 +375,18 @@ class Nome {
 ///
 /// @return void
 ///
-            void setValor(string);
+    void setValor(string);
 ///
 /// Retorna o valor armazenado no objeto.
 ///
 /// @return string Nome.
 ///
-            string getValor() const;
+    string getValor() const;
 
 };
 
-inline string Nome::getValor() const{         // Metodo inline e const.
+inline string Nome::getValor() const          // Metodo inline e const.
+{
     return valor;
 }
 
@@ -390,21 +404,22 @@ inline string Nome::getValor() const{         // Metodo inline e const.
 /// - 2000 a 9999 em AAAA;
 /// - A data considera a ocorrência de anos bissextos.
 ///
-class Data {
-    private:
-            string valor;
-            void validar(string);
-    public:
+class Data
+{
+private:
+    string valor;
+    void validar(string);
+public:
 ///
 /// Inicializa o objeto com o valor "01/01/2000".
 ///
-            Data();
+    Data();
 ///
 /// Inicializa o objeto, caso a Data informado seja v&aacute;lida.
 ///
 /// @param valor string Data.
 ///
-            Data(string);
+    Data(string);
 ///
 /// Armazena um novo valor no objeto.
 ///
@@ -412,17 +427,18 @@ class Data {
 ///
 /// @return void
 ///
-            void setValor(string);
+    void setValor(string);
 ///
 /// Retorna o valor armazenado no objeto.
 ///
 /// @return string Data.
 ///
-            string getValor() const;
+    string getValor() const;
 
 };
 
-inline string Data::getValor() const{         // Metodo inline e const.
+inline string Data::getValor() const          // Metodo inline e const.
+{
     return valor;
 }
 
@@ -439,23 +455,24 @@ inline string Data::getValor() const{         // Metodo inline e const.
 /// - classifica&ccedil;&atilde;o &eacute; v&aacute;lido caso igual a livre, 10, 12, 14 , 16 ou 18.
 ///
 
-class Classificacao{
-    private:
-        string idade;
-        void validar(string);
-    public:
+class Classificacao
+{
+private:
+    string idade;
+    void validar(string);
+public:
 
 ///
 /// Inicializa o objeto com o classifica&ccedil;&atilde;o como vazio.
 ///
-        Classificacao();
+    Classificacao();
 
 ///
 /// Inicializa o objeto caso o classifica&ccedil;&atilde;o informado seja v&aacute;lido.
 ///
 /// @param valor string classifica&ccedil;&atilde;o.
 ///
-        Classificacao(string);
+    Classificacao(string);
 
 ///
 /// Armazena classifica&ccedil;&atilde;o.
@@ -464,17 +481,18 @@ class Classificacao{
 ///
 /// @return void
 ///
-        void setValor(string);
+    void setValor(string);
 
 ///
 /// Retorna classifica&ccedil;&atilde;o.
 ///
 /// @return string classifica&ccedil;&atilde;o.
 ///
-        string getValor() const;
+    string getValor() const;
 };
 
-inline string Classificacao::getValor() const{
+inline string Classificacao::getValor() const
+{
     return idade;
 }
 
@@ -487,22 +505,23 @@ inline string Classificacao::getValor() const{
 ///
 /// - tipo &eacute; v&aacute;lido caso igual a auto, comodia, drama, farsa, melodrama, monologo, musical, opera ou revista.
 ///
-class Tipo{
-    private:
-        string genero;
-        void validar(string);
-    public:
+class Tipo
+{
+private:
+    string genero;
+    void validar(string);
+public:
 ///
 /// Inicializa o objeto com o Tipo como vazio.
 ///
-        Tipo();
+    Tipo();
 
 ///
 /// Inicializa o objeto caso o tipo informado seja v&aacute;lido.
 ///
 /// @param valor string tipo.
 ///
-        Tipo(string);
+    Tipo(string);
 
 ///
 /// Armazena tipo.
@@ -511,16 +530,17 @@ class Tipo{
 ///
 /// @return void
 ///
-        void setValor(string);
+    void setValor(string);
 
 ///
 /// Retorna tipo.
 ///
 /// @return string tipo.
 ///
-        string getValor() const;
+    string getValor() const;
 };
-inline string Tipo::getValor() const{
+inline string Tipo::getValor() const
+{
     return genero;
 }
 
@@ -533,24 +553,25 @@ inline string Tipo::getValor() const{
 ///
 /// - c&oacute;digo &eacute; v&aacute;lido caso tem 6 caracteres, sendo os dois primeiros letras mai&uacute;sculas e 4 &uacute;ltimos s&atilde;o d&iacute;gitos.
 ///
-class Codigo{
-    private:
-        string codigo;
-        void validar(string);
-        bool eh_maiusculo(char);
-        bool eh_numero(char);
-    public:
+class Codigo
+{
+private:
+    string codigo;
+    void validar(string);
+    bool eh_maiusculo(char);
+    bool eh_numero(char);
+public:
 ///
 /// Inicializa o objeto com o c&oacute;digo como vazio.
 ///
-        Codigo();
+    Codigo();
 
 ///
 /// Inicializa o objeto caso o c&oacute;digo informado seja v&aacute;lido.
 ///
 /// @param valor string c&oacute;digo.
 ///
-        Codigo(string);
+    Codigo(string);
 
 ///
 /// Armazena c&oacute;digo.
@@ -559,16 +580,17 @@ class Codigo{
 ///
 /// @return void
 ///
-        void setValor(string);
+    void setValor(string);
 ///
 /// Retorna c&oacute;digo.
 ///
 /// @return string c&oacute;digo.
 ///
-        string getValor() const;
+    string getValor() const;
 };
 
-inline string Codigo::getValor() const{
+inline string Codigo::getValor() const
+{
     return codigo;
 }
 
@@ -586,27 +608,28 @@ inline string Codigo::getValor() const{
 /// - n&atilde;o tenha pontos juntos
 /// - n&atilde;o tenha mais de um @
 ///
-class Email{
-    private:
-        string parte_local;
-        string dominio;
-        void validar(string,string);
-        bool pontos_seguidos(string);
-        int busca_arroba(string);
-        string busca_parte_local(string,int);
-        string busca_dominio(string,int);
-    public:
+class Email
+{
+private:
+    string parte_local;
+    string dominio;
+    void validar(string,string);
+    bool pontos_seguidos(string);
+    int busca_arroba(string);
+    string busca_parte_local(string,int);
+    string busca_dominio(string,int);
+public:
 ///
 /// Inicializa o objeto com o email como vazio.
 ///
-        Email();
+    Email();
 
 ///
 /// Inicializa o objeto caso o email informado seja v&aacute;lido.
 ///
 /// @param valor string email.
 ///
-        Email(string);
+    Email(string);
 
 /// Armazena email.
 ///
@@ -614,20 +637,22 @@ class Email{
 ///
 /// @return void
 ///
-        void setValor(string);
+    void setValor(string);
 
 ///
 /// Retorna email.
 ///
 /// @return string email.
 ///
-        string getValor() const;
+    string getValor() const;
 };
 
-inline string Email::getValor() const{
+inline string Email::getValor() const
+{
     if (parte_local == "")
         return parte_local;
-    else{
+    else
+    {
         string email = parte_local;
         email += "@";
         email += dominio;
