@@ -221,10 +221,11 @@ void CntrApresentacaoParticipante::executar(Matricula matricula)
     }
 }
 
-//Ajustar
+//Ajustar -> acho que n precisa...se vc n tiver a matricula, so tem a opcao de cadastrar um usuario msm (Liz aqui)
 void CntrApresentacaoParticipante::executar()
 {
-
+    cadastrarParticipante();
+    /*
     // Mensagens a serem apresentadas na tela de sele��o de servi�o..
 
     char texto1[]="Selecione um dos servicos : ";
@@ -267,7 +268,7 @@ void CntrApresentacaoParticipante::executar()
             apresentar = false;
             break;
         }
-    }
+    }*/
 }
 
 //--------------------------------------------------------------------------------------------

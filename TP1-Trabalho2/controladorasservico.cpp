@@ -33,22 +33,28 @@ bool CntrServicoAutenticacao::autenticar(Matricula matricula, Senha senhaEntrada
     try
     {
         comandoLerSenha.executar();
-
+        cout << endl << "Executou comandoLerSenha.executar() sem problemas." << endl ; // Liz incluiu isso
+        cout << "Digite algo para continuar : ";  // Liz incluiu isso
+        getchar(); // Liz incluiu isso
         string senhaRecuperada;
         senhaRecuperada = comandoLerSenha.getResultado();
 
         //Comparar senha informada com a senha recuperada.
-
+        cout << endl << "Chegou a recuperar algo." << endl ; // Liz incluiu isso
+        cout << "Digite algo para continuar : ";  // Liz incluiu isso
+        getchar(); // Liz incluiu isso
         if(senhaRecuperada == senhaEntrada.getValor()) return true;
         cout << endl << "Senha digitada diferente da cadastrada.";
+        cout << "Digite algo para continuar : ";  // Liz incluiu isso
+        getchar(); // Liz incluiu isso
         return false;
     }
     catch(EErroPersistencia &exp)
     {
         cout << endl << exp.what();
-        cout << endl << endl << "Digite algo para continuar.";
-        getchar();
-        return true;
+        cout << endl << endl << "Entrou no erro em controladorasservico. Digite algo para continuar."; // Liz incluiu isso
+        getchar(); // Liz incluiu isso
+        return false;
     }
 }
 
@@ -120,11 +126,14 @@ bool CntrServicoSala::visualizarSala(Codigo codigoEntrada)
     catch (EErroPersistencia exp)
     {
         cout << endl << "Erro no acesso ao banco de dados.";;
+        cout << "Digite algo para continuar : ";
+        getchar();
         return false;
     }
 
     try
     {
+        getchar();
         sala = comando.getResultado();
 
         cout << endl << "Resultados obtidos." << endl << endl;

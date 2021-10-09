@@ -53,11 +53,35 @@ void ComandoSQL::desconectar()
 void ComandoSQL::executar()
 {
     conectar();
-    rc = sqlite3_exec(bd, comandoSQL.c_str(), callback, 0, &mensagem); // possivel funcai definida pelo prof
+    cout << endl << "Conectou com o banco de dados em executar()." << endl;
+
+    //  Declaração sqlite3_exec
+    //int sqlite3_exec(
+    //  sqlite3*,                                  /* An open database */
+    //  const char *sql,                           /* SQL to be evaluated */
+    //  int (*callback)(void*,int,char**,char**),  /* Callback function */
+    //  void *,                                    /* 1st argument to callback */
+    //  char **errmsg                              /* Error msg written here */
+    //);
+
+    // -bd é o ponteiro para o banco de dados que vamos acessar
+    // -O parametro comandoSQL.c_str() passa o comandoSQL como uma strig C pura (sem usar a biblioteca <string>)
+    // -callback é uma funcao pra receber na lista listaResultado o retorno do comando SQL, se for pra pesquisar algo
+    // -SQLITE_OK eh definido como 0, sendo assim, o 4º parametro de sqlite3_exec, que ta como zero, é pra dizer
+    // que o retorno de sqlite3_exec tem seu primeiro argumento com 0, pelo que entendi
+    // -mensagem é para receber uma mensagem de erro que n vai ser usada pq esvaziamos em sqlite3_free(mensagem);
+    rc = sqlite3_exec(bd, comandoSQL.c_str(), callback, 0, &mensagem);
     if(rc != SQLITE_OK)
     {
-        sqlite3_free(mensagem); // possivel funcai definida pelo prof
+        cout << endl << "if(rc != SQLITE_OK)."; // Liz incluiu isso
+        cout << endl << "rc = " << rc << endl; // Liz incluiu isso
+        cout << "Digite algo para continuar : "; // Liz incluiu isso
+        getchar(); // Liz incluiu isso
+        sqlite3_free(mensagem); // so para esvaziar a memoria mensagem
         desconectar();
+        cout << endl << "desconectou."; // Liz incluiu isso
+        cout << "Digite algo para continuar : "; // Liz incluiu isso
+        getchar(); // Liz incluiu isso
         throw EErroPersistencia("Erro na execucao do comando SQL");
     }
     desconectar();
@@ -68,8 +92,12 @@ int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nom
     NotUsed=0;
     ElementoResultado elemento;
     int i;
+
+    cout << endl << "argc = " << argc << endl; // Liz incluiu isso
+
     for(i=0; i<argc; i++)
     {
+        cout << endl << "i = " << i << endl; // Liz incluiu isso
         elemento.setNomeColuna(nomeColuna[i]);
         elemento.setValorColuna(valorColuna[i] ? valorColuna[i]: "NULL");
         listaResultado.push_front(elemento);
@@ -80,10 +108,17 @@ int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nom
 //---------------------------------------------------------------------------
 // Implementa��es de m�todos da classe ComandoLerSenha.
 
+// Pelo que entendi, cada objeto ComandoAlgumaCoisa, que herda de ComandoSQL, tem um atributo protected
+// chamado comandoSQL, que vai informar qual o comando que vc quer fazer no banco de dados.
+// O metodo construtor das classes ComandoAlgumaCoisa apenas criam esse comando SQL, como abaixo:
+// Quando voce manda executar(), ele já vai rodar esse comandoSQL na linha:
+// rc = sqlite3_exec(bd, comandoSQL.c_str(), callback, 0, &mensagem);
+// O parametro comandoSQL.c_str() passa o comandoSQL como uma strig C pura (sem usar a biblioteca <string>)
 ComandoLerSenha::ComandoLerSenha(Matricula matricula)
 {
     comandoSQL = "SELECT senha FROM participante WHERE matricula = ";
     comandoSQL += matricula.getValor();
+    cout << endl << "criei o comando para procurar participante com a matricula informada." << endl ; // Liz incluiu isso
 }
 
 string ComandoLerSenha::getResultado()
@@ -93,10 +128,12 @@ string ComandoLerSenha::getResultado()
 
     //Remover senha;
     if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
+        throw EErroPersistencia("Lista de resultados vazia. Aqui senha");
+        //to entendendo que ta mandando isso aqui pq n ta chamando o callback...n ta imprimindo meu print la. Dai de fato nada eh incluido em listaResultado
     resultado = listaResultado.back();
     listaResultado.pop_back();
     senha = resultado.getValorColuna();
+    cout << endl << "chegou aqui." << endl ; // Liz incluiu isso
 
     return senha;
 }
@@ -145,7 +182,7 @@ Sala ComandoPesquisarSala::getResultado()
 
     // Remover codigo;
     if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
+        throw EErroPersistencia("Lista de resultados vazia. Aqui"); // Liz incluiu o "Aqui"
     resultado = listaResultado.back();
     listaResultado.pop_back();
     sala.setCodigo(Codigo(resultado.getValorColuna()));
