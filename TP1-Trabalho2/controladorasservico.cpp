@@ -56,6 +56,7 @@ bool CntrServicoAutenticacao::autenticar(Matricula matricula, Senha senhaEntrada
         getchar(); // Liz incluiu isso
         return false;
     }
+    return false;
 }
 
 bool CntrServicoParticipante::consultarParticipante(Matricula matricula){
@@ -119,17 +120,42 @@ bool CntrServicoParticipante::cadastrarParticipante(Participante participante){
 
     //notificarSucessoOperacao();
 
-    return true;
+    return false;
 }
 bool CntrServicoParticipante::descadastrarParticipante(Matricula matricula){
     cout << endl << "Descadastrar Participante";
-    return true;
+    ComandoRemoverParticipante comando(matricula);
+
+    try
+    {
+        comando.executar();
+        return true;
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";
+        return false;
+    }
+    return false;
 }
 bool CntrServicoParticipante::editarParticipante(Participante participante){
     cout << endl << "Editar Participante";
-    return true;
+    ComandoAtualizarParticipante comando(participante);
+
+    try
+    {
+        comando.executar();
+        return true;
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";
+        return false;
+    }
+    return false;
 }
 
+// Assim que der certo Sala, da pra so adaptar para Sessao e Peca
 bool CntrServicoSessao::listarSessao(){
     return true;
 }
@@ -166,7 +192,6 @@ bool CntrServicoSala::listarSala(){
     cout << endl << "Listar Sala";
     return true;
 }
-
 bool CntrServicoSala::visualizarSala(Codigo codigoEntrada){
 
     Sala sala;
@@ -262,7 +287,6 @@ bool CntrServicoSala::editarSala(Sala sala){
 
     //notificarSucessoOperacao();
 }
-
 bool CntrServicoSala::excluirSala(Codigo codigo){
 
     ComandoRemoverSala comando(codigo);
