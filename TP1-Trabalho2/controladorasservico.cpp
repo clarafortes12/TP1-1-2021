@@ -148,33 +148,172 @@ bool CntrServicoParticipante::editarParticipante(Participante participante){
 bool CntrServicoSessao::listarSessao(){
     return true;
 }
-bool CntrServicoSessao::visualizarSessao(Codigo codigo){
-    return true;
+bool CntrServicoSessao::visualizarSessao(Codigo codigoEntrada){
+    Sessao sessao;
+
+    ComandoPesquisarSessao comando(codigoEntrada);
+
+    try
+    {
+        comando.executar();
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";;
+        cout << "Digite algo para continuar : ";
+        getchar();
+        return false;
+    }
+
+    try
+    {
+        getchar();
+        sessao = comando.getResultado();
+
+        cout << endl << "Resultados obtidos." << endl << endl;
+        cout << "Codigo  : " << sessao.getCodigo().getValor() << endl;
+        cout << "Data    : " << sessao.getData().getValor() << endl;
+        cout << "Horário : " << sessao.getHorario().getValor() << endl;
+        cout << "Digite algo para continuar : ";
+        getchar();
+        return true;
+    }
+    catch(EErroPersistencia exp)
+    {
+        cout << endl << exp.what();
+        cout << endl << endl << "Digite algo para continuar.";
+        getchar();
+        return false;
+    }
 }
 bool CntrServicoSessao::incluirSessao(Sessao sessao){
-    return true;
+
+    ComandoCadastrarSessao comando(sessao);
+
+    try
+    {
+        comando.executar();
+        return true;
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";
+        return false;
+    }
 }
 bool CntrServicoSessao::editarSessao(Sessao sessao){
-    return true;
+    ComandoAtualizarSessao comandoB(sessao);
+
+    try
+    {
+        comandoB.executar();
+        return true;
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";
+        return false;
+    }
 }
 bool CntrServicoSessao::excluirSessao(Codigo codigo){
-    return true;
+    ComandoRemoverSessao comando(codigo);
+
+    try
+    {
+        comando.executar();
+        return true;
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";
+        return false;
+    }
 }
 
 bool CntrServicoPeca::listarPeca(){
     return true;
 }
-bool CntrServicoPeca::visualizarPeca(Codigo codigo){
-    return true;
+bool CntrServicoPeca::visualizarPeca(Codigo codigoEntrada){
+    Peca peca;
+
+    ComandoPesquisarPeca comando(codigoEntrada);
+
+    try
+    {
+        comando.executar();
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";;
+        cout << "Digite algo para continuar : ";
+        getchar();
+        return false;
+    }
+
+    try
+    {
+        getchar();
+        peca = comando.getResultado();
+
+        cout << endl << "Resultados obtidos." << endl << endl;
+        cout << "Codigo : " << peca.getCodigo().getValor() << endl;
+        cout << "Nome : " << peca.getNome().getValor() << endl;
+        cout << "Tipo : " << peca.getTipo().getValor() << endl;
+        cout << "Capacidade : " << peca.getClassificacao().getValor() << endl;
+        cout << "Digite algo para continuar : ";
+        getchar();
+        return true;
+    }
+    catch(EErroPersistencia exp)
+    {
+        cout << endl << exp.what();
+        cout << endl << endl << "Digite algo para continuar.";
+        getchar();
+        return false;
+    }
 }
 bool CntrServicoPeca::incluirPeca(Peca peca){
-    return true;
+
+    ComandoCadastrarPeca comando(peca);
+
+    try
+    {
+        comando.executar();
+        return true;
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";
+        return false;
+    }
 }
 bool CntrServicoPeca::editarPeca(Peca peca){
-    return true;
+    ComandoAtualizarPeca comandoB(peca);
+
+    try
+    {
+        comandoB.executar();
+        return true;
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";
+        return false;
+    }
 }
-bool CntrServicoPeca::excluirPeca(Codigo codigo){
-    return true;
+bool CntrServicoPeca::excluirPeca(Codigo codigoEntrada){
+    ComandoRemoverPeca comando(codigoEntrada);
+
+    try
+    {
+        comando.executar();
+        return true;
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";
+        return false;
+    }
 }
 
 bool CntrServicoSala::listarSala(){

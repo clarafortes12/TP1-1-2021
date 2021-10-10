@@ -127,7 +127,27 @@ public:
 };*/
 
 //---------------------------------------------------------------------------
-// Declara��o da classe ComandoCadastrarAluno.
+// Declara��o da classe ComandoPesquisarSessao.
+
+
+class ComandoPesquisarSessao:public ComandoSQL
+{
+public:
+    ComandoPesquisarSessao(Codigo);
+    Sessao getResultado();
+};
+
+//---------------------------------------------------------------------------
+//Classe ComandoAtualizarSessao.
+
+class ComandoAtualizarSessao:public ComandoSQL
+{
+public:
+    ComandoAtualizarSessao(Sessao);
+};
+
+//---------------------------------------------------------------------------
+// Declara��o da classe ComandoCadastrarSessao.
 
 class ComandoCadastrarSessao:public ComandoSQL
 {
@@ -136,12 +156,49 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declara��o da classe ComandoCadastrarAluno.
+// Declara��o da classe ComandoRemoverSessao.
+
+class ComandoRemoverSessao:public ComandoSQL
+{
+public:
+    ComandoRemoverSessao(Codigo);
+};
+
+//---------------------------------------------------------------------------
+//Classe ComandoPesquisarPeca.
+
+class ComandoPesquisarPeca:public ComandoSQL
+{
+public:
+    ComandoPesquisarPeca(Codigo);
+    Peca getResultado();
+};
+
+//---------------------------------------------------------------------------
+//Classe ComandoAtualizarPeca.
+
+class ComandoAtualizarPeca:public ComandoSQL
+{
+public:
+    ComandoAtualizarPeca(Peca);
+};
+
+//---------------------------------------------------------------------------
+// Declara��o da classe ComandoCadastrarPeca.
 
 class ComandoCadastrarPeca:public ComandoSQL
 {
 public:
     ComandoCadastrarPeca(Peca);
+};
+
+//---------------------------------------------------------------------------
+// Declara��o da classe ComandoRemoverPeca.
+
+class ComandoRemoverPeca:public ComandoSQL
+{
+public:
+    ComandoRemoverPeca(Codigo);
 };
 
 //---------------------------------------------------------------------------

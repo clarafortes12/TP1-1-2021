@@ -113,8 +113,63 @@ ComandoCadastrarSessao::ComandoCadastrarSessao(Sessao sessao)
     comandoSQL += "'" + sessao.getData().getValor() + "')";
 }
 
+ComandoPesquisarSessao::ComandoPesquisarSessao(Codigo codigo)
+{
+    comandoSQL = "SELECT * FROM sessao WHERE codigo = '";
+    comandoSQL += codigo.getValor()+"'";
+}
+
+Sessao ComandoPesquisarSessao::getResultado()
+{
+    ElementoResultado resultado;
+    Sessao sessao;
+
+    // Remover codigo;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    sessao.setCodigo(Codigo(resultado.getValorColuna()));
+
+    // Remover Data;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    sessao.setData(Data(resultado.getValorColuna()));
+
+    // Remover Horario;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    sessao.setHorario(Horario(resultado.getValorColuna()));
+
+    return sessao;
+
+}
 //---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoPesquisarSala.
+// Implementa��es de m�todos da classe AtualizarSessao.
+
+ComandoAtualizarSessao::ComandoAtualizarSessao(Sessao sessao)
+{
+    comandoSQL = "UPDATE sessao ";
+    comandoSQL += "SET data = '" + sessao.getData().getValor();
+    comandoSQL += "', horario = '" + sessao.getHorario().getValor();
+    comandoSQL += "' WHERE codigo = '" + sessao.getCodigo().getValor()+"'";
+}
+
+//---------------------------------------------------------------------------
+// Implementa��es de m�todos da classe ComandoRemoverSessao.
+
+ComandoRemoverSessao::ComandoRemoverSessao(Codigo codigo)
+{
+    comandoSQL = "DELETE FROM sessao WHERE codigo = '";
+    comandoSQL += codigo.getValor()+"'";
+}
+
+//---------------------------------------------------------------------------
+// Implementa��es de m�todos da classe ComandoPesquisarPeca.
 ComandoCadastrarPeca::ComandoCadastrarPeca(Peca peca)
 {
     comandoSQL = "INSERT INTO peca VALUES (";
@@ -122,6 +177,69 @@ ComandoCadastrarPeca::ComandoCadastrarPeca(Peca peca)
     comandoSQL += "'" + peca.getNome().getValor() + "', ";
     comandoSQL += "'" + peca.getTipo().getValor() + "', ";
     comandoSQL += "'" + peca.getClassificacao().getValor() + "')";
+}
+
+ComandoPesquisarPeca::ComandoPesquisarPeca(Codigo codigo)
+{
+    comandoSQL = "SELECT * FROM Peca WHERE codigo = '";
+    comandoSQL += codigo.getValor()+"'";
+}
+
+Peca ComandoPesquisarPeca::getResultado()
+{
+    ElementoResultado resultado;
+    Peca peca;
+
+    // Remover codigo;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    peca.setCodigo(Codigo(resultado.getValorColuna()));
+
+    // Remover nome;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    peca.setNome(Nome(resultado.getValorColuna()));
+
+    // Remover tipo;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    peca.setTipo(Tipo(resultado.getValorColuna()));
+
+    // Remover classificacao;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    peca.setClassificacao(Classificacao(resultado.getValorColuna()));
+
+    return peca;
+
+}
+//---------------------------------------------------------------------------
+// Implementa��es de m�todos da classe AtualizarPeca.
+
+ComandoAtualizarPeca::ComandoAtualizarPeca(Peca peca)
+{
+    comandoSQL = "UPDATE Peca ";
+    comandoSQL += "SET nome = '" + peca.getNome().getValor();
+    comandoSQL += "', tipo = '" + peca.getTipo().getValor();
+    comandoSQL += "', classificacao = '" + peca.getClassificacao().getValor();
+    comandoSQL += "' WHERE codigo = '" + peca.getCodigo().getValor()+"'";
+}
+
+//---------------------------------------------------------------------------
+// Implementa��es de m�todos da classe ComandoRemoverPeca.
+
+ComandoRemoverPeca::ComandoRemoverPeca(Codigo codigo)
+{
+    comandoSQL = "DELETE FROM Peca WHERE codigo = '";
+    comandoSQL += codigo.getValor()+"'";
 }
 
 //---------------------------------------------------------------------------

@@ -1307,7 +1307,7 @@ void CntrApresentacaoPeca::incluirPeca()  //preciso pegar os dados com controlad
     char texto2[] ="Codigo         :";
     char texto3[] ="Nome           :";
     char texto4[] ="Tipo           :";
-    char texto5[] ="Classificação  :";
+    char texto5[] ="Classificacao  :";
     char texto10[]="Dados em formato incorreto. Digite algo.";
     char texto11[]="Sucesso no cadastramento. Digite algo.";
     char texto12[]="Falha no cadastramento. Digite algo.";
