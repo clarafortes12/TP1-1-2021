@@ -1,17 +1,9 @@
 #include "controladorasapresentacao.h"
-#include <iostream>
-#include <string.h>
-
-#include "Dominios.h"
-#include "Entidades.h"
-#include "Interfaces.h"
-
 
 //--------------------------------------------------------------------------------------------
 // Implementa��es dos m�todos de classes controladoras.
 
-void CntrApresentacaoControle::executar()
-{
+void CntrApresentacaoControle::executar(){
 
     // Mensagens a serem apresentadas na tela inicial.
 
@@ -55,6 +47,7 @@ void CntrApresentacaoControle::executar()
         cout << texto5 << endl;                                            // Imprime nome do campo.
 
         campo = getchar() - 48;
+        fflush(stdin);
 
         switch(campo)
         {
@@ -77,12 +70,12 @@ void CntrApresentacaoControle::executar()
                     cout << texto9 << endl;                      // Imprime nome do campo.                                    // Apresenta tela de sele��o de servi�o.
 
                     campo = getchar() - 48;                                               // Leitura do campo de entrada e convers�o de ASCII.
-
+                    fflush(stdin);
 
                     switch(campo)
                     {
                     case 1:
-                        cntrApresentacaoParticipante->executar(matricula);                 // Solicita servi�o de pessoal.
+                        apresentar = cntrApresentacaoParticipante->executar(matricula);                 // Solicita servi�o de pessoal.
                         break;
                     case 2:
                         cntrApresentacaoPeca->executar(matricula);                 // Solicita servi�o de peca.
@@ -129,8 +122,7 @@ void CntrApresentacaoControle::executar()
 
 //--------------------------------------------------------------------------------------------
 
-bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula)
-{
+bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula){
 
     // Mensagens a serem apresentadas na tela de autentica��o.
 
@@ -151,9 +143,12 @@ bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula)
         // Apresenta tela de autentica��o.
         CLR_SCR;                                                                                // Limpa janela.
         cout << texto1 << " ";                                                                  // Imprime nome do campo.
-        cin >> campo1;                                                                          // Lê valor do campo.
+        cin >> campo1;
+        fflush(stdin);
+                                                                                  // Lê valor do campo.
         cout << texto2 << " ";                                                                  // Imprime nome do campo.
         cin >> campo2;                                                                         // L� valor do campo.
+        fflush(stdin);
 
         try
         {
@@ -166,15 +161,15 @@ bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula)
             CLR_SCR;                                                                            // Limpa janela.
             cout << texto3 << endl;                                                             // Informa formato incorreto.
             getchar();
+            fflush(stdin);
         }
     }
     return (cntrServicoAutenticacao->autenticar(*matricula, senha));                                                     // Solicita servi�o de autentica��o.
 }
 
-//--------------------------------------------------------------------------------------------
+//--------------------- Controladoras de Participante -----------------------------------------------------------------------
 
-void CntrApresentacaoParticipante::executar(Matricula matricula)
-{
+bool CntrApresentacaoParticipante::executar(Matricula matricula){
 
     // Mensagens a serem apresentadas na tela de sele��o de servi�o..
 
@@ -187,7 +182,7 @@ void CntrApresentacaoParticipante::executar(Matricula matricula)
     int campo;
 
     bool apresentar = true;
-
+    bool descadastrado = true;
     while(apresentar)
     {
 
@@ -202,6 +197,7 @@ void CntrApresentacaoParticipante::executar(Matricula matricula)
         cout << texto5 << endl;                                                                     // Imprime nome do campo.
 
         campo = getchar() - 48;                                                                   // Leitura do campo de entrada.
+        fflush(stdin);
 
         switch(campo)
         {
@@ -212,18 +208,23 @@ void CntrApresentacaoParticipante::executar(Matricula matricula)
             editarParticipante(matricula);
             break;
         case 3:
-            descadastrarParticipante();
+            descadastrado = descadastrarParticipante(matricula);
+            if(descadastrado == true){
+                return false;
+            }
+            else{
+                return true;
+            }
             break;
         case 4:
             apresentar = false;
             break;
         }
     }
+    return true;
 }
 
-//Ajustar -> acho que n precisa...se vc n tiver a matricula, so tem a opcao de cadastrar um usuario msm (Liz aqui)
-void CntrApresentacaoParticipante::executar()
-{
+void CntrApresentacaoParticipante::executar(){
     // Mensagens a serem apresentadas na tela de sele��o de servi�o..
 
     char texto1[]="Selecione um dos servicos : ";
@@ -246,6 +247,7 @@ void CntrApresentacaoParticipante::executar()
         cout << texto3 << endl;                                                                   // Imprime nome do campo.
 
         campo = getchar() - 48;                                                                   // Leitura do campo de entrada.
+        fflush(stdin);
 
         switch(campo)
         {
@@ -259,10 +261,7 @@ void CntrApresentacaoParticipante::executar()
     }
 }
 
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoParticipante::cadastrarParticipante()
-{
+void CntrApresentacaoParticipante::cadastrarParticipante(){
 
     // Mensagens a serem apresentadas na tela de cadastramento.
 
@@ -295,22 +294,33 @@ void CntrApresentacaoParticipante::cadastrarParticipante()
 
     cout << texto1 << endl;                                                                    // Imprime solicitação ao usuário.
     cout << texto2 << " ";                                                                     // Imprime nome do campo.
-    //cin.getline(campo_nome,sizeof(campo_nome));                                                        // Lê valor do campo composto.
-    cin >> campo_nome;
-    //cout << "Valor lido" << campo_nome << " ";
+    cin.getline(campo_nome,sizeof(campo_nome));
+    fflush(stdin);
 
     cout << texto3 << " ";                                                                     // Imprime nome do campo.
-    cin >> campo_sobrenome;                                                                             // Lê valor do campo.
+    cin.getline(campo_sobrenome,sizeof(campo_sobrenome));
+    fflush(stdin);
+
     cout << texto4 << " ";                                                                     // Imprime nome do campo.
-    cin >> campo_email;                                                                             // Lê valor do campo.
+    cin >> campo_email;
+    fflush(stdin);
+                                                                                // Lê valor do campo.
     cout << texto5 << " ";                                                                  // Imprime nome do campo.
-    cin >> campo_telefone;                                                                             // Lê valor do campo.
+    cin >> campo_telefone;
+    fflush(stdin);
+                                                                                 // Lê valor do campo.
     cout << texto6 << " ";                                                                     // Imprime nome do campo.
-    cin >> campo_senha;                                                                             // Lê valor do campo.
+    cin >> campo_senha;
+    fflush(stdin);
+                                                                                 // Lê valor do campo.
     cout << texto7 << " ";                                                                     // Imprime nome do campo.
-    cin >> campo_matricula;                                                                             // Lê valor do campo.
+    cin >> campo_matricula;
+    fflush(stdin);
+                                                                                 // Lê valor do campo.
     cout << texto8 << " ";                                                                     // Imprime nome do campo.
-    cin >> campo_cargo;                                                                             // Lê valor do campo.
+    cin >> campo_cargo;
+    fflush(stdin);
+                                                                                 // Lê valor do campo.
     try
     {
         nome.setValor(string(campo_nome));
@@ -327,6 +337,7 @@ void CntrApresentacaoParticipante::cadastrarParticipante()
         CLR_SCR;
         cout << texto9 << endl;
         getchar();
+        fflush(stdin);
         return;
     }
 
@@ -338,39 +349,35 @@ void CntrApresentacaoParticipante::cadastrarParticipante()
     participante.setTelefone(telefone);
     participante.setSenha(senha);
     participante.setCargo(cargo);
+    participante.setMatricula(matricula);
 
     if(cntrServicoParticipante->cadastrarParticipante(participante))
     {
         CLR_SCR;
         cout << texto10 << endl;
         getchar();
+        fflush(stdin);
         return;
     }
-
     cout << texto11 << endl;
     getchar();
-
+    fflush(stdin);
     return;
 }
 
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoParticipante::consultarParticipante(Matricula matricula)
-{
+void CntrApresentacaoParticipante::consultarParticipante(Matricula matricula){
     char texto2[]="Falha na visualizacao. Digite algo.";
 
     if(cntrServicoParticipante->consultarParticipante(matricula)) return;
 
     cout << texto2 << endl;
     getchar();
+    fflush(stdin);
     return;
 
 }
 
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoParticipante::editarParticipante(Matricula matricula)
-{
+void CntrApresentacaoParticipante::editarParticipante(Matricula matricula){
      // Mensagens a serem apresentadas na tela de cadastramento.
     char texto1[] ="Preencha os seguintes campos: ";
     char texto2[] ="Nome            :";
@@ -399,17 +406,28 @@ void CntrApresentacaoParticipante::editarParticipante(Matricula matricula)
 
     cout << texto1 << endl;                                                                    // Imprime solicitação ao usuário.
     cout << texto2 << " ";                                                                     // Imprime nome do campo.
-    cin >> campo_nome;
+    cin.getline(campo_nome,sizeof(campo_nome));
+    fflush(stdin);
+
     cout << texto3 << " ";                                                                     // Imprime nome do campo.
-    cin >> campo_sobrenome;                                                                             // Lê valor do campo.
+    cin.getline(campo_sobrenome,sizeof(campo_sobrenome));
+    fflush(stdin);                                                                            // Lê valor do campo.
+
     cout << texto4 << " ";                                                                     // Imprime nome do campo.
-    cin >> campo_email;                                                                             // Lê valor do campo.
+    cin >> campo_email;
+    fflush(stdin);                                                                             // Lê valor do campo.
+
     cout << texto5 << " ";                                                                  // Imprime nome do campo.
-    cin >> campo_telefone;                                                                             // Lê valor do campo.
+    cin >> campo_telefone;
+    fflush(stdin);                                                                             // Lê valor do campo.
+
     cout << texto6 << " ";                                                                     // Imprime nome do campo.
-    cin >> campo_senha;                                                                             // Lê valor do campo.
+    cin >> campo_senha;
+    fflush(stdin);                                                                             // Lê valor do campo.
+
     cout << texto7 << " ";                                                                     // Imprime nome do campo.
-    cin >> campo_cargo;                                                                             // Lê valor do campo.
+    cin >> campo_cargo;
+    fflush(stdin);                                                                             // Lê valor do campo.
     try
     {
         nome.setValor(string(campo_nome));
@@ -425,6 +443,7 @@ void CntrApresentacaoParticipante::editarParticipante(Matricula matricula)
         CLR_SCR;
         cout << texto8 << endl;
         getchar();
+        fflush(stdin);
         return;
     }
 
@@ -443,55 +462,65 @@ void CntrApresentacaoParticipante::editarParticipante(Matricula matricula)
         CLR_SCR;
         cout << texto9 << endl;
         getchar();
+        fflush(stdin);
         return;
     }
 
     cout << texto10 << endl;
     getchar();
+    fflush(stdin);
 
     return;
 
 }
 
-void CntrApresentacaoParticipante::descadastrarParticipante()
-{
+bool CntrApresentacaoParticipante::descadastrarParticipante(Matricula matricula){
 
     char texto1[] ="Informe a sua matricula: ";
     char texto2[]="Dado em formato incorreto. Digite algo.";
     char texto3[]="Sucesso na exclusao. Digite algo.";
     char texto4[]="Falha na exclusao. Digite algo.";
+    char texto5[]="Matricula informada incorretamente.Digite algo.";
 
     char campo_matricula[80];
 
-    Matricula matricula;
+    Matricula matricula_nova;
 
     CLR_SCR;
 
     cout << texto1 << " ";
     cin >> campo_matricula;
+    fflush(stdin);
 
     try
     {
-        matricula.setValor(string(campo_matricula));
+        matricula_nova.setValor(string(campo_matricula));
     }
     catch(invalid_argument &exp)
     {
         cout << texto2 << endl;
         getchar();
-        return;
+        fflush(stdin);
+        return false;
     }
-
-    if(cntrServicoParticipante->descadastrarParticipante(matricula))
-    {
-        cout << texto3 << endl;
+    if(matricula_nova.getValor() == matricula.getValor()){
+        if(cntrServicoParticipante->descadastrarParticipante(matricula)){
+            cout << texto3 << endl;
+            getchar();
+            fflush(stdin);
+            return false;
+        }
+    }
+    else{
+        cout << texto5 << endl;
         getchar();
-        return;
+        fflush(stdin);
+        return false;
     }
-
     cout << texto4 << endl;
     getchar();
-
-    return;
+    fflush(stdin);
+    return true;
 
 }
 
@@ -537,11 +566,16 @@ void CntrApresentacaoSala::incluirSala()  //preciso pegar os dados com controlad
 
     cout << texto1 << endl;                                                    // Imprime nome do campo.
     cout << texto2 << " ";                                                                     // Imprime nome do campo.
-    cin >> campo1;                                                                             // Lê valor do campo.
+    cin >> campo1;                                                                            // Lê valor do campo.
+    fflush(stdin);
+
     cout << texto3 << " ";                                                                     // Imprime nome do campo.
-    cin >> campo2;                                                                             // Lê valor do campo.
+    cin.getline(campo2,sizeof(campo2));
+    fflush(stdin);                                                                           // Lê valor do campo.
+
     cout << texto4 << " ";                                                                     // Imprime nome do campo.
     cin >> campo3;                                                                             // Lê valor do campo.
+    fflush(stdin);
 
     try
     {
@@ -555,6 +589,7 @@ void CntrApresentacaoSala::incluirSala()  //preciso pegar os dados com controlad
         // Desabilita eco.
         getchar();                                                                                // Leitura de caracter digitado.
         // Habilita eco.
+        fflush(stdin);
         return;
     }
 
@@ -573,14 +608,14 @@ void CntrApresentacaoSala::incluirSala()  //preciso pegar os dados com controlad
         cout << texto11 << endl;                                                // Informa sucesso.
 
         getchar();
-
+        fflush(stdin);
         return;
     }
 
     cout << texto12 << endl;                                                        // Informa falha.
 
     getchar();
-
+    fflush(stdin);
 
     return;
 }
@@ -613,6 +648,7 @@ void CntrApresentacaoSala::excluirSala()  //preciso pegar os dados com controlad
 
     cout << texto1 << " ";                                                    // Imprime nome do campo.                                                                   // Imprime nome do campo.
     cin >> campo1;
+    fflush(stdin);
     // L� valor do campo.
 
     try
@@ -625,6 +661,7 @@ void CntrApresentacaoSala::excluirSala()  //preciso pegar os dados com controlad
         // Desabilita eco.
         getchar();                                                                                // Leitura de caracter digitado.
         // Habilita eco.
+        fflush(stdin);
         return;
     }
 
@@ -635,14 +672,14 @@ void CntrApresentacaoSala::excluirSala()  //preciso pegar os dados com controlad
         cout << texto11 << endl;                                              // Informa sucesso.
 
         getchar();
-
+        fflush(stdin);
         return;
     }
 
     cout << texto12 << endl;                                                       // Informa falha.
 
     getchar();
-
+    fflush(stdin);
 
     return;
 }
@@ -680,11 +717,16 @@ void CntrApresentacaoSala::editarSala()  //preciso pegar os dados com controlado
 
     cout << texto1 << endl;                                                     // Imprime nome do campo.
     cout << texto2 << " ";                                                // Imprime nome do campo.
-    cin >> campo1;                                                                             // L� valor do campo.
+    cin >> campo1;                                                                           // L� valor do campo.
+    fflush(stdin);
+
     cout << texto3 << " ";                                                // Imprime nome do campo.
-    cin >> campo2;
+    cin.getline(campo2,sizeof(campo2));
+    fflush(stdin);
+
     cout << texto4 << " ";                                                // Imprime nome do campo.
     cin >> campo3;
+    fflush(stdin);
 
     try
     {
@@ -698,6 +740,7 @@ void CntrApresentacaoSala::editarSala()  //preciso pegar os dados com controlado
         // Desabilita eco.
         getchar();                                                                                // Leitura de caracter digitado.
         // Habilita eco.
+        fflush(stdin);
         return;
     }
 
@@ -716,14 +759,14 @@ void CntrApresentacaoSala::editarSala()  //preciso pegar os dados com controlado
         cout << texto11 << endl;                                               // Informa sucesso.
 
         getchar();
-
+        fflush(stdin);
         return;
     }
 
     cout << texto12 << endl;                                                       // Informa falha.
 
     getchar();
-
+    fflush(stdin);
 
     return;
 }
@@ -749,6 +792,7 @@ void CntrApresentacaoSala::visualizarSala()  //preciso pegar os dados com contro
 
     cout << texto1 << " ";                                                     // Imprime nome do campo.
     cin >> campo1;                                                                             // L� valor do campo.
+    fflush(stdin);
 
     try
     {
@@ -760,6 +804,7 @@ void CntrApresentacaoSala::visualizarSala()  //preciso pegar os dados com contro
         // Desabilita eco.
         getchar();                                                                                // Leitura de caracter digitado.
         // Habilita eco.
+        fflush(stdin);
         return;
     }
 
@@ -769,6 +814,7 @@ void CntrApresentacaoSala::visualizarSala()  //preciso pegar os dados com contro
 
     cout << texto3 << endl;                                               // Informa sucesso.
     getchar();
+    fflush(stdin);
     return;
 }
 
@@ -803,7 +849,7 @@ void CntrApresentacaoSala::executar()
         cout << texto3 << endl;                                            // Imprime nome do campo.
 
         campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
-
+        fflush(stdin);
 
         switch(campo)
         {
@@ -859,7 +905,7 @@ void CntrApresentacaoSala::executar(Matricula)
         cout << texto7 << endl;                                            // Imprime nome do campo.
 
         campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
-
+        fflush(stdin);
 
         switch(campo)
         {
@@ -928,10 +974,15 @@ void CntrApresentacaoSessao::incluirSessao()  //preciso pegar os dados com contr
     cout << texto1 << endl;                                                     // Imprime nome do campo.
     cout << texto2 << " ";                                                 // Imprime nome do campo.
     cin >> campo1;                                                                             // L� valor do campo.
+    fflush(stdin);
+
     cout << texto3 << " ";                                                 // Imprime nome do campo.
     cin >> campo2;
+    fflush(stdin);
+
     cout << texto4 << " ";                                                 // Imprime nome do campo.
     cin >> campo3;
+    fflush(stdin);
 
     try
     {
@@ -945,6 +996,7 @@ void CntrApresentacaoSessao::incluirSessao()  //preciso pegar os dados com contr
         // Desabilita eco.
         getchar();                                                                                // Leitura de caracter digitado.
         // Habilita eco.
+        fflush(stdin);
         return;
     }
 
@@ -963,14 +1015,14 @@ void CntrApresentacaoSessao::incluirSessao()  //preciso pegar os dados com contr
         cout << texto11 << endl;                                                // Informa sucesso.
 
         getchar();
-
+        fflush(stdin);
         return;
     }
 
     cout << texto12 << endl;                                                       // Informa falha.
 
     getchar();
-
+    fflush(stdin);
 
     return;
 }
@@ -1003,6 +1055,7 @@ void CntrApresentacaoSessao::excluirSessao()  //preciso pegar os dados com contr
 
     cout << texto1 << " ";                                                      // Imprime nome do campo.
     cin >> campo1;                                                                             // L� valor do campo.
+    fflush(stdin);
 
     try
     {
@@ -1014,6 +1067,7 @@ void CntrApresentacaoSessao::excluirSessao()  //preciso pegar os dados com contr
         // Desabilita eco.
         getchar();                                                                                // Leitura de caracter digitado.
         // Habilita eco.
+        fflush(stdin);
         return;
     }
 
@@ -1024,14 +1078,14 @@ void CntrApresentacaoSessao::excluirSessao()  //preciso pegar os dados com contr
         cout << texto11 << endl;                                                // Informa sucesso.
 
         getchar();
-
+        fflush(stdin);
         return;
     }
 
     cout << texto12 << endl;                                                        // Informa falha.
 
     getchar();
-
+    fflush(stdin);
 
     return;
 }
@@ -1070,10 +1124,15 @@ void CntrApresentacaoSessao::editarSessao()  //preciso pegar os dados com contro
     cout << texto1 << endl;                                                     // Imprime nome do campo.
     cout << texto2 << " ";                                                  // Imprime nome do campo.
     cin >> campo1;                                                                             // L� valor do campo.
+    fflush(stdin);
+
     cout << texto3 << " ";                                                  // Imprime nome do campo.
     cin >> campo2;
+    fflush(stdin);
+
     cout << texto4 << " ";                                                  // Imprime nome do campo.
     cin >> campo3;
+    fflush(stdin);
 
     try
     {
@@ -1087,6 +1146,7 @@ void CntrApresentacaoSessao::editarSessao()  //preciso pegar os dados com contro
         // Desabilita eco.
         getchar();                                                                                // Leitura de caracter digitado.
         // Habilita eco.
+        fflush(stdin);
         return;
     }
 
@@ -1105,14 +1165,14 @@ void CntrApresentacaoSessao::editarSessao()  //preciso pegar os dados com contro
         cout << texto11 << endl;                                               // Informa sucesso.
 
         getchar();
-
+        fflush(stdin);
         return;
     }
 
     cout << texto12 << endl;                                                       // Informa falha.
 
     getchar();
-
+    fflush(stdin);
 
     return;
 }
@@ -1145,6 +1205,7 @@ void CntrApresentacaoSessao::visualizarSessao()  //preciso pegar os dados com co
 
     cout << texto1 << " ";                                                     // Imprime nome do campo.
     cin >> campo1;                                                                             // L� valor do campo.
+    fflush(stdin);
 
     try
     {
@@ -1156,6 +1217,7 @@ void CntrApresentacaoSessao::visualizarSessao()  //preciso pegar os dados com co
         // Desabilita eco.
         getchar();                                                                                // Leitura de caracter digitado.
         // Habilita eco.
+        fflush(stdin);
         return;
     }
 
@@ -1166,14 +1228,14 @@ void CntrApresentacaoSessao::visualizarSessao()  //preciso pegar os dados com co
         cout << texto11 << endl;                                               // Informa sucesso.
 
         getchar();
-
+        fflush(stdin);
         return;
     }
 
     cout << texto12 << endl;                                                       // Informa falha.
 
     getchar();
-
+    fflush(stdin);
 
     return;
 }
@@ -1209,7 +1271,7 @@ void CntrApresentacaoSessao::executar()
         cout << texto3 << endl;                                            // Imprime nome do campo.
 
         campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
-
+        fflush(stdin);
 
         switch(campo)
         {
@@ -1265,7 +1327,7 @@ void CntrApresentacaoSessao::executar(Matricula)
         cout << texto7 << endl;                                             // Imprime nome do campo.
 
         campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
-
+        fflush(stdin);
 
         switch(campo)
         {
@@ -1335,12 +1397,19 @@ void CntrApresentacaoPeca::incluirPeca()  //preciso pegar os dados com controlad
     cout << texto1 << endl;                                                      // Imprime nome do campo.
     cout << texto2 << " ";                                                  // Imprime nome do campo.
     cin >> campo1;                                                                             // L� valor do campo.
+    fflush(stdin);
+
     cout << texto3 << " ";                                                  // Imprime nome do campo.
-    cin >> campo2;                                                                              // L� valor do campo.
+    cin.getline(campo2,sizeof(campo2));
+    fflush(stdin);                                                                             // L� valor do campo.
+
     cout << texto4 << " ";                                                  // Imprime nome do campo.
     cin >> campo3;
+    fflush(stdin);
+
     cout << texto5 << " ";                                                  // Imprime nome do campo.
     cin >> campo4;
+    fflush(stdin);
 
     try
     {
@@ -1355,6 +1424,7 @@ void CntrApresentacaoPeca::incluirPeca()  //preciso pegar os dados com controlad
         // Desabilita eco.
         getchar();                                                                                // Leitura de caracter digitado.
         // Habilita eco.
+        fflush(stdin);
         return;
     }
 
@@ -1374,14 +1444,14 @@ void CntrApresentacaoPeca::incluirPeca()  //preciso pegar os dados com controlad
         cout << texto11 << endl;                                               // Informa sucesso.
 
         getchar();
-
+        fflush(stdin);
         return;
     }
 
     cout << texto12 << endl;                                                       // Informa falha.
 
     getchar();
-
+    fflush(stdin);
 
     return;
 }
@@ -1414,6 +1484,7 @@ void CntrApresentacaoPeca::excluirPeca()  //preciso pegar os dados com controlad
 
     cout << texto1 << " ";                                                     // Imprime nome do campo.
     cin >> campo1;                                                                             // L� valor do campo.
+    fflush(stdin);
 
     try
     {
@@ -1425,6 +1496,7 @@ void CntrApresentacaoPeca::excluirPeca()  //preciso pegar os dados com controlad
         // Desabilita eco.
         getchar();                                                                                // Leitura de caracter digitado.
         // Habilita eco.
+        fflush(stdin);
         return;
     }
 
@@ -1435,14 +1507,14 @@ void CntrApresentacaoPeca::excluirPeca()  //preciso pegar os dados com controlad
         cout << texto11 << endl;                                               // Informa sucesso.
 
         getchar();
-
+        fflush(stdin);
         return;
     }
 
     cout << texto12 << endl;                                                       // Informa falha.
 
     getchar();
-
+    fflush(stdin);
 
     return;
 }
@@ -1483,12 +1555,19 @@ void CntrApresentacaoPeca::editarPeca()  //preciso pegar os dados com controlado
     cout << texto1 << endl;                                                     // Imprime nome do campo.
     cout << texto2 << " ";                                                 // Imprime nome do campo.
     cin >> campo1;                                                                             // L� valor do campo.
+    fflush(stdin);
+
     cout << texto3 << " ";                                                 // Imprime nome do campo.
-    cin >> campo2;
+    cin.getline(campo2,sizeof(campo2));
+    fflush(stdin);
+
     cout << texto4 << " ";                                                 // Imprime nome do campo.
     cin >> campo3;                                                                             // L� valor do campo.
+    fflush(stdin);
+
     cout << texto5 << " ";                                                 // Imprime nome do campo.
     cin >> campo4;
+    fflush(stdin);
 
     try
     {
@@ -1503,6 +1582,7 @@ void CntrApresentacaoPeca::editarPeca()  //preciso pegar os dados com controlado
         // Desabilita eco.
         getchar();                                                                                // Leitura de caracter digitado.
         // Habilita eco.
+        fflush(stdin);
         return;
     }
 
@@ -1522,14 +1602,14 @@ void CntrApresentacaoPeca::editarPeca()  //preciso pegar os dados com controlado
         cout << texto11 << endl;                                               // Informa sucesso.
 
         getchar();
-
+        fflush(stdin);
         return;
     }
 
     cout << texto12 << endl;                                                       // Informa falha.
 
     getchar();
-
+    fflush(stdin);
 
     return;
 }
@@ -1562,6 +1642,7 @@ void CntrApresentacaoPeca::visualizarPeca()  //preciso pegar os dados com contro
 
     cout << texto1 << " ";                                                    // Imprime nome do campo.
     cin >> campo1;                                                                             // L� valor do campo.
+    fflush(stdin);
 
     try
     {
@@ -1573,6 +1654,7 @@ void CntrApresentacaoPeca::visualizarPeca()  //preciso pegar os dados com contro
         // Desabilita eco.
         getchar();                                                                                // Leitura de caracter digitado.
         // Habilita eco.
+        fflush(stdin);
         return;
     }
 
@@ -1583,14 +1665,14 @@ void CntrApresentacaoPeca::visualizarPeca()  //preciso pegar os dados com contro
         cout << texto11 << endl;                                               // Informa sucesso.
 
         getchar();
-
+        fflush(stdin);
         return;
     }
 
     cout << texto12 << endl;                                                       // Informa falha.
 
     getchar();
-
+    fflush(stdin);
 
     return;
 }
@@ -1626,7 +1708,7 @@ void CntrApresentacaoPeca::executar()
         cout << texto3 << endl;                                             // Imprime nome do campo.
 
         campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
-
+        fflush(stdin);
 
         switch(campo)
         {
@@ -1682,7 +1764,7 @@ void CntrApresentacaoPeca::executar(Matricula)
         cout << texto7 << endl;                                            // Imprime nome do campo.
 
         campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
-
+        fflush(stdin);
 
         switch(campo)
         {

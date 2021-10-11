@@ -32,7 +32,7 @@ public:
 class IApresentacaoParticipante
 {
 public:
-    virtual void executar(Matricula) = 0;
+    virtual bool executar(Matricula) = 0;
     virtual void executar() = 0;
     virtual void setCntrServicoParticipante(IServicoParticipante*) = 0;
     virtual ~IApresentacaoParticipante() {}

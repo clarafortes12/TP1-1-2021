@@ -4,9 +4,11 @@
 
 #include "sqlite3.h"
 #include "Dominios.h"
+#include "Entidades.h"
 #include "Interfaces.h"
 #include "controladorasapresentacao.h"
 #include "controladorasservico.h"
+#include "UnidadePersistencia.h"
 
 using namespace std;
 

@@ -4,7 +4,7 @@
 	<iostream>
 	<string>
 
-1633815313 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\dominios.h
+1633961771 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\dominios.h
 	<stdexcept>
 
 1633814767 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\entidades.cpp
@@ -41,7 +41,7 @@
 
 1633710481 D
 
-1633815306 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\interfaces.h
+1633975483 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\interfaces.h
 	"Dominios.h"
 	"Entidades.h"
 
@@ -66,9 +66,11 @@
 	"Entidades.h"
 	"Interfaces.h"
 
-1633818719 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.h
+1633975995 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.h
+	<conio.h>
 	<iostream>
 	<string.h>
+	<stdio.h>
 	"Dominios.h"
 	"Entidades.h"
 	"Interfaces.h"
@@ -268,15 +270,10 @@
 	<wchar.h>
 	<stdbool.h>
 
-1633816293 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.cpp
+1633974832 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.cpp
 	"controladorasapresentacao.h"
-	<iostream>
-	<string.h>
-	"Dominios.h"
-	"Entidades.h"
-	"Interfaces.h"
 
-1633818831 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasservico.cpp
+1633966723 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasservico.cpp
 	"controladorasservico.h"
 
 1633815295 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasservico.h
@@ -286,7 +283,7 @@
 	"Interfaces.h"
 	"UnidadePersistencia.h"
 
-1633814767 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\unidadepersistencia.h
+1633959803 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\unidadepersistencia.h
 	"Dominios.h"
 	"Entidades.h"
 	<list>
@@ -299,15 +296,17 @@
 1633814768 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\sqlite3.h
 	<stdarg.h>
 
-1633815234 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\main.cpp
+1633963771 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\main.cpp
 	<string.h>
 	<stdexcept>
 	<iostream>
 	"sqlite3.h"
 	"Dominios.h"
+	"Entidades.h"
 	"Interfaces.h"
 	"controladorasapresentacao.h"
 	"controladorasservico.h"
+	"UnidadePersistencia.h"
 
 1633705953 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\curses.h
 	<stdarg.h>
@@ -316,7 +315,7 @@
 	<wchar.h>
 	<stdbool.h>
 
-1633814767 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\unidadepersistencia.cpp
+1633974409 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\unidadepersistencia.cpp
 	"UnidadePersistencia.h"
 
 1624042341 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\sqlite3.c
@@ -443,7 +442,7 @@
 1633953799 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\unidadepersistencia.cpp
 	"UnidadePersistencia.h"
 
-1633815399 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\sqlite3.c
+1633961839 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\sqlite3.c
 	"config.h"
 	<vxWorks.h>
 	<pthread.h>

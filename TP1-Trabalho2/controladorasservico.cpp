@@ -93,7 +93,6 @@ bool CntrServicoParticipante::consultarParticipante(Matricula matricula){
     return false;
 }
 bool CntrServicoParticipante::cadastrarParticipante(Participante participante){
-    cout << endl << "Cadastrar Participante";
     ComandoCadastrarParticipante comando(participante);
 
     try
@@ -301,7 +300,6 @@ bool CntrServicoPeca::listarPeca(){
     {
         getchar();
         pecas = comando.getResultado();
-
         cout << "Resultados obtidos:" << endl << endl;
 
         if (pecas.empty()){

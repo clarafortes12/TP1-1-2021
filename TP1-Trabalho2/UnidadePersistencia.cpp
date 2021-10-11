@@ -110,7 +110,9 @@ ComandoCadastrarSessao::ComandoCadastrarSessao(Sessao sessao)
     comandoSQL = "INSERT INTO sessao VALUES (";
     comandoSQL += "'" + sessao.getCodigo().getValor() + "', ";
     comandoSQL += "'" + sessao.getHorario().getValor() + "', ";
-    comandoSQL += "'" + sessao.getData().getValor() + "')";
+    comandoSQL += "'" + sessao.getData().getValor() + "',";
+    comandoSQL += "NULL,";
+    comandoSQL += "NULL)";
 }
 
 ComandoPesquisarSessao::ComandoPesquisarSessao(Codigo codigo)
@@ -204,6 +206,18 @@ list<Sessao> ComandoListarSessao::getResultado()
         listaResultado.pop_back();
         resultado_sessao.setHorario(Horario(resultado.getValorColuna()));
 
+        // Remover codigo_sala;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+
+        // Remover codigo_peca;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+
         sessoes.push_back(resultado_sessao);
     }
 
@@ -224,7 +238,7 @@ ComandoCadastrarPeca::ComandoCadastrarPeca(Peca peca)
 
 ComandoPesquisarPeca::ComandoPesquisarPeca(Codigo codigo)
 {
-    comandoSQL = "SELECT * FROM Peca WHERE codigo = '";
+    comandoSQL = "SELECT * FROM peca WHERE codigo = '";
     comandoSQL += codigo.getValor()+"'";
 }
 
@@ -269,7 +283,7 @@ Peca ComandoPesquisarPeca::getResultado()
 
 ComandoAtualizarPeca::ComandoAtualizarPeca(Peca peca)
 {
-    comandoSQL = "UPDATE Peca ";
+    comandoSQL = "UPDATE peca ";
     comandoSQL += "SET nome = '" + peca.getNome().getValor();
     comandoSQL += "', tipo = '" + peca.getTipo().getValor();
     comandoSQL += "', classificacao = '" + peca.getClassificacao().getValor();
@@ -281,7 +295,7 @@ ComandoAtualizarPeca::ComandoAtualizarPeca(Peca peca)
 
 ComandoRemoverPeca::ComandoRemoverPeca(Codigo codigo)
 {
-    comandoSQL = "DELETE FROM Peca WHERE codigo = '";
+    comandoSQL = "DELETE FROM peca WHERE codigo = '";
     comandoSQL += codigo.getValor()+"'";
 }
 
@@ -290,7 +304,7 @@ ComandoRemoverPeca::ComandoRemoverPeca(Codigo codigo)
 
 ComandoListarPeca::ComandoListarPeca()
 {
-    comandoSQL = "SELECT * FROM Peca";
+    comandoSQL = "SELECT * FROM peca";
 }
 
 list<Peca> ComandoListarPeca::getResultado()
@@ -313,24 +327,20 @@ list<Peca> ComandoListarPeca::getResultado()
         resultado = listaResultado.back();
         listaResultado.pop_back();
         resultado_peca.setNome(Nome(resultado.getValorColuna()));
-
         // Remover tipo;
         if (listaResultado.empty())
             throw EErroPersistencia("Lista de resultados vazia.");
         resultado = listaResultado.back();
         listaResultado.pop_back();
         resultado_peca.setTipo(Tipo(resultado.getValorColuna()));
-
         // Remover classificacao;
         if (listaResultado.empty())
             throw EErroPersistencia("Lista de resultados vazia.");
         resultado = listaResultado.back();
         listaResultado.pop_back();
         resultado_peca.setClassificacao(Classificacao(resultado.getValorColuna()));
-
         pecas.push_back(resultado_peca);
     }
-
     return pecas;
 }
 
@@ -515,6 +525,7 @@ Participante ComandoPesquisarParticipante::getResultado()
 
 ComandoCadastrarParticipante::ComandoCadastrarParticipante(Participante participante)
 {
+    cout << "Comando executar cadastro" << endl;
     comandoSQL = "INSERT INTO participante VALUES (";
     comandoSQL += "'" + participante.getMatricula().getValor() + "', ";
     comandoSQL += "'" + participante.getNome().getValor() + "', ";
@@ -522,7 +533,9 @@ ComandoCadastrarParticipante::ComandoCadastrarParticipante(Participante particip
     comandoSQL += "'" + participante.getEmail().getValor() + "', ";
     comandoSQL += "'" + participante.getTelefone().getValor() + "', ";
     comandoSQL += "'" + participante.getSenha().getValor() + "', ";
-    comandoSQL += "'" + participante.getCargo().getValor() + "')";
+    comandoSQL += "'" + participante.getCargo().getValor() + "',";
+    comandoSQL += "NULL)";
+    cout << "Fim Comando executar cadastro" << endl;
 }
 
 //---------------------------------------------------------------------------

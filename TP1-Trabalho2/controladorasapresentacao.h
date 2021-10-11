@@ -1,8 +1,10 @@
 #ifndef CONTROLADORASAPRESENTACAO_H_INCLUDED
 #define CONTROLADORASAPRESENTACAO_H_INCLUDED
+
+#include <conio.h>
 #include <iostream>
 #include <string.h>
-
+#include <stdio.h>
 
 #include "Dominios.h"
 #include "Entidades.h"
@@ -82,9 +84,9 @@ private:
     void cadastrarParticipante();
     void consultarParticipante(Matricula);
     void editarParticipante(Matricula);
-    void descadastrarParticipante();
+    bool descadastrarParticipante(Matricula);
 public:
-    void executar(Matricula);
+    bool executar(Matricula);
     void executar();
     void setCntrServicoParticipante(IServicoParticipante*);
 };
