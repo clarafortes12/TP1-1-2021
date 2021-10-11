@@ -118,7 +118,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declara��o da classe ComandoRemoverSala.
+// Declara��o da classe ComandoListarSala.
 
 class ComandoListarSala:public ComandoSQL
 {
@@ -163,6 +163,16 @@ class ComandoRemoverSessao:public ComandoSQL
 {
 public:
     ComandoRemoverSessao(Codigo);
+};
+
+//---------------------------------------------------------------------------
+// Declara��o da classe ComandoListarSessao.
+
+class ComandoListarSessao:public ComandoSQL
+{
+public:
+    ComandoListarSessao();
+    list<Sessao> getResultado();
 };
 
 //---------------------------------------------------------------------------

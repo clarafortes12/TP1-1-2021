@@ -169,6 +169,51 @@ ComandoRemoverSessao::ComandoRemoverSessao(Codigo codigo)
 }
 
 //---------------------------------------------------------------------------
+// Implementa��es de m�todos da classe ComandoListarSessao.
+
+ComandoListarSessao::ComandoListarSessao()
+{
+    //comandoSQL = "SELECT codigo, nome FROM sala ";
+    comandoSQL = "SELECT * FROM sessao";
+}
+
+list<Sessao> ComandoListarSessao::getResultado()
+{
+    ElementoResultado resultado;
+    Sessao resultado_sessao;
+    // por ora vai voltar as salas com todos os campos msm, pq n sei como retornaria so codigo e nome, teria de criar uma nova entidade
+    list<Sessao> sessoes;
+
+    while(!listaResultado.empty()){
+        // Remover codigo;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        resultado_sessao.setCodigo(Codigo(resultado.getValorColuna()));
+
+        // Remover nome;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        resultado_sessao.setData(Data(resultado.getValorColuna()));
+
+        // Remover capacidade;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        resultado_sessao.setHorario(Horario(resultado.getValorColuna()));
+
+        sessoes.push_back(resultado_sessao);
+    }
+
+    return sessoes;
+}
+
+
+//---------------------------------------------------------------------------
 // Implementa��es de m�todos da classe ComandoPesquisarPeca.
 ComandoCadastrarPeca::ComandoCadastrarPeca(Peca peca)
 {

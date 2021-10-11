@@ -146,7 +146,56 @@ bool CntrServicoParticipante::editarParticipante(Participante participante){
 
 // Assim que der certo Sala, da pra so adaptar para Sessao e Peca
 bool CntrServicoSessao::listarSessao(){
-    return true;
+    list<Sessao> sessoes;
+    Sessao sessao;
+
+    ComandoListarSessao comando;
+
+    try
+    {
+        comando.executar();
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";;
+        cout << "Digite algo para continuar : ";
+        getchar();
+        return false;
+    }
+
+    try
+    {
+        getchar();
+        sessoes = comando.getResultado();
+
+        cout << "Resultados obtidos:" << endl << endl;
+
+        if (sessoes.empty()){
+            cout << endl << "Retorno vazio de sessoes.";;
+            cout << "Digite algo para continuar : ";
+            getchar();
+            return false;
+        }
+
+        while(!sessoes.empty()){
+            sessao = sessoes.back();
+            cout << "Codigo : " << sessao.getCodigo().getValor() << endl;
+            cout << "Data : " << sessao.getData().getValor() << endl << endl;
+            sessoes.pop_back();
+        }
+
+        cout << "Essas sao as sessoes cadastradas." << endl;
+        cout << "Digite algo para continuar : ";
+        getchar();
+        return true;
+    }
+    catch(EErroPersistencia exp)
+    {
+        cout << endl << exp.what();
+        cout << endl << endl << "Digite algo para continuar.";
+        getchar();
+        return false;
+    }
 }
 bool CntrServicoSessao::visualizarSessao(Codigo codigoEntrada){
     Sessao sessao;
@@ -317,7 +366,6 @@ bool CntrServicoPeca::excluirPeca(Codigo codigoEntrada){
 }
 
 bool CntrServicoSala::listarSala(){
-    //return true;
 
     list<Sala> salas;
     Sala sala;
@@ -344,7 +392,7 @@ bool CntrServicoSala::listarSala(){
         cout << "Resultados obtidos:" << endl << endl;
 
         if (salas.empty()){
-            cout << endl << "Erro - retorno vazio de salas.";;
+            cout << endl << "Retorno vazio de salas.";;
             cout << "Digite algo para continuar : ";
             getchar();
             return false;
