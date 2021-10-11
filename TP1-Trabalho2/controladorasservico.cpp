@@ -7,18 +7,21 @@ void CntrInteracao::notificarErroAcesso(){
     cout << endl << "Erro no acesso ao banco de dados."<< endl << endl;
     cout << "Digite algo para continuar :";
     getchar();
+    fflush(stdin);
 }
 
 void CntrInteracao::notificarErroDigitacao(){
     cout << endl << "Dado informado incorretamente." << endl << endl;
     cout << "Digite algo para continuar :";
     getchar();
+    fflush(stdin);
 }
 
 void CntrInteracao::notificarSucessoOperacao(){
     cout << endl << "Operacao efetuada com sucesso." << endl << endl;
     cout << "Digite algo para continuar :";
     getchar();
+    fflush(stdin);
 }
 
 
@@ -159,12 +162,12 @@ bool CntrServicoSessao::listarSessao(){
         cout << endl << "Erro no acesso ao banco de dados.";;
         cout << "Digite algo para continuar : ";
         getchar();
+        fflush(stdin);
         return false;
     }
 
     try
     {
-        getchar();
         sessoes = comando.getResultado();
 
         cout << "Resultados obtidos:" << endl << endl;
@@ -173,6 +176,7 @@ bool CntrServicoSessao::listarSessao(){
             cout << endl << "Retorno vazio de sessoes.";;
             cout << "Digite algo para continuar : ";
             getchar();
+            fflush(stdin);
             return false;
         }
 
@@ -186,6 +190,7 @@ bool CntrServicoSessao::listarSessao(){
         cout << "Essas sao as sessoes cadastradas." << endl;
         cout << "Digite algo para continuar : ";
         getchar();
+        fflush(stdin);
         return true;
     }
     catch(EErroPersistencia exp)
@@ -215,15 +220,12 @@ bool CntrServicoSessao::visualizarSessao(Codigo codigoEntrada){
 
     try
     {
-        getchar();
         sessao = comando.getResultado();
 
         cout << endl << "Resultados obtidos." << endl << endl;
         cout << "Codigo  : " << sessao.getCodigo().getValor() << endl;
         cout << "Data    : " << sessao.getData().getValor() << endl;
-        cout << "Horário : " << sessao.getHorario().getValor() << endl;
-        cout << "Digite algo para continuar : ";
-        getchar();
+        cout << "Horario : " << sessao.getHorario().getValor() << endl;
         return true;
     }
     catch(EErroPersistencia exp)
@@ -293,12 +295,12 @@ bool CntrServicoPeca::listarPeca(){
         cout << endl << "Erro no acesso ao banco de dados.";;
         cout << "Digite algo para continuar : ";
         getchar();
+        fflush(stdin);
         return false;
     }
 
     try
     {
-        getchar();
         pecas = comando.getResultado();
         cout << "Resultados obtidos:" << endl << endl;
 
@@ -306,6 +308,7 @@ bool CntrServicoPeca::listarPeca(){
             cout << endl << "Retorno vazio de pecas.";;
             cout << "Digite algo para continuar : ";
             getchar();
+            fflush(stdin);
             return false;
         }
 
@@ -319,6 +322,7 @@ bool CntrServicoPeca::listarPeca(){
         cout << "Essas sao as pecas cadastradas." << endl;
         cout << "Digite algo para continuar : ";
         getchar();
+        fflush(stdin);
         return true;
     }
     catch(EErroPersistencia exp)
@@ -326,6 +330,7 @@ bool CntrServicoPeca::listarPeca(){
         cout << endl << exp.what();
         cout << endl << endl << "Digite algo para continuar.";
         getchar();
+        fflush(stdin);
         return false;
     }
 }
@@ -341,30 +346,23 @@ bool CntrServicoPeca::visualizarPeca(Codigo codigoEntrada){
     catch (EErroPersistencia exp)
     {
         cout << endl << "Erro no acesso ao banco de dados.";;
-        cout << "Digite algo para continuar : ";
-        getchar();
         return false;
     }
 
     try
     {
-        getchar();
         peca = comando.getResultado();
 
         cout << endl << "Resultados obtidos." << endl << endl;
         cout << "Codigo : " << peca.getCodigo().getValor() << endl;
         cout << "Nome : " << peca.getNome().getValor() << endl;
         cout << "Tipo : " << peca.getTipo().getValor() << endl;
-        cout << "Capacidade : " << peca.getClassificacao().getValor() << endl;
-        cout << "Digite algo para continuar : ";
-        getchar();
+        cout << "Classificacao : " << peca.getClassificacao().getValor() << endl;
         return true;
     }
     catch(EErroPersistencia exp)
     {
         cout << endl << exp.what();
-        cout << endl << endl << "Digite algo para continuar.";
-        getchar();
         return false;
     }
 }
@@ -428,12 +426,12 @@ bool CntrServicoSala::listarSala(){
         cout << endl << "Erro no acesso ao banco de dados.";;
         cout << "Digite algo para continuar : ";
         getchar();
+        fflush(stdin);
         return false;
     }
 
     try
     {
-        getchar();
         salas = comando.getResultado();
 
         cout << "Resultados obtidos:" << endl << endl;
@@ -442,6 +440,7 @@ bool CntrServicoSala::listarSala(){
             cout << endl << "Retorno vazio de salas.";;
             cout << "Digite algo para continuar : ";
             getchar();
+            fflush(stdin);
             return false;
         }
 
@@ -455,6 +454,7 @@ bool CntrServicoSala::listarSala(){
         cout << "Essas sao as salas cadastradas." << endl;
         cout << "Digite algo para continuar : ";
         getchar();
+        fflush(stdin);
         return true;
     }
     catch(EErroPersistencia exp)
@@ -462,6 +462,7 @@ bool CntrServicoSala::listarSala(){
         cout << endl << exp.what();
         cout << endl << endl << "Digite algo para continuar.";
         getchar();
+        fflush(stdin);
         return false;
     }
 }
@@ -485,15 +486,12 @@ bool CntrServicoSala::visualizarSala(Codigo codigoEntrada){
 
     try
     {
-        getchar();
         sala = comando.getResultado();
 
         cout << endl << "Resultados obtidos:" << endl << endl;
         cout << "Codigo : " << sala.getCodigo().getValor() << endl;
         cout << "Nome : " << sala.getNome().getValor() << endl;
         cout << "Capacidade : " << sala.getCapacidade().getValor() << endl;
-        cout << "Digite algo para continuar : ";
-        getchar();
         return true;
     }
     catch(EErroPersistencia exp)

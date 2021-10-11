@@ -109,8 +109,8 @@ ComandoCadastrarSessao::ComandoCadastrarSessao(Sessao sessao)
 {
     comandoSQL = "INSERT INTO sessao VALUES (";
     comandoSQL += "'" + sessao.getCodigo().getValor() + "', ";
-    comandoSQL += "'" + sessao.getHorario().getValor() + "', ";
-    comandoSQL += "'" + sessao.getData().getValor() + "',";
+    comandoSQL += "'" + sessao.getData().getValor() + "', ";
+    comandoSQL += "'" + sessao.getHorario().getValor() + "',";
     comandoSQL += "NULL,";
     comandoSQL += "NULL)";
 }

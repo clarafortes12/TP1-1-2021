@@ -463,7 +463,7 @@ void Classificacao::setValor(string idade)
 void Tipo::validar(string genero)
 {
     if ((genero!="auto") && (genero!="comedia") && (genero!="drama") && (genero!="farsa") && (genero!="melodrama")
-            && (genero!="monologo") && (genero!="musical")&& (genero!="opera")&& (genero!="revista"))
+            && (genero!="monologo") && (genero!="musical") && (genero!="opera") && (genero!="revista"))
         throw invalid_argument("Argumento invalido.");
 }
 

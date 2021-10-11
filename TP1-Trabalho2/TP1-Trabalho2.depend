@@ -193,17 +193,14 @@
 	"controladorasapresentacao.h"
 	"controladorasservico.h"
 
-1633830433 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.cpp
+1633988556 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.cpp
 	"controladorasapresentacao.h"
-	<iostream>
-	<string.h>
-	"Dominios.h"
-	"Entidades.h"
-	"Interfaces.h"
 
-1633819541 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.h
+1633978104 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.h
+	<conio.h>
 	<iostream>
 	<string.h>
+	<stdio.h>
 	"Dominios.h"
 	"Entidades.h"
 	"Interfaces.h"
@@ -215,11 +212,11 @@
 	"Dominios.h"
 	<string>
 
-1633819540 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\interfaces.h
+1633978104 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\interfaces.h
 	"Dominios.h"
 	"Entidades.h"
 
-1633750516 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\dominios.cpp
+1633985320 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\dominios.cpp
 	"Dominios.h"
 	<iostream>
 	<string>
@@ -227,10 +224,10 @@
 1633743198 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\entidades.cpp
 	"Entidades.h"
 
-1633825618 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\unidadepersistencia.cpp
+1633988128 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\unidadepersistencia.cpp
 	"UnidadePersistencia.h"
 
-1633825816 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\unidadepersistencia.h
+1633962143 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\unidadepersistencia.h
 	"Dominios.h"
 	"Entidades.h"
 	<list>
@@ -243,25 +240,30 @@
 1633819541 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\sqlite3.h
 	<stdarg.h>
 
-1633825765 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\controladorasservico.cpp
+1633988514 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\controladorasservico.cpp
 	"controladorasservico.h"
 
-1633819541 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\controladorasservico.h
+1633979331 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\controladorasservico.h
+	<conio.h>
 	<iostream>
+	<string.h>
+	<stdio.h>
 	"Dominios.h"
 	"Entidades.h"
 	"Interfaces.h"
 	"UnidadePersistencia.h"
 
-1633819541 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\main.cpp
+1633978104 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\main.cpp
 	<string.h>
 	<stdexcept>
 	<iostream>
 	"sqlite3.h"
 	"Dominios.h"
+	"Entidades.h"
 	"Interfaces.h"
 	"controladorasapresentacao.h"
 	"controladorasservico.h"
+	"UnidadePersistencia.h"
 
 1633729554 e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\curses.h
 	<stdarg.h>

@@ -780,6 +780,7 @@ void CntrApresentacaoSala::visualizarSala()  //preciso pegar os dados com contro
 
     char texto1[] ="Informe o codigo da sala que se deseja visualizar: ";
     char texto2[]="Dado em formato incorreto. Digite algo.";
+    char texto11[]="Sucesso. Digite algo para continuar.";
     char texto3[]="Falha na visualizacao. Digite algo.";
 
     char campo1[80];                                                                           // Cria campos para entrada dos dados.
@@ -810,7 +811,13 @@ void CntrApresentacaoSala::visualizarSala()  //preciso pegar os dados com contro
 
     // Visualizacao da sala.
 
-    if(cntrServicoSala->visualizarSala(codigo)) return;
+    if(cntrServicoSala->visualizarSala(codigo)){
+        cout << texto11 << endl;                                               // Informa sucesso.
+
+        getchar();
+        fflush(stdin);
+        return;
+    }
 
     cout << texto3 << endl;                                               // Informa sucesso.
     getchar();
@@ -1186,8 +1193,8 @@ void CntrApresentacaoSessao::visualizarSessao()  //preciso pegar os dados com co
 
     char texto1[] ="Informe o codigo da Sessao que se deseja visualizar: ";
     char texto10[]="Dado em formato incorreto. Digite algo.";
-    char texto11[]="Sucesso na exclusao. Digite algo.";
-    char texto12[]="Falha na exclusao. Digite algo.";
+    char texto11[]="Sucesso. Digite algo.";
+    char texto12[]="Falha. Digite algo.";
 
     char campo1[80];                                                                           // Cria campos para entrada dos dados.
 
@@ -1530,7 +1537,7 @@ void CntrApresentacaoPeca::editarPeca()  //preciso pegar os dados com controlado
     char texto2[] ="Codido da peca a ser editada:";
     char texto3[] ="Nome                        :";
     char texto4[] ="Tipo                        :";
-    char texto5[] ="Classificação               :";
+    char texto5[] ="Classificacao               :";
     char texto10[]="Dados em formato incorreto. Digite algo.";
     char texto11[]="Sucesso na edicao. Digite algo.";
     char texto12[]="Falha na edicao. Digite algo.";
@@ -1623,8 +1630,8 @@ void CntrApresentacaoPeca::visualizarPeca()  //preciso pegar os dados com contro
 
     char texto1[] ="Informe o codigo da Peca que se deseja visualizar: ";
     char texto10[]="Dado em formato incorreto. Digite algo.";
-    char texto11[]="Sucesso na exclusao. Digite algo.";
-    char texto12[]="Falha na exclusao. Digite algo.";
+    char texto11[]="Sucesso. Digite algo.";
+    char texto12[]="Falha. Digite algo.";
 
     char campo1[80];                                                                           // Cria campos para entrada dos dados.
 
