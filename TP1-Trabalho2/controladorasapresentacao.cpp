@@ -500,6 +500,7 @@ void CntrApresentacaoParticipante::descadastrarParticipante()
 // esse ainda falta implementar
 void CntrApresentacaoSala::listarSala()  //preciso pegar os dados com controladora servico
 {
+    CLR_SCR;
     cntrServicoSala->listarSala();
 }
 

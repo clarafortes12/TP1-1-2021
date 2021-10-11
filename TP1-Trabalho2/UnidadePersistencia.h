@@ -119,12 +119,13 @@ public:
 
 //---------------------------------------------------------------------------
 // Declara��o da classe ComandoRemoverSala.
-/*
+
 class ComandoListarSala:public ComandoSQL
 {
 public:
     ComandoListarSala();
-};*/
+    list<Sala> getResultado();
+};
 
 //---------------------------------------------------------------------------
 // Declara��o da classe ComandoPesquisarSessao.

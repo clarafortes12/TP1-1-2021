@@ -317,11 +317,12 @@ bool CntrServicoPeca::excluirPeca(Codigo codigoEntrada){
 }
 
 bool CntrServicoSala::listarSala(){
-    return true;
-/*
-    list<Sala> sala;
+    //return true;
 
-    ComandoListarSala comando();
+    list<Sala> salas;
+    Sala sala;
+
+    ComandoListarSala comando;
 
     try
     {
@@ -338,12 +339,25 @@ bool CntrServicoSala::listarSala(){
     try
     {
         getchar();
-        sala = comando.getResultado();
+        salas = comando.getResultado();
 
-        cout << endl << "Resultados obtidos." << endl << endl;
-        cout << "Codigo : " << sala.getCodigo().getValor() << endl;
-        cout << "Nome : " << sala.getNome().getValor() << endl;
-        cout << "Capacidade : " << sala.getCapacidade().getValor() << endl;
+        cout << "Resultados obtidos:" << endl << endl;
+
+        if (salas.empty()){
+            cout << endl << "Erro - retorno vazio de salas.";;
+            cout << "Digite algo para continuar : ";
+            getchar();
+            return false;
+        }
+
+        while(!salas.empty()){
+            sala = salas.back();
+            cout << "Codigo : " << sala.getCodigo().getValor() << endl;
+            cout << "Nome : " << sala.getNome().getValor() << endl << endl;
+            salas.pop_back();
+        }
+
+        cout << "Essas sao as salas cadastradas." << endl;
         cout << "Digite algo para continuar : ";
         getchar();
         return true;
@@ -354,7 +368,7 @@ bool CntrServicoSala::listarSala(){
         cout << endl << endl << "Digite algo para continuar.";
         getchar();
         return false;
-    }*/
+    }
 }
 bool CntrServicoSala::visualizarSala(Codigo codigoEntrada){
 
@@ -379,7 +393,7 @@ bool CntrServicoSala::visualizarSala(Codigo codigoEntrada){
         getchar();
         sala = comando.getResultado();
 
-        cout << endl << "Resultados obtidos." << endl << endl;
+        cout << endl << "Resultados obtidos:" << endl << endl;
         cout << "Codigo : " << sala.getCodigo().getValor() << endl;
         cout << "Nome : " << sala.getNome().getValor() << endl;
         cout << "Capacidade : " << sala.getCapacidade().getValor() << endl;
@@ -413,8 +427,8 @@ bool CntrServicoSala::incluirSala(Sala sala){
     //notificarSucessoOperacao();
 }
 bool CntrServicoSala::editarSala(Sala sala){
-    /*
-    Codigo codigo;
+
+    /*Codigo codigo;
 
     codigo = sala.getCodigo();
 
@@ -424,8 +438,9 @@ bool CntrServicoSala::editarSala(Sala sala){
             comandoA.executar();
     }
     catch (EErroPersistencia exp) {
-            notificarErroAcesso();
-            return;
+        cout << endl << "Erro no acesso ao banco de dados.";
+            //notificarErroAcesso();
+        return false;
     }
 
     Sala salaAtual = comandoA.getResultado();

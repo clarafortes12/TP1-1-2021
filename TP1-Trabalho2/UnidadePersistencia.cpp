@@ -309,12 +309,47 @@ ComandoRemoverSala::ComandoRemoverSala(Codigo codigo)
 
 //---------------------------------------------------------------------------
 // Implementa��es de m�todos da classe ComandoListarSala.
-/*
+
 ComandoListarSala::ComandoListarSala()
 {
-    comandoSQL = "SELECT codigo, nome FROM sala ";
-}*/
+    //comandoSQL = "SELECT codigo, nome FROM sala ";
+    comandoSQL = "SELECT * FROM sala";
+}
 
+list<Sala> ComandoListarSala::getResultado()
+{
+    ElementoResultado resultado;
+    Sala resultado_sala;
+    // por ora vai voltar as salas com todos os campos msm, pq n sei como retornaria so codigo e nome, teria de criar uma nova entidade
+    list<Sala> salas;
+
+    while(!listaResultado.empty()){
+        // Remover codigo;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        resultado_sala.setCodigo(Codigo(resultado.getValorColuna()));
+
+        // Remover nome;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        resultado_sala.setNome(Nome(resultado.getValorColuna()));
+
+        // Remover capacidade;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        resultado_sala.setCapacidade(Capacidade(resultado.getValorColuna()));
+
+        salas.push_back(resultado_sala);
+    }
+
+    return salas;
+}
 
 //---------------------------------------------------------------------------
 // Implementa��es de m�todos da classe ComandoPesquisarParticipante.
