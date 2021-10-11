@@ -280,7 +280,56 @@ bool CntrServicoSessao::excluirSessao(Codigo codigo){
 }
 
 bool CntrServicoPeca::listarPeca(){
-    return true;
+    list<Peca> pecas;
+    Peca peca;
+
+    ComandoListarPeca comando;
+
+    try
+    {
+        comando.executar();
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";;
+        cout << "Digite algo para continuar : ";
+        getchar();
+        return false;
+    }
+
+    try
+    {
+        getchar();
+        pecas = comando.getResultado();
+
+        cout << "Resultados obtidos:" << endl << endl;
+
+        if (pecas.empty()){
+            cout << endl << "Retorno vazio de pecas.";;
+            cout << "Digite algo para continuar : ";
+            getchar();
+            return false;
+        }
+
+        while(!pecas.empty()){
+            peca = pecas.back();
+            cout << "Codigo : " << peca.getCodigo().getValor() << endl;
+            cout << "Nome : " << peca.getNome().getValor() << endl << endl;
+            pecas.pop_back();
+        }
+
+        cout << "Essas sao as pecas cadastradas." << endl;
+        cout << "Digite algo para continuar : ";
+        getchar();
+        return true;
+    }
+    catch(EErroPersistencia exp)
+    {
+        cout << endl << exp.what();
+        cout << endl << endl << "Digite algo para continuar.";
+        getchar();
+        return false;
+    }
 }
 bool CntrServicoPeca::visualizarPeca(Codigo codigoEntrada){
     Peca peca;

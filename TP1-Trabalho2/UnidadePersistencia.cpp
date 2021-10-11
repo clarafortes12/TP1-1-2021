@@ -173,7 +173,6 @@ ComandoRemoverSessao::ComandoRemoverSessao(Codigo codigo)
 
 ComandoListarSessao::ComandoListarSessao()
 {
-    //comandoSQL = "SELECT codigo, nome FROM sala ";
     comandoSQL = "SELECT * FROM sessao";
 }
 
@@ -181,7 +180,6 @@ list<Sessao> ComandoListarSessao::getResultado()
 {
     ElementoResultado resultado;
     Sessao resultado_sessao;
-    // por ora vai voltar as salas com todos os campos msm, pq n sei como retornaria so codigo e nome, teria de criar uma nova entidade
     list<Sessao> sessoes;
 
     while(!listaResultado.empty()){
@@ -285,6 +283,55 @@ ComandoRemoverPeca::ComandoRemoverPeca(Codigo codigo)
 {
     comandoSQL = "DELETE FROM Peca WHERE codigo = '";
     comandoSQL += codigo.getValor()+"'";
+}
+
+//---------------------------------------------------------------------------
+// Implementa��es de m�todos da classe ComandoListarPeca.
+
+ComandoListarPeca::ComandoListarPeca()
+{
+    comandoSQL = "SELECT * FROM Peca";
+}
+
+list<Peca> ComandoListarPeca::getResultado()
+{
+    ElementoResultado resultado;
+    Peca resultado_peca;
+    list<Peca> pecas;
+
+    while(!listaResultado.empty()){
+        // Remover codigo;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        resultado_peca.setCodigo(Codigo(resultado.getValorColuna()));
+
+        // Remover nome;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        resultado_peca.setNome(Nome(resultado.getValorColuna()));
+
+        // Remover tipo;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        resultado_peca.setTipo(Tipo(resultado.getValorColuna()));
+
+        // Remover classificacao;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        resultado_peca.setClassificacao(Classificacao(resultado.getValorColuna()));
+
+        pecas.push_back(resultado_peca);
+    }
+
+    return pecas;
 }
 
 //---------------------------------------------------------------------------

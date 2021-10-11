@@ -213,6 +213,16 @@ public:
 };
 
 //---------------------------------------------------------------------------
+// Declara��o da classe ComandoListarPeca.
+
+class ComandoListarPeca:public ComandoSQL
+{
+public:
+    ComandoListarPeca();
+    list<Peca> getResultado();
+};
+
+//---------------------------------------------------------------------------
 //Classe ComandoPesquisarAluno.
 
 class ComandoPesquisarParticipante:public ComandoSQL

@@ -890,6 +890,7 @@ void CntrApresentacaoSala::executar(Matricula)
 
 void CntrApresentacaoSessao::listarSessao()  //preciso pegar os dados com controladora servico
 {
+    CLR_SCR;
     cntrServicoSessao->listarSessao();
 }
 
@@ -1294,6 +1295,7 @@ void CntrApresentacaoSessao::executar(Matricula)
 
 void CntrApresentacaoPeca::listarPeca()  //preciso pegar os dados com controladora servico
 {
+    CLR_SCR;
     cntrServicoPeca->listarPeca();
 }
 
