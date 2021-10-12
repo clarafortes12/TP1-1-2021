@@ -147,6 +147,18 @@ Sessao ComandoPesquisarSessao::getResultado()
     listaResultado.pop_back();
     sessao.setHorario(Horario(resultado.getValorColuna()));
 
+    // Remover codigo_sala;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+
+    // Remover codigo_peca;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+
     return sessao;
 
 }
@@ -515,6 +527,12 @@ Participante ComandoPesquisarParticipante::getResultado()
     resultado = listaResultado.back();
     listaResultado.pop_back();
     participante.setCargo(Cargo(resultado.getValorColuna()));
+
+    // Remover codigo_peca;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
 
     return participante;
 

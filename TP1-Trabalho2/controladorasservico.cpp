@@ -52,7 +52,6 @@ bool CntrServicoAutenticacao::autenticar(Matricula matricula, Senha senhaEntrada
 }
 
 bool CntrServicoParticipante::consultarParticipante(Matricula matricula){
-    cout << endl << "Consultar Participante";
     Participante participante;
 
     ComandoPesquisarParticipante comando(matricula);

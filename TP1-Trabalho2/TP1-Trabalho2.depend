@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1633814767 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\dominios.cpp
+1633997835 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\dominios.cpp
 	"Dominios.h"
 	<iostream>
 	<string>
 
-1633961771 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\dominios.h
+1633998059 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\dominios.h
 	<stdexcept>
 
 1633814767 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\entidades.cpp
@@ -272,14 +272,17 @@
 	<wchar.h>
 	<stdbool.h>
 
-1633974832 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.cpp
+1633998042 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasapresentacao.cpp
 	"controladorasapresentacao.h"
 
-1633966723 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasservico.cpp
+1633997835 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasservico.cpp
 	"controladorasservico.h"
 
-1633815295 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasservico.h
+1633997835 d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\controladorasservico.h
+	<conio.h>
 	<iostream>
+	<string.h>
+	<stdio.h>
 	"Dominios.h"
 	"Entidades.h"
 	"Interfaces.h"
@@ -317,7 +320,7 @@
 	<wchar.h>
 	<stdbool.h>
 
-1633974409 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\unidadepersistencia.cpp
+1633998002 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\unidadepersistencia.cpp
 	"UnidadePersistencia.h"
 
 1624042341 source:e:\tp1\trabalho 1\tp1-1-2021\tp1-trabalho2\sqlite3.c
