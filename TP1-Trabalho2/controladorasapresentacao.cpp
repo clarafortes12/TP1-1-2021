@@ -225,40 +225,41 @@ bool CntrApresentacaoParticipante::executar(Matricula matricula){
 }
 
 void CntrApresentacaoParticipante::executar(){
+    cadastrarParticipante();
     // Mensagens a serem apresentadas na tela de sele��o de servi�o..
 
-    char texto1[]="Selecione um dos servicos : ";
-    char texto2[]="1 - Cadastrar novo participante.";
-    char texto3[]="2 - Retornar.";
+    //char texto1[]="Selecione um dos servicos : ";
+    //char texto2[]="1 - Cadastrar novo participante.";
+    //char texto3[]="2 - Retornar.";
 
-    int campo;
+   // int campo;
 
-    bool apresentar = true;
+    //bool apresentar = true;
 
-    while(apresentar)
-    {
+    //while(apresentar)
+    //{
 
         // Apresenta tela de sela��o de servi�o.
 
-        CLR_SCR;                                                                                // Limpa janela.
+        //CLR_SCR;                                                                                // Limpa janela.
 
-        cout << texto1 << endl;                                                                 // Imprime nome do campo.
-        cout << texto2 << endl;                                                                 // Imprime nome do campo.
-        cout << texto3 << endl;                                                                   // Imprime nome do campo.
+        //cout << texto1 << endl;                                                                 // Imprime nome do campo.
+        //cout << texto2 << endl;                                                                 // Imprime nome do campo.
+        //cout << texto3 << endl;                                                                   // Imprime nome do campo.
 
-        campo = getchar() - 48;                                                                   // Leitura do campo de entrada.
-        fflush(stdin);
+        //campo = getchar() - 48;                                                                   // Leitura do campo de entrada.
+        //fflush(stdin);
 
-        switch(campo)
-        {
-        case 1:
-            cadastrarParticipante();;
-            break;
-        case 2:
-            apresentar = false;
-            break;
-        }
-    }
+        //switch(campo)
+        //{
+        //case 1:
+            //cadastrarParticipante();;
+            //break;
+        //case 2:
+            //apresentar = false;
+            //break;
+        //}
+    //}
 }
 
 void CntrApresentacaoParticipante::cadastrarParticipante(){
