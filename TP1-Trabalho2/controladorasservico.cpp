@@ -329,8 +329,7 @@ bool CntrServicoSessao::visualizarSessao(Codigo codigoEntrada){
     try
     {
         sessao = comando.getResultado();
-
-        if(sessao.getCodigoPeca().getValor()=="" && sessao.getCodigoSala().getValor()==""){
+        if((sessao.getCodigoPeca().getValor()=="") && (sessao.getCodigoSala().getValor()=="")){
 
             cout << endl << "Resultados obtidos." << endl << endl;
             cout << "Codigo  : " << sessao.getCodigo().getValor() << endl;
@@ -351,26 +350,16 @@ bool CntrServicoSessao::visualizarSessao(Codigo codigoEntrada){
                     cout << endl << "Erro no acesso ao banco de dados.";;
                     return false;
                 }
-                try
-                {
-                    sala = comando.getResultado();
-                    cout << endl << "Resultados obtidos." << endl << endl;
-                    cout << "Codigo    : " << sessao.getCodigo().getValor() << endl;
-                    cout << "Data      : " << sessao.getData().getValor() << endl;
-                    cout << "Horario   : " << sessao.getHorario().getValor() << endl;
-                    cout << endl << "Sessao sem Peca." << endl << endl;
-                    cout << endl << "Dados da sala:" << endl << endl;
-                    cout << "Codigo    : " << sala.getCodigo().getValor() << endl;
-                    cout << "Nome      : " << sala.getNome().getValor() << endl;
-                    cout << "Capacidade: " << sala.getCapacidade().getValor() << endl;
-                }
-                catch(EErroPersistencia exp)
-                {
-                    cout << endl << exp.what();
-                    return false;
-                }
-
-
+                sala = comando.getResultado();
+                cout << endl << "Resultados obtidos." << endl << endl;
+                cout << "Codigo    : " << sessao.getCodigo().getValor() << endl;
+                cout << "Data      : " << sessao.getData().getValor() << endl;
+                cout << "Horario   : " << sessao.getHorario().getValor() << endl;
+                cout << endl << "Sessao sem Peca." << endl << endl;
+                cout << endl << "Dados da sala:" << endl << endl;
+                cout << "Codigo    : " << sala.getCodigo().getValor() << endl;
+                cout << "Nome      : " << sala.getNome().getValor() << endl;
+                cout << "Capacidade: " << sala.getCapacidade().getValor() << endl;
                 return true;
             }
             else{
@@ -384,37 +373,21 @@ bool CntrServicoSessao::visualizarSessao(Codigo codigoEntrada){
                     cout << endl << "Erro no acesso ao banco de dados.";;
                     return false;
                 }
-                try{
-                    if(sessao.getCodigoSala().getValor()==""){
-                        cout << endl << "Resultados obtidos." << endl << endl;
-                        cout << "Codigo  : " << sessao.getCodigo().getValor() << endl;
-                        cout << "Data    : " << sessao.getData().getValor() << endl;
-                        cout << "Horario : " << sessao.getHorario().getValor() << endl;
-                        cout << endl << "Dados da peca da sessao:" << endl << endl;
-                        cout << "Codigo : " << peca.getCodigo().getValor() << endl;
-                        cout << "Nome : " << peca.getNome().getValor() << endl;
-                        cout << "Tipo : " << peca.getTipo().getValor() << endl;
-                        cout << "Classificacao : " << peca.getClassificacao().getValor() << endl;
-                        cout << endl << "Sessao sem Sala." << endl << endl;
-                        return true;
-                    }
+                peca = comando.getResultado();
+                if(sessao.getCodigoSala().getValor()==""){
+                    cout << endl << "Resultados obtidos." << endl << endl;
+                    cout << "Codigo  : " << sessao.getCodigo().getValor() << endl;
+                    cout << "Data    : " << sessao.getData().getValor() << endl;
+                    cout << "Horario : " << sessao.getHorario().getValor() << endl;
+                    cout << endl << "Dados da peca da sessao:" << endl << endl;
+                    cout << "Codigo : " << peca.getCodigo().getValor() << endl;
+                    cout << "Nome : " << peca.getNome().getValor() << endl;
+                    cout << "Tipo : " << peca.getTipo().getValor() << endl;
+                    cout << "Classificacao : " << peca.getClassificacao().getValor() << endl;
+                    cout << endl << "Sessao sem Sala." << endl << endl;
+                    return true;
                 }
-                catch(EErroPersistencia exp)
-                {
-                    cout << endl << exp.what();
-                    return false;
-                }
-                /*else{
-                    ComandoPesquisarPeca comando(participante.getCodigoPeca().getValor());
-                    try
-                    {
-                        comando.executar();
-                    }
-                    catch (EErroPersistencia exp)
-                    {
-                        cout << endl << "Erro no acesso ao banco de dados.";;
-                        return false;
-                    }
+                else{
                     ComandoPesquisarSala comando(sessao.getCodigoSala().getValor());
                     try
                     {
@@ -425,32 +398,22 @@ bool CntrServicoSessao::visualizarSessao(Codigo codigoEntrada){
                         cout << endl << "Erro no acesso ao banco de dados.";;
                         return false;
                     }
-                    try
-                    {
-                        peca = comando.getResultado();
-                        sala = comando.getResultado();
-                        cout << endl << "Resultados obtidos." << endl << endl;
-                        cout << "Codigo  : " << sessao.getCodigo().getValor() << endl;
-                        cout << "Data    : " << sessao.getData().getValor() << endl;
-                        cout << "Horario : " << sessao.getHorario().getValor() << endl;
-                        cout << endl << "Dados da peca da sessao:" << endl << endl;
-                        cout << "Codigo : " << peca.getCodigo().getValor() << endl;
-                        cout << "Nome : " << peca.getNome().getValor() << endl;
-                        cout << "Tipo : " << peca.getTipo().getValor() << endl;
-                        cout << "Classificacao : " << peca.getClassificacao().getValor() << endl;
-                        cout << endl << "Dados da sala:" << endl << endl;
-                        cout << "Codigo    : " << Sala.getCodigo().getValor() << endl;
-                        cout << "Nome      : " << Sala.getNome().getValor() << endl;
-                        cout << "Capacidade: " << Sala.getCapacidade().getValor() << endl;
-                        return true;
-                    }
+                    sala = comando.getResultado();
+                    cout << endl << "Resultados obtidos." << endl << endl;
+                    cout << "Codigo  : " << sessao.getCodigo().getValor() << endl;
+                    cout << "Data    : " << sessao.getData().getValor() << endl;
+                    cout << "Horario : " << sessao.getHorario().getValor() << endl;
+                    cout << endl << "Dados da peca da sessao:" << endl << endl;
+                    cout << "Codigo : " << peca.getCodigo().getValor() << endl;
+                    cout << "Nome : " << peca.getNome().getValor() << endl;
+                    cout << "Tipo : " << peca.getTipo().getValor() << endl;
+                    cout << "Classificacao : " << peca.getClassificacao().getValor() << endl;
+                    cout << endl << "Dados da sala:" << endl << endl;
+                    cout << "Codigo    : " << sala.getCodigo().getValor() << endl;
+                    cout << "Nome      : " << sala.getNome().getValor() << endl;
+                    cout << "Capacidade: " << sala.getCapacidade().getValor() << endl;
+                    return true;
                 }
-                }
-                catch(EErroPersistencia exp)
-                {
-                    cout << endl << exp.what();
-                    return false;
-                }*/
             }
         }
     }

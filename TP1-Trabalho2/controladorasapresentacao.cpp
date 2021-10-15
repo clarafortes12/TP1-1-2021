@@ -1255,7 +1255,7 @@ void CntrApresentacaoSessao::cadastrarSessaoPeca()  //preciso pegar os dados com
     char texto11[]="Sucesso na edicao. Digite algo.";
     char texto12[]="Falha na edicao. Digite algo.";
 
-    char campo1[80], campo2[80], campo3[80];                                                   // Cria campos para entrada dos dados.
+    char campo1[80], campo2[80];                                                   // Cria campos para entrada dos dados.
 
     // Instancia os dom�nios.
 
@@ -1333,7 +1333,7 @@ void CntrApresentacaoSessao::cadastrarSessaoSala()  //preciso pegar os dados com
     char texto11[]="Sucesso na edicao. Digite algo.";
     char texto12[]="Falha na edicao. Digite algo.";
 
-    char campo1[80], campo2[80], campo3[80];                                                   // Cria campos para entrada dos dados.
+    char campo1[80], campo2[80];                                                   // Cria campos para entrada dos dados.
 
     // Instancia os dom�nios.
 

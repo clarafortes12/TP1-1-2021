@@ -147,19 +147,24 @@ Sessao ComandoPesquisarSessao::getResultado()
     listaResultado.pop_back();
     sessao.setHorario(Horario(resultado.getValorColuna()));
 
-    // Remover codigo_peca;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-
     // Remover codigo_sala;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
+    if(resultado.getValorColuna() != "NULL"){
+        sessao.setCodigoSala(Codigo(resultado.getValorColuna()));
+    }
 
 
+    // Remover codigo_peca;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    if(resultado.getValorColuna()!= "NULL"){
+        sessao.setCodigoPeca(Codigo(resultado.getValorColuna()));
+    }
 
     return sessao;
 
@@ -239,12 +244,20 @@ list<Sessao> ComandoListarSessao::getResultado()
             throw EErroPersistencia("Lista de resultados vazia.");
         resultado = listaResultado.back();
         listaResultado.pop_back();
+        if(resultado.getValorColuna()!= "NULL"){
+            resultado_sessao.setCodigoSala(Codigo(resultado.getValorColuna()));
+        }
+
 
         // Remover codigo_peca;
         if (listaResultado.empty())
             throw EErroPersistencia("Lista de resultados vazia.");
         resultado = listaResultado.back();
         listaResultado.pop_back();
+        if(resultado.getValorColuna()!= "NULL"){
+            resultado_sessao.setCodigoPeca(Codigo(resultado.getValorColuna()));
+        }
+
 
         sessoes.push_back(resultado_sessao);
     }
