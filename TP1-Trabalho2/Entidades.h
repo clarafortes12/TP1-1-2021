@@ -127,6 +127,8 @@ private:
     Codigo codigo;
     Data data;
     Horario horario;
+    Codigo codigo_peca;
+    Codigo codigo_sala;
 public:
     void setCodigo(const Codigo&);
     Codigo getCodigo() const;
@@ -134,6 +136,10 @@ public:
     Data getData() const;
     void setHorario(const Horario&);
     Horario getHorario() const;
+    void setCodigoPeca(const Codigo&);
+    Codigo getCodigoPeca() const;
+    void setCodigoSala(const Codigo&);
+    Codigo getCodigoSala() const;
 };
 
 /// Armazena codigo.
@@ -169,6 +175,28 @@ inline void Sessao::setHorario(const Horario& horario)
     this->horario = horario;
 }
 
+/// Armazena Codigo da peca.
+///
+/// @param valor Codigo codigo_peca.
+///
+/// @return void
+///
+inline void Sessao::setCodigoPeca(const Codigo& codigo_peca)
+{
+    this->codigo_peca = codigo_peca;
+}
+
+/// Armazena Codigo da sala.
+///
+/// @param valor Codigo codigo_sala.
+///
+/// @return void
+///
+inline void Sessao::setCodigoSala(const Codigo& codigo_sala)
+{
+    this->codigo_sala = codigo_sala;
+}
+
 ///
 /// Retorna codigo.
 ///
@@ -197,6 +225,26 @@ inline Data Sessao::getData() const
 inline Horario Sessao::getHorario() const
 {
     return horario;
+}
+
+///
+/// Retorna codigo da peca.
+///
+/// @return Codigo codigo_peca.
+///
+inline Codigo Sessao::getCodigoPeca() const
+{
+    return codigo_peca;
+}
+
+///
+/// Retorna codigo da sala.
+///
+/// @return Codigo codigo_sala.
+///
+inline Codigo Sessao::getCodigoSala() const
+{
+    return codigo_sala;
 }
 
 // -------------------------------------------------------

@@ -175,6 +175,20 @@ public:
     list<Sessao> getResultado();
 };
 
+class ComandoPesquisarSessaoPeca:public ComandoSQL
+{
+public:
+    ComandoPesquisarSessaoPeca(Codigo);
+    int getResultado();
+};
+
+class ComandoPesquisarSessaoSala:public ComandoSQL
+{
+public:
+    ComandoPesquisarSessaoSala(Codigo);
+    int getResultado();
+};
+
 //---------------------------------------------------------------------------
 //Classe ComandoPesquisarPeca.
 

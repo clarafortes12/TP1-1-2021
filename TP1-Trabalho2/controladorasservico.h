@@ -80,6 +80,8 @@ class CntrServicoSessao:public IServicoSessao{
         bool incluirSessao(Sessao);
         bool editarSessao(Sessao);
         bool excluirSessao(Codigo);
+        int pesquisarSessaoPeca(Codigo);
+        int pesquisarSessaoSala(Codigo);
 };
 
 #endif // CONTROLADORASSERVICO_H_INCLUDED

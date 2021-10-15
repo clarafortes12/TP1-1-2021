@@ -147,17 +147,19 @@ Sessao ComandoPesquisarSessao::getResultado()
     listaResultado.pop_back();
     sessao.setHorario(Horario(resultado.getValorColuna()));
 
+    // Remover codigo_peca;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+
     // Remover codigo_sala;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
 
-    // Remover codigo_peca;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
+
 
     return sessao;
 
@@ -236,6 +238,107 @@ list<Sessao> ComandoListarSessao::getResultado()
     return sessoes;
 }
 
+ComandoPesquisarSessaoPeca::ComandoPesquisarSessaoPeca(Codigo codigo)
+{
+    comandoSQL = "SELECT * FROM sessao WHERE codigo_peca = '";
+    comandoSQL += codigo.getValor()+"'";
+}
+
+int ComandoPesquisarSessaoPeca::getResultado()
+{
+    ElementoResultado resultado;
+    int pecas = 0;
+
+    while(!listaResultado.empty()){
+        // Remover codigo;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    sessao.setCodigo(Codigo(resultado.getValorColuna()));
+
+    // Remover Data;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    sessao.setData(Data(resultado.getValorColuna()));
+
+    // Remover Horario;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    sessao.setHorario(Horario(resultado.getValorColuna()));
+
+    // Remover codigo_peca;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+
+    // Remover codigo_sala;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+
+    pecas = pecas + 1;
+
+    }
+    return pecas;
+}
+
+ComandoPesquisarSessaoSala::ComandoPesquisarSessaoSala(Codigo codigo)
+{
+    comandoSQL = "SELECT * FROM sessao WHERE codigo_sala = '";
+    comandoSQL += codigo.getValor()+"'";
+}
+
+int ComandoPesquisarSessaoPeca::getResultado()
+{
+    ElementoResultado resultado;
+    int salas = 0;
+
+    while(!listaResultado.empty()){
+        // Remover codigo;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    sessao.setCodigo(Codigo(resultado.getValorColuna()));
+
+    // Remover Data;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    sessao.setData(Data(resultado.getValorColuna()));
+
+    // Remover Horario;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    sessao.setHorario(Horario(resultado.getValorColuna()));
+
+    // Remover codigo_peca;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+
+    // Remover codigo_sala;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+
+    salas = salas + 1;
+
+    }
+    return salas;
+}
 
 //---------------------------------------------------------------------------
 // Implementa��es de m�todos da classe ComandoPesquisarPeca.
