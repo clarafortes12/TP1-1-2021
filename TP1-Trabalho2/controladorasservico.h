@@ -12,7 +12,7 @@
 #include "Interfaces.h"
 #include "UnidadePersistencia.h"
 
-
+#define CLR_SCR system("cls");
 //---------------------------------------------------------------------------
 //Classe CntrInteracao.
 
@@ -43,6 +43,8 @@ class CntrServicoParticipante:public IServicoParticipante{
         bool cadastrarParticipante(Participante);
         bool editarParticipante(Participante);
         bool descadastrarParticipante(Matricula);
+        bool cadastrarParticipantePeca(Participante);
+        int pesquisarParticipantePeca(Codigo);
 };
 
 

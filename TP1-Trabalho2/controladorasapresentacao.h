@@ -85,6 +85,7 @@ private:
     void consultarParticipante(Matricula);
     void editarParticipante(Matricula);
     bool descadastrarParticipante(Matricula);
+    void cadastrarParticipantePeca(Matricula);
 public:
     bool executar(Matricula);
     void executar();

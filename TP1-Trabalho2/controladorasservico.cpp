@@ -28,8 +28,7 @@ void CntrInteracao::notificarSucessoOperacao(){
 //--------------------------------------------------------------------------------------------
 //Implementa��es de m�todos de classes controladoras.
 //
-bool CntrServicoAutenticacao::autenticar(Matricula matricula, Senha senhaEntrada)
-{
+bool CntrServicoAutenticacao::autenticar(Matricula matricula, Senha senhaEntrada){
 
     ComandoLerSenha comandoLerSenha(matricula);
 
@@ -53,7 +52,7 @@ bool CntrServicoAutenticacao::autenticar(Matricula matricula, Senha senhaEntrada
 
 bool CntrServicoParticipante::consultarParticipante(Matricula matricula){
     Participante participante;
-
+    Peca peca;
     ComandoPesquisarParticipante comando(matricula);
 
     try
@@ -68,25 +67,62 @@ bool CntrServicoParticipante::consultarParticipante(Matricula matricula){
         return false;
     }
 
-    try
-    {
-        getchar();
+    try{
         participante = comando.getResultado();
+        if(participante.getCodigoPeca().getValor() == ""){
+            cout << endl << "Seus Dados" << endl << endl;
+            cout << "Matricula  : " << participante.getMatricula().getValor() << endl;
+            cout << "Nome       : " << participante.getNome().getValor() << endl;
+            cout << "Sobrenome  : " << participante.getSobrenome().getValor() << endl;
+            cout << "Email      : " << participante.getEmail().getValor() << endl;
+            cout << "Telefone   : " << participante.getTelefone().getValor() << endl;
+            cout << "Senha      : " << participante.getSenha().getValor() << endl;
+            cout << "Cargo      : " << participante.getCargo().getValor() << endl;
+            cout << endl << "Participante de nenhuma peca" << endl << endl;
+            cout << "Digite algo para continuar : ";
+            getchar();
+            return true;
+        }else{
+            ComandoPesquisarPeca comando(participante.getCodigoPeca().getValor());
 
-        cout << endl << "Seus Dados" << endl << endl;
-        cout << "Matricula  : " << participante.getMatricula().getValor() << endl;
-        cout << "Nome       : " << participante.getNome().getValor() << endl;
-        cout << "Sobrenome  : " << participante.getSobrenome().getValor() << endl;
-        cout << "Email      : " << participante.getEmail().getValor() << endl;
-        cout << "Telefone   : " << participante.getTelefone().getValor() << endl;
-        cout << "Senha      : " << participante.getSenha().getValor() << endl;
-        cout << "Cargo      : " << participante.getCargo().getValor() << endl;
-        cout << "Digite algo para continuar : ";
-        getchar();
-        return true;
+            try
+            {
+                comando.executar();
+            }
+            catch (EErroPersistencia exp)
+            {
+                cout << endl << "Erro no acesso ao banco de dados.";;
+                return false;
+            }
+
+            try
+            {
+                peca = comando.getResultado();
+                cout << endl << "Seus Dados" << endl << endl;
+                cout << "Matricula  : " << participante.getMatricula().getValor() << endl;
+                cout << "Nome       : " << participante.getNome().getValor() << endl;
+                cout << "Sobrenome  : " << participante.getSobrenome().getValor() << endl;
+                cout << "Email      : " << participante.getEmail().getValor() << endl;
+                cout << "Telefone   : " << participante.getTelefone().getValor() << endl;
+                cout << "Senha      : " << participante.getSenha().getValor() << endl;
+                cout << "Cargo      : " << participante.getCargo().getValor() << endl;
+                cout << endl << "Dados da Peca que e Participante" << endl << endl;
+                cout << "Codigo : " << peca.getCodigo().getValor() << endl;
+                cout << "Nome : " << peca.getNome().getValor() << endl;
+                cout << "Tipo : " << peca.getTipo().getValor() << endl;
+                cout << "Classificacao : " << peca.getClassificacao().getValor() << endl;
+                cout << "Digite algo para continuar : ";
+                getchar();
+                return true;
+            }
+            catch(EErroPersistencia exp)
+            {
+                cout << endl << exp.what();
+                return false;
+            }
+        }
     }
-    catch(EErroPersistencia exp)
-    {
+    catch(EErroPersistencia exp){
         cout << endl << exp.what();
         cout << endl << endl << "Digite algo para continuar.";
         getchar();
@@ -108,12 +144,9 @@ bool CntrServicoParticipante::cadastrarParticipante(Participante participante){
         return false;
     }
 
-    //notificarSucessoOperacao();
-
     return false;
 }
 bool CntrServicoParticipante::descadastrarParticipante(Matricula matricula){
-    cout << endl << "Descadastrar Participante";
     ComandoRemoverParticipante comando(matricula);
 
     try
@@ -129,7 +162,6 @@ bool CntrServicoParticipante::descadastrarParticipante(Matricula matricula){
     return false;
 }
 bool CntrServicoParticipante::editarParticipante(Participante participante){
-    cout << endl << "Editar Participante";
     ComandoAtualizarParticipante comando(participante);
 
     try
@@ -144,7 +176,82 @@ bool CntrServicoParticipante::editarParticipante(Participante participante){
     }
     return false;
 }
+bool CntrServicoParticipante::cadastrarParticipantePeca(Participante participante){
+    Peca peca;
+    int pecas;
+    ComandoPesquisarPeca comando(participante.getCodigoPeca().getValor());
+    try
+    {
+        comando.executar();
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";;
+        return false;
+    }
 
+    try
+    {
+        peca = comando.getResultado();
+
+        pecas = pesquisarParticipantePeca(participante.getCodigoPeca().getValor());
+        if(pecas <= 10){
+            ComandoCadastrarParticipantePeca comando(participante);
+            try
+            {
+                comando.executar();
+                return true;
+            }
+            catch (EErroPersistencia exp)
+            {
+                cout << endl << "Erro no acesso ao banco de dados.";
+                return false;
+            }
+            return false;
+        }else{
+            cout << endl << "Peca com numero maximo de participantes.";
+            return false;
+        }
+    }
+    catch(EErroPersistencia exp)
+    {
+        cout << endl << exp.what();
+        return false;
+    }
+
+    return false;
+}
+int CntrServicoParticipante::pesquisarParticipantePeca(Codigo codigo){
+    int pecas;
+
+    ComandoPesquisarParticipantePeca comando(codigo);
+
+    try
+    {
+        comando.executar();
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";;
+        cout << "Digite algo para continuar : ";
+        getchar();
+        fflush(stdin);
+        return -1;
+    }
+
+    try
+    {
+        pecas = comando.getResultado();
+        return pecas;
+    }
+    catch(EErroPersistencia exp)
+    {
+        cout << endl << exp.what();
+        cout << endl << endl << "Digite algo para continuar.";
+        getchar();
+        return -1;
+    }
+}
 // Assim que der certo Sala, da pra so adaptar para Sessao e Peca
 bool CntrServicoSessao::listarSessao(){
     list<Sessao> sessoes;

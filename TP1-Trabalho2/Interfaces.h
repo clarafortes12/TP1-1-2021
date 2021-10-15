@@ -81,6 +81,8 @@ public:
     virtual bool consultarParticipante(Matricula) = 0;
     virtual bool editarParticipante(Participante) = 0;
     virtual bool descadastrarParticipante(Matricula) = 0;
+    virtual bool cadastrarParticipantePeca(Participante) = 0;
+    virtual int pesquisarParticipantePeca(Codigo) = 0;
     virtual ~IServicoParticipante() {}
 };
 

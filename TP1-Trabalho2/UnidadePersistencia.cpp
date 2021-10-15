@@ -474,8 +474,7 @@ ComandoPesquisarParticipante::ComandoPesquisarParticipante(Matricula matricula)
     comandoSQL += matricula.getValor()+"'";
 }
 
-Participante ComandoPesquisarParticipante::getResultado()
-{
+Participante ComandoPesquisarParticipante::getResultado(){
     ElementoResultado resultado;
     Participante participante;
 
@@ -533,6 +532,12 @@ Participante ComandoPesquisarParticipante::getResultado()
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
+    if(resultado.getValorColuna() != "NULL"){
+        participante.setCodigoPeca(Codigo(resultado.getValorColuna()));
+    }
+    else{
+        participante.setCodigoPeca(Codigo());
+    }
 
     return participante;
 
@@ -580,3 +585,74 @@ ComandoAtualizarParticipante::ComandoAtualizarParticipante(Participante particip
     comandoSQL += "' WHERE matricula = '" + participante.getMatricula().getValor()+"'";
 }
 
+ComandoCadastrarParticipantePeca::ComandoCadastrarParticipantePeca(Participante participante)
+{
+    comandoSQL = "UPDATE participante ";
+    comandoSQL += "SET codigo_peca = '" + participante.getCodigoPeca().getValor();
+    comandoSQL += "' WHERE matricula = '" + participante.getMatricula().getValor()+"'";
+}
+
+ComandoPesquisarParticipantePeca::ComandoPesquisarParticipantePeca(Codigo codigo)
+{
+    comandoSQL = "SELECT * FROM participante WHERE codigo_peca = '";
+    comandoSQL += codigo.getValor()+"'";
+}
+
+int ComandoPesquisarParticipantePeca::getResultado()
+{
+    ElementoResultado resultado;
+    int pecas = 0;
+
+    while(!listaResultado.empty()){
+        // Remover matricula;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+
+        // Remover nome;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+
+        // Remover sobrenome;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+
+        // Remover email;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+
+        // Remover telefone;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+
+        // Remover senha;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+
+        // Remover cargo;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+
+        // Remover codigo_peca;
+        if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+
+        pecas = pecas + 1;
+    }
+    return pecas;
+}

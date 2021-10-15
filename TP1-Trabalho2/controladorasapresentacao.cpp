@@ -177,7 +177,8 @@ bool CntrApresentacaoParticipante::executar(Matricula matricula){
     char texto2[]="1 - Consultar dados.";
     char texto3[]="2 - Editar dados.";
     char texto4[]="3 - Deletar cadastro.";
-    char texto5[]="4 - Retornar.";
+    char texto5[]="4 - Cadastro em peca.";
+    char texto6[]="5 - Retornar.";
 
     int campo;
 
@@ -195,6 +196,7 @@ bool CntrApresentacaoParticipante::executar(Matricula matricula){
         cout << texto3 << endl;
         cout << texto4 << endl;
         cout << texto5 << endl;                                                                     // Imprime nome do campo.
+        cout << texto6 << endl;
 
         campo = getchar() - 48;                                                                   // Leitura do campo de entrada.
         fflush(stdin);
@@ -217,6 +219,8 @@ bool CntrApresentacaoParticipante::executar(Matricula matricula){
             }
             break;
         case 4:
+            cadastrarParticipantePeca(matricula);
+        case 5:
             apresentar = false;
             break;
         }
@@ -352,8 +356,7 @@ void CntrApresentacaoParticipante::cadastrarParticipante(){
     participante.setCargo(cargo);
     participante.setMatricula(matricula);
 
-    if(cntrServicoParticipante->cadastrarParticipante(participante))
-    {
+    if(cntrServicoParticipante->cadastrarParticipante(participante)){
         CLR_SCR;
         cout << texto10 << endl;
         getchar();
@@ -525,6 +528,61 @@ bool CntrApresentacaoParticipante::descadastrarParticipante(Matricula matricula)
 
 }
 
+void CntrApresentacaoParticipante::cadastrarParticipantePeca(Matricula matricula){
+     // Mensagens a serem apresentadas na tela de cadastramento.
+    char texto1[] ="Preencha o seguinte campo: ";
+    char texto2[] ="Codigo Peca     :";
+    char texto3[]="Dados em formato incorreto. Digite algo.";
+    char texto4[]="Sucesso no cadastramento. Digite algo.";
+    char texto5[]="Falha no cadastramento. Digite algo.";
+
+    char campo_peca[50];
+
+    // Instancia os dom�nios.
+
+    Codigo codigo_peca;
+    CLR_SCR;                                                                                   // Limpa janela.
+
+    cout << texto1 << endl;                                                                    // Imprime solicitação ao usuário.
+    cout << texto2 << " ";                                                                     // Imprime nome do campo.                                                                    // Imprime nome do campo.
+    cin >> campo_peca;
+    fflush(stdin);                                                                             // Lê valor do campo.
+
+    try
+    {
+        codigo_peca.setValor(string(campo_peca));
+
+    }
+    catch(invalid_argument &exp)
+    {
+        CLR_SCR;
+        cout << texto3 << endl;
+        getchar();
+        fflush(stdin);
+        return;
+    }
+
+    Participante participante;
+
+    participante.setMatricula(matricula);
+    participante.setCodigoPeca(codigo_peca);
+
+    if(cntrServicoParticipante->cadastrarParticipantePeca(participante))
+    {
+        CLR_SCR;
+        cout << texto4 << endl;
+        getchar();
+        fflush(stdin);
+        return;
+    }
+
+    cout << texto5 << endl;
+    getchar();
+    fflush(stdin);
+
+    return;
+
+}
 //--------------------------------------------------------------------------------------------
 
 // esse ainda falta implementar

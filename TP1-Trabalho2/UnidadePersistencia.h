@@ -259,6 +259,19 @@ public:
     ComandoRemoverParticipante(Matricula);
 };
 
+class ComandoCadastrarParticipantePeca:public ComandoSQL
+{
+public:
+    ComandoCadastrarParticipantePeca(Participante);
+};
+
+class ComandoPesquisarParticipantePeca:public ComandoSQL
+{
+public:
+    ComandoPesquisarParticipantePeca(Codigo);
+    int getResultado();
+};
+
 //---------------------------------------------------------------------------
 // Implementa��es de m�todos.
 

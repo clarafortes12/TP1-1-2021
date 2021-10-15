@@ -302,6 +302,7 @@ private:
     Telefone telefone;
     Senha senha;
     Cargo cargo;
+    Codigo codigo_peca;
 public:
     void setMatricula(const Matricula&);
     Matricula getMatricula() const;
@@ -317,6 +318,8 @@ public:
     Senha getSenha() const;
     void setCargo(const Cargo&);
     Cargo getCargo() const;
+    void setCodigoPeca(const Codigo&);
+    Codigo getCodigoPeca() const;
 };
 
 /// Armazena matricula.
@@ -464,5 +467,26 @@ inline void Participante::setCargo(const Cargo& cargo)
 inline Cargo Participante::getCargo() const
 {
     return cargo;
+}
+
+/// Armazena codigo da peca.
+///
+/// @param valor Codigo codigo_peca.
+///
+/// @return void
+///
+inline void Participante::setCodigoPeca(const Codigo& codigo_peca)
+{
+    this->codigo_peca = codigo_peca;
+}
+
+///
+/// Retorna codigo da peca.
+///
+/// @return Codigo codigo_peca.
+///
+inline Codigo Participante::getCodigoPeca() const
+{
+    return codigo_peca;
 }
 #endif // ENTIDADES_H_INCLUDED
