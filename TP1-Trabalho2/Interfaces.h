@@ -105,6 +105,10 @@ public:
     virtual bool listarSessao() = 0;
     virtual bool editarSessao(Sessao) = 0;
     virtual bool visualizarSessao(Codigo) = 0;
+    virtual bool cadastrarSessaoPeca(Sessao) = 0;
+    virtual bool cadastrarSessaoSala(Sessao) = 0;
+    //virtual int pesquisarSessaoPeca(Codigo) = 0;
+    //virtual int pesquisarSessaoSala(Codigo) = 0;
     virtual ~IServicoSessao() {}
 };
 

@@ -151,6 +151,8 @@ private:
     void excluirSessao();
     void editarSessao();
     void visualizarSessao();
+    void cadastrarSessaoPeca();
+    void cadastrarSessaoSala();
 public:
     void executar(Matricula);
     void executar();

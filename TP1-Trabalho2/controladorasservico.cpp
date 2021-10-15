@@ -310,7 +310,7 @@ bool CntrServicoSessao::listarSessao(){
 bool CntrServicoSessao::visualizarSessao(Codigo codigoEntrada){
     Sessao sessao;
     Peca peca;
-    Sala Sala;
+    Sala sala;
 
     ComandoPesquisarSessao comando(codigoEntrada);
 
@@ -360,9 +360,9 @@ bool CntrServicoSessao::visualizarSessao(Codigo codigoEntrada){
                     cout << "Horario   : " << sessao.getHorario().getValor() << endl;
                     cout << endl << "Sessao sem Peca." << endl << endl;
                     cout << endl << "Dados da sala:" << endl << endl;
-                    cout << "Codigo    : " << Sala.getCodigo().getValor() << endl;
-                    cout << "Nome      : " << Sala.getNome().getValor() << endl;
-                    cout << "Capacidade: " << Sala.getCapacidade().getValor() << endl;
+                    cout << "Codigo    : " << sala.getCodigo().getValor() << endl;
+                    cout << "Nome      : " << sala.getNome().getValor() << endl;
+                    cout << "Capacidade: " << sala.getCapacidade().getValor() << endl;
                 }
                 catch(EErroPersistencia exp)
                 {
@@ -404,7 +404,7 @@ bool CntrServicoSessao::visualizarSessao(Codigo codigoEntrada){
                     cout << endl << exp.what();
                     return false;
                 }
-                else{
+                /*else{
                     ComandoPesquisarPeca comando(participante.getCodigoPeca().getValor());
                     try
                     {
@@ -450,10 +450,9 @@ bool CntrServicoSessao::visualizarSessao(Codigo codigoEntrada){
                 {
                     cout << endl << exp.what();
                     return false;
-                }
+                }*/
             }
         }
-
     }
     catch(EErroPersistencia exp)
     {
@@ -538,6 +537,90 @@ int CntrServicoSessao::pesquisarSessaoPeca(Codigo codigo){
     }
 
 }
+bool CntrServicoSessao::cadastrarSessaoPeca(Sessao sessao){
+    Peca peca;
+    int pecas;
+
+    ComandoPesquisarPeca comando(sessao.getCodigoPeca().getValor());
+    try
+    {
+        comando.executar();
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";;
+        return false;
+    }
+
+    try
+    {
+        peca = comando.getResultado();
+
+        pecas = pesquisarSessaoPeca(sessao.getCodigoPeca().getValor());
+        if(pecas <= 5){
+            ComandoCadastrarSessaoPeca comando(sessao);
+            try
+            {
+                comando.executar();
+                return true;
+            }
+            catch (EErroPersistencia exp)
+            {
+                cout << endl << "Erro no acesso ao banco de dados.";
+                return false;
+            }
+            return false;
+        }else{
+            cout << endl << "Peca com numero maximo de participantes.";
+            return false;
+        }
+    }
+    catch(EErroPersistencia exp)
+    {
+        cout << endl << exp.what();
+        return false;
+    }
+
+    return false;
+}
+bool CntrServicoSessao::cadastrarSessaoSala(Sessao sessao){
+    Sala sala;
+
+    ComandoPesquisarSala comando(sessao.getCodigoSala().getValor());
+    try
+    {
+        comando.executar();
+    }
+    catch (EErroPersistencia exp)
+    {
+        cout << endl << "Erro no acesso ao banco de dados.";;
+        return false;
+    }
+
+    try
+    {
+        sala = comando.getResultado();
+
+        ComandoCadastrarSessaoPeca comando(sessao);
+        try{
+            comando.executar();
+            return true;
+        }
+        catch (EErroPersistencia exp){
+            cout << endl << "Erro no acesso ao banco de dados.";
+            return false;
+        }
+        return false;
+    }
+    catch(EErroPersistencia exp)
+    {
+        cout << endl << exp.what();
+        return false;
+    }
+
+    return false;
+}
+
 
 bool CntrServicoPeca::listarPeca(){
     list<Peca> pecas;

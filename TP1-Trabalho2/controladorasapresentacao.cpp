@@ -1243,7 +1243,161 @@ void CntrApresentacaoSessao::editarSessao()  //preciso pegar os dados com contro
     return;
 }
 
-//--------------------------------------------------------------------------------------------
+void CntrApresentacaoSessao::cadastrarSessaoPeca()  //preciso pegar os dados com controladora servico
+{
+
+    // Mensagens a serem apresentadas na tela de edicao de Sessao.
+
+    char texto1[] ="Preencha os seguintes campos: ";
+    char texto2[] ="Codido da Sessao a ser editada:";
+    char texto3[] ="Codigo da Peca                :";
+    char texto10[]="Dados em formato incorreto. Digite algo.";
+    char texto11[]="Sucesso na edicao. Digite algo.";
+    char texto12[]="Falha na edicao. Digite algo.";
+
+    char campo1[80], campo2[80], campo3[80];                                                   // Cria campos para entrada dos dados.
+
+    // Instancia os dom�nios.
+
+    Codigo codigo;
+    Codigo codigo_peca;
+
+    // Dados sobre tamanho da tela.
+
+    // Armazena quantidade de linhas e colunas.
+
+    // Apresenta tela de cadastramento.
+
+    CLR_SCR;                                                                                     // Limpa janela.
+
+    cout << texto1 << endl;                                                     // Imprime nome do campo.
+    cout << texto2 << " ";                                                  // Imprime nome do campo.
+    cin >> campo1;                                                                             // L� valor do campo.
+    fflush(stdin);
+
+    cout << texto3 << " ";                                                  // Imprime nome do campo.
+    cin >> campo2;
+    fflush(stdin);
+
+
+    try
+    {
+        codigo.setValor(string(campo1));
+        codigo_peca.setValor(string(campo2));
+    }
+    catch(invalid_argument &exp)
+    {
+        cout << texto10 << endl;                                           // Informa formato incorreto.
+        // Desabilita eco.
+        getchar();                                                                                // Leitura de caracter digitado.
+        // Habilita eco.
+        fflush(stdin);
+        return;
+    }
+
+    // Instancia e inicializa entidade.
+
+    Sessao sessao;
+
+    sessao.setCodigo(codigo);
+    sessao.setCodigoPeca(codigo_peca);
+
+    // Incluir Sessao.
+
+    if(cntrServicoSessao->cadastrarSessaoPeca(sessao))
+    {
+        cout << texto11 << endl;                                               // Informa sucesso.
+
+        getchar();
+        fflush(stdin);
+        return;
+    }
+
+    cout << texto12 << endl;                                                       // Informa falha.
+
+    getchar();
+    fflush(stdin);
+
+    return;
+}
+
+void CntrApresentacaoSessao::cadastrarSessaoSala()  //preciso pegar os dados com controladora servico
+{
+
+    // Mensagens a serem apresentadas na tela de edicao de Sessao.
+
+    char texto1[] ="Preencha os seguintes campos: ";
+    char texto2[] ="Codido da Sessao a ser editada:";
+    char texto3[] ="Codigo da Sala                :";
+    char texto10[]="Dados em formato incorreto. Digite algo.";
+    char texto11[]="Sucesso na edicao. Digite algo.";
+    char texto12[]="Falha na edicao. Digite algo.";
+
+    char campo1[80], campo2[80], campo3[80];                                                   // Cria campos para entrada dos dados.
+
+    // Instancia os dom�nios.
+
+    Codigo codigo;
+    Codigo codigo_sala;
+
+    // Dados sobre tamanho da tela.
+
+    // Armazena quantidade de linhas e colunas.
+
+    // Apresenta tela de cadastramento.
+
+    CLR_SCR;                                                                                     // Limpa janela.
+
+    cout << texto1 << endl;                                                     // Imprime nome do campo.
+    cout << texto2 << " ";                                                  // Imprime nome do campo.
+    cin >> campo1;                                                                             // L� valor do campo.
+    fflush(stdin);
+
+    cout << texto3 << " ";                                                  // Imprime nome do campo.
+    cin >> campo2;
+    fflush(stdin);
+
+
+    try
+    {
+        codigo.setValor(string(campo1));
+        codigo_sala.setValor(string(campo2));
+    }
+    catch(invalid_argument &exp)
+    {
+        cout << texto10 << endl;                                           // Informa formato incorreto.
+        // Desabilita eco.
+        getchar();                                                                                // Leitura de caracter digitado.
+        // Habilita eco.
+        fflush(stdin);
+        return;
+    }
+
+    // Instancia e inicializa entidade.
+
+    Sessao sessao;
+
+    sessao.setCodigo(codigo);
+    sessao.setCodigoSala(codigo_sala);
+
+    // Incluir Sessao.
+
+    if(cntrServicoSessao->cadastrarSessaoSala(sessao))
+    {
+        cout << texto11 << endl;                                               // Informa sucesso.
+
+        getchar();
+        fflush(stdin);
+        return;
+    }
+
+    cout << texto12 << endl;                                                       // Informa falha.
+
+    getchar();
+    fflush(stdin);
+
+    return;
+}
 
 void CntrApresentacaoSessao::visualizarSessao()  //preciso pegar os dados com controladora servico
 {
@@ -1364,7 +1518,9 @@ void CntrApresentacaoSessao::executar(Matricula)
     char texto4[] ="3 - Excluir Sessao.";
     char texto5[] ="4 - Editar Sessao.";
     char texto6[] ="5 - Visualizar Sessao.";
-    char texto7[] ="6 - Retornar.";
+    char texto7[] ="6 - Cadastrar em Peca.";
+    char texto8[] ="7 - Cadastrar em Sala.";
+    char texto9[] ="8 - Retornar.";
 
     int campo;                                                                                  // Campo de entrada.
 
@@ -1391,6 +1547,8 @@ void CntrApresentacaoSessao::executar(Matricula)
         cout << texto5 << endl;                                             // Imprime nome do campo.
         cout << texto6 << endl;                                          // Imprime nome do campo.
         cout << texto7 << endl;                                             // Imprime nome do campo.
+        cout << texto8 << endl;
+        cout << texto9 << endl;
 
         campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
         fflush(stdin);
@@ -1413,6 +1571,12 @@ void CntrApresentacaoSessao::executar(Matricula)
             visualizarSessao();
             break;
         case 6:
+            cadastrarSessaoPeca();
+            break;
+        case 7:
+            cadastrarSessaoSala();
+            break;
+        case 8:
             apresentar = false;
             break;
         }

@@ -175,6 +175,20 @@ ComandoAtualizarSessao::ComandoAtualizarSessao(Sessao sessao)
     comandoSQL += "' WHERE codigo = '" + sessao.getCodigo().getValor()+"'";
 }
 
+ComandoCadastrarSessaoPeca::ComandoCadastrarSessaoPeca(Sessao sessao)
+{
+    comandoSQL = "UPDATE sessao ";
+    comandoSQL += "SET codigo_peca = '" + sessao.getCodigoPeca().getValor();
+    comandoSQL += "' WHERE codigo = '" + sessao.getCodigo().getValor()+"'";
+}
+
+ComandoCadastrarSessaoSala::ComandoCadastrarSessaoSala(Sessao sessao)
+{
+    comandoSQL = "UPDATE sessao ";
+    comandoSQL += "SET codigo_sala = '" + sessao.getCodigoSala().getValor();
+    comandoSQL += "' WHERE codigo = '" + sessao.getCodigo().getValor()+"'";
+}
+
 //---------------------------------------------------------------------------
 // Implementa��es de m�todos da classe ComandoRemoverSessao.
 
@@ -255,21 +269,21 @@ int ComandoPesquisarSessaoPeca::getResultado()
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    sessao.setCodigo(Codigo(resultado.getValorColuna()));
+
 
     // Remover Data;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    sessao.setData(Data(resultado.getValorColuna()));
+
 
     // Remover Horario;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    sessao.setHorario(Horario(resultado.getValorColuna()));
+
 
     // Remover codigo_peca;
     if (listaResultado.empty())
@@ -295,7 +309,7 @@ ComandoPesquisarSessaoSala::ComandoPesquisarSessaoSala(Codigo codigo)
     comandoSQL += codigo.getValor()+"'";
 }
 
-int ComandoPesquisarSessaoPeca::getResultado()
+int ComandoPesquisarSessaoSala::getResultado()
 {
     ElementoResultado resultado;
     int salas = 0;
@@ -306,21 +320,21 @@ int ComandoPesquisarSessaoPeca::getResultado()
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    sessao.setCodigo(Codigo(resultado.getValorColuna()));
+
 
     // Remover Data;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    sessao.setData(Data(resultado.getValorColuna()));
+
 
     // Remover Horario;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    sessao.setHorario(Horario(resultado.getValorColuna()));
+
 
     // Remover codigo_peca;
     if (listaResultado.empty())

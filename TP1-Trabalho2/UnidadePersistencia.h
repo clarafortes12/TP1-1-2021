@@ -189,6 +189,18 @@ public:
     int getResultado();
 };
 
+class ComandoCadastrarSessaoPeca:public ComandoSQL
+{
+public:
+    ComandoCadastrarSessaoPeca(Sessao);
+};
+
+class ComandoCadastrarSessaoSala:public ComandoSQL
+{
+public:
+    ComandoCadastrarSessaoSala(Sessao);
+};
+
 //---------------------------------------------------------------------------
 //Classe ComandoPesquisarPeca.
 

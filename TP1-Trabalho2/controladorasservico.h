@@ -80,6 +80,8 @@ class CntrServicoSessao:public IServicoSessao{
         bool incluirSessao(Sessao);
         bool editarSessao(Sessao);
         bool excluirSessao(Codigo);
+        bool cadastrarSessaoPeca(Sessao);
+        bool cadastrarSessaoSala(Sessao);
         int pesquisarSessaoPeca(Codigo);
         int pesquisarSessaoSala(Codigo);
 };
