@@ -316,57 +316,6 @@ int ComandoPesquisarSessaoPeca::getResultado()
     return pecas;
 }
 
-ComandoPesquisarSessaoSala::ComandoPesquisarSessaoSala(Codigo codigo)
-{
-    comandoSQL = "SELECT * FROM sessao WHERE codigo_sala = '";
-    comandoSQL += codigo.getValor()+"'";
-}
-
-int ComandoPesquisarSessaoSala::getResultado()
-{
-    ElementoResultado resultado;
-    int salas = 0;
-
-    while(!listaResultado.empty()){
-        // Remover codigo;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-
-
-    // Remover Data;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-
-
-    // Remover Horario;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-
-
-    // Remover codigo_peca;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-
-    // Remover codigo_sala;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-
-    salas = salas + 1;
-
-    }
-    return salas;
-}
-
 //---------------------------------------------------------------------------
 // Implementa��es de m�todos da classe ComandoPesquisarPeca.
 ComandoCadastrarPeca::ComandoCadastrarPeca(Peca peca)

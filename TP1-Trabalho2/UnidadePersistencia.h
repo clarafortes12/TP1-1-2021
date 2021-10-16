@@ -182,13 +182,6 @@ public:
     int getResultado();
 };
 
-class ComandoPesquisarSessaoSala:public ComandoSQL
-{
-public:
-    ComandoPesquisarSessaoSala(Codigo);
-    int getResultado();
-};
-
 class ComandoCadastrarSessaoPeca:public ComandoSQL
 {
 public:

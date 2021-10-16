@@ -193,23 +193,38 @@ bool CntrServicoParticipante::cadastrarParticipantePeca(Participante participant
     try
     {
         peca = comando.getResultado();
-
-        pecas = pesquisarParticipantePeca(participante.getCodigoPeca().getValor());
-        if(pecas <= 10){
-            ComandoCadastrarParticipantePeca comando(participante);
-            try
-            {
-                comando.executar();
-                return true;
-            }
-            catch (EErroPersistencia exp)
-            {
-                cout << endl << "Erro no acesso ao banco de dados.";
+        ComandoPesquisarParticipantePeca comando2(participante.getCodigoPeca().getValor());
+        try{
+            comando2.executar();
+        }
+        catch (EErroPersistencia exp)
+        {
+            cout << endl << "Erro no acesso ao banco de dados.";;
+            return false;
+        }
+        try{
+            pecas = comando2.getResultado();
+            if(pecas < 10){
+                ComandoCadastrarParticipantePeca comando(participante);
+                try
+                {
+                    comando.executar();
+                    return true;
+                }
+                catch (EErroPersistencia exp)
+                {
+                    cout << endl << "Erro no acesso ao banco de dados.";
+                    return false;
+                }
+                return false;
+            }else{
+                cout << endl << "Peca com numero maximo de participantes.";
                 return false;
             }
-            return false;
-        }else{
-            cout << endl << "Peca com numero maximo de participantes.";
+        }
+        catch(EErroPersistencia exp)
+        {
+            cout << endl << exp.what();
             return false;
         }
     }
@@ -252,7 +267,7 @@ int CntrServicoParticipante::pesquisarParticipantePeca(Codigo codigo){
         return -1;
     }
 }
-// Assim que der certo Sala, da pra so adaptar para Sessao e Peca
+
 bool CntrServicoSessao::listarSessao(){
     list<Sessao> sessoes;
     Sessao sessao;
@@ -471,7 +486,7 @@ bool CntrServicoSessao::excluirSessao(Codigo codigo){
 int CntrServicoSessao::pesquisarSessaoPeca(Codigo codigo){
     int pecas;
 
-    ComandoPesquisarParticipantePeca comando(codigo);
+    ComandoPesquisarSessaoPeca comando(codigo);
 
     try
     {
@@ -479,7 +494,7 @@ int CntrServicoSessao::pesquisarSessaoPeca(Codigo codigo){
     }
     catch (EErroPersistencia exp)
     {
-        cout << endl << "Erro no acesso ao banco de dados.";;
+        cout << endl << "Erro no acesso ao banco de dados 1.";;
         cout << "Digite algo para continuar : ";
         getchar();
         fflush(stdin);
@@ -511,30 +526,45 @@ bool CntrServicoSessao::cadastrarSessaoPeca(Sessao sessao){
     }
     catch (EErroPersistencia exp)
     {
-        cout << endl << "Erro no acesso ao banco de dados.";;
+        cout << endl << "Erro no acesso ao banco de dados 2.";;
         return false;
     }
 
     try
     {
         peca = comando.getResultado();
-
-        pecas = pesquisarSessaoPeca(sessao.getCodigoPeca().getValor());
-        if(pecas <= 5){
-            ComandoCadastrarSessaoPeca comando(sessao);
-            try
-            {
-                comando.executar();
-                return true;
-            }
-            catch (EErroPersistencia exp)
-            {
-                cout << endl << "Erro no acesso ao banco de dados.";
+        ComandoPesquisarSessaoPeca comando2(sessao.getCodigoPeca().getValor());
+        try{
+            comando2.executar();
+        }
+        catch (EErroPersistencia exp)
+        {
+            cout << endl << "Erro no acesso ao banco de dados.";;
+            return false;
+        }
+        try{
+            pecas = comando2.getResultado();
+            if(pecas < 5){
+                ComandoCadastrarSessaoPeca comando3(sessao);
+                try
+                {
+                    comando3.executar();
+                    return true;
+                }
+                catch (EErroPersistencia exp)
+                {
+                    cout << endl << "Erro no acesso ao banco de dados 32."<< endl;
+                    return false;
+                }
+                return false;
+            }else{
+                cout << endl << "Peca com numero maximo de sessoes."<< endl;
                 return false;
             }
-            return false;
-        }else{
-            cout << endl << "Peca com numero maximo de participantes.";
+        }
+        catch(EErroPersistencia exp)
+        {
+            cout << endl << exp.what();
             return false;
         }
     }
@@ -564,7 +594,7 @@ bool CntrServicoSessao::cadastrarSessaoSala(Sessao sessao){
     {
         sala = comando.getResultado();
 
-        ComandoCadastrarSessaoPeca comando(sessao);
+        ComandoCadastrarSessaoSala comando(sessao);
         try{
             comando.executar();
             return true;
