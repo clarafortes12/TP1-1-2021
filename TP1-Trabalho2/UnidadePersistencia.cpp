@@ -1,14 +1,8 @@
-//---------------------------------------------------------------------------
-// Incluir cabe�alhos.
-
 #include "UnidadePersistencia.h"
 
 // Atributo est�tico.
 
 list<ElementoResultado> ComandoSQL::listaResultado;
-
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ErroPersistencia.
 
 EErroPersistencia::EErroPersistencia(string mensagem)
 {
@@ -20,9 +14,6 @@ string EErroPersistencia::what()
     return mensagem;
 }
 
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ElementoResultado.
-
 void ElementoResultado::setNomeColuna(const string& nomeColuna)
 {
     this->nomeColuna = nomeColuna;
@@ -32,9 +23,6 @@ void ElementoResultado::setValorColuna(const string& valorColuna)
 {
     this->valorColuna = valorColuna;
 }
-
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoSQL.
 
 void ComandoSQL::conectar()
 {
@@ -57,7 +45,7 @@ void ComandoSQL::executar()
     rc = sqlite3_exec(bd, comandoSQL.c_str(), callback, 0, &mensagem);
     if(rc != SQLITE_OK)
     {
-        sqlite3_free(mensagem); // so para esvaziar a memoria mensagem
+        sqlite3_free(mensagem);
         desconectar();
         throw EErroPersistencia("Erro na execucao do comando SQL");
     }
@@ -79,9 +67,6 @@ int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nom
     return 0;
 }
 
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoLerSenha.
-
 ComandoLerSenha::ComandoLerSenha(Matricula matricula)
 {
     comandoSQL = "SELECT senha FROM participante WHERE matricula = ";
@@ -93,7 +78,6 @@ string ComandoLerSenha::getResultado()
     ElementoResultado resultado;
     string senha;
 
-    //Remover senha;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia. Aqui senha");
     resultado = listaResultado.back();
@@ -103,8 +87,6 @@ string ComandoLerSenha::getResultado()
     return senha;
 }
 
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoPesquisarSala.
 ComandoCadastrarSessao::ComandoCadastrarSessao(Sessao sessao)
 {
     comandoSQL = "INSERT INTO sessao VALUES (";
@@ -156,7 +138,6 @@ Sessao ComandoPesquisarSessao::getResultado()
         sessao.setCodigoSala(Codigo(resultado.getValorColuna()));
     }
 
-
     // Remover codigo_peca;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
@@ -169,8 +150,6 @@ Sessao ComandoPesquisarSessao::getResultado()
     return sessao;
 
 }
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe AtualizarSessao.
 
 ComandoAtualizarSessao::ComandoAtualizarSessao(Sessao sessao)
 {
@@ -194,17 +173,11 @@ ComandoCadastrarSessaoSala::ComandoCadastrarSessaoSala(Sessao sessao)
     comandoSQL += "' WHERE codigo = '" + sessao.getCodigo().getValor()+"'";
 }
 
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoRemoverSessao.
-
 ComandoRemoverSessao::ComandoRemoverSessao(Codigo codigo)
 {
     comandoSQL = "DELETE FROM sessao WHERE codigo = '";
     comandoSQL += codigo.getValor()+"'";
 }
-
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoListarSessao.
 
 ComandoListarSessao::ComandoListarSessao()
 {
@@ -218,6 +191,7 @@ list<Sessao> ComandoListarSessao::getResultado()
     list<Sessao> sessoes;
 
     while(!listaResultado.empty()){
+
         // Remover codigo;
         if (listaResultado.empty())
             throw EErroPersistencia("Lista de resultados vazia.");
@@ -232,7 +206,7 @@ list<Sessao> ComandoListarSessao::getResultado()
         listaResultado.pop_back();
         resultado_sessao.setData(Data(resultado.getValorColuna()));
 
-        // Remover capacidade;
+        // Remover horario;
         if (listaResultado.empty())
             throw EErroPersistencia("Lista de resultados vazia.");
         resultado = listaResultado.back();
@@ -248,7 +222,6 @@ list<Sessao> ComandoListarSessao::getResultado()
             resultado_sessao.setCodigoSala(Codigo(resultado.getValorColuna()));
         }
 
-
         // Remover codigo_peca;
         if (listaResultado.empty())
             throw EErroPersistencia("Lista de resultados vazia.");
@@ -257,7 +230,6 @@ list<Sessao> ComandoListarSessao::getResultado()
         if(resultado.getValorColuna()!= "NULL"){
             resultado_sessao.setCodigoPeca(Codigo(resultado.getValorColuna()));
         }
-
 
         sessoes.push_back(resultado_sessao);
     }
@@ -277,12 +249,12 @@ int ComandoPesquisarSessaoPeca::getResultado()
     int pecas = 0;
 
     while(!listaResultado.empty()){
-        // Remover codigo;
+
+    // Remover codigo;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-
 
     // Remover Data;
     if (listaResultado.empty())
@@ -290,13 +262,11 @@ int ComandoPesquisarSessaoPeca::getResultado()
     resultado = listaResultado.back();
     listaResultado.pop_back();
 
-
     // Remover Horario;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-
 
     // Remover codigo_peca;
     if (listaResultado.empty())
@@ -316,8 +286,6 @@ int ComandoPesquisarSessaoPeca::getResultado()
     return pecas;
 }
 
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoPesquisarPeca.
 ComandoCadastrarPeca::ComandoCadastrarPeca(Peca peca)
 {
     comandoSQL = "INSERT INTO peca VALUES (";
@@ -369,8 +337,6 @@ Peca ComandoPesquisarPeca::getResultado()
     return peca;
 
 }
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe AtualizarPeca.
 
 ComandoAtualizarPeca::ComandoAtualizarPeca(Peca peca)
 {
@@ -381,17 +347,11 @@ ComandoAtualizarPeca::ComandoAtualizarPeca(Peca peca)
     comandoSQL += "' WHERE codigo = '" + peca.getCodigo().getValor()+"'";
 }
 
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoRemoverPeca.
-
 ComandoRemoverPeca::ComandoRemoverPeca(Codigo codigo)
 {
     comandoSQL = "DELETE FROM peca WHERE codigo = '";
     comandoSQL += codigo.getValor()+"'";
 }
-
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoListarPeca.
 
 ComandoListarPeca::ComandoListarPeca()
 {
@@ -405,6 +365,7 @@ list<Peca> ComandoListarPeca::getResultado()
     list<Peca> pecas;
 
     while(!listaResultado.empty()){
+
         // Remover codigo;
         if (listaResultado.empty())
             throw EErroPersistencia("Lista de resultados vazia.");
@@ -418,12 +379,14 @@ list<Peca> ComandoListarPeca::getResultado()
         resultado = listaResultado.back();
         listaResultado.pop_back();
         resultado_peca.setNome(Nome(resultado.getValorColuna()));
+
         // Remover tipo;
         if (listaResultado.empty())
             throw EErroPersistencia("Lista de resultados vazia.");
         resultado = listaResultado.back();
         listaResultado.pop_back();
         resultado_peca.setTipo(Tipo(resultado.getValorColuna()));
+
         // Remover classificacao;
         if (listaResultado.empty())
             throw EErroPersistencia("Lista de resultados vazia.");
@@ -435,8 +398,6 @@ list<Peca> ComandoListarPeca::getResultado()
     return pecas;
 }
 
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoPesquisarSala.
 ComandoCadastrarSala::ComandoCadastrarSala(Sala sala)
 {
     comandoSQL = "INSERT INTO sala VALUES (";
@@ -480,8 +441,6 @@ Sala ComandoPesquisarSala::getResultado()
     return sala;
 
 }
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe AtualizarSala.
 
 ComandoAtualizarSala::ComandoAtualizarSala(Sala sala)
 {
@@ -491,21 +450,14 @@ ComandoAtualizarSala::ComandoAtualizarSala(Sala sala)
     comandoSQL += "' WHERE codigo = '" + sala.getCodigo().getValor()+"'";
 }
 
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoRemoverSala.
-
 ComandoRemoverSala::ComandoRemoverSala(Codigo codigo)
 {
     comandoSQL = "DELETE FROM sala WHERE codigo = '";
     comandoSQL += codigo.getValor()+"'";
 }
 
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoListarSala.
-
 ComandoListarSala::ComandoListarSala()
 {
-    //comandoSQL = "SELECT codigo, nome FROM sala ";
     comandoSQL = "SELECT * FROM sala";
 }
 
@@ -513,10 +465,10 @@ list<Sala> ComandoListarSala::getResultado()
 {
     ElementoResultado resultado;
     Sala resultado_sala;
-    // por ora vai voltar as salas com todos os campos msm, pq n sei como retornaria so codigo e nome, teria de criar uma nova entidade
     list<Sala> salas;
 
     while(!listaResultado.empty()){
+
         // Remover codigo;
         if (listaResultado.empty())
             throw EErroPersistencia("Lista de resultados vazia.");
@@ -543,9 +495,6 @@ list<Sala> ComandoListarSala::getResultado()
 
     return salas;
 }
-
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoPesquisarParticipante.
 
 ComandoPesquisarParticipante::ComandoPesquisarParticipante(Matricula matricula)
 {
@@ -622,9 +571,6 @@ Participante ComandoPesquisarParticipante::getResultado(){
 
 }
 
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoCadastrarAluno.
-
 ComandoCadastrarParticipante::ComandoCadastrarParticipante(Participante participante)
 {
     cout << "Comando executar cadastro" << endl;
@@ -640,17 +586,11 @@ ComandoCadastrarParticipante::ComandoCadastrarParticipante(Participante particip
     cout << "Fim Comando executar cadastro" << endl;
 }
 
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoRemoverAluno.
-
 ComandoRemoverParticipante::ComandoRemoverParticipante(Matricula matricula)
 {
     comandoSQL = "DELETE FROM participante WHERE matricula = '";
     comandoSQL += matricula.getValor()+"'";
 }
-
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoEditarAluno.
 
 ComandoAtualizarParticipante::ComandoAtualizarParticipante(Participante participante)
 {
@@ -683,6 +623,7 @@ int ComandoPesquisarParticipantePeca::getResultado()
     int pecas = 0;
 
     while(!listaResultado.empty()){
+
         // Remover matricula;
         if (listaResultado.empty())
             throw EErroPersistencia("Lista de resultados vazia.");

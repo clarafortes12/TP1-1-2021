@@ -3,6 +3,8 @@
 //--------------------------------------------------------------------------------------------
 // Implementa��es dos m�todos de classes controladoras.
 
+//--------------------- Controladora de Apresentacao e Controle -----------------------------------------------------------------------
+
 void CntrApresentacaoControle::executar(){
 
     // Mensagens a serem apresentadas na tela inicial.
@@ -24,11 +26,11 @@ void CntrApresentacaoControle::executar(){
     char texto8_3[]="4 - Selecionar servicos relacionados a salas.";
     char texto9[]="5 - Encerrar sessao.";
 
-    char texto10[]="Falha na autenticacao. Digite algo para continuar.";                        // Mensagem a ser apresentada.
+    char texto10[]="Falha na autenticacao. Digite algo para continuar.";
 
-    int campo;                                                                                  // Campo de entrada.
+    int campo;
 
-    bool apresentar = true;                                                                          // Dados sobre tamanho da tela.
+    bool apresentar = true;
 
 
     while(apresentar)
@@ -36,15 +38,15 @@ void CntrApresentacaoControle::executar(){
 
         // Apresenta tela inicial.
 
-        CLR_SCR;                                                                                // Limpa janela.
+        CLR_SCR;
 
-        cout << texto1 << endl;                                                                 // Imprime nome do campo.
-        cout << texto2 << endl;                                                                 // Imprime nome do campo.
-        cout << texto3 << endl;                                                                 // Imprime nome do campo.
+        cout << texto1 << endl;
+        cout << texto2 << endl;
+        cout << texto3 << endl;
         cout << texto4_1 << endl;
         cout << texto4_2 << endl;
-        cout << texto4_3 << endl;                                                                         // Imprime nome do campo.
-        cout << texto5 << endl;                                            // Imprime nome do campo.
+        cout << texto4_3 << endl;
+        cout << texto5 << endl;
 
         campo = getchar() - 48;
         fflush(stdin);
@@ -52,39 +54,39 @@ void CntrApresentacaoControle::executar(){
         switch(campo)
         {
         case 1:
-            if(cntrApresentacaoAutenticacao->autenticar(&matricula))                          // Solicita autentica��o.
+            if(cntrApresentacaoAutenticacao->autenticar(&matricula))
             {
-                bool apresentar = true;                                                 // Controle de la�o.
+                bool apresentar = true;
                 while(apresentar)
                 {
 
                     // Apresenta tela de sele��o de servi�o.
 
-                    CLR_SCR;                                                            // Limpa janela.
+                    CLR_SCR;
 
-                    cout << texto6 << endl;                                             // Imprime nome do campo.
-                    cout << texto7 << endl;                                             // Imprime nome do campo.
+                    cout << texto6 << endl;
+                    cout << texto7 << endl;
                     cout << texto8_1 << endl;
                     cout << texto8_2 << endl;
-                    cout << texto8_3 << endl;                                              // Imprime nome do campo.
-                    cout << texto9 << endl;                      // Imprime nome do campo.                                    // Apresenta tela de sele��o de servi�o.
+                    cout << texto8_3 << endl;
+                    cout << texto9 << endl;
 
-                    campo = getchar() - 48;                                               // Leitura do campo de entrada e convers�o de ASCII.
+                    campo = getchar() - 48;
                     fflush(stdin);
 
                     switch(campo)
                     {
                     case 1:
-                        apresentar = cntrApresentacaoParticipante->executar(matricula);                 // Solicita servi�o de pessoal.
+                        apresentar = cntrApresentacaoParticipante->executar(matricula);
                         break;
                     case 2:
-                        cntrApresentacaoPeca->executar(matricula);                 // Solicita servi�o de peca.
+                        cntrApresentacaoPeca->executar(matricula);
                         break;
                     case 3:
-                        cntrApresentacaoSessao->executar(matricula);                 // Solicita servi�o de sessao.
+                        cntrApresentacaoSessao->executar(matricula);
                         break;
                     case 4:
-                        cntrApresentacaoSala->executar(matricula);                 // Solicita servi�o de sala.
+                        cntrApresentacaoSala->executar(matricula);
                         break;
                     case 5:
                         apresentar = false;
@@ -95,9 +97,9 @@ void CntrApresentacaoControle::executar(){
             else
             {
 
-                CLR_SCR;                                                                // Limpa janela.
-                cout << texto10 << endl;                                                // Imprime mensagem.
-                getchar();                                                                 // Habilita eco.
+                CLR_SCR;
+                cout << texto10 << endl;
+                getchar();
             }
             break;
         case 2:
@@ -120,7 +122,7 @@ void CntrApresentacaoControle::executar(){
     return;
 }
 
-//--------------------------------------------------------------------------------------------
+//--------------------- Controladora de Autenticacao -----------------------------------------------------------------------
 
 bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula){
 
@@ -135,41 +137,42 @@ bool CntrApresentacaoAutenticacao::autenticar(Matricula *matricula){
     char campo1[80];
     char campo2[80];
 
-    Senha senha;                                                                                // Instancia a classe Senha.
+    Senha senha;
 
     while(true)
     {
 
         // Apresenta tela de autentica��o.
-        CLR_SCR;                                                                                // Limpa janela.
-        cout << texto1 << " ";                                                                  // Imprime nome do campo.
+        CLR_SCR;
+        cout << texto1 << " ";
         cin >> campo1;
         fflush(stdin);
-                                                                                  // Lê valor do campo.
-        cout << texto2 << " ";                                                                  // Imprime nome do campo.
-        cin >> campo2;                                                                         // L� valor do campo.
+
+        cout << texto2 << " ";
+        cin >> campo2;
         fflush(stdin);
 
         try
         {
-            matricula->setValor(string(campo1));                                                      // Atribui valor ao CPF.
-            senha.setValor(string(campo2));                                                     // Atribui Valor � senha.
-            break;                                                                              // Abandona la�o em caso de formatos corretos.
+            matricula->setValor(string(campo1));
+            senha.setValor(string(campo2));
+            break;
         }
-        catch(invalid_argument &exp)                                                            // Captura exce��o devido a formato incorreto.
+        catch(invalid_argument &exp)
         {
-            CLR_SCR;                                                                            // Limpa janela.
-            cout << texto3 << endl;                                                             // Informa formato incorreto.
+            CLR_SCR;
+            cout << texto3 << endl;
             getchar();
             fflush(stdin);
         }
     }
-    return (cntrServicoAutenticacao->autenticar(*matricula, senha));                                                     // Solicita servi�o de autentica��o.
+    return (cntrServicoAutenticacao->autenticar(*matricula, senha));
 }
 
 //--------------------- Controladoras de Participante -----------------------------------------------------------------------
 
-bool CntrApresentacaoParticipante::executar(Matricula matricula){
+bool CntrApresentacaoParticipante::executar(Matricula matricula)
+{
 
     // Mensagens a serem apresentadas na tela de sele��o de servi�o..
 
@@ -189,16 +192,16 @@ bool CntrApresentacaoParticipante::executar(Matricula matricula){
 
         // Apresenta tela de sela��o de servi�o.
 
-        CLR_SCR;                                                                                // Limpa janela.
+        CLR_SCR;
 
-        cout << texto1 << endl;                                                                 // Imprime nome do campo.
-        cout << texto2 << endl;                                                                 // Imprime nome do campo.
+        cout << texto1 << endl;
+        cout << texto2 << endl;
         cout << texto3 << endl;
         cout << texto4 << endl;
-        cout << texto5 << endl;                                                                     // Imprime nome do campo.
+        cout << texto5 << endl;
         cout << texto6 << endl;
 
-        campo = getchar() - 48;                                                                   // Leitura do campo de entrada.
+        campo = getchar() - 48;
         fflush(stdin);
 
         switch(campo)
@@ -228,45 +231,13 @@ bool CntrApresentacaoParticipante::executar(Matricula matricula){
     return true;
 }
 
-void CntrApresentacaoParticipante::executar(){
+void CntrApresentacaoParticipante::executar()
+{
     cadastrarParticipante();
-    // Mensagens a serem apresentadas na tela de sele��o de servi�o..
-
-    //char texto1[]="Selecione um dos servicos : ";
-    //char texto2[]="1 - Cadastrar novo participante.";
-    //char texto3[]="2 - Retornar.";
-
-   // int campo;
-
-    //bool apresentar = true;
-
-    //while(apresentar)
-    //{
-
-        // Apresenta tela de sela��o de servi�o.
-
-        //CLR_SCR;                                                                                // Limpa janela.
-
-        //cout << texto1 << endl;                                                                 // Imprime nome do campo.
-        //cout << texto2 << endl;                                                                 // Imprime nome do campo.
-        //cout << texto3 << endl;                                                                   // Imprime nome do campo.
-
-        //campo = getchar() - 48;                                                                   // Leitura do campo de entrada.
-        //fflush(stdin);
-
-        //switch(campo)
-        //{
-        //case 1:
-            //cadastrarParticipante();;
-            //break;
-        //case 2:
-            //apresentar = false;
-            //break;
-        //}
-    //}
 }
 
-void CntrApresentacaoParticipante::cadastrarParticipante(){
+void CntrApresentacaoParticipante::cadastrarParticipante()
+{
 
     // Mensagens a serem apresentadas na tela de cadastramento.
 
@@ -295,37 +266,37 @@ void CntrApresentacaoParticipante::cadastrarParticipante(){
     Matricula matricula;
     Cargo cargo;
 
-    CLR_SCR;                                                                                   // Limpa janela.
+    CLR_SCR;
 
-    cout << texto1 << endl;                                                                    // Imprime solicitação ao usuário.
-    cout << texto2 << " ";                                                                     // Imprime nome do campo.
+    cout << texto1 << endl;
+    cout << texto2 << " ";
     cin.getline(campo_nome,sizeof(campo_nome));
     fflush(stdin);
 
-    cout << texto3 << " ";                                                                     // Imprime nome do campo.
+    cout << texto3 << " ";
     cin.getline(campo_sobrenome,sizeof(campo_sobrenome));
     fflush(stdin);
 
-    cout << texto4 << " ";                                                                     // Imprime nome do campo.
+    cout << texto4 << " ";
     cin >> campo_email;
     fflush(stdin);
-                                                                                // Lê valor do campo.
-    cout << texto5 << " ";                                                                  // Imprime nome do campo.
+
+    cout << texto5 << " ";
     cin >> campo_telefone;
     fflush(stdin);
-                                                                                 // Lê valor do campo.
-    cout << texto6 << " ";                                                                     // Imprime nome do campo.
+
+    cout << texto6 << " ";
     cin >> campo_senha;
     fflush(stdin);
-                                                                                 // Lê valor do campo.
-    cout << texto7 << " ";                                                                     // Imprime nome do campo.
+
+    cout << texto7 << " ";
     cin >> campo_matricula;
     fflush(stdin);
-                                                                                 // Lê valor do campo.
-    cout << texto8 << " ";                                                                     // Imprime nome do campo.
+
+    cout << texto8 << " ";
     cin >> campo_cargo;
     fflush(stdin);
-                                                                                 // Lê valor do campo.
+
     try
     {
         nome.setValor(string(campo_nome));
@@ -369,7 +340,8 @@ void CntrApresentacaoParticipante::cadastrarParticipante(){
     return;
 }
 
-void CntrApresentacaoParticipante::consultarParticipante(Matricula matricula){
+void CntrApresentacaoParticipante::consultarParticipante(Matricula matricula)
+{
     char texto2[]="Falha na visualizacao. Digite algo.";
 
     if(cntrServicoParticipante->consultarParticipante(matricula)) return;
@@ -381,7 +353,8 @@ void CntrApresentacaoParticipante::consultarParticipante(Matricula matricula){
 
 }
 
-void CntrApresentacaoParticipante::editarParticipante(Matricula matricula){
+void CntrApresentacaoParticipante::editarParticipante(Matricula matricula)
+{
      // Mensagens a serem apresentadas na tela de cadastramento.
     char texto1[] ="Preencha os seguintes campos: ";
     char texto2[] ="Nome            :";
@@ -406,32 +379,32 @@ void CntrApresentacaoParticipante::editarParticipante(Matricula matricula){
     Senha senha;
     Cargo cargo;
 
-    CLR_SCR;                                                                                   // Limpa janela.
+    CLR_SCR;
 
-    cout << texto1 << endl;                                                                    // Imprime solicitação ao usuário.
-    cout << texto2 << " ";                                                                     // Imprime nome do campo.
+    cout << texto1 << endl;
+    cout << texto2 << " ";
     cin.getline(campo_nome,sizeof(campo_nome));
     fflush(stdin);
 
-    cout << texto3 << " ";                                                                     // Imprime nome do campo.
+    cout << texto3 << " ";
     cin.getline(campo_sobrenome,sizeof(campo_sobrenome));
-    fflush(stdin);                                                                            // Lê valor do campo.
+    fflush(stdin);
 
-    cout << texto4 << " ";                                                                     // Imprime nome do campo.
+    cout << texto4 << " ";
     cin >> campo_email;
-    fflush(stdin);                                                                             // Lê valor do campo.
+    fflush(stdin);
 
-    cout << texto5 << " ";                                                                  // Imprime nome do campo.
+    cout << texto5 << " ";
     cin >> campo_telefone;
-    fflush(stdin);                                                                             // Lê valor do campo.
+    fflush(stdin);
 
-    cout << texto6 << " ";                                                                     // Imprime nome do campo.
+    cout << texto6 << " ";
     cin >> campo_senha;
-    fflush(stdin);                                                                             // Lê valor do campo.
+    fflush(stdin);
 
-    cout << texto7 << " ";                                                                     // Imprime nome do campo.
+    cout << texto7 << " ";
     cin >> campo_cargo;
-    fflush(stdin);                                                                             // Lê valor do campo.
+    fflush(stdin);
     try
     {
         nome.setValor(string(campo_nome));
@@ -478,7 +451,8 @@ void CntrApresentacaoParticipante::editarParticipante(Matricula matricula){
 
 }
 
-bool CntrApresentacaoParticipante::descadastrarParticipante(Matricula matricula){
+bool CntrApresentacaoParticipante::descadastrarParticipante(Matricula matricula)
+{
 
     char texto1[] ="Informe a sua matricula: ";
     char texto2[]="Dado em formato incorreto. Digite algo.";
@@ -528,8 +502,9 @@ bool CntrApresentacaoParticipante::descadastrarParticipante(Matricula matricula)
 
 }
 
-void CntrApresentacaoParticipante::cadastrarParticipantePeca(Matricula matricula){
-     // Mensagens a serem apresentadas na tela de cadastramento.
+void CntrApresentacaoParticipante::cadastrarParticipantePeca(Matricula matricula)
+{
+     // Mensagens a serem apresentadas na tela de cadastramento de participante em peca.
     char texto1[] ="Preencha o seguinte campo: ";
     char texto2[] ="Codigo Peca     :";
     char texto3[]="Dados em formato incorreto. Digite algo.";
@@ -541,12 +516,12 @@ void CntrApresentacaoParticipante::cadastrarParticipantePeca(Matricula matricula
     // Instancia os dom�nios.
 
     Codigo codigo_peca;
-    CLR_SCR;                                                                                   // Limpa janela.
+    CLR_SCR;
 
-    cout << texto1 << endl;                                                                    // Imprime solicitação ao usuário.
-    cout << texto2 << " ";                                                                     // Imprime nome do campo.                                                                    // Imprime nome do campo.
+    cout << texto1 << endl;
+    cout << texto2 << " ";
     cin >> campo_peca;
-    fflush(stdin);                                                                             // Lê valor do campo.
+    fflush(stdin);
 
     try
     {
@@ -583,21 +558,19 @@ void CntrApresentacaoParticipante::cadastrarParticipantePeca(Matricula matricula
     return;
 
 }
-//--------------------------------------------------------------------------------------------
 
-// esse ainda falta implementar
-void CntrApresentacaoSala::listarSala()  //preciso pegar os dados com controladora servico
+//--------------------- Controladoras de Sala -----------------------------------------------------------------------
+
+void CntrApresentacaoSala::listarSala()
 {
     CLR_SCR;
     cntrServicoSala->listarSala();
 }
 
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoSala::incluirSala()  //preciso pegar os dados com controladora servico
+void CntrApresentacaoSala::incluirSala()
 {
 
-    // Mensagens a serem apresentadas na tela de cadastramento.
+    // Mensagens a serem apresentadas na tela de inclusao de sala.
 
     char texto1[] ="Preencha os seguintes campos: ";
     char texto2[] ="Codigo      :";
@@ -607,7 +580,7 @@ void CntrApresentacaoSala::incluirSala()  //preciso pegar os dados com controlad
     char texto11[]="Sucesso no cadastramento. Digite algo.";
     char texto12[]="Falha no cadastramento. Digite algo.";
 
-    char campo1[80], campo2[80], campo3[80];                                                   // Cria campos para entrada dos dados.
+    char campo1[80], campo2[80], campo3[80];
 
     // Instancia os dom�nios.
 
@@ -615,25 +588,19 @@ void CntrApresentacaoSala::incluirSala()  //preciso pegar os dados com controlad
     Nome nome;
     Capacidade capacidade;
 
-    // Dados sobre tamanho da tela.
+    CLR_SCR;
 
-    // Armazena quantidade de linhas e colunas.
-
-    // Apresenta tela de cadastramento.
-
-    CLR_SCR;                                                                                     // Limpa janela.
-
-    cout << texto1 << endl;                                                    // Imprime nome do campo.
-    cout << texto2 << " ";                                                                     // Imprime nome do campo.
-    cin >> campo1;                                                                            // Lê valor do campo.
+    cout << texto1 << endl;
+    cout << texto2 << " ";
+    cin >> campo1;
     fflush(stdin);
 
-    cout << texto3 << " ";                                                                     // Imprime nome do campo.
+    cout << texto3 << " ";
     cin.getline(campo2,sizeof(campo2));
-    fflush(stdin);                                                                           // Lê valor do campo.
+    fflush(stdin);
 
-    cout << texto4 << " ";                                                                     // Imprime nome do campo.
-    cin >> campo3;                                                                             // Lê valor do campo.
+    cout << texto4 << " ";
+    cin >> campo3;
     fflush(stdin);
 
     try
@@ -644,10 +611,8 @@ void CntrApresentacaoSala::incluirSala()  //preciso pegar os dados com controlad
     }
     catch(invalid_argument &exp)
     {
-        cout << texto10 << endl;                                            // Informa formato incorreto.
-        // Desabilita eco.
-        getchar();                                                                                // Leitura de caracter digitado.
-        // Habilita eco.
+        cout << texto10 << endl;
+        getchar();
         fflush(stdin);
         return;
     }
@@ -664,14 +629,14 @@ void CntrApresentacaoSala::incluirSala()  //preciso pegar os dados com controlad
 
     if(cntrServicoSala->incluirSala(sala))
     {
-        cout << texto11 << endl;                                                // Informa sucesso.
+        cout << texto11 << endl;
 
         getchar();
         fflush(stdin);
         return;
     }
 
-    cout << texto12 << endl;                                                        // Informa falha.
+    cout << texto12 << endl;
 
     getchar();
     fflush(stdin);
@@ -679,9 +644,7 @@ void CntrApresentacaoSala::incluirSala()  //preciso pegar os dados com controlad
     return;
 }
 
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoSala::excluirSala()  //preciso pegar os dados com controladora servico
+void CntrApresentacaoSala::excluirSala()
 {
 
     // Mensagens a serem apresentadas na tela de cadastramento.
@@ -691,24 +654,17 @@ void CntrApresentacaoSala::excluirSala()  //preciso pegar os dados com controlad
     char texto11[]="Sucesso na exclusao. Digite algo.";
     char texto12[]="Falha na exclusao. Digite algo.";
 
-    char campo1[80];                                                                           // Cria campos para entrada dos dados.
+    char campo1[80];
 
     // Instancia os dom�nios.
 
     Codigo codigo;
 
-    // Dados sobre tamanho da tela.
+    CLR_SCR;
 
-    // Armazena quantidade de linhas e colunas.
-
-    // Apresenta tela de cadastramento.
-
-    CLR_SCR;                                                                                     // Limpa janela.
-
-    cout << texto1 << " ";                                                    // Imprime nome do campo.                                                                   // Imprime nome do campo.
+    cout << texto1 << " ";
     cin >> campo1;
     fflush(stdin);
-    // L� valor do campo.
 
     try
     {
@@ -716,26 +672,22 @@ void CntrApresentacaoSala::excluirSala()  //preciso pegar os dados com controlad
     }
     catch(invalid_argument &exp)
     {
-        cout << texto10 << endl;                                           // Informa formato incorreto.
-        // Desabilita eco.
-        getchar();                                                                                // Leitura de caracter digitado.
-        // Habilita eco.
+        cout << texto10 << endl;
+        getchar();
         fflush(stdin);
         return;
     }
 
-    // Exclui a sala.
-
     if(cntrServicoSala->excluirSala(codigo))
     {
-        cout << texto11 << endl;                                              // Informa sucesso.
+        cout << texto11 << endl;
 
         getchar();
         fflush(stdin);
         return;
     }
 
-    cout << texto12 << endl;                                                       // Informa falha.
+    cout << texto12 << endl;
 
     getchar();
     fflush(stdin);
@@ -743,9 +695,7 @@ void CntrApresentacaoSala::excluirSala()  //preciso pegar os dados com controlad
     return;
 }
 
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoSala::editarSala()  //preciso pegar os dados com controladora servico
+void CntrApresentacaoSala::editarSala()
 {
 
     // Mensagens a serem apresentadas na tela de edicao de sala.
@@ -758,7 +708,7 @@ void CntrApresentacaoSala::editarSala()  //preciso pegar os dados com controlado
     char texto11[]="Sucesso na edicao. Digite algo.";
     char texto12[]="Falha na edicao. Digite algo.";
 
-    char campo1[80], campo2[80], campo3[80];                                                   // Cria campos para entrada dos dados.
+    char campo1[80], campo2[80], campo3[80];
 
     // Instancia os dom�nios.
 
@@ -766,24 +716,18 @@ void CntrApresentacaoSala::editarSala()  //preciso pegar os dados com controlado
     Nome nome;
     Capacidade capacidade;
 
-    // Dados sobre tamanho da tela.
+    CLR_SCR;
 
-    // Armazena quantidade de linhas e colunas.
-
-    // Apresenta tela de cadastramento.
-
-    CLR_SCR;                                                                                     // Limpa janela.
-
-    cout << texto1 << endl;                                                     // Imprime nome do campo.
-    cout << texto2 << " ";                                                // Imprime nome do campo.
-    cin >> campo1;                                                                           // L� valor do campo.
+    cout << texto1 << endl;
+    cout << texto2 << " ";
+    cin >> campo1;
     fflush(stdin);
 
-    cout << texto3 << " ";                                                // Imprime nome do campo.
+    cout << texto3 << " ";
     cin.getline(campo2,sizeof(campo2));
     fflush(stdin);
 
-    cout << texto4 << " ";                                                // Imprime nome do campo.
+    cout << texto4 << " ";
     cin >> campo3;
     fflush(stdin);
 
@@ -795,10 +739,8 @@ void CntrApresentacaoSala::editarSala()  //preciso pegar os dados com controlado
     }
     catch(invalid_argument &exp)
     {
-        cout << texto10 << endl;                                           // Informa formato incorreto.
-        // Desabilita eco.
-        getchar();                                                                                // Leitura de caracter digitado.
-        // Habilita eco.
+        cout << texto10 << endl;
+        getchar();
         fflush(stdin);
         return;
     }
@@ -811,18 +753,16 @@ void CntrApresentacaoSala::editarSala()  //preciso pegar os dados com controlado
     sala.setNome(nome);
     sala.setCapacidade(capacidade);
 
-    // Incluir sala.
-
     if(cntrServicoSala->editarSala(sala))
     {
-        cout << texto11 << endl;                                               // Informa sucesso.
+        cout << texto11 << endl;
 
         getchar();
         fflush(stdin);
         return;
     }
 
-    cout << texto12 << endl;                                                       // Informa falha.
+    cout << texto12 << endl;
 
     getchar();
     fflush(stdin);
@@ -830,9 +770,7 @@ void CntrApresentacaoSala::editarSala()  //preciso pegar os dados com controlado
     return;
 }
 
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoSala::visualizarSala()  //preciso pegar os dados com controladora servico
+void CntrApresentacaoSala::visualizarSala()
 {
 
     // Mensagens a serem apresentadas na tela de visualizar sala.
@@ -842,16 +780,16 @@ void CntrApresentacaoSala::visualizarSala()  //preciso pegar os dados com contro
     char texto11[]="Sucesso. Digite algo para continuar.";
     char texto3[]="Falha na visualizacao. Digite algo.";
 
-    char campo1[80];                                                                           // Cria campos para entrada dos dados.
+    char campo1[80];
 
     // Instancia os dom�nios.
 
     Codigo codigo;
 
-    CLR_SCR;                                                                                     // Limpa janela.
+    CLR_SCR;
 
-    cout << texto1 << " ";                                                     // Imprime nome do campo.
-    cin >> campo1;                                                                             // L� valor do campo.
+    cout << texto1 << " ";
+    cin >> campo1;
     fflush(stdin);
 
     try
@@ -860,31 +798,25 @@ void CntrApresentacaoSala::visualizarSala()  //preciso pegar os dados com contro
     }
     catch(invalid_argument &exp)
     {
-        cout << texto2 << endl;                                           // Informa formato incorreto.
-        // Desabilita eco.
-        getchar();                                                                                // Leitura de caracter digitado.
-        // Habilita eco.
+        cout << texto2 << endl;
+        getchar();
         fflush(stdin);
         return;
     }
 
-    // Visualizacao da sala.
-
     if(cntrServicoSala->visualizarSala(codigo)){
-        cout << texto11 << endl;                                               // Informa sucesso.
+        cout << texto11 << endl;
 
         getchar();
         fflush(stdin);
         return;
     }
 
-    cout << texto3 << endl;                                               // Informa sucesso.
+    cout << texto3 << endl;
     getchar();
     fflush(stdin);
     return;
 }
-
-//--------------------------------------------------------------------------------------------
 
 void CntrApresentacaoSala::executar()
 {
@@ -895,26 +827,21 @@ void CntrApresentacaoSala::executar()
     char texto2[]="1 - Listar salas disponiveis.";
     char texto3[]="2 - Retornar.";
 
-    int campo;                                                                                  // Campo de entrada.
+    int campo;
 
-    // Dados sobre tamanho da tela.
-    // Armazena quantidade de linhas e colunas.
-
-    // Habilita eco.
-
-    bool apresentar = true;                                                                     // Controle de la�o.
+    bool apresentar = true;
 
     while(apresentar)
     {
 
         // Apresenta tela simplificada de salas.
 
-        CLR_SCR;                                                                                 // Limpa janela.
-        cout << texto1 << endl;                                                // Imprime nome do campo.
-        cout << texto2 << endl;                                             // Imprime nome do campo.
-        cout << texto3 << endl;                                            // Imprime nome do campo.
+        CLR_SCR;
+        cout << texto1 << endl;
+        cout << texto2 << endl;
+        cout << texto3 << endl;
 
-        campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
+        campo = getchar() - 48;
         fflush(stdin);
 
         switch(campo)
@@ -929,8 +856,6 @@ void CntrApresentacaoSala::executar()
     }
 }
 
-//--------------------------------------------------------------------------------------------
-
 void CntrApresentacaoSala::executar(Matricula)
 {
 
@@ -944,33 +869,25 @@ void CntrApresentacaoSala::executar(Matricula)
     char texto6[] ="5 - Visualizar sala.";
     char texto7[] ="6 - Retornar.";
 
-    int campo;                                                                                  // Campo de entrada.
+    int campo;
 
-    // Dados sobre tamanho da tela.
-
-    // Armazena quantidade de linhas e colunas.
-
-    // Habilita eco.
-
-    bool apresentar = true;                                                                     // Controle de la�o.
-
-    // Habilita eco.
+    bool apresentar = true;
 
     while(apresentar)
     {
 
         // Apresenta tela completa de salas.
 
-        CLR_SCR;                                                                                 // Limpa janela.
-        cout << texto1 << endl;                                                 // Imprime nome do campo.
-        cout << texto2 << endl;                                             // Imprime nome do campo.
-        cout << texto3 << endl;                                             // Imprime nome do campo.
-        cout << texto4 << endl;                                            // Imprime nome do campo.
-        cout << texto5 << endl;                                             // Imprime nome do campo.
-        cout << texto6 << endl;                                            // Imprime nome do campo.
-        cout << texto7 << endl;                                            // Imprime nome do campo.
+        CLR_SCR;
+        cout << texto1 << endl;
+        cout << texto2 << endl;
+        cout << texto3 << endl;
+        cout << texto4 << endl;
+        cout << texto5 << endl;
+        cout << texto6 << endl;
+        cout << texto7 << endl;
 
-        campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
+        campo = getchar() - 48;
         fflush(stdin);
 
         switch(campo)
@@ -997,18 +914,15 @@ void CntrApresentacaoSala::executar(Matricula)
     }
 }
 
-//--------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------
+//--------------------- Controladoras de Sessao -----------------------------------------------------------------------
 
-void CntrApresentacaoSessao::listarSessao()  //preciso pegar os dados com controladora servico
+void CntrApresentacaoSessao::listarSessao()
 {
     CLR_SCR;
     cntrServicoSessao->listarSessao();
 }
 
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoSessao::incluirSessao()  //preciso pegar os dados com controladora servico
+void CntrApresentacaoSessao::incluirSessao()
 {
 
     // Mensagens a serem apresentadas na tela de cadastramento.
@@ -1021,7 +935,7 @@ void CntrApresentacaoSessao::incluirSessao()  //preciso pegar os dados com contr
     char texto11[]="Sucesso no cadastramento. Digite algo.";
     char texto12[]="Falha no cadastramento. Digite algo.";
 
-    char campo1[80], campo2[80], campo3[80];                                                   // Cria campos para entrada dos dados.
+    char campo1[80], campo2[80], campo3[80];
 
     // Instancia os dom�nios.
 
@@ -1029,24 +943,18 @@ void CntrApresentacaoSessao::incluirSessao()  //preciso pegar os dados com contr
     Data data;
     Horario horario;
 
-    // Dados sobre tamanho da tela.
+    CLR_SCR;
 
-    // Armazena quantidade de linhas e colunas.
-
-    // Apresenta tela de cadastramento.
-
-    CLR_SCR;                                                                                     // Limpa janela.
-
-    cout << texto1 << endl;                                                     // Imprime nome do campo.
-    cout << texto2 << " ";                                                 // Imprime nome do campo.
-    cin >> campo1;                                                                             // L� valor do campo.
+    cout << texto1 << endl;
+    cout << texto2 << " ";
+    cin >> campo1;
     fflush(stdin);
 
-    cout << texto3 << " ";                                                 // Imprime nome do campo.
+    cout << texto3 << " ";
     cin >> campo2;
     fflush(stdin);
 
-    cout << texto4 << " ";                                                 // Imprime nome do campo.
+    cout << texto4 << " ";
     cin >> campo3;
     fflush(stdin);
 
@@ -1058,10 +966,8 @@ void CntrApresentacaoSessao::incluirSessao()  //preciso pegar os dados com contr
     }
     catch(invalid_argument &exp)
     {
-        cout << texto10 << endl;                                            // Informa formato incorreto.
-        // Desabilita eco.
-        getchar();                                                                                // Leitura de caracter digitado.
-        // Habilita eco.
+        cout << texto10 << endl;
+        getchar();
         fflush(stdin);
         return;
     }
@@ -1074,18 +980,16 @@ void CntrApresentacaoSessao::incluirSessao()  //preciso pegar os dados com contr
     sessao.setData(data);
     sessao.setHorario(horario);
 
-    // Incluir Sessao.
-
     if(cntrServicoSessao->incluirSessao(sessao))
     {
-        cout << texto11 << endl;                                                // Informa sucesso.
+        cout << texto11 << endl;
 
         getchar();
         fflush(stdin);
         return;
     }
 
-    cout << texto12 << endl;                                                       // Informa falha.
+    cout << texto12 << endl;
 
     getchar();
     fflush(stdin);
@@ -1093,9 +997,7 @@ void CntrApresentacaoSessao::incluirSessao()  //preciso pegar os dados com contr
     return;
 }
 
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoSessao::excluirSessao()  //preciso pegar os dados com controladora servico
+void CntrApresentacaoSessao::excluirSessao()
 {
 
     // Mensagens a serem apresentadas na tela de cadastramento.
@@ -1105,22 +1007,16 @@ void CntrApresentacaoSessao::excluirSessao()  //preciso pegar os dados com contr
     char texto11[]="Sucesso na exclusao. Digite algo.";
     char texto12[]="Falha na exclusao. Digite algo.";
 
-    char campo1[80];                                                                           // Cria campos para entrada dos dados.
+    char campo1[80];
 
     // Instancia os dom�nios.
 
     Codigo codigo;
 
-    // Dados sobre tamanho da tela.
+    CLR_SCR;
 
-    // Armazena quantidade de linhas e colunas.
-
-    // Apresenta tela de cadastramento.
-
-    CLR_SCR;                                                                                     // Limpa janela.
-
-    cout << texto1 << " ";                                                      // Imprime nome do campo.
-    cin >> campo1;                                                                             // L� valor do campo.
+    cout << texto1 << " ";
+    cin >> campo1;
     fflush(stdin);
 
     try
@@ -1129,26 +1025,22 @@ void CntrApresentacaoSessao::excluirSessao()  //preciso pegar os dados com contr
     }
     catch(invalid_argument &exp)
     {
-        cout << texto10 << endl;                                           // Informa formato incorreto.
-        // Desabilita eco.
-        getchar();                                                                                // Leitura de caracter digitado.
-        // Habilita eco.
+        cout << texto10 << endl;
+        getchar();
         fflush(stdin);
         return;
     }
 
-    // Exclui a Sessao.
-
     if(cntrServicoSessao->excluirSessao(codigo))
     {
-        cout << texto11 << endl;                                                // Informa sucesso.
+        cout << texto11 << endl;
 
         getchar();
         fflush(stdin);
         return;
     }
 
-    cout << texto12 << endl;                                                        // Informa falha.
+    cout << texto12 << endl;
 
     getchar();
     fflush(stdin);
@@ -1156,9 +1048,7 @@ void CntrApresentacaoSessao::excluirSessao()  //preciso pegar os dados com contr
     return;
 }
 
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoSessao::editarSessao()  //preciso pegar os dados com controladora servico
+void CntrApresentacaoSessao::editarSessao()
 {
 
     // Mensagens a serem apresentadas na tela de edicao de Sessao.
@@ -1171,7 +1061,7 @@ void CntrApresentacaoSessao::editarSessao()  //preciso pegar os dados com contro
     char texto11[]="Sucesso na edicao. Digite algo.";
     char texto12[]="Falha na edicao. Digite algo.";
 
-    char campo1[80], campo2[80], campo3[80];                                                   // Cria campos para entrada dos dados.
+    char campo1[80], campo2[80], campo3[80];
 
     // Instancia os dom�nios.
 
@@ -1179,24 +1069,18 @@ void CntrApresentacaoSessao::editarSessao()  //preciso pegar os dados com contro
     Data data;
     Horario horario;
 
-    // Dados sobre tamanho da tela.
+    CLR_SCR;
 
-    // Armazena quantidade de linhas e colunas.
-
-    // Apresenta tela de cadastramento.
-
-    CLR_SCR;                                                                                     // Limpa janela.
-
-    cout << texto1 << endl;                                                     // Imprime nome do campo.
-    cout << texto2 << " ";                                                  // Imprime nome do campo.
-    cin >> campo1;                                                                             // L� valor do campo.
+    cout << texto1 << endl;
+    cout << texto2 << " ";
+    cin >> campo1;
     fflush(stdin);
 
-    cout << texto3 << " ";                                                  // Imprime nome do campo.
+    cout << texto3 << " ";
     cin >> campo2;
     fflush(stdin);
 
-    cout << texto4 << " ";                                                  // Imprime nome do campo.
+    cout << texto4 << " ";
     cin >> campo3;
     fflush(stdin);
 
@@ -1208,10 +1092,8 @@ void CntrApresentacaoSessao::editarSessao()  //preciso pegar os dados com contro
     }
     catch(invalid_argument &exp)
     {
-        cout << texto10 << endl;                                           // Informa formato incorreto.
-        // Desabilita eco.
-        getchar();                                                                                // Leitura de caracter digitado.
-        // Habilita eco.
+        cout << texto10 << endl;
+        getchar();
         fflush(stdin);
         return;
     }
@@ -1224,18 +1106,16 @@ void CntrApresentacaoSessao::editarSessao()  //preciso pegar os dados com contro
     sessao.setData(data);
     sessao.setHorario(horario);
 
-    // Incluir Sessao.
-
     if(cntrServicoSessao->editarSessao(sessao))
     {
-        cout << texto11 << endl;                                               // Informa sucesso.
+        cout << texto11 << endl;
 
         getchar();
         fflush(stdin);
         return;
     }
 
-    cout << texto12 << endl;                                                       // Informa falha.
+    cout << texto12 << endl;
 
     getchar();
     fflush(stdin);
@@ -1243,10 +1123,10 @@ void CntrApresentacaoSessao::editarSessao()  //preciso pegar os dados com contro
     return;
 }
 
-void CntrApresentacaoSessao::cadastrarSessaoPeca()  //preciso pegar os dados com controladora servico
+void CntrApresentacaoSessao::cadastrarSessaoPeca()
 {
 
-    // Mensagens a serem apresentadas na tela de edicao de Sessao.
+    // Mensagens a serem apresentadas na tela de cadastro de Peca associada a Sessao.
 
     char texto1[] ="Preencha os seguintes campos: ";
     char texto2[] ="Codigo da Sessao a ser editada  :";
@@ -1255,27 +1135,21 @@ void CntrApresentacaoSessao::cadastrarSessaoPeca()  //preciso pegar os dados com
     char texto11[]="Sucesso na edicao. Digite algo.";
     char texto12[]="Falha na edicao. Digite algo.";
 
-    char campo1[80], campo2[80];                                                   // Cria campos para entrada dos dados.
+    char campo1[80], campo2[80];
 
     // Instancia os dom�nios.
 
     Codigo codigo;
     Codigo codigo_peca;
 
-    // Dados sobre tamanho da tela.
+    CLR_SCR;
 
-    // Armazena quantidade de linhas e colunas.
-
-    // Apresenta tela de cadastramento.
-
-    CLR_SCR;                                                                                     // Limpa janela.
-
-    cout << texto1 << endl;                                                     // Imprime nome do campo.
-    cout << texto2 << " ";                                                  // Imprime nome do campo.
-    cin >> campo1;                                                                             // L� valor do campo.
+    cout << texto1 << endl;
+    cout << texto2 << " ";
+    cin >> campo1;
     fflush(stdin);
 
-    cout << texto3 << " ";                                                  // Imprime nome do campo.
+    cout << texto3 << " ";
     cin >> campo2;
     fflush(stdin);
 
@@ -1287,10 +1161,8 @@ void CntrApresentacaoSessao::cadastrarSessaoPeca()  //preciso pegar os dados com
     }
     catch(invalid_argument &exp)
     {
-        cout << texto10 << endl;                                           // Informa formato incorreto.
-        // Desabilita eco.
-        getchar();                                                                                // Leitura de caracter digitado.
-        // Habilita eco.
+        cout << texto10 << endl;
+        getchar();
         fflush(stdin);
         return;
     }
@@ -1302,18 +1174,16 @@ void CntrApresentacaoSessao::cadastrarSessaoPeca()  //preciso pegar os dados com
     sessao.setCodigo(codigo);
     sessao.setCodigoPeca(codigo_peca);
 
-    // Incluir Sessao.
-
     if(cntrServicoSessao->cadastrarSessaoPeca(sessao))
     {
-        cout << texto11 << endl;                                               // Informa sucesso.
+        cout << texto11 << endl;
 
         getchar();
         fflush(stdin);
         return;
     }
 
-    cout << texto12 << endl;                                                       // Informa falha.
+    cout << texto12 << endl;
 
     getchar();
     fflush(stdin);
@@ -1321,7 +1191,7 @@ void CntrApresentacaoSessao::cadastrarSessaoPeca()  //preciso pegar os dados com
     return;
 }
 
-void CntrApresentacaoSessao::cadastrarSessaoSala()  //preciso pegar os dados com controladora servico
+void CntrApresentacaoSessao::cadastrarSessaoSala()
 {
 
     // Mensagens a serem apresentadas na tela de edicao de Sessao.
@@ -1333,27 +1203,21 @@ void CntrApresentacaoSessao::cadastrarSessaoSala()  //preciso pegar os dados com
     char texto11[]="Sucesso na edicao. Digite algo.";
     char texto12[]="Falha na edicao. Digite algo.";
 
-    char campo1[80], campo2[80];                                                   // Cria campos para entrada dos dados.
+    char campo1[80], campo2[80];
 
     // Instancia os dom�nios.
 
     Codigo codigo;
     Codigo codigo_sala;
 
-    // Dados sobre tamanho da tela.
+    CLR_SCR;
 
-    // Armazena quantidade de linhas e colunas.
-
-    // Apresenta tela de cadastramento.
-
-    CLR_SCR;                                                                                     // Limpa janela.
-
-    cout << texto1 << endl;                                                     // Imprime nome do campo.
-    cout << texto2 << " ";                                                  // Imprime nome do campo.
-    cin >> campo1;                                                                             // L� valor do campo.
+    cout << texto1 << endl;
+    cout << texto2 << " ";
+    cin >> campo1;
     fflush(stdin);
 
-    cout << texto3 << " ";                                                  // Imprime nome do campo.
+    cout << texto3 << " ";
     cin >> campo2;
     fflush(stdin);
 
@@ -1365,10 +1229,8 @@ void CntrApresentacaoSessao::cadastrarSessaoSala()  //preciso pegar os dados com
     }
     catch(invalid_argument &exp)
     {
-        cout << texto10 << endl;                                           // Informa formato incorreto.
-        // Desabilita eco.
-        getchar();                                                                                // Leitura de caracter digitado.
-        // Habilita eco.
+        cout << texto10 << endl;
+        getchar();
         fflush(stdin);
         return;
     }
@@ -1380,18 +1242,16 @@ void CntrApresentacaoSessao::cadastrarSessaoSala()  //preciso pegar os dados com
     sessao.setCodigo(codigo);
     sessao.setCodigoSala(codigo_sala);
 
-    // Incluir Sessao.
-
     if(cntrServicoSessao->cadastrarSessaoSala(sessao))
     {
-        cout << texto11 << endl;                                               // Informa sucesso.
+        cout << texto11 << endl;
 
         getchar();
         fflush(stdin);
         return;
     }
 
-    cout << texto12 << endl;                                                       // Informa falha.
+    cout << texto12 << endl;
 
     getchar();
     fflush(stdin);
@@ -1399,7 +1259,7 @@ void CntrApresentacaoSessao::cadastrarSessaoSala()  //preciso pegar os dados com
     return;
 }
 
-void CntrApresentacaoSessao::visualizarSessao()  //preciso pegar os dados com controladora servico
+void CntrApresentacaoSessao::visualizarSessao()
 {
 
     // Mensagens a serem apresentadas na tela de visualizar Sessao.
@@ -1409,22 +1269,16 @@ void CntrApresentacaoSessao::visualizarSessao()  //preciso pegar os dados com co
     char texto11[]="Sucesso. Digite algo.";
     char texto12[]="Falha. Digite algo.";
 
-    char campo1[80];                                                                           // Cria campos para entrada dos dados.
+    char campo1[80];
 
     // Instancia os dom�nios.
 
     Codigo codigo;
 
-    // Dados sobre tamanho da tela.
+    CLR_SCR;
 
-    // Armazena quantidade de linhas e colunas.
-
-    // Apresenta tela de visualizacao de Sessao.
-
-    CLR_SCR;                                                                                     // Limpa janela.
-
-    cout << texto1 << " ";                                                     // Imprime nome do campo.
-    cin >> campo1;                                                                             // L� valor do campo.
+    cout << texto1 << " ";
+    cin >> campo1;
     fflush(stdin);
 
     try
@@ -1433,34 +1287,28 @@ void CntrApresentacaoSessao::visualizarSessao()  //preciso pegar os dados com co
     }
     catch(invalid_argument &exp)
     {
-        cout << texto10 << endl;                                           // Informa formato incorreto.
-        // Desabilita eco.
-        getchar();                                                                                // Leitura de caracter digitado.
-        // Habilita eco.
+        cout << texto10 << endl;
+        getchar();
         fflush(stdin);
         return;
     }
 
-    // Visualizacao da Sessao.
-
     if(cntrServicoSessao->visualizarSessao(codigo))
     {
-        cout << texto11 << endl;                                               // Informa sucesso.
+        cout << texto11 << endl;
 
         getchar();
         fflush(stdin);
         return;
     }
 
-    cout << texto12 << endl;                                                       // Informa falha.
+    cout << texto12 << endl;
 
     getchar();
     fflush(stdin);
 
     return;
 }
-
-//--------------------------------------------------------------------------------------------
 
 void CntrApresentacaoSessao::executar()
 {
@@ -1471,26 +1319,21 @@ void CntrApresentacaoSessao::executar()
     char texto2[]="1 - Listar Sessaos disponiveis.";
     char texto3[]="2 - Retornar.";
 
-    int campo;                                                                                  // Campo de entrada.
+    int campo;
 
-    // Dados sobre tamanho da tela.
-    // Armazena quantidade de linhas e colunas.
-
-    // Habilita eco.
-
-    bool apresentar = true;                                                                     // Controle de la�o.
+    bool apresentar = true;
 
     while(apresentar)
     {
 
-        // Apresenta tela simplificada de Sessaos.
+        // Apresenta tela simplificada de Sessao.
 
-        CLR_SCR;                                                                                 // Limpa janela.
-        cout << texto1 << endl;                                                // Imprime nome do campo.
-        cout << texto2 << endl;                                             // Imprime nome do campo.
-        cout << texto3 << endl;                                            // Imprime nome do campo.
+        CLR_SCR;
+        cout << texto1 << endl;
+        cout << texto2 << endl;
+        cout << texto3 << endl;
 
-        campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
+        campo = getchar() - 48;
         fflush(stdin);
 
         switch(campo)
@@ -1504,8 +1347,6 @@ void CntrApresentacaoSessao::executar()
         }
     }
 }
-
-//--------------------------------------------------------------------------------------------
 
 void CntrApresentacaoSessao::executar(Matricula)
 {
@@ -1522,35 +1363,27 @@ void CntrApresentacaoSessao::executar(Matricula)
     char texto8[] ="7 - Cadastrar em Sala.";
     char texto9[] ="8 - Retornar.";
 
-    int campo;                                                                                  // Campo de entrada.
+    int campo;
 
-    // Dados sobre tamanho da tela.
-
-    // Armazena quantidade de linhas e colunas.
-
-    // Habilita eco.
-
-    bool apresentar = true;                                                                     // Controle de la�o.
-
-    // Habilita eco.
+    bool apresentar = true;
 
     while(apresentar)
     {
 
-        // Apresenta tela completa de Sessaos.
+        // Apresenta tela completa de Sessao.
 
-        CLR_SCR;                                                                                 // Limpa janela.
-        cout << texto1 << endl;                                                 // Imprime nome do campo.
-        cout << texto2 << endl;                                             // Imprime nome do campo.
-        cout << texto3 << endl;                                             // Imprime nome do campo.
-        cout << texto4 << endl;                                                 // Imprime nome do campo.
-        cout << texto5 << endl;                                             // Imprime nome do campo.
-        cout << texto6 << endl;                                          // Imprime nome do campo.
-        cout << texto7 << endl;                                             // Imprime nome do campo.
+        CLR_SCR;
+        cout << texto1 << endl;
+        cout << texto2 << endl;
+        cout << texto3 << endl;
+        cout << texto4 << endl;
+        cout << texto5 << endl;
+        cout << texto6 << endl;
+        cout << texto7 << endl;
         cout << texto8 << endl;
         cout << texto9 << endl;
 
-        campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
+        campo = getchar() - 48;
         fflush(stdin);
 
         switch(campo)
@@ -1583,17 +1416,15 @@ void CntrApresentacaoSessao::executar(Matricula)
     }
 }
 
-//--------------------------------------------------------------------------------------------
+//--------------------- Controladoras de Peca -----------------------------------------------------------------------
 
-void CntrApresentacaoPeca::listarPeca()  //preciso pegar os dados com controladora servico
+void CntrApresentacaoPeca::listarPeca()
 {
     CLR_SCR;
     cntrServicoPeca->listarPeca();
 }
 
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoPeca::incluirPeca()  //preciso pegar os dados com controladora servico
+void CntrApresentacaoPeca::incluirPeca()
 {
 
     // Mensagens a serem apresentadas na tela de cadastramento.
@@ -1607,7 +1438,7 @@ void CntrApresentacaoPeca::incluirPeca()  //preciso pegar os dados com controlad
     char texto11[]="Sucesso no cadastramento. Digite algo.";
     char texto12[]="Falha no cadastramento. Digite algo.";
 
-    char campo1[80], campo2[80], campo3[80], campo4[80];                                                   // Cria campos para entrada dos dados.
+    char campo1[80], campo2[80], campo3[80], campo4[80];
 
     // Instancia os dom�nios.
 
@@ -1616,28 +1447,22 @@ void CntrApresentacaoPeca::incluirPeca()  //preciso pegar os dados com controlad
     Tipo tipo;
     Classificacao classificacao;
 
-    // Dados sobre tamanho da tela.
+    CLR_SCR;
 
-    // Armazena quantidade de linhas e colunas.
-
-    // Apresenta tela de cadastramento.
-
-    CLR_SCR;                                                                                     // Limpa janela.
-
-    cout << texto1 << endl;                                                      // Imprime nome do campo.
-    cout << texto2 << " ";                                                  // Imprime nome do campo.
-    cin >> campo1;                                                                             // L� valor do campo.
+    cout << texto1 << endl;
+    cout << texto2 << " ";
+    cin >> campo1;
     fflush(stdin);
 
-    cout << texto3 << " ";                                                  // Imprime nome do campo.
+    cout << texto3 << " ";
     cin.getline(campo2,sizeof(campo2));
-    fflush(stdin);                                                                             // L� valor do campo.
+    fflush(stdin);
 
-    cout << texto4 << " ";                                                  // Imprime nome do campo.
+    cout << texto4 << " ";
     cin >> campo3;
     fflush(stdin);
 
-    cout << texto5 << " ";                                                  // Imprime nome do campo.
+    cout << texto5 << " ";
     cin >> campo4;
     fflush(stdin);
 
@@ -1650,10 +1475,8 @@ void CntrApresentacaoPeca::incluirPeca()  //preciso pegar os dados com controlad
     }
     catch(invalid_argument &exp)
     {
-        cout << texto10 << endl;                                           // Informa formato incorreto.
-        // Desabilita eco.
-        getchar();                                                                                // Leitura de caracter digitado.
-        // Habilita eco.
+        cout << texto10 << endl;
+        getchar();
         fflush(stdin);
         return;
     }
@@ -1667,18 +1490,16 @@ void CntrApresentacaoPeca::incluirPeca()  //preciso pegar os dados com controlad
     peca.setTipo(tipo);
     peca.setClassificacao(classificacao);
 
-    // Incluir Peca.
-
     if(cntrServicoPeca->incluirPeca(peca))
     {
-        cout << texto11 << endl;                                               // Informa sucesso.
+        cout << texto11 << endl;
 
         getchar();
         fflush(stdin);
         return;
     }
 
-    cout << texto12 << endl;                                                       // Informa falha.
+    cout << texto12 << endl;
 
     getchar();
     fflush(stdin);
@@ -1686,9 +1507,7 @@ void CntrApresentacaoPeca::incluirPeca()  //preciso pegar os dados com controlad
     return;
 }
 
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoPeca::excluirPeca()  //preciso pegar os dados com controladora servico
+void CntrApresentacaoPeca::excluirPeca()
 {
 
     // Mensagens a serem apresentadas na tela de cadastramento.
@@ -1698,22 +1517,16 @@ void CntrApresentacaoPeca::excluirPeca()  //preciso pegar os dados com controlad
     char texto11[]="Sucesso na exclusao. Digite algo.";
     char texto12[]="Falha na exclusao. Digite algo.";
 
-    char campo1[80];                                                                           // Cria campos para entrada dos dados.
+    char campo1[80];
 
     // Instancia os dom�nios.
 
     Codigo codigo;
 
-    // Dados sobre tamanho da tela.
+    CLR_SCR;
 
-    // Armazena quantidade de linhas e colunas.
-
-    // Apresenta tela de cadastramento.
-
-    CLR_SCR;                                                                                     // Limpa janela.
-
-    cout << texto1 << " ";                                                     // Imprime nome do campo.
-    cin >> campo1;                                                                             // L� valor do campo.
+    cout << texto1 << " ";
+    cin >> campo1;
     fflush(stdin);
 
     try
@@ -1722,26 +1535,22 @@ void CntrApresentacaoPeca::excluirPeca()  //preciso pegar os dados com controlad
     }
     catch(invalid_argument &exp)
     {
-        cout << texto10 << endl;                                           // Informa formato incorreto.
-        // Desabilita eco.
-        getchar();                                                                                // Leitura de caracter digitado.
-        // Habilita eco.
+        cout << texto10 << endl;
+        getchar();
         fflush(stdin);
         return;
     }
 
-    // Exclui a Peca.
-
     if(cntrServicoPeca->excluirPeca(codigo))
     {
-        cout << texto11 << endl;                                               // Informa sucesso.
+        cout << texto11 << endl;
 
         getchar();
         fflush(stdin);
         return;
     }
 
-    cout << texto12 << endl;                                                       // Informa falha.
+    cout << texto12 << endl;
 
     getchar();
     fflush(stdin);
@@ -1749,9 +1558,7 @@ void CntrApresentacaoPeca::excluirPeca()  //preciso pegar os dados com controlad
     return;
 }
 
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoPeca::editarPeca()  //preciso pegar os dados com controladora servico
+void CntrApresentacaoPeca::editarPeca()
 {
 
     // Mensagens a serem apresentadas na tela de edicao de Peca.
@@ -1765,7 +1572,7 @@ void CntrApresentacaoPeca::editarPeca()  //preciso pegar os dados com controlado
     char texto11[]="Sucesso na edicao. Digite algo.";
     char texto12[]="Falha na edicao. Digite algo.";
 
-    char campo1[80], campo2[80], campo3[80], campo4[80];                                                   // Cria campos para entrada dos dados.
+    char campo1[80], campo2[80], campo3[80], campo4[80];
 
     // Instancia os dom�nios.
 
@@ -1774,28 +1581,22 @@ void CntrApresentacaoPeca::editarPeca()  //preciso pegar os dados com controlado
     Tipo tipo;
     Classificacao classificacao;
 
-    // Dados sobre tamanho da tela.
+    CLR_SCR;
 
-    // Armazena quantidade de linhas e colunas.
-
-    // Apresenta tela de cadastramento.
-
-    CLR_SCR;                                                                                     // Limpa janela.
-
-    cout << texto1 << endl;                                                     // Imprime nome do campo.
-    cout << texto2 << " ";                                                 // Imprime nome do campo.
-    cin >> campo1;                                                                             // L� valor do campo.
+    cout << texto1 << endl;
+    cout << texto2 << " ";
+    cin >> campo1;
     fflush(stdin);
 
-    cout << texto3 << " ";                                                 // Imprime nome do campo.
+    cout << texto3 << " ";
     cin.getline(campo2,sizeof(campo2));
     fflush(stdin);
 
-    cout << texto4 << " ";                                                 // Imprime nome do campo.
-    cin >> campo3;                                                                             // L� valor do campo.
+    cout << texto4 << " ";
+    cin >> campo3;
     fflush(stdin);
 
-    cout << texto5 << " ";                                                 // Imprime nome do campo.
+    cout << texto5 << " ";
     cin >> campo4;
     fflush(stdin);
 
@@ -1808,10 +1609,8 @@ void CntrApresentacaoPeca::editarPeca()  //preciso pegar os dados com controlado
     }
     catch(invalid_argument &exp)
     {
-        cout << texto10 << endl;                                           // Informa formato incorreto.
-        // Desabilita eco.
-        getchar();                                                                                // Leitura de caracter digitado.
-        // Habilita eco.
+        cout << texto10 << endl;
+        getchar();
         fflush(stdin);
         return;
     }
@@ -1825,18 +1624,16 @@ void CntrApresentacaoPeca::editarPeca()  //preciso pegar os dados com controlado
     peca.setTipo(tipo);
     peca.setClassificacao(classificacao);
 
-    // Incluir peca.
-
     if(cntrServicoPeca->editarPeca(peca))
     {
-        cout << texto11 << endl;                                               // Informa sucesso.
+        cout << texto11 << endl;
 
         getchar();
         fflush(stdin);
         return;
     }
 
-    cout << texto12 << endl;                                                       // Informa falha.
+    cout << texto12 << endl;
 
     getchar();
     fflush(stdin);
@@ -1844,9 +1641,7 @@ void CntrApresentacaoPeca::editarPeca()  //preciso pegar os dados com controlado
     return;
 }
 
-//--------------------------------------------------------------------------------------------
-
-void CntrApresentacaoPeca::visualizarPeca()  //preciso pegar os dados com controladora servico
+void CntrApresentacaoPeca::visualizarPeca()
 {
 
     // Mensagens a serem apresentadas na tela de visualizar Peca.
@@ -1856,22 +1651,16 @@ void CntrApresentacaoPeca::visualizarPeca()  //preciso pegar os dados com contro
     char texto11[]="Sucesso. Digite algo.";
     char texto12[]="Falha. Digite algo.";
 
-    char campo1[80];                                                                           // Cria campos para entrada dos dados.
+    char campo1[80];
 
     // Instancia os dom�nios.
 
     Codigo codigo;
 
-    // Dados sobre tamanho da tela.
+    CLR_SCR;
 
-    // Armazena quantidade de linhas e colunas.
-
-    // Apresenta tela de visualizacao de Peca.
-
-    CLR_SCR;                                                                                     // Limpa janela.
-
-    cout << texto1 << " ";                                                    // Imprime nome do campo.
-    cin >> campo1;                                                                             // L� valor do campo.
+    cout << texto1 << " ";
+    cin >> campo1;
     fflush(stdin);
 
     try
@@ -1880,34 +1669,28 @@ void CntrApresentacaoPeca::visualizarPeca()  //preciso pegar os dados com contro
     }
     catch(invalid_argument &exp)
     {
-        cout << texto10 << endl;                                           // Informa formato incorreto.
-        // Desabilita eco.
-        getchar();                                                                                // Leitura de caracter digitado.
-        // Habilita eco.
+        cout << texto10 << endl;
+        getchar();
         fflush(stdin);
         return;
     }
 
-    // Visualizacao da Peca.
-
     if(cntrServicoPeca->visualizarPeca(codigo))
     {
-        cout << texto11 << endl;                                               // Informa sucesso.
+        cout << texto11 << endl;
 
         getchar();
         fflush(stdin);
         return;
     }
 
-    cout << texto12 << endl;                                                       // Informa falha.
+    cout << texto12 << endl;
 
     getchar();
     fflush(stdin);
 
     return;
 }
-
-//--------------------------------------------------------------------------------------------
 
 void CntrApresentacaoPeca::executar()
 {
@@ -1918,26 +1701,21 @@ void CntrApresentacaoPeca::executar()
     char texto2[]="1 - Listar Pecas disponiveis.";
     char texto3[]="2 - Retornar.";
 
-    int campo;                                                                                  // Campo de entrada.
+    int campo;
 
-    // Dados sobre tamanho da tela.
-    // Armazena quantidade de linhas e colunas.
-
-    // Habilita eco.
-
-    bool apresentar = true;                                                                     // Controle de la�o.
+    bool apresentar = true;
 
     while(apresentar)
     {
 
         // Apresenta tela simplificada de Pecas.
 
-        CLR_SCR;                                                                                 // Limpa janela.
-        cout << texto1 << endl;                                                 // Imprime nome do campo.
-        cout << texto2 << endl;                                             // Imprime nome do campo.
-        cout << texto3 << endl;                                             // Imprime nome do campo.
+        CLR_SCR;
+        cout << texto1 << endl;
+        cout << texto2 << endl;
+        cout << texto3 << endl;
 
-        campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
+        campo = getchar() - 48;
         fflush(stdin);
 
         switch(campo)
@@ -1952,8 +1730,6 @@ void CntrApresentacaoPeca::executar()
     }
 }
 
-//--------------------------------------------------------------------------------------------
-
 void CntrApresentacaoPeca::executar(Matricula)
 {
 
@@ -1967,33 +1743,25 @@ void CntrApresentacaoPeca::executar(Matricula)
     char texto6[] ="5 - Visualizar Peca.";
     char texto7[] ="6 - Retornar.";
 
-    int campo;                                                                                  // Campo de entrada.
+    int campo;
 
-    // Dados sobre tamanho da tela.
-
-    // Armazena quantidade de linhas e colunas.
-
-    // Habilita eco.
-
-    bool apresentar = true;                                                                     // Controle de la�o.
-
-    // Habilita eco.
+    bool apresentar = true;
 
     while(apresentar)
     {
 
         // Apresenta tela completa de Pecas.
 
-        CLR_SCR;                                                                                 // Limpa janela.
-        cout << texto1 << endl;                                                 // Imprime nome do campo.
-        cout << texto2 << endl;                                             // Imprime nome do campo.
-        cout << texto3 << endl;                                             // Imprime nome do campo.
-        cout << texto4 << endl;                                             // Imprime nome do campo.
-        cout << texto5 << endl;                                             // Imprime nome do campo.
-        cout << texto6 << endl;                                             // Imprime nome do campo.
-        cout << texto7 << endl;                                            // Imprime nome do campo.
+        CLR_SCR;
+        cout << texto1 << endl;
+        cout << texto2 << endl;
+        cout << texto3 << endl;
+        cout << texto4 << endl;
+        cout << texto5 << endl;
+        cout << texto6 << endl;
+        cout << texto7 << endl;
 
-        campo = getchar() - 48;                                                                   // Leitura do campo de entrada e convers�o de ASCII.
+        campo = getchar() - 48;
         fflush(stdin);
 
         switch(campo)
@@ -2019,5 +1787,3 @@ void CntrApresentacaoPeca::executar(Matricula)
         }
     }
 }
-
-//--------------------------------------------------------------------------------------------

@@ -446,7 +446,7 @@
 	<unicode/utf16.h>
 	<math.h>
 
-1634407799 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\unidadepersistencia.cpp
+1634426326 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\git\tp1-1-2021\tp1-trabalho2\unidadepersistencia.cpp
 	"UnidadePersistencia.h"
 
 1633998098 source:d:\3-faculdade\1-semestres\5ºsemestre\tecnicas de programação 1\trabalhos\tp1-1-2021\tp1-trabalho2\sqlite3.c
@@ -507,4 +507,135 @@
 	<unicode/ubrk.h>
 	<unicode/utf16.h>
 	<math.h>
+
+1634407799 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\2\controladorasservico.cpp
+	"controladorasservico.h"
+
+1634410575 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\2\controladorasservico.h
+	<conio.h>
+	<iostream>
+	<string.h>
+	<stdio.h>
+	"Dominios.h"
+	"Entidades.h"
+	"Interfaces.h"
+	"UnidadePersistencia.h"
+
+1633779236 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\2\dominios.h
+	<stdexcept>
+
+1634341237 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\2\entidades.h
+	"Dominios.h"
+	<string>
+
+1634410350 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\2\interfaces.h
+	"Dominios.h"
+	"Entidades.h"
+
+1634410636 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\2\unidadepersistencia.h
+	"Dominios.h"
+	"Entidades.h"
+	<list>
+	<iostream>
+	<conio.h>
+	<string>
+	<stdio.h>
+	"sqlite3.h"
+
+1633788617 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\2\sqlite3.h
+	<stdarg.h>
+
+1633997035 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\2\dominios.cpp
+	"Dominios.h"
+	<iostream>
+	<string>
+
+1630962664 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\2\entidades.cpp
+	"Entidades.h"
+
+1634341237 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\2\main.cpp
+	<string.h>
+	<stdexcept>
+	<iostream>
+	"sqlite3.h"
+	"Dominios.h"
+	"Entidades.h"
+	"Interfaces.h"
+	"controladorasapresentacao.h"
+	"controladorasservico.h"
+	"UnidadePersistencia.h"
+
+1634409814 c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\2\controladorasapresentacao.h
+	<conio.h>
+	<iostream>
+	<string.h>
+	<stdio.h>
+	"Dominios.h"
+	"Entidades.h"
+	"Interfaces.h"
+
+1633721457 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\2\sqlite3.c
+	"config.h"
+	<vxWorks.h>
+	<pthread.h>
+	"mingw.h"
+	"_mingw.h"
+	<stdarg.h>
+	<stdint.h>
+	<inttypes.h>
+	<intrin.h>
+	<cmnintrin.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stddef.h>
+	<TargetConditionals.h>
+	<ctype.h>
+	<time.h>
+	<sys/sysctl.h>
+	<malloc/malloc.h>
+	<libkern/OSAtomic.h>
+	<malloc.h>
+	<pthread.h>
+	"windows.h"
+	<sys/cygwin.h>
+	<errno.h>
+	<process.h>
+	<math.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<sys/time.h>
+	<errno.h>
+	<sys/mman.h>
+	<sys/file.h>
+	<sys/param.h>
+	<semaphore.h>
+	<limits.h>
+	<sys/mount.h>
+	<utime.h>
+	<sys/dcmd_blk.h>
+	<sys/statvfs.h>
+	<dlfcn.h>
+	"sqlite_tcl.h"
+	"tcl.h"
+	<ctype.h>
+	"sqlite3rtree.h"
+	<ctype.h>
+	<unicode/utypes.h>
+	<unicode/uregex.h>
+	<unicode/ustring.h>
+	<unicode/ucol.h>
+	<unicode/ubrk.h>
+	<unicode/utf16.h>
+	<math.h>
+
+1634426326 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\2\unidadepersistencia.cpp
+	"UnidadePersistencia.h"
+
+1634425759 source:c:\users\administrador\documents\unb\setimo_semestre\tecnicas_de_programacao_1\trabalhos\2\controladorasapresentacao.cpp
+	"controladorasapresentacao.h"
 

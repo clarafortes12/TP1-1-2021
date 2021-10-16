@@ -24,7 +24,6 @@ void CntrInteracao::notificarSucessoOperacao(){
     fflush(stdin);
 }
 
-
 //--------------------------------------------------------------------------------------------
 //Implementa��es de m�todos de classes controladoras.
 //
@@ -71,7 +70,7 @@ bool CntrServicoParticipante::consultarParticipante(Matricula matricula){
         participante = comando.getResultado();
         if(participante.getCodigoPeca().getValor() == ""){
             CLR_SCR;
-            cout << endl << "Seus Dados" << endl << endl;
+            cout << "Seus Dados" << endl << endl;
             cout << "Matricula  : " << participante.getMatricula().getValor() << endl;
             cout << "Nome       : " << participante.getNome().getValor() << endl;
             cout << "Sobrenome  : " << participante.getSobrenome().getValor() << endl;
@@ -100,7 +99,7 @@ bool CntrServicoParticipante::consultarParticipante(Matricula matricula){
             {
                 peca = comando.getResultado();
                 CLR_SCR;
-                cout << endl << "Seus Dados" << endl << endl;
+                cout << "Seus Dados" << endl << endl;
                 cout << "Matricula  : " << participante.getMatricula().getValor() << endl;
                 cout << "Nome       : " << participante.getNome().getValor() << endl;
                 cout << "Sobrenome  : " << participante.getSobrenome().getValor() << endl;
@@ -616,7 +615,6 @@ bool CntrServicoSessao::cadastrarSessaoSala(Sessao sessao){
     return false;
 }
 
-
 bool CntrServicoPeca::listarPeca(){
     list<Peca> pecas;
     Peca peca;
@@ -853,34 +851,9 @@ bool CntrServicoSala::incluirSala(Sala sala){
         cout << endl << "Erro no acesso ao banco de dados.";
         return false;
     }
-
-    //notificarSucessoOperacao();
 }
 bool CntrServicoSala::editarSala(Sala sala){
 
-    /*Codigo codigo;
-
-    codigo = sala.getCodigo();
-
-    ComandoPesquisarSala comandoA(codigo);
-
-    try {
-            comandoA.executar();
-    }
-    catch (EErroPersistencia exp) {
-        cout << endl << "Erro no acesso ao banco de dados.";
-            //notificarErroAcesso();
-        return false;
-    }
-
-    Sala salaAtual = comandoA.getResultado();
-
-    cout << endl << "Dados atuais:" << endl << endl;
-    cout << "Codigo : " << salaAtual.getCodigo().getValor() << endl;
-    cout << "Nome : " << salaAtual.getNome().getValor() << endl;
-    cout << "Capacidade : " << salaAtual.getCapacidade().getValor() << endl;*/
-
-    // talvez seja melhor deixar so daqui pra baixo:
     ComandoAtualizarSala comandoB(sala);
 
     try
@@ -893,8 +866,6 @@ bool CntrServicoSala::editarSala(Sala sala){
         cout << endl << "Erro no acesso ao banco de dados.";
         return false;
     }
-
-    //notificarSucessoOperacao();
 }
 bool CntrServicoSala::excluirSala(Codigo codigo){
 
@@ -910,6 +881,4 @@ bool CntrServicoSala::excluirSala(Codigo codigo){
         cout << endl << "Erro no acesso ao banco de dados.";
         return false;
     }
-
-    //notificarSucessoOperacao();
 }
