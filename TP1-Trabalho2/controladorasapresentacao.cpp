@@ -1249,8 +1249,8 @@ void CntrApresentacaoSessao::cadastrarSessaoPeca()  //preciso pegar os dados com
     // Mensagens a serem apresentadas na tela de edicao de Sessao.
 
     char texto1[] ="Preencha os seguintes campos: ";
-    char texto2[] ="Codido da Sessao a ser editada:";
-    char texto3[] ="Codigo da Peca                :";
+    char texto2[] ="Codigo da Sessao a ser editada  :";
+    char texto3[] ="Codigo da Peca a ser relacionada:";
     char texto10[]="Dados em formato incorreto. Digite algo.";
     char texto11[]="Sucesso na edicao. Digite algo.";
     char texto12[]="Falha na edicao. Digite algo.";
@@ -1327,8 +1327,8 @@ void CntrApresentacaoSessao::cadastrarSessaoSala()  //preciso pegar os dados com
     // Mensagens a serem apresentadas na tela de edicao de Sessao.
 
     char texto1[] ="Preencha os seguintes campos: ";
-    char texto2[] ="Codido da Sessao a ser editada:";
-    char texto3[] ="Codigo da Sala                :";
+    char texto2[] ="Codigo da Sessao a ser editada  :";
+    char texto3[] ="Codigo da Sala a ser relacionada:";
     char texto10[]="Dados em formato incorreto. Digite algo.";
     char texto11[]="Sucesso na edicao. Digite algo.";
     char texto12[]="Falha na edicao. Digite algo.";

@@ -14,13 +14,11 @@
 #include <string>
 #include <stdio.h>
 
-#include "sqlite3.h" // Incluir cabe�alho da biblioteca SQLite.
+#include "sqlite3.h"
 
     using namespace std;
 
-//---------------------------------------------------------------------------
-// Declara��o da classe EErroPersistencia.
-
+// Classe obtida dos exemplos disponibilizados pelo professor
 class EErroPersistencia
 {
 private:
@@ -30,9 +28,7 @@ public:
     string what();
 };
 
-//---------------------------------------------------------------------------
-// Declara��o da classe ElementoResultado.
-
+// Classe obtida dos exemplos disponibilizados pelo professor
 class ElementoResultado
 {
 private:
@@ -45,9 +41,17 @@ public:
     string getValorColuna() const;
 };
 
-//---------------------------------------------------------------------------
-// Declara��o da classe ComandoSQL.
+inline string ElementoResultado::getNomeColuna() const
+{
+    return nomeColuna;
+}
 
+inline string ElementoResultado::getValorColuna() const
+{
+    return valorColuna;
+}
+
+// Classe obtida dos exemplos disponibilizados pelo professor
 class ComandoSQL
 {
 private:
@@ -70,9 +74,7 @@ public:
     void executar();
 };
 
-//---------------------------------------------------------------------------
-// Declara��o da classe ComandoLerSenha.
-
+// Estudante responsável: Liz Costato - 180022261
 class ComandoLerSenha:public ComandoSQL
 {
 public:
@@ -80,170 +82,7 @@ public:
     string getResultado();
 };
 
-//---------------------------------------------------------------------------
-//Classe ComandoPesquisarSala.
-
-class ComandoPesquisarSala:public ComandoSQL
-{
-public:
-    ComandoPesquisarSala(Codigo);
-    Sala getResultado();
-};
-
-//---------------------------------------------------------------------------
-//Classe ComandoAtualizarSala.
-
-class ComandoAtualizarSala:public ComandoSQL
-{
-public:
-    ComandoAtualizarSala(Sala);
-};
-
-//---------------------------------------------------------------------------
-// Declara��o da classe ComandoCadastrarSala.
-
-class ComandoCadastrarSala:public ComandoSQL
-{
-public:
-    ComandoCadastrarSala(Sala);
-};
-
-//---------------------------------------------------------------------------
-// Declara��o da classe ComandoRemoverSala.
-
-class ComandoRemoverSala:public ComandoSQL
-{
-public:
-    ComandoRemoverSala(Codigo);
-};
-
-//---------------------------------------------------------------------------
-// Declara��o da classe ComandoListarSala.
-
-class ComandoListarSala:public ComandoSQL
-{
-public:
-    ComandoListarSala();
-    list<Sala> getResultado();
-};
-
-//---------------------------------------------------------------------------
-// Declara��o da classe ComandoPesquisarSessao.
-
-
-class ComandoPesquisarSessao:public ComandoSQL
-{
-public:
-    ComandoPesquisarSessao(Codigo);
-    Sessao getResultado();
-};
-
-//---------------------------------------------------------------------------
-//Classe ComandoAtualizarSessao.
-
-class ComandoAtualizarSessao:public ComandoSQL
-{
-public:
-    ComandoAtualizarSessao(Sessao);
-};
-
-//---------------------------------------------------------------------------
-// Declara��o da classe ComandoCadastrarSessao.
-
-class ComandoCadastrarSessao:public ComandoSQL
-{
-public:
-    ComandoCadastrarSessao(Sessao);
-};
-
-//---------------------------------------------------------------------------
-// Declara��o da classe ComandoRemoverSessao.
-
-class ComandoRemoverSessao:public ComandoSQL
-{
-public:
-    ComandoRemoverSessao(Codigo);
-};
-
-//---------------------------------------------------------------------------
-// Declara��o da classe ComandoListarSessao.
-
-class ComandoListarSessao:public ComandoSQL
-{
-public:
-    ComandoListarSessao();
-    list<Sessao> getResultado();
-};
-
-class ComandoPesquisarSessaoPeca:public ComandoSQL
-{
-public:
-    ComandoPesquisarSessaoPeca(Codigo);
-    int getResultado();
-};
-
-class ComandoCadastrarSessaoPeca:public ComandoSQL
-{
-public:
-    ComandoCadastrarSessaoPeca(Sessao);
-};
-
-class ComandoCadastrarSessaoSala:public ComandoSQL
-{
-public:
-    ComandoCadastrarSessaoSala(Sessao);
-};
-
-//---------------------------------------------------------------------------
-//Classe ComandoPesquisarPeca.
-
-class ComandoPesquisarPeca:public ComandoSQL
-{
-public:
-    ComandoPesquisarPeca(Codigo);
-    Peca getResultado();
-};
-
-//---------------------------------------------------------------------------
-//Classe ComandoAtualizarPeca.
-
-class ComandoAtualizarPeca:public ComandoSQL
-{
-public:
-    ComandoAtualizarPeca(Peca);
-};
-
-//---------------------------------------------------------------------------
-// Declara��o da classe ComandoCadastrarPeca.
-
-class ComandoCadastrarPeca:public ComandoSQL
-{
-public:
-    ComandoCadastrarPeca(Peca);
-};
-
-//---------------------------------------------------------------------------
-// Declara��o da classe ComandoRemoverPeca.
-
-class ComandoRemoverPeca:public ComandoSQL
-{
-public:
-    ComandoRemoverPeca(Codigo);
-};
-
-//---------------------------------------------------------------------------
-// Declara��o da classe ComandoListarPeca.
-
-class ComandoListarPeca:public ComandoSQL
-{
-public:
-    ComandoListarPeca();
-    list<Peca> getResultado();
-};
-
-//---------------------------------------------------------------------------
-//Classe ComandoPesquisarAluno.
-
+// Estudante responsável: Clara Fortes - 190017503
 class ComandoPesquisarParticipante:public ComandoSQL
 {
 public:
@@ -251,39 +90,35 @@ public:
     Participante getResultado();
 };
 
-//---------------------------------------------------------------------------
-// Declara��o da classe ComandoCadastrarAluno.
-
+// Estudante responsável: Clara Fortes - 190017503
 class ComandoCadastrarParticipante:public ComandoSQL
 {
 public:
     ComandoCadastrarParticipante(Participante);
 };
 
-//---------------------------------------------------------------------------
-//Classe ComandoAtualizarAluno.
-
+// Estudante responsável: Clara Fortes - 190017503
 class ComandoAtualizarParticipante:public ComandoSQL
 {
 public:
     ComandoAtualizarParticipante(Participante);
 };
 
-//---------------------------------------------------------------------------
-// Declara��o da classe ComandoRemoverAluno.
-
+// Estudante responsável: Clara Fortes - 190017503
 class ComandoRemoverParticipante:public ComandoSQL
 {
 public:
     ComandoRemoverParticipante(Matricula);
 };
 
+// Estudante responsável: Clara Fortes - 190017503
 class ComandoCadastrarParticipantePeca:public ComandoSQL
 {
 public:
     ComandoCadastrarParticipantePeca(Participante);
 };
 
+// Estudante responsável: Clara Fortes - 190017503
 class ComandoPesquisarParticipantePeca:public ComandoSQL
 {
 public:
@@ -291,17 +126,137 @@ public:
     int getResultado();
 };
 
-//---------------------------------------------------------------------------
-// Implementa��es de m�todos.
-
-inline string ElementoResultado::getNomeColuna() const
+// Estudante responsável: Leandro Bottecchia - 180145169
+class ComandoPesquisarPeca:public ComandoSQL
 {
-    return nomeColuna;
-}
+public:
+    ComandoPesquisarPeca(Codigo);
+    Peca getResultado();
+};
 
-inline string ElementoResultado::getValorColuna() const
+// Estudante responsável: Leandro Bottecchia - 180145169
+class ComandoAtualizarPeca:public ComandoSQL
 {
-    return valorColuna;
-}
+public:
+    ComandoAtualizarPeca(Peca);
+};
+
+// Estudante responsável: Leandro Bottecchia - 180145169
+class ComandoCadastrarPeca:public ComandoSQL
+{
+public:
+    ComandoCadastrarPeca(Peca);
+};
+
+// Estudante responsável: Leandro Bottecchia - 180145169
+class ComandoRemoverPeca:public ComandoSQL
+{
+public:
+    ComandoRemoverPeca(Codigo);
+};
+
+// Estudante responsável: Leandro Bottecchia - 180145169
+class ComandoListarPeca:public ComandoSQL
+{
+public:
+    ComandoListarPeca();
+    list<Peca> getResultado();
+};
+
+// Estudante responsável: Leandro Bottecchia - 180145169
+class ComandoPesquisarSessao:public ComandoSQL
+{
+public:
+    ComandoPesquisarSessao(Codigo);
+    Sessao getResultado();
+};
+
+// Estudante responsável: Leandro Bottecchia - 180145169
+class ComandoAtualizarSessao:public ComandoSQL
+{
+public:
+    ComandoAtualizarSessao(Sessao);
+};
+
+// Estudante responsável: Leandro Bottecchia - 180145169
+class ComandoCadastrarSessao:public ComandoSQL
+{
+public:
+    ComandoCadastrarSessao(Sessao);
+};
+
+// Estudante responsável: Leandro Bottecchia - 180145169
+class ComandoRemoverSessao:public ComandoSQL
+{
+public:
+    ComandoRemoverSessao(Codigo);
+};
+
+// Estudante responsável: Leandro Bottecchia - 180145169
+class ComandoListarSessao:public ComandoSQL
+{
+public:
+    ComandoListarSessao();
+    list<Sessao> getResultado();
+};
+
+// Estudante responsável: Leandro Bottecchia - 180145169
+class ComandoPesquisarSessaoPeca:public ComandoSQL
+{
+public:
+    ComandoPesquisarSessaoPeca(Codigo);
+    int getResultado();
+};
+
+// Estudante responsável: Leandro Bottecchia - 180145169
+class ComandoCadastrarSessaoPeca:public ComandoSQL
+{
+public:
+    ComandoCadastrarSessaoPeca(Sessao);
+};
+
+// Estudante responsável: Leandro Bottecchia - 180145169
+class ComandoCadastrarSessaoSala:public ComandoSQL
+{
+public:
+    ComandoCadastrarSessaoSala(Sessao);
+};
+
+// Estudante responsável: Liz Costato - 180022261
+class ComandoPesquisarSala:public ComandoSQL
+{
+public:
+    ComandoPesquisarSala(Codigo);
+    Sala getResultado();
+};
+
+// Estudante responsável: Liz Costato - 180022261
+class ComandoAtualizarSala:public ComandoSQL
+{
+public:
+    ComandoAtualizarSala(Sala);
+};
+
+// Estudante responsável: Liz Costato - 180022261
+class ComandoCadastrarSala:public ComandoSQL
+{
+public:
+    ComandoCadastrarSala(Sala);
+};
+
+// Estudante responsável: Liz Costato - 180022261
+class ComandoRemoverSala:public ComandoSQL
+{
+public:
+    ComandoRemoverSala(Codigo);
+};
+
+// Estudante responsável: Liz Costato - 180022261
+class ComandoListarSala:public ComandoSQL
+{
+public:
+    ComandoListarSala();
+    list<Sala> getResultado();
+};
 
 #endif // UNIDADEPERSISTENCIA_H_INCLUDED
