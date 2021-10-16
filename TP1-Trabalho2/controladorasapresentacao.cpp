@@ -512,7 +512,7 @@ bool CntrApresentacaoParticipante::descadastrarParticipante(Matricula matricula)
             cout << texto3 << endl;
             getchar();
             fflush(stdin);
-            return false;
+            return true;
         }
     }
     else{
@@ -524,7 +524,7 @@ bool CntrApresentacaoParticipante::descadastrarParticipante(Matricula matricula)
     cout << texto4 << endl;
     getchar();
     fflush(stdin);
-    return true;
+    return false;
 
 }
 

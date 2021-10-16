@@ -70,6 +70,7 @@ bool CntrServicoParticipante::consultarParticipante(Matricula matricula){
     try{
         participante = comando.getResultado();
         if(participante.getCodigoPeca().getValor() == ""){
+            CLR_SCR;
             cout << endl << "Seus Dados" << endl << endl;
             cout << "Matricula  : " << participante.getMatricula().getValor() << endl;
             cout << "Nome       : " << participante.getNome().getValor() << endl;
@@ -98,6 +99,7 @@ bool CntrServicoParticipante::consultarParticipante(Matricula matricula){
             try
             {
                 peca = comando.getResultado();
+                CLR_SCR;
                 cout << endl << "Seus Dados" << endl << endl;
                 cout << "Matricula  : " << participante.getMatricula().getValor() << endl;
                 cout << "Nome       : " << participante.getNome().getValor() << endl;
