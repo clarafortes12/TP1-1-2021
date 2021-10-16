@@ -12,10 +12,16 @@
 
 #define CLR_SCR system("cls");
 
-
 //--------------------------------------------------------------------------------------------
-// Declara��es de classes controladoras e implementa��es de m�todos.
-
+// • Módulo MAC
+// - MAC é uma abreviação para o nome Módulo Apresentação e Controle
+// - Implementado pela classe CntrApresentacaoControle
+// - Responsável por intermediar o acesso do participante às diferentes funcionalidades do
+// sistema. Esse módulo será responsável por apresentar a tela inicial do sistema com as opções
+// possíveis para o caso em que o usuário foi autenticado e também para o caso em que o usuário
+// ainda não foi autenticado.
+//
+// Estudante responsável: Clara Fortes - 190017503
 class CntrApresentacaoControle
 {
 private:
@@ -60,7 +66,13 @@ inline void CntrApresentacaoControle::setCntrApresentacaoSessao(IApresentacaoSes
 }
 
 //--------------------------------------------------------------------------------------------
-
+// • Módulo Apresentação Autenticação
+// - Implementado pela classe CntrApresentacaoAutenticacao
+// - Responsável pela interface com o usuário e pela validação dos dados de entrada no que diz
+// respeito à autenticação do participante. Ou seja, é responsável por receber a matrícula e a
+// senha do participante e por validar o formato dessas duas entradas.
+//
+// Estudante responsável: Liz Costato - 180022261
 class CntrApresentacaoAutenticacao:public IApresentacaoAutenticacao
 {
 private:
@@ -76,7 +88,13 @@ inline void CntrApresentacaoAutenticacao::setCntrServicoAutenticacao(IServicoAut
 }
 
 //--------------------------------------------------------------------------------------------
-
+// • Módulo Apresentação Participante
+// - Implementado pela classe CntrApresentacaoParticipante
+// - Responsável pela interface com o usuário e pela validação dos dados de entrada no que diz
+// respeito ao cadastramento, à edição, à consulta e ao descadastramento de um participante,
+// bem como ao cadastramento de um participante à uma peça já existente no sistema.
+//
+// Estudante responsável: Clara Fortes - 190017503
 class CntrApresentacaoParticipante:public IApresentacaoParticipante
 {
 private:
@@ -96,30 +114,14 @@ inline void CntrApresentacaoParticipante::setCntrServicoParticipante(IServicoPar
 {
     cntrServicoParticipante = cntr;
 }
-//--------------------------------------------------------------------------------------------
-
-class CntrApresentacaoSala:public IApresentacaoSala
-{
-private:
-    IServicoSala *cntrServicoSala;
-    void listarSala();
-    void incluirSala();
-    void excluirSala();
-    void editarSala();
-    void visualizarSala();
-public:
-    void executar(Matricula);
-    void executar();
-    void setCntrServicoSala(IServicoSala*);
-};
-
-inline void CntrApresentacaoSala::setCntrServicoSala(IServicoSala *cntr)
-{
-    cntrServicoSala = cntr;
-}
 
 //--------------------------------------------------------------------------------------------
-
+// • Módulo Apresentação Peça
+// - Implementado pela classe CntrApresentacaoPeca
+// - Responsável pela interface com o usuário e pela validação dos dados de entrada no que diz
+// respeito a listar, incluir, excluir, editar ou visualizar peças cadastradas no sistema.
+//
+// Estudante responsável: Leandro Bottecchia - 180145169
 class CntrApresentacaoPeca:public IApresentacaoPeca
 {
 private:
@@ -141,7 +143,14 @@ inline void CntrApresentacaoPeca::setCntrServicoPeca(IServicoPeca *cntr)
 }
 
 //--------------------------------------------------------------------------------------------
-
+// • Módulo  Apresentação Sessão
+// - Implementado pela classe CntrApresentacaoSessao
+// - Responsável pela interface com o usuário e pela validação dos dados de entrada no que diz
+// respeito a listar, incluir, excluir, editar ou visualizar sessões cadastradas no sistema.
+// Além disso, é responsável pela interface com o usuário e pela validação dos dados de entrada
+// no que diz respeito a criar relacionamentos entre sessões e salas e entre sessões e peças.
+//
+// Estudante responsável: Leandro Bottecchia - 180145169
 class CntrApresentacaoSessao:public IApresentacaoSessao
 {
 private:
@@ -164,5 +173,31 @@ inline void CntrApresentacaoSessao::setCntrServicoSessao(IServicoSessao *cntr)
     cntrServicoSessao = cntr;
 }
 
+//--------------------------------------------------------------------------------------------
+// • Módulo  Apresentação Sala
+// - Implementado pela classe CntrApresentacaoSala
+// - Responsável pela interface com o usuário e pela validação dos dados de entrada no que diz
+// respeito a listar, incluir, excluir, editar ou visualizar salas cadastradas no sistema.
+//
+// Estudante responsável: Liz Costato - 180022261
+class CntrApresentacaoSala:public IApresentacaoSala
+{
+private:
+    IServicoSala *cntrServicoSala;
+    void listarSala();
+    void incluirSala();
+    void excluirSala();
+    void editarSala();
+    void visualizarSala();
+public:
+    void executar(Matricula);
+    void executar();
+    void setCntrServicoSala(IServicoSala*);
+};
+
+inline void CntrApresentacaoSala::setCntrServicoSala(IServicoSala *cntr)
+{
+    cntrServicoSala = cntr;
+}
 
 #endif // CONTROLADORASAPRESENTACAO_H_INCLUDED

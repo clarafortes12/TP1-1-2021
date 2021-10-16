@@ -2,9 +2,93 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+	<File name="UnidadePersistencia.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4415" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="Entidades.cpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="UnidadePersistencia.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9823" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="118" />
+			<Collapse line="124" />
+			<Collapse line="175" />
+			<Collapse line="200" />
+			<Collapse line="209" />
+			<Collapse line="214" />
+			<Collapse line="268" />
+			<Collapse line="274" />
+			<Collapse line="330" />
+			<Collapse line="336" />
+			<Collapse line="375" />
+			<Collapse line="387" />
+			<Collapse line="396" />
+			<Collapse line="401" />
+			<Collapse line="440" />
+			<Collapse line="448" />
+			<Collapse line="454" />
+			<Collapse line="486" />
+			<Collapse line="497" />
+			<Collapse line="506" />
+			<Collapse line="512" />
+			<Collapse line="550" />
+			<Collapse line="555" />
+			<Collapse line="628" />
+			<Collapse line="646" />
+			<Collapse line="655" />
+			<Collapse line="674" />
+			<Collapse line="680" />
+		</Folding>
+	</File>
+	<File name="sqlite3.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="controladorasservico.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="18642" topLine="7" />
+		</Cursor>
+		<Folding>
+			<Collapse line="5" />
+			<Collapse line="12" />
+			<Collapse line="19" />
+			<Collapse line="30" />
+			<Collapse line="52" />
+			<Collapse line="132" />
+			<Collapse line="148" />
+			<Collapse line="163" />
+			<Collapse line="238" />
+			<Collapse line="270" />
+			<Collapse line="324" />
+			<Collapse line="442" />
+			<Collapse line="457" />
+			<Collapse line="471" />
+			<Collapse line="485" />
+			<Collapse line="517" />
+			<Collapse line="578" />
+			<Collapse line="617" />
+			<Collapse line="671" />
+			<Collapse line="703" />
+			<Collapse line="718" />
+			<Collapse line="732" />
+			<Collapse line="747" />
+			<Collapse line="803" />
+			<Collapse line="839" />
+			<Collapse line="856" />
+			<Collapse line="896" />
+		</Folding>
+	</File>
+	<File name="sqlite3.c" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1305499" topLine="31040" />
 		</Cursor>
 	</File>
 	<File name="Interfaces.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -12,19 +96,9 @@
 			<Cursor1 position="2636" topLine="52" />
 		</Cursor>
 	</File>
-	<File name="UnidadePersistencia.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Dominios.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4156" topLine="137" />
-		</Cursor>
-	</File>
-	<File name="controladorasapresentacao.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="31227" topLine="801" />
-		</Cursor>
-	</File>
-	<File name="controladorasservico.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2461" topLine="50" />
+			<Cursor1 position="14133" topLine="519" />
 		</Cursor>
 	</File>
 	<File name="Dominios.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -32,44 +106,63 @@
 			<Cursor1 position="12632" topLine="555" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+	<File name="controladorasapresentacao.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="293" topLine="24" />
+			<Cursor1 position="635" topLine="0" />
 		</Cursor>
+		<Folding>
+			<Collapse line="748" />
+			<Collapse line="835" />
+			<Collapse line="889" />
+			<Collapse line="934" />
+			<Collapse line="1003" />
+			<Collapse line="1011" />
+			<Collapse line="1098" />
+			<Collapse line="1161" />
+		</Folding>
+	</File>
+	<File name="controladorasapresentacao.h" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="44" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="19" />
+			<Collapse line="37" />
+			<Collapse line="42" />
+			<Collapse line="47" />
+			<Collapse line="52" />
+			<Collapse line="57" />
+			<Collapse line="64" />
+			<Collapse line="73" />
+			<Collapse line="80" />
+			<Collapse line="95" />
+			<Collapse line="101" />
+			<Collapse line="116" />
+			<Collapse line="123" />
+			<Collapse line="138" />
+			<Collapse line="162" />
+		</Folding>
 	</File>
 	<File name="Entidades.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="4182" topLine="230" />
 		</Cursor>
 	</File>
-	<File name="Dominios.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="14133" topLine="519" />
+			<Cursor1 position="293" topLine="24" />
 		</Cursor>
 	</File>
-	<File name="sqlite3.c" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="controladorasservico.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1305499" topLine="31040" />
+			<Cursor1 position="2212" topLine="21" />
 		</Cursor>
-	</File>
-	<File name="UnidadePersistencia.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="9158" topLine="269" />
-		</Cursor>
-	</File>
-	<File name="sqlite3.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="controladorasservico.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="11952" topLine="383" />
-		</Cursor>
-	</File>
-	<File name="controladorasapresentacao.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="252" topLine="0" />
-		</Cursor>
+		<Folding>
+			<Collapse line="32" />
+			<Collapse line="39" />
+			<Collapse line="52" />
+			<Collapse line="64" />
+			<Collapse line="75" />
+		</Folding>
 	</File>
 </CodeBlocks_layout_file>

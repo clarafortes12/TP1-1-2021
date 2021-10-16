@@ -21,6 +21,7 @@ class IServicoSessao;
 //--------------------------------------------------------------------------------------------
 // Declarações das interfaces da camada de apresentação.
 
+// Estudante responsável: Liz Costato - 180022261
 class IApresentacaoAutenticacao
 {
 public:
@@ -29,6 +30,7 @@ public:
     virtual ~IApresentacaoAutenticacao() {}
 };
 
+// Estudante responsável: Clara Fortes - 190017503
 class IApresentacaoParticipante
 {
 public:
@@ -38,6 +40,7 @@ public:
     virtual ~IApresentacaoParticipante() {}
 };
 
+// Estudante responsável: Leandro Bottecchia - 180145169
 class IApresentacaoPeca
 {
 public:
@@ -47,15 +50,7 @@ public:
     virtual ~IApresentacaoPeca() {}
 };
 
-class IApresentacaoSala
-{
-public:
-    virtual void executar(Matricula) = 0;
-    virtual void executar() = 0;
-    virtual void setCntrServicoSala(IServicoSala *) = 0;
-    virtual ~IApresentacaoSala() {}
-};
-
+// Estudante responsável: Leandro Bottecchia - 180145169
 class IApresentacaoSessao
 {
 public:
@@ -65,9 +60,21 @@ public:
     virtual ~IApresentacaoSessao() {}
 };
 
+// Estudante responsável: Liz Costato - 180022261
+class IApresentacaoSala
+{
+public:
+    virtual void executar(Matricula) = 0;
+    virtual void executar() = 0;
+    virtual void setCntrServicoSala(IServicoSala *) = 0;
+    virtual ~IApresentacaoSala() {}
+};
+
+
 //--------------------------------------------------------------------------------------------
 // Declarações das interfaces da camada de serviço.
 
+// Estudante responsável: Liz Costato - 180022261
 class IServicoAutenticacao
 {
 public:
@@ -75,6 +82,7 @@ public:
     virtual ~IServicoAutenticacao() {}
 };
 
+// Estudante responsável: Clara Fortes - 190017503
 class IServicoParticipante{
 public:
     virtual bool cadastrarParticipante(Participante) = 0;
@@ -86,6 +94,7 @@ public:
     virtual ~IServicoParticipante() {}
 };
 
+// Estudante responsável: Leandro Bottecchia - 180145169
 class IServicoPeca
 {
 public:
@@ -97,6 +106,7 @@ public:
     virtual ~IServicoPeca() {}
 };
 
+// Estudante responsável: Leandro Bottecchia - 180145169
 class IServicoSessao
 {
 public:
@@ -112,6 +122,7 @@ public:
     virtual ~IServicoSessao() {}
 };
 
+// Estudante responsável: Liz Costato - 180022261
 class IServicoSala
 {
 public:
